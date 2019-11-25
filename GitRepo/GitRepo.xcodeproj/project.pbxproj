@@ -8,18 +8,28 @@
 
 /* Begin PBXBuildFile section */
 		A7FE0687238BE7F30093F07A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE0686238BE7F30093F07A /* AppDelegate.swift */; };
-		A7FE0689238BE7F30093F07A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE0688238BE7F30093F07A /* ViewController.swift */; };
+		A7FE0689238BE7F30093F07A /* ProjectsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE0688238BE7F30093F07A /* ProjectsTableVC.swift */; };
 		A7FE068E238BE7F40093F07A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7FE068D238BE7F40093F07A /* Assets.xcassets */; };
 		A7FE0691238BE7F40093F07A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7FE068F238BE7F40093F07A /* LaunchScreen.storyboard */; };
+		A7FE0699238BEA3C0093F07A /* ProjectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE0698238BEA3C0093F07A /* ProjectVC.swift */; };
+		A7FE069B238BF0E20093F07A /* ReposTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE069A238BF0E20093F07A /* ReposTableVC.swift */; };
+		A7FE069D238BF1B30093F07A /* RepoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE069C238BF1B30093F07A /* RepoVC.swift */; };
+		A7FE069F238BF3510093F07A /* RootVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE069E238BF3510093F07A /* RootVC.swift */; };
+		A7FE06A1238BF4540093F07A /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE06A0238BF4540093F07A /* BaseTabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A7FE0683238BE7F30093F07A /* GitRepo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitRepo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7FE0686238BE7F30093F07A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A7FE0688238BE7F30093F07A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A7FE0688238BE7F30093F07A /* ProjectsTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsTableVC.swift; sourceTree = "<group>"; };
 		A7FE068D238BE7F40093F07A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A7FE0690238BE7F40093F07A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A7FE0692238BE7F40093F07A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A7FE0698238BEA3C0093F07A /* ProjectVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectVC.swift; sourceTree = "<group>"; };
+		A7FE069A238BF0E20093F07A /* ReposTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposTableVC.swift; sourceTree = "<group>"; };
+		A7FE069C238BF1B30093F07A /* RepoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoVC.swift; sourceTree = "<group>"; };
+		A7FE069E238BF3510093F07A /* RootVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootVC.swift; sourceTree = "<group>"; };
+		A7FE06A0238BF4540093F07A /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,7 +63,12 @@
 			isa = PBXGroup;
 			children = (
 				A7FE0686238BE7F30093F07A /* AppDelegate.swift */,
-				A7FE0688238BE7F30093F07A /* ViewController.swift */,
+				A7FE069E238BF3510093F07A /* RootVC.swift */,
+				A7FE06A0238BF4540093F07A /* BaseTabBarController.swift */,
+				A7FE0688238BE7F30093F07A /* ProjectsTableVC.swift */,
+				A7FE0698238BEA3C0093F07A /* ProjectVC.swift */,
+				A7FE069A238BF0E20093F07A /* ReposTableVC.swift */,
+				A7FE069C238BF1B30093F07A /* RepoVC.swift */,
 				A7FE068D238BE7F40093F07A /* Assets.xcassets */,
 				A7FE068F238BE7F40093F07A /* LaunchScreen.storyboard */,
 				A7FE0692238BE7F40093F07A /* Info.plist */,
@@ -131,8 +146,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7FE0689238BE7F30093F07A /* ViewController.swift in Sources */,
+				A7FE06A1238BF4540093F07A /* BaseTabBarController.swift in Sources */,
+				A7FE069F238BF3510093F07A /* RootVC.swift in Sources */,
+				A7FE0689238BE7F30093F07A /* ProjectsTableVC.swift in Sources */,
+				A7FE0699238BEA3C0093F07A /* ProjectVC.swift in Sources */,
 				A7FE0687238BE7F30093F07A /* AppDelegate.swift in Sources */,
+				A7FE069D238BF1B30093F07A /* RepoVC.swift in Sources */,
+				A7FE069B238BF0E20093F07A /* ReposTableVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

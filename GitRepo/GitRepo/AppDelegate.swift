@@ -22,6 +22,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		window?.rootViewController = rootVC
 		window?.makeKeyAndVisible()
 		
+		var netWork = NetworkService()
+		netWork.loadData {
+			result in
+			print(result)
+		}
+		
 		return true
 	}
 

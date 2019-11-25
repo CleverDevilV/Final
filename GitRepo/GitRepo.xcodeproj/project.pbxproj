@@ -16,6 +16,7 @@
 		A7FE069D238BF1B30093F07A /* RepoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE069C238BF1B30093F07A /* RepoVC.swift */; };
 		A7FE069F238BF3510093F07A /* RootVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE069E238BF3510093F07A /* RootVC.swift */; };
 		A7FE06A1238BF4540093F07A /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE06A0238BF4540093F07A /* BaseTabBarController.swift */; };
+		A7FE06A5238BFAFE0093F07A /* NetWorkservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE06A4238BFAFE0093F07A /* NetWorkservice.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		A7FE069C238BF1B30093F07A /* RepoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoVC.swift; sourceTree = "<group>"; };
 		A7FE069E238BF3510093F07A /* RootVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootVC.swift; sourceTree = "<group>"; };
 		A7FE06A0238BF4540093F07A /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
+		A7FE06A4238BFAFE0093F07A /* NetWorkservice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetWorkservice.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,15 +67,32 @@
 				A7FE0686238BE7F30093F07A /* AppDelegate.swift */,
 				A7FE069E238BF3510093F07A /* RootVC.swift */,
 				A7FE06A0238BF4540093F07A /* BaseTabBarController.swift */,
-				A7FE0688238BE7F30093F07A /* ProjectsTableVC.swift */,
-				A7FE0698238BEA3C0093F07A /* ProjectVC.swift */,
-				A7FE069A238BF0E20093F07A /* ReposTableVC.swift */,
-				A7FE069C238BF1B30093F07A /* RepoVC.swift */,
+				A7FE06A2238BFAE20093F07A /* Project */,
+				A7FE06A3238BFAEF0093F07A /* Repo */,
 				A7FE068D238BE7F40093F07A /* Assets.xcassets */,
 				A7FE068F238BE7F40093F07A /* LaunchScreen.storyboard */,
 				A7FE0692238BE7F40093F07A /* Info.plist */,
+				A7FE06A4238BFAFE0093F07A /* NetWorkservice.swift */,
 			);
 			path = GitRepo;
+			sourceTree = "<group>";
+		};
+		A7FE06A2238BFAE20093F07A /* Project */ = {
+			isa = PBXGroup;
+			children = (
+				A7FE0688238BE7F30093F07A /* ProjectsTableVC.swift */,
+				A7FE0698238BEA3C0093F07A /* ProjectVC.swift */,
+			);
+			path = Project;
+			sourceTree = "<group>";
+		};
+		A7FE06A3238BFAEF0093F07A /* Repo */ = {
+			isa = PBXGroup;
+			children = (
+				A7FE069A238BF0E20093F07A /* ReposTableVC.swift */,
+				A7FE069C238BF1B30093F07A /* RepoVC.swift */,
+			);
+			path = Repo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,6 +167,7 @@
 			files = (
 				A7FE06A1238BF4540093F07A /* BaseTabBarController.swift in Sources */,
 				A7FE069F238BF3510093F07A /* RootVC.swift in Sources */,
+				A7FE06A5238BFAFE0093F07A /* NetWorkservice.swift in Sources */,
 				A7FE0689238BE7F30093F07A /* ProjectsTableVC.swift in Sources */,
 				A7FE0699238BEA3C0093F07A /* ProjectVC.swift in Sources */,
 				A7FE0687238BE7F30093F07A /* AppDelegate.swift in Sources */,

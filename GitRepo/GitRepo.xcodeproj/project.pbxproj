@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A77404EE239110E90038851E /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77404ED239110E90038851E /* Registration.swift */; };
+		A77404FA23912FFC0038851E /* UserDefExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77404F923912FFC0038851E /* UserDefExt.swift */; };
+		A774053B23918FE60038851E /* repo.xib in Resources */ = {isa = PBXBuildFile; fileRef = A774053A23918FE60038851E /* repo.xib */; };
 		A7FE0687238BE7F30093F07A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE0686238BE7F30093F07A /* AppDelegate.swift */; };
 		A7FE0689238BE7F30093F07A /* ProjectsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE0688238BE7F30093F07A /* ProjectsTableVC.swift */; };
 		A7FE068E238BE7F40093F07A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7FE068D238BE7F40093F07A /* Assets.xcassets */; };
@@ -17,9 +20,26 @@
 		A7FE069F238BF3510093F07A /* RootVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE069E238BF3510093F07A /* RootVC.swift */; };
 		A7FE06A1238BF4540093F07A /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE06A0238BF4540093F07A /* BaseTabBarController.swift */; };
 		A7FE06A5238BFAFE0093F07A /* NetWorkservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE06A4238BFAFE0093F07A /* NetWorkservice.swift */; };
+		A7FE06AB238C46880093F07A /* ProjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE06AA238C46880093F07A /* ProjectModel.swift */; };
+		A7FE06AD238C49F20093F07A /* RepoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE06AC238C49F20093F07A /* RepoModel.swift */; };
+		A7FE06BF238D90BE0093F07A /* Summator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE06BE238D90BD0093F07A /* Summator.swift */; };
+		A7FE06C2238D91A70093F07A /* SummatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE06C1238D91A70093F07A /* SummatorTests.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		A7FE06B9238D90610093F07A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A7FE067B238BE7F30093F07A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A7FE0682238BE7F30093F07A;
+			remoteInfo = GitRepo;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		A77404ED239110E90038851E /* Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration.swift; sourceTree = "<group>"; };
+		A77404F923912FFC0038851E /* UserDefExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefExt.swift; sourceTree = "<group>"; };
+		A774053A23918FE60038851E /* repo.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = repo.xib; sourceTree = "<group>"; };
 		A7FE0683238BE7F30093F07A /* GitRepo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitRepo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7FE0686238BE7F30093F07A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A7FE0688238BE7F30093F07A /* ProjectsTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsTableVC.swift; sourceTree = "<group>"; };
@@ -32,10 +52,23 @@
 		A7FE069E238BF3510093F07A /* RootVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootVC.swift; sourceTree = "<group>"; };
 		A7FE06A0238BF4540093F07A /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 		A7FE06A4238BFAFE0093F07A /* NetWorkservice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetWorkservice.swift; sourceTree = "<group>"; };
+		A7FE06AA238C46880093F07A /* ProjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectModel.swift; sourceTree = "<group>"; };
+		A7FE06AC238C49F20093F07A /* RepoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoModel.swift; sourceTree = "<group>"; };
+		A7FE06B4238D90600093F07A /* GitRepoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GitRepoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7FE06B8238D90610093F07A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A7FE06BE238D90BD0093F07A /* Summator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Summator.swift; sourceTree = "<group>"; };
+		A7FE06C1238D91A70093F07A /* SummatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummatorTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		A7FE0680238BE7F30093F07A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7FE06B1238D90600093F07A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -49,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				A7FE0685238BE7F30093F07A /* GitRepo */,
+				A7FE06B5238D90610093F07A /* GitRepoTests */,
 				A7FE0684238BE7F30093F07A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -57,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				A7FE0683238BE7F30093F07A /* GitRepo.app */,
+				A7FE06B4238D90600093F07A /* GitRepoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -67,12 +102,16 @@
 				A7FE0686238BE7F30093F07A /* AppDelegate.swift */,
 				A7FE069E238BF3510093F07A /* RootVC.swift */,
 				A7FE06A0238BF4540093F07A /* BaseTabBarController.swift */,
+				A77404ED239110E90038851E /* Registration.swift */,
+				A77404F923912FFC0038851E /* UserDefExt.swift */,
+				A7FE06A4238BFAFE0093F07A /* NetWorkservice.swift */,
 				A7FE06A2238BFAE20093F07A /* Project */,
 				A7FE06A3238BFAEF0093F07A /* Repo */,
 				A7FE068D238BE7F40093F07A /* Assets.xcassets */,
 				A7FE068F238BE7F40093F07A /* LaunchScreen.storyboard */,
 				A7FE0692238BE7F40093F07A /* Info.plist */,
-				A7FE06A4238BFAFE0093F07A /* NetWorkservice.swift */,
+				A7FE06BE238D90BD0093F07A /* Summator.swift */,
+				A774053A23918FE60038851E /* repo.xib */,
 			);
 			path = GitRepo;
 			sourceTree = "<group>";
@@ -82,6 +121,7 @@
 			children = (
 				A7FE0688238BE7F30093F07A /* ProjectsTableVC.swift */,
 				A7FE0698238BEA3C0093F07A /* ProjectVC.swift */,
+				A7FE06AA238C46880093F07A /* ProjectModel.swift */,
 			);
 			path = Project;
 			sourceTree = "<group>";
@@ -91,8 +131,18 @@
 			children = (
 				A7FE069A238BF0E20093F07A /* ReposTableVC.swift */,
 				A7FE069C238BF1B30093F07A /* RepoVC.swift */,
+				A7FE06AC238C49F20093F07A /* RepoModel.swift */,
 			);
 			path = Repo;
+			sourceTree = "<group>";
+		};
+		A7FE06B5238D90610093F07A /* GitRepoTests */ = {
+			isa = PBXGroup;
+			children = (
+				A7FE06B8238D90610093F07A /* Info.plist */,
+				A7FE06C1238D91A70093F07A /* SummatorTests.swift */,
+			);
+			path = GitRepoTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -115,6 +165,24 @@
 			productReference = A7FE0683238BE7F30093F07A /* GitRepo.app */;
 			productType = "com.apple.product-type.application";
 		};
+		A7FE06B3238D90600093F07A /* GitRepoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A7FE06BD238D90610093F07A /* Build configuration list for PBXNativeTarget "GitRepoTests" */;
+			buildPhases = (
+				A7FE06B0238D90600093F07A /* Sources */,
+				A7FE06B1238D90600093F07A /* Frameworks */,
+				A7FE06B2238D90600093F07A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A7FE06BA238D90610093F07A /* PBXTargetDependency */,
+			);
+			name = GitRepoTests;
+			productName = GitRepoTests;
+			productReference = A7FE06B4238D90600093F07A /* GitRepoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -127,6 +195,11 @@
 				TargetAttributes = {
 					A7FE0682238BE7F30093F07A = {
 						CreatedOnToolsVersion = 10.3;
+					};
+					A7FE06B3238D90600093F07A = {
+						CreatedOnToolsVersion = 10.3;
+						LastSwiftMigration = 1030;
+						TestTargetID = A7FE0682238BE7F30093F07A;
 					};
 				};
 			};
@@ -144,6 +217,7 @@
 			projectRoot = "";
 			targets = (
 				A7FE0682238BE7F30093F07A /* GitRepo */,
+				A7FE06B3238D90600093F07A /* GitRepoTests */,
 			);
 		};
 /* End PBXProject section */
@@ -153,8 +227,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A774053B23918FE60038851E /* repo.xib in Resources */,
 				A7FE0691238BE7F40093F07A /* LaunchScreen.storyboard in Resources */,
 				A7FE068E238BE7F40093F07A /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7FE06B2238D90600093F07A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,16 +249,37 @@
 			files = (
 				A7FE06A1238BF4540093F07A /* BaseTabBarController.swift in Sources */,
 				A7FE069F238BF3510093F07A /* RootVC.swift in Sources */,
+				A7FE06AB238C46880093F07A /* ProjectModel.swift in Sources */,
+				A7FE06AD238C49F20093F07A /* RepoModel.swift in Sources */,
+				A77404EE239110E90038851E /* Registration.swift in Sources */,
 				A7FE06A5238BFAFE0093F07A /* NetWorkservice.swift in Sources */,
+				A77404FA23912FFC0038851E /* UserDefExt.swift in Sources */,
 				A7FE0689238BE7F30093F07A /* ProjectsTableVC.swift in Sources */,
 				A7FE0699238BEA3C0093F07A /* ProjectVC.swift in Sources */,
 				A7FE0687238BE7F30093F07A /* AppDelegate.swift in Sources */,
 				A7FE069D238BF1B30093F07A /* RepoVC.swift in Sources */,
 				A7FE069B238BF0E20093F07A /* ReposTableVC.swift in Sources */,
+				A7FE06BF238D90BE0093F07A /* Summator.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7FE06B0238D90600093F07A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A7FE06C2238D91A70093F07A /* SummatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A7FE06BA238D90610093F07A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A7FE0682238BE7F30093F07A /* GitRepo */;
+			targetProxy = A7FE06B9238D90610093F07A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		A7FE068F238BE7F40093F07A /* LaunchScreen.storyboard */ = {
@@ -342,6 +445,49 @@
 			};
 			name = Release;
 		};
+		A7FE06BB238D90610093F07A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HSXJ839659;
+				INFOPLIST_FILE = GitRepoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Viter.GitRepoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GitRepo.app/GitRepo";
+			};
+			name = Debug;
+		};
+		A7FE06BC238D90610093F07A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HSXJ839659;
+				INFOPLIST_FILE = GitRepoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Viter.GitRepoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GitRepo.app/GitRepo";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -359,6 +505,15 @@
 			buildConfigurations = (
 				A7FE0696238BE7F40093F07A /* Debug */,
 				A7FE0697238BE7F40093F07A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A7FE06BD238D90610093F07A /* Build configuration list for PBXNativeTarget "GitRepoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A7FE06BB238D90610093F07A /* Debug */,
+				A7FE06BC238D90610093F07A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

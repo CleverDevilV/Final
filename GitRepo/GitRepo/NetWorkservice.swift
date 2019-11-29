@@ -11,12 +11,25 @@ import Foundation
 struct RepoFromGit: Codable {
 	var id: Int
 	var name: String
+	var url: String
+	var language: String?
+	var owner: Owner
 	
+	struct Owner: Codable {
+		var login: String
+	}
+	
+}
+
+protocol DecodeIntoModelData {
+	var data: [Decodable] {get set}
+	func decodeFromBack()
 }
 
 class NetworkService {
 	
-	let session: URLSession
+	private let session: URLSession
+	private let token = UserDefaults.standard.get(with: .oauth_access_token)
 	
 	private var queue = DispatchQueue(label: "RepoQueue", qos: .default, attributes: .concurrent)
 	
@@ -25,15 +38,18 @@ class NetworkService {
 		session = URLSession(configuration: .default)
 	}
 	
-	public func loadData(completion: @escaping (Result<String, Error>) -> ()) {
+	
+	
+	public func loadData(stringURL: String, completion: @escaping ([Repo]) -> ()) {
+//		let stringURL = "https://api.github.com/user/repos"
 		
-		guard let url = URL(string: "https://api.github.com/users/CleverDevilV/repos") else {
+		guard let url = URL(string: stringURL) else {
 			print("Not URL")
 			return
 		}
 		
 		var request = URLRequest(url: url)
-		//		request.setValue("token \(token)", forHTTPHeaderField: "Authorization")
+		request.setValue("token \(token)", forHTTPHeaderField: "Authorization")
 		
 		session.dataTask(with: request) {
 			data, response, error in
@@ -50,7 +66,13 @@ class NetworkService {
 			do {
 				let repos = try JSONDecoder().decode([RepoFromGit].self, from: data)
 				print(repos.count)
-				completion(.success(repos[0].name))
+				var reposFromBack = [Repo]()
+				for repo in repos {
+					let repo = Repo(name: repo.name, repoLink: repo.url, languageOfProject: repo.language, collaborators: [], changes: [:], owner: repo.owner.login)
+					reposFromBack.append(repo)
+				}
+				//				completion(.success(reposFromBack))
+				completion((reposFromBack))
 				
 			} catch {
 				print(error)

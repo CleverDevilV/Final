@@ -12,6 +12,7 @@ class RootVC: UIViewController {
 	
 	private var currentVC: UIViewController
 	static let shared = RootVC()
+	var token: String = ""
 	
 	func copy(with zone: NSZone? = nil) -> Any {
 		return self
@@ -29,11 +30,42 @@ class RootVC: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		updateData()
+		
 		addChild(currentVC)
 		currentVC.view.frame = view.bounds
 		view.addSubview(currentVC.view)
 		currentVC.didMove(toParent: self) // завершает операцию добавления контроллера
 	}
+	
+	func updateData() {
+		
+		if !UserDefaults.standard.isExist(with: .oauth_access_token) {
+			currentVC = RequestViewController()
+//			present(RequestViewController(), animated: false, completion: nil)
+		}
+	}
+	
+	func switchMainScreen() {
+		let mainVC = BaseTabBarController()
+		
+		animateFadeTransition(to: mainVC)
+	}
+	
+	private func animateFadeTransition(to new: UIViewController, completion: (() -> Void)? = nil) {
+		currentVC.willMove(toParent: nil)
+		addChild(new)
+		
+		transition(from: currentVC, to: new, duration: 0.3, options: [.transitionCrossDissolve, .curveEaseOut], animations: {
+		}) { completed in
+			self.currentVC.removeFromParent()
+			new.didMove(toParent: self)
+			self.currentVC = new
+			completion?()
+		}
+	}
+	
+	
 	
 	/*
 	//MARK: - Navigation
@@ -56,7 +88,7 @@ class RootVC: UIViewController {
 	func switchMainScreen() {
 		let mainVC = MainViewController()
 		let mainScreen = UINavigationController(rootViewController: mainVC)
-		
+	
 		animateFadeTransition(to: mainScreen)
 	}
 	
@@ -98,3 +130,11 @@ class RootVC: UIViewController {
 	*/
 	
 }
+
+//extension RootVC: AuthViewControllerDelegateMy {
+//	func handleTokenChanged(token: String) {
+//		self.token = token
+//		print("New token \(token)")
+//		updateData()
+//	}
+//}

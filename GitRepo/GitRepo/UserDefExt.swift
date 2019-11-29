@@ -1,0 +1,65 @@
+//
+//  UserDef.swift
+//  GitRepo
+//
+//  Created by Дарья Витер on 29/11/2019.
+//  Copyright © 2019 Viter. All rights reserved.
+//
+
+import Foundation
+
+enum UserDefaultsKeys : String {
+	case permission_denied
+	case access_token
+	case gist_id
+}
+
+enum UserDefaultsType : String {
+	case oauth_permission_denied
+	case oauth_access_token
+}
+
+extension UserDefaults {
+	
+	func update(with type: UserDefaultsType, data: Any?) {
+		switch type {
+		case .oauth_permission_denied:
+			guard let permission_status = data as? Bool else { return }
+			set(permission_status, forKey: UserDefaultsKeys.permission_denied.rawValue)
+		case .oauth_access_token:
+			guard let oauth = data as? OAuthResponse else { return }
+			set(oauth.access_token, forKey: UserDefaultsKeys.access_token.rawValue)
+			print("token updated, token = ", oauth.access_token)
+		}
+	}
+	
+	func get(with type: UserDefaultsType) -> String {
+		switch type {
+		case .oauth_permission_denied:
+			return String()
+		case .oauth_access_token:
+			return (string(forKey: UserDefaultsKeys.access_token.rawValue) ?? String())
+			
+		}
+	}
+	
+	func isExist(with type: UserDefaultsType) -> Bool {
+		switch type {
+		case .oauth_permission_denied:
+			return bool(forKey: UserDefaultsKeys.permission_denied.rawValue)
+		case .oauth_access_token:
+			return ((string(forKey: UserDefaultsKeys.access_token.rawValue) ?? String()).isEmpty) ? false : true
+			
+		}
+	}
+	
+	func remove(with type: UserDefaultsType) {
+		switch type {
+		case .oauth_permission_denied:
+			UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.permission_denied.rawValue)
+		case .oauth_access_token:
+			UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.access_token.rawValue)
+			
+		}
+	}
+}

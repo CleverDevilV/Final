@@ -9,11 +9,14 @@
 import UIKit
 
 class RepoVC: UIViewController {
+	
+	var repo: Repo?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 		
 		view.backgroundColor = .yellow
+		title = repo?.name
     }
 	
 }

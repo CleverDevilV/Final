@@ -12,6 +12,8 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
+	
+//	var repos = [Repo]()
 
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -20,13 +22,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		window = UIWindow(frame: UIScreen.main.bounds)
 		let rootVC = RootVC.shared
 		window?.rootViewController = rootVC
+//		window?.rootViewController = RequestViewController()
 		window?.makeKeyAndVisible()
 		
-		var netWork = NetworkService()
-		netWork.loadData {
-			result in
-			print(result)
-		}
+//		let stringURL = "https://api.github.com/user/repos"
+//
+//		var netWork = NetworkService()
+//		netWork.loadData(stringURL: stringURL) {
+//			result in
+//			print(result)
+//			self.repos = result
+//			for item in result {
+//				print(item.name)
+//			}
+//		}
 		
 		return true
 	}
@@ -52,7 +61,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	func applicationWillTerminate(_ application: UIApplication) {
 		// Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 	}
+}
 
-
+extension AppDelegate {
+	static var shared: AppDelegate {
+		return UIApplication.shared.delegate as! AppDelegate
+	}
+	var rootViewController: RootVC {
+		return window!.rootViewController as! RootVC
+	}
 }
 

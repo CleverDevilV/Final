@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		// Override point for customization after application launch.
 		
 		window = UIWindow(frame: UIScreen.main.bounds)
-		let rootVC = RootVC.shared
+		let rootVC = RootViewController.shared
 		window?.rootViewController = rootVC
 //		window?.rootViewController = RequestViewController()
 		window?.makeKeyAndVisible()
@@ -67,8 +67,8 @@ extension AppDelegate {
 	static var shared: AppDelegate {
 		return UIApplication.shared.delegate as! AppDelegate
 	}
-	var rootViewController: RootVC {
-		return window!.rootViewController as! RootVC
+	var rootViewController: RootViewController {
+		return window!.rootViewController as! RootViewController
 	}
 }
 

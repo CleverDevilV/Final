@@ -12,11 +12,13 @@ enum UserDefaultsKeys : String {
 	case permission_denied
 	case access_token
 	case gist_id
+	case login
 }
 
 enum UserDefaultsType : String {
 	case oauth_permission_denied
 	case oauth_access_token
+	case oauth_user_login
 }
 
 extension UserDefaults {
@@ -30,7 +32,15 @@ extension UserDefaults {
 			guard let oauth = data as? OAuthResponse else { return }
 			set(oauth.access_token, forKey: UserDefaultsKeys.access_token.rawValue)
 			print("token updated, token = ", oauth.access_token)
+		default:
+			return
 		}
+	}
+	
+	func setupLogin(with type: UserDefaultsType, data: String?) {
+		guard let login = data as? String else {return}
+		set(login, forKey: UserDefaultsKeys.login.rawValue)
+		print("login updated, login = ", login)
 	}
 	
 	func get(with type: UserDefaultsType) -> String {
@@ -39,7 +49,8 @@ extension UserDefaults {
 			return String()
 		case .oauth_access_token:
 			return (string(forKey: UserDefaultsKeys.access_token.rawValue) ?? String())
-			
+		case .oauth_user_login:
+			return (string(forKey: UserDefaultsKeys.login.rawValue) ?? String())
 		}
 	}
 	
@@ -49,7 +60,8 @@ extension UserDefaults {
 			return bool(forKey: UserDefaultsKeys.permission_denied.rawValue)
 		case .oauth_access_token:
 			return ((string(forKey: UserDefaultsKeys.access_token.rawValue) ?? String()).isEmpty) ? false : true
-			
+		case .oauth_user_login:
+			return ((string(forKey: UserDefaultsKeys.login.rawValue) ?? String()).isEmpty) ? false : true
 		}
 	}
 	
@@ -59,7 +71,8 @@ extension UserDefaults {
 			UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.permission_denied.rawValue)
 		case .oauth_access_token:
 			UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.access_token.rawValue)
-			
+		case .oauth_user_login:
+			UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.login.rawValue)
 		}
 	}
 }

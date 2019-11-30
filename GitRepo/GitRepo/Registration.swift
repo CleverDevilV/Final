@@ -62,10 +62,12 @@ class RequestViewController: UIViewController  {
 	
 	private var oauthData: OAuthData = OAuthData()
 	
+	let session = URLSession(configuration: .default)
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		webView = WKWebView(frame: view.frame)
+		webView = WKWebView(frame: .zero)
 		
 		view.addSubview(webView)
 		
@@ -78,6 +80,10 @@ class RequestViewController: UIViewController  {
 //		
 //		
 //	}
+	override func viewWillLayoutSubviews() {
+		super.viewWillLayoutSubviews()
+		webView.frame = view.frame
+	}
 	
 	private func setup() {
 		webView.navigationDelegate = self
@@ -92,7 +98,7 @@ class RequestViewController: UIViewController  {
 		]
 		guard let url = urlComponents.url else { return }
 		
-		let request = URLRequest(url: url)
+		let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 120)
 		webView.load(request)
 	}
 	
@@ -106,7 +112,7 @@ class RequestViewController: UIViewController  {
 		]
 		
 		guard let url = urlComponents.url else { return nil }
-		var request = URLRequest(url: url)
+		var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 120)
 		request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 		request.setValue("application/json", forHTTPHeaderField: "Accept")
 		
@@ -140,9 +146,13 @@ extension RequestViewController: WKNavigationDelegate {
 		
 	}
 	
+	private func getNameOfUser() {
+		guard let request = tokenRequest else { return }
+	}
+	
 	private func oauthRequest() {
 		guard let request = tokenRequest else { return }
-		let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+		let task = session.dataTask(with: request) { (data, response, error) in
 			guard let response = response as? HTTPURLResponse else { DispatchQueue.main.async { self.showNetworkPerformingAlert(with: error) }; return }
 			switch response.statusCode {
 			case 200..<300:
@@ -150,6 +160,8 @@ extension RequestViewController: WKNavigationDelegate {
 				do {
 					let response = try JSONDecoder().decode(OAuthResponse.self, from: data)
 //					print(response)
+					
+					
 					self.handleOAuthResponse(response: response)
 				} catch {
 					print("Error while parsing OAuthResponse: \(error.localizedDescription)")
@@ -160,6 +172,7 @@ extension RequestViewController: WKNavigationDelegate {
 			}
 		}
 		task.resume()
+		
 	}
 	
 	private func showNetworkPerformingAlert(with error: Error?) {
@@ -174,12 +187,9 @@ extension RequestViewController: WKNavigationDelegate {
 		DispatchQueue.main.async {
 			UserDefaults.standard.update(with: .oauth_access_token, data: response)
 			AppDelegate.shared.rootViewController.switchMainScreen()
-//			self.dismiss(animated: true) {
-//				self.updateUI()
-//				self.navigationController?.view?.makeToast("You have successfully logged in!", duration: 2.3, position: .bottom, title: "GitHub OAuth:", image: UIImage(named: "github_toast_icon"), style: ToastStyle()) { action in
-//					if action { self.navigationController?.view?.hideAllToasts() }
-//				}
-//			}
+			let network = NetworkService()
+				network.getUserName()
+			WebCacheCleaner.clear()
 		}
 	}
 	
@@ -203,3 +213,22 @@ extension RequestViewController: WKNavigationDelegate {
 	}
 	
 }
+
+final class WebCacheCleaner {
+	
+	class func clear() {
+		URLCache.shared.removeAllCachedResponses()
+		
+		HTTPCookieStorage.shared.removeCookies(since: Date.distantPast)
+		print("[WebCacheCleaner] All cookies deleted")
+		
+		WKWebsiteDataStore.default().fetchDataRecords(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes()) { records in
+			records.forEach { record in
+				WKWebsiteDataStore.default().removeData(ofTypes: record.dataTypes, for: [record], completionHandler: {})
+				print("[WebCacheCleaner] Record \(record) deleted")
+			}
+		}
+	}
+	
+}
+

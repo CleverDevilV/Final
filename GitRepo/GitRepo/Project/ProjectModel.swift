@@ -11,9 +11,9 @@ import Foundation
 class Project {
 	var projectName: String
 	
-	var repo: Repo
+	var repo: Repo?
 	
-	init(projectName: String, repo: Repo) {
+	init(projectName: String, repo: Repo?) {
 		self.projectName = projectName
 		self.repo = repo
 	}

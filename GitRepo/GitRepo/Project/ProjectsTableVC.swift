@@ -12,18 +12,21 @@ class ProjectsTableVC: UIViewController {
 	
 	var tableView: UITableView!
 	var projectsSelector: UISegmentedControl!
-//	var projects: [Project] = []
+	var projects: [Project] = [Project(projectName: "MyProject", repo: Repo(name: "myRepo", repoLink: nil, collaborators: [], changes: [:], owner: "i"))]
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		view.backgroundColor = .white
 		updateData()
 		
 		let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addProject))
 		navigationItem.rightBarButtonItem = addButton
 		title = "Проекты"
 		
+		
 		tableView = UITableView(frame: view.frame, style: .plain)
+		tableView.backgroundColor = UIColor(red: 1, green: 0.5781051517, blue: 0, alpha: 0.04508240583) //#colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 0.04508240583)
 		tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
 		tableView.dataSource = self
 		tableView.delegate = self
@@ -35,38 +38,62 @@ class ProjectsTableVC: UIViewController {
 		projectsSelector.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 50, height: 20))
 		navigationItem.titleView?.addSubview(projectsSelector)
 	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		self.tabBarController?.tabBar.isHidden = false
+	}
 
 	@objc
 	func addProject() {
+		let addProjectAlertController = UIAlertController(title: "Добавить проект", message: "Введите наименование проекта", preferredStyle: .alert)
 		
+		addProjectAlertController.addTextField(configurationHandler: nil)
+		
+		let cancelAction = UIAlertAction(title: "Отмена", style: .cancel, handler: nil)
+		let okAction = UIAlertAction(title: "OK", style: .default, handler: {
+			_ in
+			
+			let textField = addProjectAlertController.textFields![0] as UITextField
+			if let text = textField.text {
+				self.projects.append(Project(projectName: text, repo: nil))
+			} else {
+				return
+			}
+			
+			self.tableView.reloadData()
+		})
+		addProjectAlertController.addAction(cancelAction)
+		addProjectAlertController.addAction(okAction)
+		
+		present(addProjectAlertController, animated: true, completion: nil)
 	}
 	
 	func updateData() {
-		
+
 		if !UserDefaults.standard.isExist(with: .oauth_access_token) {
 			present(RequestViewController(), animated: false, completion: nil)
 		}
-		
-		//		guard !token.isEmpty else {
-		//			requestToken()
-		//			return
-		//		}
 	}
 
 }
 
 extension ProjectsTableVC: UITableViewDataSource {
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return 10//projects.count
+		return projects.count
+//		return 1
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 		
-//		let project = projects[indexPath.row]
-		cell.textLabel?.text = "\(indexPath.row)"//project.projectName
+		let project = projects[indexPath.row]
+//		cell.textLabel?.text = "\(indexPath.row)"
+		cell.textLabel?.text = project.projectName
 //		cell.detailTextLabel?.text = "Language: \(project.repo.languageOfProject)"
 		cell.accessoryType = .disclosureIndicator
+		cell.backgroundColor = .clear
 		
 		return cell
 	}
@@ -75,8 +102,11 @@ extension ProjectsTableVC: UITableViewDataSource {
 
 extension ProjectsTableVC: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		let destinationVC = ProjectVC()
-//		destinationVC.project = projects[indexPath.row]
+		tableView.cellForRow(at: indexPath)?.isSelected = false
+		let destinationVC = ProjectViewController()
+		
+//		let destinationVC = ProjectVC()
+		destinationVC.project = projects[indexPath.row]
 		
 		navigationController?.pushViewController(destinationVC, animated: true)
 	}

@@ -10,14 +10,20 @@
 		A77404EE239110E90038851E /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77404ED239110E90038851E /* Registration.swift */; };
 		A77404FA23912FFC0038851E /* UserDefExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77404F923912FFC0038851E /* UserDefExt.swift */; };
 		A774053B23918FE60038851E /* repo.xib in Resources */ = {isa = PBXBuildFile; fileRef = A774053A23918FE60038851E /* repo.xib */; };
+		A7B481E5239260A500AFA19E /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B481E4239260A500AFA19E /* ProjectViewController.swift */; };
+		A7B481E72392643600AFA19E /* DescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B481E62392643600AFA19E /* DescriptionTableViewCell.swift */; };
+		A7B481E92392705600AFA19E /* RepoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B481E82392705600AFA19E /* RepoTableViewCell.swift */; };
+		A7B481EB239271A100AFA19E /* CollaboratorsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B481EA239271A100AFA19E /* CollaboratorsTableViewCell.swift */; };
+		A7B481ED2392725400AFA19E /* TasksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B481EC2392725400AFA19E /* TasksTableViewCell.swift */; };
+		A7B481EF2392C26B00AFA19E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B481EE2392C26B00AFA19E /* SettingsViewController.swift */; };
 		A7FE0687238BE7F30093F07A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE0686238BE7F30093F07A /* AppDelegate.swift */; };
 		A7FE0689238BE7F30093F07A /* ProjectsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE0688238BE7F30093F07A /* ProjectsTableVC.swift */; };
 		A7FE068E238BE7F40093F07A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7FE068D238BE7F40093F07A /* Assets.xcassets */; };
 		A7FE0691238BE7F40093F07A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7FE068F238BE7F40093F07A /* LaunchScreen.storyboard */; };
 		A7FE0699238BEA3C0093F07A /* ProjectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE0698238BEA3C0093F07A /* ProjectVC.swift */; };
-		A7FE069B238BF0E20093F07A /* ReposTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE069A238BF0E20093F07A /* ReposTableVC.swift */; };
-		A7FE069D238BF1B30093F07A /* RepoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE069C238BF1B30093F07A /* RepoVC.swift */; };
-		A7FE069F238BF3510093F07A /* RootVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE069E238BF3510093F07A /* RootVC.swift */; };
+		A7FE069B238BF0E20093F07A /* ReposTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE069A238BF0E20093F07A /* ReposTableViewController.swift */; };
+		A7FE069D238BF1B30093F07A /* RepoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE069C238BF1B30093F07A /* RepoViewController.swift */; };
+		A7FE069F238BF3510093F07A /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE069E238BF3510093F07A /* RootViewController.swift */; };
 		A7FE06A1238BF4540093F07A /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE06A0238BF4540093F07A /* BaseTabBarController.swift */; };
 		A7FE06A5238BFAFE0093F07A /* NetWorkservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE06A4238BFAFE0093F07A /* NetWorkservice.swift */; };
 		A7FE06AB238C46880093F07A /* ProjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE06AA238C46880093F07A /* ProjectModel.swift */; };
@@ -40,6 +46,12 @@
 		A77404ED239110E90038851E /* Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration.swift; sourceTree = "<group>"; };
 		A77404F923912FFC0038851E /* UserDefExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefExt.swift; sourceTree = "<group>"; };
 		A774053A23918FE60038851E /* repo.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = repo.xib; sourceTree = "<group>"; };
+		A7B481E4239260A500AFA19E /* ProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectViewController.swift; sourceTree = "<group>"; };
+		A7B481E62392643600AFA19E /* DescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionTableViewCell.swift; sourceTree = "<group>"; };
+		A7B481E82392705600AFA19E /* RepoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoTableViewCell.swift; sourceTree = "<group>"; };
+		A7B481EA239271A100AFA19E /* CollaboratorsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollaboratorsTableViewCell.swift; sourceTree = "<group>"; };
+		A7B481EC2392725400AFA19E /* TasksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksTableViewCell.swift; sourceTree = "<group>"; };
+		A7B481EE2392C26B00AFA19E /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		A7FE0683238BE7F30093F07A /* GitRepo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitRepo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7FE0686238BE7F30093F07A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A7FE0688238BE7F30093F07A /* ProjectsTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsTableVC.swift; sourceTree = "<group>"; };
@@ -47,9 +59,9 @@
 		A7FE0690238BE7F40093F07A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A7FE0692238BE7F40093F07A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A7FE0698238BEA3C0093F07A /* ProjectVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectVC.swift; sourceTree = "<group>"; };
-		A7FE069A238BF0E20093F07A /* ReposTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposTableVC.swift; sourceTree = "<group>"; };
-		A7FE069C238BF1B30093F07A /* RepoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoVC.swift; sourceTree = "<group>"; };
-		A7FE069E238BF3510093F07A /* RootVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootVC.swift; sourceTree = "<group>"; };
+		A7FE069A238BF0E20093F07A /* ReposTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposTableViewController.swift; sourceTree = "<group>"; };
+		A7FE069C238BF1B30093F07A /* RepoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoViewController.swift; sourceTree = "<group>"; };
+		A7FE069E238BF3510093F07A /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		A7FE06A0238BF4540093F07A /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 		A7FE06A4238BFAFE0093F07A /* NetWorkservice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetWorkservice.swift; sourceTree = "<group>"; };
 		A7FE06AA238C46880093F07A /* ProjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectModel.swift; sourceTree = "<group>"; };
@@ -100,13 +112,14 @@
 			isa = PBXGroup;
 			children = (
 				A7FE0686238BE7F30093F07A /* AppDelegate.swift */,
-				A7FE069E238BF3510093F07A /* RootVC.swift */,
+				A7FE069E238BF3510093F07A /* RootViewController.swift */,
 				A7FE06A0238BF4540093F07A /* BaseTabBarController.swift */,
 				A77404ED239110E90038851E /* Registration.swift */,
 				A77404F923912FFC0038851E /* UserDefExt.swift */,
 				A7FE06A4238BFAFE0093F07A /* NetWorkservice.swift */,
 				A7FE06A2238BFAE20093F07A /* Project */,
 				A7FE06A3238BFAEF0093F07A /* Repo */,
+				A7B481EE2392C26B00AFA19E /* SettingsViewController.swift */,
 				A7FE068D238BE7F40093F07A /* Assets.xcassets */,
 				A7FE068F238BE7F40093F07A /* LaunchScreen.storyboard */,
 				A7FE0692238BE7F40093F07A /* Info.plist */,
@@ -122,6 +135,11 @@
 				A7FE0688238BE7F30093F07A /* ProjectsTableVC.swift */,
 				A7FE0698238BEA3C0093F07A /* ProjectVC.swift */,
 				A7FE06AA238C46880093F07A /* ProjectModel.swift */,
+				A7B481E4239260A500AFA19E /* ProjectViewController.swift */,
+				A7B481E62392643600AFA19E /* DescriptionTableViewCell.swift */,
+				A7B481E82392705600AFA19E /* RepoTableViewCell.swift */,
+				A7B481EA239271A100AFA19E /* CollaboratorsTableViewCell.swift */,
+				A7B481EC2392725400AFA19E /* TasksTableViewCell.swift */,
 			);
 			path = Project;
 			sourceTree = "<group>";
@@ -129,8 +147,8 @@
 		A7FE06A3238BFAEF0093F07A /* Repo */ = {
 			isa = PBXGroup;
 			children = (
-				A7FE069A238BF0E20093F07A /* ReposTableVC.swift */,
-				A7FE069C238BF1B30093F07A /* RepoVC.swift */,
+				A7FE069A238BF0E20093F07A /* ReposTableViewController.swift */,
+				A7FE069C238BF1B30093F07A /* RepoViewController.swift */,
 				A7FE06AC238C49F20093F07A /* RepoModel.swift */,
 			);
 			path = Repo;
@@ -248,17 +266,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7FE06A1238BF4540093F07A /* BaseTabBarController.swift in Sources */,
-				A7FE069F238BF3510093F07A /* RootVC.swift in Sources */,
+				A7B481E72392643600AFA19E /* DescriptionTableViewCell.swift in Sources */,
+				A7FE069F238BF3510093F07A /* RootViewController.swift in Sources */,
 				A7FE06AB238C46880093F07A /* ProjectModel.swift in Sources */,
 				A7FE06AD238C49F20093F07A /* RepoModel.swift in Sources */,
+				A7B481EF2392C26B00AFA19E /* SettingsViewController.swift in Sources */,
 				A77404EE239110E90038851E /* Registration.swift in Sources */,
+				A7B481EB239271A100AFA19E /* CollaboratorsTableViewCell.swift in Sources */,
 				A7FE06A5238BFAFE0093F07A /* NetWorkservice.swift in Sources */,
 				A77404FA23912FFC0038851E /* UserDefExt.swift in Sources */,
 				A7FE0689238BE7F30093F07A /* ProjectsTableVC.swift in Sources */,
 				A7FE0699238BEA3C0093F07A /* ProjectVC.swift in Sources */,
 				A7FE0687238BE7F30093F07A /* AppDelegate.swift in Sources */,
-				A7FE069D238BF1B30093F07A /* RepoVC.swift in Sources */,
-				A7FE069B238BF0E20093F07A /* ReposTableVC.swift in Sources */,
+				A7B481ED2392725400AFA19E /* TasksTableViewCell.swift in Sources */,
+				A7B481E92392705600AFA19E /* RepoTableViewCell.swift in Sources */,
+				A7FE069D238BF1B30093F07A /* RepoViewController.swift in Sources */,
+				A7FE069B238BF0E20093F07A /* ReposTableViewController.swift in Sources */,
+				A7B481E5239260A500AFA19E /* ProjectViewController.swift in Sources */,
 				A7FE06BF238D90BE0093F07A /* Summator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,10 +8,10 @@
 
 import UIKit
 
-class RootVC: UIViewController {
+class RootViewController: UIViewController {
 	
 	private var currentVC: UIViewController
-	static let shared = RootVC()
+	static let shared = RootViewController()
 	var token: String = ""
 	
 	func copy(with zone: NSZone? = nil) -> Any {

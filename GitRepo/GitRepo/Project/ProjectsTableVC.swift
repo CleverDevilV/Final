@@ -21,7 +21,9 @@ class ProjectsTableVC: UIViewController {
 		updateData()
 		
 		let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addProject))
-		navigationItem.rightBarButtonItem = addButton
+		let editButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(toggleEditing))
+		navigationItem.rightBarButtonItems = [addButton,editButton]
+		
 		title = "Проекты"
 		
 		
@@ -70,6 +72,11 @@ class ProjectsTableVC: UIViewController {
 		present(addProjectAlertController, animated: true, completion: nil)
 	}
 	
+	@objc private func toggleEditing() {
+		tableView.setEditing(!tableView.isEditing, animated: true)
+		navigationItem.rightBarButtonItems?[1].title = tableView.isEditing ? "Done" : "Edit"
+	}
+	
 	func updateData() {
 
 		if !UserDefaults.standard.isExist(with: .oauth_access_token) {
@@ -98,6 +105,29 @@ extension ProjectsTableVC: UITableViewDataSource {
 		return cell
 	}
 	
+	func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+		return true
+	}
+	
+	func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+		if editingStyle == .delete {
+			
+			projects.remove(at: indexPath.row)
+//			NoteService.shared.notes.remove(at: indexPath.row)
+//			uploadPosts(NoteService.shared.notes) {
+//				result in
+//				print(result)
+//				print("--------------------")
+//				print("Notes uploaded")
+//				DispatchQueue.main.async {
+//					self.tableView.reloadData()
+//				}
+//			}
+//			navigationController?.viewControllers[0].title = "Заметки (\(notesArray.count))"
+			tableView.reloadData()
+		}
+	}
+	
 }
 
 extension ProjectsTableVC: UITableViewDelegate {
@@ -109,6 +139,10 @@ extension ProjectsTableVC: UITableViewDelegate {
 		destinationVC.project = projects[indexPath.row]
 		
 		navigationController?.pushViewController(destinationVC, animated: true)
+	}
+	
+	func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+		return UITableViewCell.EditingStyle.delete
 	}
 }
 

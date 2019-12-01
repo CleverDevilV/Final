@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A7525B582392F80700AD8587 /* StartAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7525B572392F80700AD8587 /* StartAppViewController.swift */; };
+		A7525B5A239301DA00AD8587 /* LogOutCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7525B59239301DA00AD8587 /* LogOutCommand.swift */; };
 		A77404EE239110E90038851E /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77404ED239110E90038851E /* Registration.swift */; };
 		A77404FA23912FFC0038851E /* UserDefExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77404F923912FFC0038851E /* UserDefExt.swift */; };
 		A774053B23918FE60038851E /* repo.xib in Resources */ = {isa = PBXBuildFile; fileRef = A774053A23918FE60038851E /* repo.xib */; };
@@ -43,6 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A7525B572392F80700AD8587 /* StartAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartAppViewController.swift; sourceTree = "<group>"; };
+		A7525B59239301DA00AD8587 /* LogOutCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutCommand.swift; sourceTree = "<group>"; };
 		A77404ED239110E90038851E /* Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration.swift; sourceTree = "<group>"; };
 		A77404F923912FFC0038851E /* UserDefExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefExt.swift; sourceTree = "<group>"; };
 		A774053A23918FE60038851E /* repo.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = repo.xib; sourceTree = "<group>"; };
@@ -113,6 +117,7 @@
 			children = (
 				A7FE0686238BE7F30093F07A /* AppDelegate.swift */,
 				A7FE069E238BF3510093F07A /* RootViewController.swift */,
+				A7525B572392F80700AD8587 /* StartAppViewController.swift */,
 				A7FE06A0238BF4540093F07A /* BaseTabBarController.swift */,
 				A77404ED239110E90038851E /* Registration.swift */,
 				A77404F923912FFC0038851E /* UserDefExt.swift */,
@@ -125,6 +130,7 @@
 				A7FE0692238BE7F40093F07A /* Info.plist */,
 				A7FE06BE238D90BD0093F07A /* Summator.swift */,
 				A774053A23918FE60038851E /* repo.xib */,
+				A7525B59239301DA00AD8587 /* LogOutCommand.swift */,
 			);
 			path = GitRepo;
 			sourceTree = "<group>";
@@ -265,6 +271,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7525B5A239301DA00AD8587 /* LogOutCommand.swift in Sources */,
 				A7FE06A1238BF4540093F07A /* BaseTabBarController.swift in Sources */,
 				A7B481E72392643600AFA19E /* DescriptionTableViewCell.swift in Sources */,
 				A7FE069F238BF3510093F07A /* RootViewController.swift in Sources */,
@@ -278,6 +285,7 @@
 				A7FE0689238BE7F30093F07A /* ProjectsTableVC.swift in Sources */,
 				A7FE0699238BEA3C0093F07A /* ProjectVC.swift in Sources */,
 				A7FE0687238BE7F30093F07A /* AppDelegate.swift in Sources */,
+				A7525B582392F80700AD8587 /* StartAppViewController.swift in Sources */,
 				A7B481ED2392725400AFA19E /* TasksTableViewCell.swift in Sources */,
 				A7B481E92392705600AFA19E /* RepoTableViewCell.swift in Sources */,
 				A7FE069D238BF1B30093F07A /* RepoViewController.swift in Sources */,

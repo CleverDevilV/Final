@@ -30,10 +30,10 @@ class BaseTabBarController: UITabBarController {
 //		updateData()
 	}
 	
-	func updateData() {
-		
-		if !UserDefaults.standard.isExist(with: .oauth_access_token) {
-			present(RequestViewController(), animated: false, completion: nil)
-		}
-	}
+//	func updateData() {
+//
+//		if !UserDefaults.standard.isExist(with: .oauth_access_token) {
+//			present(RequestViewController(), animated: false, completion: nil)
+//		}
+//	}
 }

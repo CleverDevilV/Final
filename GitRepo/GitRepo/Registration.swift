@@ -186,6 +186,7 @@ extension RequestViewController: WKNavigationDelegate {
 	func handleOAuthResponse(response: OAuthResponse) {
 		DispatchQueue.main.async {
 			UserDefaults.standard.update(with: .oauth_access_token, data: response)
+			self.dismiss(animated: true, completion: nil)
 			AppDelegate.shared.rootViewController.switchMainScreen()
 			let network = NetworkService()
 				network.getUserName()

@@ -56,9 +56,8 @@ class SettingsViewController: UIViewController {
 	}
 	@objc
 	func switcherChangePosition() {
-		UserDefaults.standard.remove(with: .oauth_access_token)
-		
-		print("userdef token: ", UserDefaults.standard.get(with: .oauth_access_token))
+		let logOtcommand = LogOutCommand()
+		logOtcommand.logOut()
 	}
 
 }

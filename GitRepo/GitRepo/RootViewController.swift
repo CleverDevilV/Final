@@ -19,7 +19,7 @@ class RootViewController: UIViewController {
 	}
 	
 	init() {
-		self.currentVC = BaseTabBarController()
+		self.currentVC = StartAppViewController()//BaseTabBarController()
 		super.init(nibName: nil, bundle: nil)
 	}
 	
@@ -30,7 +30,7 @@ class RootViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		updateData()
+//		updateData()
 		
 		addChild(currentVC)
 		currentVC.view.frame = view.bounds
@@ -38,13 +38,13 @@ class RootViewController: UIViewController {
 		currentVC.didMove(toParent: self) // завершает операцию добавления контроллера
 	}
 	
-	func updateData() {
-		
-		if !UserDefaults.standard.isExist(with: .oauth_access_token) {
-			currentVC = RequestViewController()
+//	func updateData() {
+//		
+//		if !UserDefaults.standard.isExist(with: .oauth_access_token) {
+//			currentVC = RequestViewController()
 //			present(RequestViewController(), animated: false, completion: nil)
-		}
-	}
+//		}
+//	}
 	
 	func switchMainScreen() {
 		let mainVC = BaseTabBarController()

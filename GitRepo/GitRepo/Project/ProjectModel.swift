@@ -11,11 +11,11 @@ import Foundation
 final class Project {
 	
 	public var projectName: String
-	public var repoUrl: String?
+	public var repoUrl: URL?
 	
 	public var repo: Repository?
 	
-	init(projectName: String, repoURL: String?, repo: Repository?) {
+	init(projectName: String, repoURL: URL?, repo: Repository?) {
 		self.projectName = projectName
 		self.repoUrl = repoURL
 		self.repo = repo

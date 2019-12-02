@@ -11,7 +11,7 @@ import WebKit
 
 final class RepositoryWebViewController: UIViewController {
 	
-	public var url: String?
+	public var url: URL?
 	
 	private var webView: WKWebView!
 	
@@ -30,8 +30,7 @@ final class RepositoryWebViewController: UIViewController {
 	}
 	
 	private func request() -> URLRequest? {
-		guard let stringUrl = url else { return nil }
-		guard let url = URL(string: stringUrl) else { return nil }
+		guard let url = url else { return nil }
 		var request = URLRequest(url: url)
 		
 		request.httpMethod = "GET"

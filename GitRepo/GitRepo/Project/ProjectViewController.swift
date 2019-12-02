@@ -54,6 +54,7 @@ extension ProjectViewController: UITableViewDataSource {
 			return cell
 		case 1:
 			let cell = tableView.dequeueReusableCell(withIdentifier: RepoTableViewCell.repoReuseId, for: indexPath) as! RepoTableViewCell
+			cell.project = project
 			cell.delegate = self
 			return cell
 		case 2:
@@ -93,14 +94,17 @@ extension ProjectViewController: RepoTableCellDelegate {
 				let textField = addRepoAlertController.textFields![0] as UITextField
 				
 				if let text = textField.text {
-					let url = URL(string: text)!
-					let name = url.pathComponents.last?.replacingOccurrences(of: ".git", with: "", options: NSString.CompareOptions.literal, range:nil)
+					let url = URL(string: text.replacingOccurrences(of: ".git", with: ""))!
+					let name = url.pathComponents.last
 					guard let repoName = name else {return}
+					
 					self.netWorkService.getUserLogin(endPoint: GitHubApi.oneRepo(url: repoName)) {
 						repo, error in
 						self.project?.repo = repo as? Repository
-						self.project?.repoUrl = text
-//						print(self.project?.repo?.name)
+						self.project?.repoUrl = url
+						DispatchQueue.main.async {
+							self.tableView.reloadRows(at: [IndexPath(row: 1, section: 0)], with: .none)
+						}
 					}
 					
 				} else {
@@ -116,13 +120,48 @@ extension ProjectViewController: RepoTableCellDelegate {
 		} else {
 			let alertList = UIAlertController(title: "Выберите действие:", message: nil, preferredStyle: .actionSheet)
 			
-			let resetAction = UIAlertAction(title: "Изменить репозиторий", style: .default, handler: {_ in})
+			let resetAction = UIAlertAction(title: "Изменить репозиторий", style: .default, handler: {_ in
+				
+				let addRepoAlertController = UIAlertController(title: "Изменить репозиторий в проекте?", message: "URL репозитория:", preferredStyle: .alert)
+				
+				addRepoAlertController.addTextField(configurationHandler: nil)
+				if let urlOfRepository = self.project?.repoUrl {
+					addRepoAlertController.textFields?[0].text = "\(urlOfRepository)"
+				}
+				
+				let cancelAction = UIAlertAction(title: "Отмена", style: .cancel, handler: nil)
+				let okAction = UIAlertAction(title: "OK", style: .default, handler: {
+					_ in
+					
+					let textField = addRepoAlertController.textFields?[0] as! UITextField
+					
+					if let text = textField.text {
+						let url = URL(string: text.replacingOccurrences(of: ".git", with: ""))!
+						let name = url.pathComponents.last
+						guard let repoName = name else {return}
+						
+						self.netWorkService.getUserLogin(endPoint: GitHubApi.oneRepo(url: repoName)) {
+							repo, error in
+							self.project?.repo = repo as? Repository
+							self.project?.repoUrl = url
+							DispatchQueue.main.async {
+								self.tableView.reloadRows(at: [IndexPath(row: 1, section: 0)], with: .none)
+							}
+						}
+					} else {
+						return
+					}
+				})
+				addRepoAlertController.addAction(cancelAction)
+				addRepoAlertController.addAction(okAction)
+				self.present(addRepoAlertController, animated: true, completion: nil)
+			})
 			let viewRepo = UIAlertAction(title: "Открыть репозиторий в браузере", style: .default, handler: {_ in
 				let view = RepositoryWebViewController()
-				view.url = self.project?.repoUrl?.replacingOccurrences(of: ".git", with: "", options: NSString.CompareOptions.literal, range: nil)
+				view.url = self.project?.repoUrl
 				self.navigationController?.pushViewController(view, animated: true)
-			})
-			let cancelAction = UIAlertAction(title: "Отмена", style: .cancel, handler: {_ in})
+				})
+			let cancelAction = UIAlertAction(title: "Отмена", style: .cancel, handler: nil)
 			
 			alertList.addAction(resetAction)
 			alertList.addAction(viewRepo)

@@ -16,8 +16,13 @@ class RepoTableViewCell: UITableViewCell {
 	
 	public static let repoReuseId = "RepoReuseId"
 	public weak var delegate: RepoTableCellDelegate!
-	var text3 = ""
+	public var project: Project? {
+		didSet {
+			self.setupViews()
+		}
+	}
 	
+	private var repoButtonTitle = "Нет"
 	private var repoLabel = UILabel()
 	private var repoButton = UIButton()
 	
@@ -25,6 +30,7 @@ class RepoTableViewCell: UITableViewCell {
 		super.init(style: .default, reuseIdentifier: reuseIdentifier)
 		
 		self.backgroundColor = .clear
+		
 		setupViews()
 	}
 	
@@ -37,17 +43,20 @@ class RepoTableViewCell: UITableViewCell {
 		repoLabel.text = "Репозиторий:"
 		
 	// repoButton
-		repoButton.setTitle("Repo", for: .normal)
+		if let nameOfRepo: String = project?.repoUrl?.lastPathComponent {
+			repoButtonTitle = nameOfRepo.capitalized
+		}
+		repoButton.setTitle(repoButtonTitle, for: .normal)
 		repoButton.titleLabel?.font = UIFont.systemFont(ofSize: 20)
 		repoButton.setTitleColor(.blue, for: .normal)
 		repoButton.setTitleColor(.white, for: .highlighted)
 		repoButton.addTarget(self, action: #selector(tapRepoButton), for: .touchUpInside)
 		
-		// add to contentView
+	// add to contentView
 		contentView.addSubview(repoLabel)
 		contentView.addSubview(repoButton)
 		
-		// translatesAutoresizingMaskIntoConstraints
+	// translatesAutoresizingMaskIntoConstraints
 		repoLabel.translatesAutoresizingMaskIntoConstraints = false
 		repoButton.translatesAutoresizingMaskIntoConstraints = false
 	}

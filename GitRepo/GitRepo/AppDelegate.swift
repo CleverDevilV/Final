@@ -20,12 +20,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		window?.rootViewController = rootVC
 		window?.makeKeyAndVisible()
 		
-//		let netforgit = GitHubNetworkManager()
-//		netforgit.getUserLogin(endPoint: GitHubApi.repos) {
-//			result, error in
-//			print(result, error)
-//		}
-		
 		return true
 	}
 

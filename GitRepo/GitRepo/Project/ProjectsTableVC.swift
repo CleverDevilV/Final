@@ -12,7 +12,7 @@ class ProjectsTableVC: UIViewController {
 	
 	var tableView: UITableView!
 	var projectsSelector: UISegmentedControl!
-	var projects: [Project] = [Project(projectName: "MyProject", repoURL: "https://github.com/CleverDevilV/Final", repo: nil)]
+	var projects: [Project] = [Project(projectName: "MyProject", repoURL: URL(string: "https://github.com/CleverDevilV/Final") , repo: nil)]
 
 	override func viewDidLoad() {
 		super.viewDidLoad()

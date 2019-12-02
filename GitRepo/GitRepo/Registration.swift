@@ -67,7 +67,7 @@ class RequestViewController: UIViewController  {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		webView = WKWebView(frame: .zero)
+		webView = WKWebView(frame: view.frame)
 		
 		view.addSubview(webView)
 		
@@ -146,9 +146,9 @@ extension RequestViewController: WKNavigationDelegate {
 		
 	}
 	
-	private func getNameOfUser() {
-		guard let request = tokenRequest else { return }
-	}
+//	private func getNameOfUser() {
+//		guard let request = tokenRequest else { return }
+//	}
 	
 	private func oauthRequest() {
 		guard let request = tokenRequest else { return }
@@ -188,8 +188,17 @@ extension RequestViewController: WKNavigationDelegate {
 			UserDefaults.standard.update(with: .oauth_access_token, data: response)
 			self.dismiss(animated: true, completion: nil)
 			AppDelegate.shared.rootViewController.switchMainScreen()
-			let network = NetworkService()
-				network.getUserName()
+			
+			let networkManager = GitHubNetworkManager()
+			networkManager.getUserLogin(endPoint: GitHubApi.user) {
+				login, error in
+//				print("login: ", login, "error: ", error)
+				guard let login = login as? String else {return}
+				UserDefaults.standard.setupLogin(with: .oauth_user_login, data: login)
+			}
+			
+//			let network = NetworkService()
+//				network.getUserName()
 			WebCacheCleaner.clear()
 		}
 	}

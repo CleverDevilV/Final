@@ -12,7 +12,7 @@ class ProjectsTableVC: UIViewController {
 	
 	var tableView: UITableView!
 	var projectsSelector: UISegmentedControl!
-	var projects: [Project] = [Project(projectName: "MyProject", repo: Repo(name: "myRepo", repoLink: nil, collaborators: [], changes: [:], owner: "i"))]
+	var projects: [Project] = [Project(projectName: "MyProject", repoURL: "https://github.com/CleverDevilV/Final", repo: nil)]
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -59,7 +59,7 @@ class ProjectsTableVC: UIViewController {
 			
 			let textField = addProjectAlertController.textFields![0] as UITextField
 			if let text = textField.text {
-				self.projects.append(Project(projectName: text, repo: nil))
+				self.projects.append(Project(projectName: text, repoURL: nil, repo: nil))
 			} else {
 				return
 			}

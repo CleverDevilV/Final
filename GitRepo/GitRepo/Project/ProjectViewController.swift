@@ -13,6 +13,7 @@ class ProjectViewController: UIViewController {
 	public var project: Project?
 	
 	private var tableView: UITableView!
+	private var netWorkService = GitHubNetworkManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,7 +81,7 @@ extension ProjectViewController: UITableViewDataSource {
 
 extension ProjectViewController: RepoTableCellDelegate {
 	func setupRepo() {
-		if project?.repo?.repoLink == nil {
+		if project?.repoUrl == nil {
 			let addRepoAlertController = UIAlertController(title: "Добавить репозиторий в проект?", message: "Введите URL репозитория", preferredStyle: .alert)
 
 			addRepoAlertController.addTextField(configurationHandler: nil)
@@ -90,8 +91,17 @@ extension ProjectViewController: RepoTableCellDelegate {
 				_ in
 
 				let textField = addRepoAlertController.textFields![0] as UITextField
+				
 				if let text = textField.text {
-					self.project?.repo?.repoLink = "gg"
+					let url = URL(string: text)!
+					let name = url.pathComponents.last?.replacingOccurrences(of: ".git", with: "", options: NSString.CompareOptions.literal, range:nil)
+					guard let repoName = name else {return}
+					self.netWorkService.getUserLogin(endPoint: GitHubApi.oneRepo(url: repoName)) {
+						repo, error in
+						self.project?.repo = repo as? Repository
+						self.project?.repoUrl = text
+//						print(self.project?.repo?.name)
+					}
 					
 				} else {
 					return
@@ -107,7 +117,11 @@ extension ProjectViewController: RepoTableCellDelegate {
 			let alertList = UIAlertController(title: "Выберите действие:", message: nil, preferredStyle: .actionSheet)
 			
 			let resetAction = UIAlertAction(title: "Изменить репозиторий", style: .default, handler: {_ in})
-			let viewRepo = UIAlertAction(title: "Открыть репозиторий в браузере", style: .default, handler: {_ in})
+			let viewRepo = UIAlertAction(title: "Открыть репозиторий в браузере", style: .default, handler: {_ in
+				let view = RepositoryWebViewController()
+				view.url = self.project?.repoUrl?.replacingOccurrences(of: ".git", with: "", options: NSString.CompareOptions.literal, range: nil)
+				self.navigationController?.pushViewController(view, animated: true)
+			})
 			let cancelAction = UIAlertAction(title: "Отмена", style: .cancel, handler: {_ in})
 			
 			alertList.addAction(resetAction)

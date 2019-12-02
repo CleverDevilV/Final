@@ -10,7 +10,7 @@ import UIKit
 
 class RepoViewController: UIViewController {
 	
-	public var repo: Repo?
+	public var repo: Repository?
 	private var tableView: UITableView!
 
     override func viewDidLoad() {

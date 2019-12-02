@@ -38,7 +38,7 @@ extension UserDefaults {
 	}
 	
 	func setupLogin(with type: UserDefaultsType, data: String?) {
-		guard let login = data as? String else {return}
+		guard let login = data else {return}
 		set(login, forKey: UserDefaultsKeys.login.rawValue)
 		print("login updated, login = ", login)
 	}

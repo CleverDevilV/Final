@@ -9,9 +9,57 @@
 /* Begin PBXBuildFile section */
 		A7525B582392F80700AD8587 /* StartAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7525B572392F80700AD8587 /* StartAppViewController.swift */; };
 		A7525B5A239301DA00AD8587 /* LogOutCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7525B59239301DA00AD8587 /* LogOutCommand.swift */; };
+		A7525B6423942D8600AD8587 /* EndPointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7525B6323942D8600AD8587 /* EndPointType.swift */; };
+		A7525B6623942E4500AD8587 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7525B6523942E4500AD8587 /* HTTPMethod.swift */; };
+		A7525B6823942E9C00AD8587 /* HTTPTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7525B6723942E9C00AD8587 /* HTTPTask.swift */; };
+		A7525B6A23942F7400AD8587 /* ParameterEncodingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7525B6923942F7400AD8587 /* ParameterEncodingProtocol.swift */; };
+		A7525B6C239430C100AD8587 /* URLParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7525B6B239430C100AD8587 /* URLParameterEncoder.swift */; };
+		A7525B6E2394327000AD8587 /* JSONParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7525B6D2394327000AD8587 /* JSONParameterEncoder.swift */; };
+		A7525B702394336400AD8587 /* NetworkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7525B6F2394336400AD8587 /* NetworkRouter.swift */; };
+		A7525B722394346200AD8587 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7525B712394346200AD8587 /* Router.swift */; };
+		A7525B7E2394444300AD8587 /* GitHubEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7525B7D2394444300AD8587 /* GitHubEndPoint.swift */; };
+		A7525B80239447A200AD8587 /* GitHubNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7525B7F239447A200AD8587 /* GitHubNetworkManager.swift */; };
+		A7525B8223945D3200AD8587 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7525B8123945D3200AD8587 /* LoginModel.swift */; };
+		A7525B8423945F0D00AD8587 /* RepoFromGit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7525B8323945F0D00AD8587 /* RepoFromGit.swift */; };
 		A77404EE239110E90038851E /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77404ED239110E90038851E /* Registration.swift */; };
 		A77404FA23912FFC0038851E /* UserDefExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77404F923912FFC0038851E /* UserDefExt.swift */; };
 		A774053B23918FE60038851E /* repo.xib in Resources */ = {isa = PBXBuildFile; fileRef = A774053A23918FE60038851E /* repo.xib */; };
+		A796F33323959815007D7E51 /* RepositoryWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A5DE6F239592C2004271D9 /* RepositoryWebViewController.swift */; };
+		A7A5DE4B23952306004271D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE0686238BE7F30093F07A /* AppDelegate.swift */; };
+		A7A5DE4C23952319004271D9 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE069E238BF3510093F07A /* RootViewController.swift */; };
+		A7A5DE4D23952326004271D9 /* StartAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7525B572392F80700AD8587 /* StartAppViewController.swift */; };
+		A7A5DE4E2395232D004271D9 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE06A0238BF4540093F07A /* BaseTabBarController.swift */; };
+		A7A5DE4F23952341004271D9 /* ParameterEncodingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7525B6923942F7400AD8587 /* ParameterEncodingProtocol.swift */; };
+		A7A5DE5023952341004271D9 /* URLParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7525B6B239430C100AD8587 /* URLParameterEncoder.swift */; };
+		A7A5DE5123952341004271D9 /* JSONParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7525B6D2394327000AD8587 /* JSONParameterEncoder.swift */; };
+		A7A5DE5223952347004271D9 /* GitHubEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7525B7D2394444300AD8587 /* GitHubEndPoint.swift */; };
+		A7A5DE532395234A004271D9 /* GitHubNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7525B7F239447A200AD8587 /* GitHubNetworkManager.swift */; };
+		A7A5DE542395234D004271D9 /* RepoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE06AC238C49F20093F07A /* RepoModel.swift */; };
+		A7A5DE552395234F004271D9 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7525B8123945D3200AD8587 /* LoginModel.swift */; };
+		A7A5DE5623952351004271D9 /* RepoFromGit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7525B8323945F0D00AD8587 /* RepoFromGit.swift */; };
+		A7A5DE5723952357004271D9 /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77404ED239110E90038851E /* Registration.swift */; };
+		A7A5DE582395235B004271D9 /* UserDefExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77404F923912FFC0038851E /* UserDefExt.swift */; };
+		A7A5DE592395235D004271D9 /* NetWorkservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE06A4238BFAFE0093F07A /* NetWorkservice.swift */; };
+		A7A5DE5A23952361004271D9 /* ProjectsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE0688238BE7F30093F07A /* ProjectsTableVC.swift */; };
+		A7A5DE5B23952364004271D9 /* ProjectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE0698238BEA3C0093F07A /* ProjectVC.swift */; };
+		A7A5DE5C23952364004271D9 /* ProjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE06AA238C46880093F07A /* ProjectModel.swift */; };
+		A7A5DE5D23952364004271D9 /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B481E4239260A500AFA19E /* ProjectViewController.swift */; };
+		A7A5DE5E23952364004271D9 /* DescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B481E62392643600AFA19E /* DescriptionTableViewCell.swift */; };
+		A7A5DE5F23952364004271D9 /* RepoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B481E82392705600AFA19E /* RepoTableViewCell.swift */; };
+		A7A5DE6023952364004271D9 /* CollaboratorsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B481EA239271A100AFA19E /* CollaboratorsTableViewCell.swift */; };
+		A7A5DE6123952364004271D9 /* TasksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B481EC2392725400AFA19E /* TasksTableViewCell.swift */; };
+		A7A5DE6223952369004271D9 /* ReposTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE069A238BF0E20093F07A /* ReposTableViewController.swift */; };
+		A7A5DE6323952369004271D9 /* RepoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE069C238BF1B30093F07A /* RepoViewController.swift */; };
+		A7A5DE6423952369004271D9 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B481EE2392C26B00AFA19E /* SettingsViewController.swift */; };
+		A7A5DE652395236F004271D9 /* LogOutCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7525B59239301DA00AD8587 /* LogOutCommand.swift */; };
+		A7A5DE6623952382004271D9 /* EndPointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7525B6323942D8600AD8587 /* EndPointType.swift */; };
+		A7A5DE6723952389004271D9 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7525B712394346200AD8587 /* Router.swift */; };
+		A7A5DE6823952390004271D9 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7525B6523942E4500AD8587 /* HTTPMethod.swift */; };
+		A7A5DE6923952390004271D9 /* HTTPTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7525B6723942E9C00AD8587 /* HTTPTask.swift */; };
+		A7A5DE6A23952390004271D9 /* NetworkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7525B6F2394336400AD8587 /* NetworkRouter.swift */; };
+		A7A5DE6C23953CD4004271D9 /* URLParameterEncoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A5DE6B23953CD4004271D9 /* URLParameterEncoderTests.swift */; };
+		A7A5DE6E239577CD004271D9 /* JSONParameterEncoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A5DE6D239577CD004271D9 /* JSONParameterEncoderTests.swift */; };
+		A7A5DE70239592C2004271D9 /* RepositoryWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A5DE6F239592C2004271D9 /* RepositoryWebViewController.swift */; };
 		A7B481E5239260A500AFA19E /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B481E4239260A500AFA19E /* ProjectViewController.swift */; };
 		A7B481E72392643600AFA19E /* DescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B481E62392643600AFA19E /* DescriptionTableViewCell.swift */; };
 		A7B481E92392705600AFA19E /* RepoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B481E82392705600AFA19E /* RepoTableViewCell.swift */; };
@@ -30,8 +78,6 @@
 		A7FE06A5238BFAFE0093F07A /* NetWorkservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE06A4238BFAFE0093F07A /* NetWorkservice.swift */; };
 		A7FE06AB238C46880093F07A /* ProjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE06AA238C46880093F07A /* ProjectModel.swift */; };
 		A7FE06AD238C49F20093F07A /* RepoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE06AC238C49F20093F07A /* RepoModel.swift */; };
-		A7FE06BF238D90BE0093F07A /* Summator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE06BE238D90BD0093F07A /* Summator.swift */; };
-		A7FE06C2238D91A70093F07A /* SummatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE06C1238D91A70093F07A /* SummatorTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,9 +93,24 @@
 /* Begin PBXFileReference section */
 		A7525B572392F80700AD8587 /* StartAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartAppViewController.swift; sourceTree = "<group>"; };
 		A7525B59239301DA00AD8587 /* LogOutCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutCommand.swift; sourceTree = "<group>"; };
+		A7525B6323942D8600AD8587 /* EndPointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointType.swift; sourceTree = "<group>"; };
+		A7525B6523942E4500AD8587 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		A7525B6723942E9C00AD8587 /* HTTPTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPTask.swift; sourceTree = "<group>"; };
+		A7525B6923942F7400AD8587 /* ParameterEncodingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParameterEncodingProtocol.swift; sourceTree = "<group>"; };
+		A7525B6B239430C100AD8587 /* URLParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLParameterEncoder.swift; sourceTree = "<group>"; };
+		A7525B6D2394327000AD8587 /* JSONParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParameterEncoder.swift; sourceTree = "<group>"; };
+		A7525B6F2394336400AD8587 /* NetworkRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRouter.swift; sourceTree = "<group>"; };
+		A7525B712394346200AD8587 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		A7525B7D2394444300AD8587 /* GitHubEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubEndPoint.swift; sourceTree = "<group>"; };
+		A7525B7F239447A200AD8587 /* GitHubNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubNetworkManager.swift; sourceTree = "<group>"; };
+		A7525B8123945D3200AD8587 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		A7525B8323945F0D00AD8587 /* RepoFromGit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoFromGit.swift; sourceTree = "<group>"; };
 		A77404ED239110E90038851E /* Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration.swift; sourceTree = "<group>"; };
 		A77404F923912FFC0038851E /* UserDefExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefExt.swift; sourceTree = "<group>"; };
 		A774053A23918FE60038851E /* repo.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = repo.xib; sourceTree = "<group>"; };
+		A7A5DE6B23953CD4004271D9 /* URLParameterEncoderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLParameterEncoderTests.swift; sourceTree = "<group>"; };
+		A7A5DE6D239577CD004271D9 /* JSONParameterEncoderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParameterEncoderTests.swift; sourceTree = "<group>"; };
+		A7A5DE6F239592C2004271D9 /* RepositoryWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryWebViewController.swift; sourceTree = "<group>"; };
 		A7B481E4239260A500AFA19E /* ProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectViewController.swift; sourceTree = "<group>"; };
 		A7B481E62392643600AFA19E /* DescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionTableViewCell.swift; sourceTree = "<group>"; };
 		A7B481E82392705600AFA19E /* RepoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoTableViewCell.swift; sourceTree = "<group>"; };
@@ -72,8 +133,6 @@
 		A7FE06AC238C49F20093F07A /* RepoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoModel.swift; sourceTree = "<group>"; };
 		A7FE06B4238D90600093F07A /* GitRepoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GitRepoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7FE06B8238D90610093F07A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A7FE06BE238D90BD0093F07A /* Summator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Summator.swift; sourceTree = "<group>"; };
-		A7FE06C1238D91A70093F07A /* SummatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummatorTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +153,72 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A7525B5B23942D0000AD8587 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		A7525B5C23942D1000AD8587 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A7FE06AC238C49F20093F07A /* RepoModel.swift */,
+				A7525B8123945D3200AD8587 /* LoginModel.swift */,
+				A7525B8323945F0D00AD8587 /* RepoFromGit.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A7525B5E23942D2000AD8587 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				A7525B6223942D6B00AD8587 /* Encoding */,
+				A7525B5F23942D2E00AD8587 /* EndPoint */,
+				A7525B6023942D3C00AD8587 /* Manager */,
+				A7525B6123942D4600AD8587 /* Service */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		A7525B5F23942D2E00AD8587 /* EndPoint */ = {
+			isa = PBXGroup;
+			children = (
+				A7525B7D2394444300AD8587 /* GitHubEndPoint.swift */,
+			);
+			path = EndPoint;
+			sourceTree = "<group>";
+		};
+		A7525B6023942D3C00AD8587 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				A7525B7F239447A200AD8587 /* GitHubNetworkManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		A7525B6123942D4600AD8587 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				A7525B6323942D8600AD8587 /* EndPointType.swift */,
+				A7525B6523942E4500AD8587 /* HTTPMethod.swift */,
+				A7525B6723942E9C00AD8587 /* HTTPTask.swift */,
+				A7525B6F2394336400AD8587 /* NetworkRouter.swift */,
+				A7525B712394346200AD8587 /* Router.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		A7525B6223942D6B00AD8587 /* Encoding */ = {
+			isa = PBXGroup;
+			children = (
+				A7525B6923942F7400AD8587 /* ParameterEncodingProtocol.swift */,
+				A7525B6B239430C100AD8587 /* URLParameterEncoder.swift */,
+				A7525B6D2394327000AD8587 /* JSONParameterEncoder.swift */,
+			);
+			path = Encoding;
+			sourceTree = "<group>";
+		};
 		A7FE067A238BE7F30093F07A = {
 			isa = PBXGroup;
 			children = (
@@ -115,9 +240,13 @@
 		A7FE0685238BE7F30093F07A /* GitRepo */ = {
 			isa = PBXGroup;
 			children = (
+				A7525B5E23942D2000AD8587 /* Networking */,
+				A7525B5C23942D1000AD8587 /* Model */,
+				A7525B5B23942D0000AD8587 /* Application */,
 				A7FE0686238BE7F30093F07A /* AppDelegate.swift */,
 				A7FE069E238BF3510093F07A /* RootViewController.swift */,
 				A7525B572392F80700AD8587 /* StartAppViewController.swift */,
+				A7525B59239301DA00AD8587 /* LogOutCommand.swift */,
 				A7FE06A0238BF4540093F07A /* BaseTabBarController.swift */,
 				A77404ED239110E90038851E /* Registration.swift */,
 				A77404F923912FFC0038851E /* UserDefExt.swift */,
@@ -128,9 +257,7 @@
 				A7FE068D238BE7F40093F07A /* Assets.xcassets */,
 				A7FE068F238BE7F40093F07A /* LaunchScreen.storyboard */,
 				A7FE0692238BE7F40093F07A /* Info.plist */,
-				A7FE06BE238D90BD0093F07A /* Summator.swift */,
 				A774053A23918FE60038851E /* repo.xib */,
-				A7525B59239301DA00AD8587 /* LogOutCommand.swift */,
 			);
 			path = GitRepo;
 			sourceTree = "<group>";
@@ -146,6 +273,7 @@
 				A7B481E82392705600AFA19E /* RepoTableViewCell.swift */,
 				A7B481EA239271A100AFA19E /* CollaboratorsTableViewCell.swift */,
 				A7B481EC2392725400AFA19E /* TasksTableViewCell.swift */,
+				A7A5DE6F239592C2004271D9 /* RepositoryWebViewController.swift */,
 			);
 			path = Project;
 			sourceTree = "<group>";
@@ -155,7 +283,6 @@
 			children = (
 				A7FE069A238BF0E20093F07A /* ReposTableViewController.swift */,
 				A7FE069C238BF1B30093F07A /* RepoViewController.swift */,
-				A7FE06AC238C49F20093F07A /* RepoModel.swift */,
 			);
 			path = Repo;
 			sourceTree = "<group>";
@@ -164,7 +291,8 @@
 			isa = PBXGroup;
 			children = (
 				A7FE06B8238D90610093F07A /* Info.plist */,
-				A7FE06C1238D91A70093F07A /* SummatorTests.swift */,
+				A7A5DE6B23953CD4004271D9 /* URLParameterEncoderTests.swift */,
+				A7A5DE6D239577CD004271D9 /* JSONParameterEncoderTests.swift */,
 			);
 			path = GitRepoTests;
 			sourceTree = "<group>";
@@ -223,7 +351,6 @@
 					A7FE06B3238D90600093F07A = {
 						CreatedOnToolsVersion = 10.3;
 						LastSwiftMigration = 1030;
-						TestTargetID = A7FE0682238BE7F30093F07A;
 					};
 				};
 			};
@@ -278,20 +405,32 @@
 				A7FE06AB238C46880093F07A /* ProjectModel.swift in Sources */,
 				A7FE06AD238C49F20093F07A /* RepoModel.swift in Sources */,
 				A7B481EF2392C26B00AFA19E /* SettingsViewController.swift in Sources */,
+				A7525B80239447A200AD8587 /* GitHubNetworkManager.swift in Sources */,
 				A77404EE239110E90038851E /* Registration.swift in Sources */,
+				A7525B6C239430C100AD8587 /* URLParameterEncoder.swift in Sources */,
 				A7B481EB239271A100AFA19E /* CollaboratorsTableViewCell.swift in Sources */,
+				A7525B6423942D8600AD8587 /* EndPointType.swift in Sources */,
 				A7FE06A5238BFAFE0093F07A /* NetWorkservice.swift in Sources */,
+				A7A5DE70239592C2004271D9 /* RepositoryWebViewController.swift in Sources */,
 				A77404FA23912FFC0038851E /* UserDefExt.swift in Sources */,
+				A7525B702394336400AD8587 /* NetworkRouter.swift in Sources */,
+				A7525B7E2394444300AD8587 /* GitHubEndPoint.swift in Sources */,
+				A7525B6823942E9C00AD8587 /* HTTPTask.swift in Sources */,
 				A7FE0689238BE7F30093F07A /* ProjectsTableVC.swift in Sources */,
 				A7FE0699238BEA3C0093F07A /* ProjectVC.swift in Sources */,
 				A7FE0687238BE7F30093F07A /* AppDelegate.swift in Sources */,
+				A7525B8423945F0D00AD8587 /* RepoFromGit.swift in Sources */,
 				A7525B582392F80700AD8587 /* StartAppViewController.swift in Sources */,
+				A7525B8223945D3200AD8587 /* LoginModel.swift in Sources */,
+				A7525B6A23942F7400AD8587 /* ParameterEncodingProtocol.swift in Sources */,
 				A7B481ED2392725400AFA19E /* TasksTableViewCell.swift in Sources */,
+				A7525B722394346200AD8587 /* Router.swift in Sources */,
 				A7B481E92392705600AFA19E /* RepoTableViewCell.swift in Sources */,
 				A7FE069D238BF1B30093F07A /* RepoViewController.swift in Sources */,
 				A7FE069B238BF0E20093F07A /* ReposTableViewController.swift in Sources */,
+				A7525B6E2394327000AD8587 /* JSONParameterEncoder.swift in Sources */,
+				A7525B6623942E4500AD8587 /* HTTPMethod.swift in Sources */,
 				A7B481E5239260A500AFA19E /* ProjectViewController.swift in Sources */,
-				A7FE06BF238D90BE0093F07A /* Summator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,7 +438,41 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7FE06C2238D91A70093F07A /* SummatorTests.swift in Sources */,
+				A7A5DE5023952341004271D9 /* URLParameterEncoder.swift in Sources */,
+				A7A5DE6123952364004271D9 /* TasksTableViewCell.swift in Sources */,
+				A7A5DE6323952369004271D9 /* RepoViewController.swift in Sources */,
+				A7A5DE5B23952364004271D9 /* ProjectVC.swift in Sources */,
+				A7A5DE6023952364004271D9 /* CollaboratorsTableViewCell.swift in Sources */,
+				A7A5DE6723952389004271D9 /* Router.swift in Sources */,
+				A7A5DE652395236F004271D9 /* LogOutCommand.swift in Sources */,
+				A7A5DE5F23952364004271D9 /* RepoTableViewCell.swift in Sources */,
+				A7A5DE5E23952364004271D9 /* DescriptionTableViewCell.swift in Sources */,
+				A7A5DE6623952382004271D9 /* EndPointType.swift in Sources */,
+				A7A5DE532395234A004271D9 /* GitHubNetworkManager.swift in Sources */,
+				A7A5DE5223952347004271D9 /* GitHubEndPoint.swift in Sources */,
+				A7A5DE6E239577CD004271D9 /* JSONParameterEncoderTests.swift in Sources */,
+				A7A5DE6823952390004271D9 /* HTTPMethod.swift in Sources */,
+				A7A5DE4F23952341004271D9 /* ParameterEncodingProtocol.swift in Sources */,
+				A7A5DE6C23953CD4004271D9 /* URLParameterEncoderTests.swift in Sources */,
+				A7A5DE6223952369004271D9 /* ReposTableViewController.swift in Sources */,
+				A7A5DE5D23952364004271D9 /* ProjectViewController.swift in Sources */,
+				A7A5DE5C23952364004271D9 /* ProjectModel.swift in Sources */,
+				A7A5DE592395235D004271D9 /* NetWorkservice.swift in Sources */,
+				A7A5DE6923952390004271D9 /* HTTPTask.swift in Sources */,
+				A7A5DE4B23952306004271D9 /* AppDelegate.swift in Sources */,
+				A7A5DE542395234D004271D9 /* RepoModel.swift in Sources */,
+				A7A5DE5A23952361004271D9 /* ProjectsTableVC.swift in Sources */,
+				A7A5DE4E2395232D004271D9 /* BaseTabBarController.swift in Sources */,
+				A7A5DE5623952351004271D9 /* RepoFromGit.swift in Sources */,
+				A7A5DE552395234F004271D9 /* LoginModel.swift in Sources */,
+				A7A5DE582395235B004271D9 /* UserDefExt.swift in Sources */,
+				A7A5DE5123952341004271D9 /* JSONParameterEncoder.swift in Sources */,
+				A7A5DE6423952369004271D9 /* SettingsViewController.swift in Sources */,
+				A796F33323959815007D7E51 /* RepositoryWebViewController.swift in Sources */,
+				A7A5DE4C23952319004271D9 /* RootViewController.swift in Sources */,
+				A7A5DE4D23952326004271D9 /* StartAppViewController.swift in Sources */,
+				A7A5DE6A23952390004271D9 /* NetworkRouter.swift in Sources */,
+				A7A5DE5723952357004271D9 /* Registration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,7 +653,6 @@
 		A7FE06BB238D90610093F07A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HSXJ839659;
@@ -495,14 +667,12 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GitRepo.app/GitRepo";
 			};
 			name = Debug;
 		};
 		A7FE06BC238D90610093F07A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HSXJ839659;
@@ -516,7 +686,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GitRepo.app/GitRepo";
 			};
 			name = Release;
 		};

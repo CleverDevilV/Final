@@ -13,28 +13,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
 	
-//	var repos = [Repo]()
-
-
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-		// Override point for customization after application launch.
 		
 		window = UIWindow(frame: UIScreen.main.bounds)
 		let rootVC = RootViewController.shared
 		window?.rootViewController = rootVC
-//		window?.rootViewController = RequestViewController()
 		window?.makeKeyAndVisible()
 		
-//		let stringURL = "https://api.github.com/user/repos"
-//
-//		var netWork = NetworkService()
-//		netWork.loadData(stringURL: stringURL) {
-//			result in
-//			print(result)
-//			self.repos = result
-//			for item in result {
-//				print(item.name)
-//			}
+//		let netforgit = GitHubNetworkManager()
+//		netforgit.getUserLogin(endPoint: GitHubApi.repos) {
+//			result, error in
+//			print(result, error)
 //		}
 		
 		return true

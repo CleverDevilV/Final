@@ -27,9 +27,16 @@ class Repo {
 		self.owner = owner
 	}
 	
-//	func setHttpUrl(_ url: String) {
-//		self.html_url = url
-//		print("set html_url: ", self.html_url)
-//	}
-	
+	static func decodeDataFromBack(inputData: [RepoFromGit]) -> [Repo] {
+		var repos = [Repo]()
+		for repoFromBack in inputData {
+			let repo = Repo(name: repoFromBack.name, repoLink: repoFromBack.html_url, languageOfProject: repoFromBack.language, collaborators: [], changes: [:], owner: repoFromBack.owner.login)
+			repos.append(repo)
+		}
+		return repos
+	}	
+}
+
+struct Login: Codable {
+	var login: String
 }

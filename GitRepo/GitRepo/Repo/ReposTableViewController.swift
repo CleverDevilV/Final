@@ -10,14 +10,15 @@ import UIKit
 
 class ReposTableViewController: UIViewController {
 	
-	private var netWork = NetworkService()
+//	private var netWork = NetworkService()
+	private let network = GitHubNetworkManager()
 	
 	private var tableView: UITableView!
-	private var repos: [Repo]! {
+	private var repos: [Repository]! {
 		didSet {
 				DispatchQueue.main.async {
 					if self.segmentControl.selectedSegmentIndex == 0{
-						self.repos = self.repos.filter({$0.owner == "CleverDevilV"})
+						self.repos = self.repos.filter({$0.owner?.login == "CleverDevilV"})
 //						self.repos.sort{$0.name < $1.name}
 						self.tableView.reloadData()
 					} else {
@@ -52,9 +53,13 @@ class ReposTableViewController: UIViewController {
     }
 	
 	func downloadData() {
-		let stringURL = "https://api.github.com/user/repos"
-		netWork.loadData(stringURL: stringURL) {
-			result in
+		network.getUserLogin(endPoint: GitHubApi.repos) {
+			result, error in
+			if error != nil {
+				print(error!)
+			}
+			guard let result = result as? [Repository] else { return }
+
 			self.repos = result
 			DispatchQueue.main.async {
 				self.tableView.reloadData()
@@ -99,8 +104,8 @@ extension ReposTableViewController: UITableViewDataSource {
 		var cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 		cell = UITableViewCell(style: .subtitle, reuseIdentifier: "Cell")
 		let repo = repos[indexPath.row]
-		cell.textLabel?.text = "\(repo.name)"
-		cell.detailTextLabel?.text = "Ownrer: \(repo.owner)   Language: \(repo.languageOfProject ?? "")"
+		cell.textLabel?.text = "\(repo.name ?? "")"
+		cell.detailTextLabel?.text = "Ownrer: \(repo.owner?.login ?? "")   Language: \(repo.languageOfProject ?? "")"
 		cell.accessoryType = .disclosureIndicator
 		
 		cell.backgroundColor = .clear

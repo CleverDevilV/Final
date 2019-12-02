@@ -8,13 +8,16 @@
 
 import Foundation
 
-class Project {
-	var projectName: String
+final class Project {
 	
-	var repo: Repo?
+	public var projectName: String
+	public var repoUrl: String?
 	
-	init(projectName: String, repo: Repo?) {
+	public var repo: Repository?
+	
+	init(projectName: String, repoURL: String?, repo: Repository?) {
 		self.projectName = projectName
+		self.repoUrl = repoURL
 		self.repo = repo
 	}
 }

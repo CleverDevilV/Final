@@ -39,7 +39,8 @@ class ReposTableViewController: UIViewController {
 		
 		tableView = UITableView(frame: view.frame, style: .plain)
 		tableView.backgroundColor = UIColor(red: 1, green: 0.5781051517, blue: 0, alpha: 0.04508240583)
-		tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+//		tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+		tableView.register(RepositoriesTableViewCell.self, forCellReuseIdentifier: RepositoriesTableViewCell.repositoriesCellReuseId)
 		tableView.dataSource = self
 		tableView.delegate = self
 		
@@ -101,12 +102,13 @@ extension ReposTableViewController: UITableViewDataSource {
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		var cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-		cell = UITableViewCell(style: .subtitle, reuseIdentifier: "Cell")
-		let repo = repos[indexPath.row]
-		cell.textLabel?.text = "\(repo.name ?? "")"
-		cell.detailTextLabel?.text = "Ownrer: \(repo.owner?.login ?? "")   Language: \(repo.languageOfProject ?? "")"
-		cell.accessoryType = .disclosureIndicator
+		var cell = tableView.dequeueReusableCell(withIdentifier: RepositoriesTableViewCell.repositoriesCellReuseId, for: indexPath) as! RepositoriesTableViewCell
+		cell.repository = repos[indexPath.row]
+//		cell = UITableViewCell(style: .subtitle, reuseIdentifier: "Cell")
+//		let repo = repos[indexPath.row]
+//		cell.textLabel?.text = "\(repo.name ?? "")"
+//		cell.detailTextLabel?.text = "Ownrer: \(repo.owner?.login ?? "")   Language: \(repo.languageOfProject ?? "")"
+//		cell.accessoryType = .disclosureIndicator
 		
 		cell.backgroundColor = .clear
 		return cell

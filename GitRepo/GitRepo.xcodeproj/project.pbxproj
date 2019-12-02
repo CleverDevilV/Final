@@ -25,6 +25,8 @@
 		A77404FA23912FFC0038851E /* UserDefExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77404F923912FFC0038851E /* UserDefExt.swift */; };
 		A774053B23918FE60038851E /* repo.xib in Resources */ = {isa = PBXBuildFile; fileRef = A774053A23918FE60038851E /* repo.xib */; };
 		A796F33323959815007D7E51 /* RepositoryWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A5DE6F239592C2004271D9 /* RepositoryWebViewController.swift */; };
+		A796F3352395AB4D007D7E51 /* RepositoriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A796F3342395AB4D007D7E51 /* RepositoriesTableViewCell.swift */; };
+		A796F3362395AD57007D7E51 /* RepositoriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A796F3342395AB4D007D7E51 /* RepositoriesTableViewCell.swift */; };
 		A7A5DE4B23952306004271D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE0686238BE7F30093F07A /* AppDelegate.swift */; };
 		A7A5DE4C23952319004271D9 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE069E238BF3510093F07A /* RootViewController.swift */; };
 		A7A5DE4D23952326004271D9 /* StartAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7525B572392F80700AD8587 /* StartAppViewController.swift */; };
@@ -108,6 +110,7 @@
 		A77404ED239110E90038851E /* Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration.swift; sourceTree = "<group>"; };
 		A77404F923912FFC0038851E /* UserDefExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefExt.swift; sourceTree = "<group>"; };
 		A774053A23918FE60038851E /* repo.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = repo.xib; sourceTree = "<group>"; };
+		A796F3342395AB4D007D7E51 /* RepositoriesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesTableViewCell.swift; sourceTree = "<group>"; };
 		A7A5DE6B23953CD4004271D9 /* URLParameterEncoderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLParameterEncoderTests.swift; sourceTree = "<group>"; };
 		A7A5DE6D239577CD004271D9 /* JSONParameterEncoderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParameterEncoderTests.swift; sourceTree = "<group>"; };
 		A7A5DE6F239592C2004271D9 /* RepositoryWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryWebViewController.swift; sourceTree = "<group>"; };
@@ -282,6 +285,7 @@
 			isa = PBXGroup;
 			children = (
 				A7FE069A238BF0E20093F07A /* ReposTableViewController.swift */,
+				A796F3342395AB4D007D7E51 /* RepositoriesTableViewCell.swift */,
 				A7FE069C238BF1B30093F07A /* RepoViewController.swift */,
 			);
 			path = Repo;
@@ -413,6 +417,7 @@
 				A7FE06A5238BFAFE0093F07A /* NetWorkservice.swift in Sources */,
 				A7A5DE70239592C2004271D9 /* RepositoryWebViewController.swift in Sources */,
 				A77404FA23912FFC0038851E /* UserDefExt.swift in Sources */,
+				A796F3352395AB4D007D7E51 /* RepositoriesTableViewCell.swift in Sources */,
 				A7525B702394336400AD8587 /* NetworkRouter.swift in Sources */,
 				A7525B7E2394444300AD8587 /* GitHubEndPoint.swift in Sources */,
 				A7525B6823942E9C00AD8587 /* HTTPTask.swift in Sources */,
@@ -463,6 +468,7 @@
 				A7A5DE542395234D004271D9 /* RepoModel.swift in Sources */,
 				A7A5DE5A23952361004271D9 /* ProjectsTableVC.swift in Sources */,
 				A7A5DE4E2395232D004271D9 /* BaseTabBarController.swift in Sources */,
+				A796F3362395AD57007D7E51 /* RepositoriesTableViewCell.swift in Sources */,
 				A7A5DE5623952351004271D9 /* RepoFromGit.swift in Sources */,
 				A7A5DE552395234F004271D9 /* LoginModel.swift in Sources */,
 				A7A5DE582395235B004271D9 /* UserDefExt.swift in Sources */,

@@ -71,6 +71,17 @@ class Router <EndPoint: EndPointType>: NetworkRouter {
 				try self.configureParameters(bodyParameters: bodyParameters,
 											 urlParameters: urlParameters,
 											 request: &request)
+			case .uploadData(let bodyParameters, let urlParameters, let additionHeaders, let data):
+				self.addAdditionalHeaders(additionHeaders, request: &request)
+				try self.configureParameters(bodyParameters: bodyParameters,
+											 urlParameters: urlParameters,
+											 request: &request)
+				do {
+					let uploadData = try JSONEncoder().encode(data)
+					request.httpBody = uploadData
+				} catch {
+					print(error)
+				}
 			}
 			return request
 		} catch {

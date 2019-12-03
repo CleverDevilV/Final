@@ -28,7 +28,7 @@ public enum FirebaseApi {
 	/// for get user info
 	case getProjects
 	/// for get repos
-	case uploadProjects
+	case uploadProjects(data: [String : [ProjectForUploadToBack]])
 	/// for get information about concrete repository
 	case oneProject(url: String)
 }
@@ -83,7 +83,12 @@ extension FirebaseApi: EndPointType {
 	
 	*/
 	var task: HTTPTask {
-		return .requestParametersAndHeaders(bodyParameters: nil, urlParameters: nil, additionHeaders: self.headers)
+		switch self {
+		case .uploadProjects(let data):
+			return .uploadData(bodyParameters: nil, urlParameters: nil, additionHeaders: self.headers, uploadData: data)
+		default:
+			return .requestParametersAndHeaders(bodyParameters: nil, urlParameters: nil, additionHeaders: self.headers)
+		}
 	}
 	
 	/// HttpHeaders for Auth at GitHub

@@ -11,7 +11,7 @@ import UIKit
 class ReposTableViewController: UIViewController {
 	
 //	private var netWork = NetworkService()
-	private let network = GitHubNetworkManager()
+//	private let network = GitHubNetworkManager()
 	
 	private var tableView: UITableView!
 	private var repositoryBase: RepositoriesBase?
@@ -49,6 +49,7 @@ class ReposTableViewController: UIViewController {
     }
 	
 	func downloadData() {
+		let network = GitHubNetworkManager()
 		network.getGitHubData(endPoint: GitHubApi.repos) {
 			result, error in
 			if error != nil {
@@ -58,9 +59,9 @@ class ReposTableViewController: UIViewController {
 			
 			self.repositoryBase = result
 			self.repositories = result.repositories
-			DispatchQueue.main.async {
-				self.tableView.reloadData()
-			}
+//			DispatchQueue.main.async {
+//				self.tableView.reloadData()
+//			}
 		}
 	}
 	

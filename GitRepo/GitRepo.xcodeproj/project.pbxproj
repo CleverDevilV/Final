@@ -13,6 +13,8 @@
 		A7495FC72396714A00C120DC /* FirebaseEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7495FC2239655F400C120DC /* FirebaseEndPoint.swift */; };
 		A7495FC923967A7100C120DC /* RepositoriesBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7495FC823967A7100C120DC /* RepositoriesBase.swift */; };
 		A7495FCA23967BBD00C120DC /* RepositoriesBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7495FC823967A7100C120DC /* RepositoriesBase.swift */; };
+		A7495FCE2396839500C120DC /* ProjectsBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7495FCD2396839500C120DC /* ProjectsBase.swift */; };
+		A7495FCF239683AC00C120DC /* ProjectsBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7495FCD2396839500C120DC /* ProjectsBase.swift */; };
 		A7525B582392F80700AD8587 /* StartAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7525B572392F80700AD8587 /* StartAppViewController.swift */; };
 		A7525B5A239301DA00AD8587 /* LogOutCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7525B59239301DA00AD8587 /* LogOutCommand.swift */; };
 		A7525B6423942D8600AD8587 /* EndPointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7525B6323942D8600AD8587 /* EndPointType.swift */; };
@@ -30,6 +32,10 @@
 		A77404EE239110E90038851E /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77404ED239110E90038851E /* Registration.swift */; };
 		A77404FA23912FFC0038851E /* UserDefExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77404F923912FFC0038851E /* UserDefExt.swift */; };
 		A774053B23918FE60038851E /* repo.xib in Resources */ = {isa = PBXBuildFile; fileRef = A774053A23918FE60038851E /* repo.xib */; };
+		A785A77E2396A73B0040D4CD /* ProjectForUploadToBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A785A77D2396A73B0040D4CD /* ProjectForUploadToBack.swift */; };
+		A785A77F2396A7CF0040D4CD /* ProjectForUploadToBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A785A77D2396A73B0040D4CD /* ProjectForUploadToBack.swift */; };
+		A785A78B2396BF7A0040D4CD /* TasksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A785A78A2396BF7A0040D4CD /* TasksTableViewController.swift */; };
+		A785A78C2396C0450040D4CD /* TasksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A785A78A2396BF7A0040D4CD /* TasksTableViewController.swift */; };
 		A796F33323959815007D7E51 /* RepositoryWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A5DE6F239592C2004271D9 /* RepositoryWebViewController.swift */; };
 		A796F3352395AB4D007D7E51 /* RepositoriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A796F3342395AB4D007D7E51 /* RepositoriesTableViewCell.swift */; };
 		A796F3362395AD57007D7E51 /* RepositoriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A796F3342395AB4D007D7E51 /* RepositoriesTableViewCell.swift */; };
@@ -102,6 +108,7 @@
 		A7495FC2239655F400C120DC /* FirebaseEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseEndPoint.swift; sourceTree = "<group>"; };
 		A7495FC4239670A200C120DC /* FirebaseNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseNetworkManager.swift; sourceTree = "<group>"; };
 		A7495FC823967A7100C120DC /* RepositoriesBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesBase.swift; sourceTree = "<group>"; };
+		A7495FCD2396839500C120DC /* ProjectsBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsBase.swift; sourceTree = "<group>"; };
 		A7525B572392F80700AD8587 /* StartAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartAppViewController.swift; sourceTree = "<group>"; };
 		A7525B59239301DA00AD8587 /* LogOutCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutCommand.swift; sourceTree = "<group>"; };
 		A7525B6323942D8600AD8587 /* EndPointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointType.swift; sourceTree = "<group>"; };
@@ -119,6 +126,8 @@
 		A77404ED239110E90038851E /* Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration.swift; sourceTree = "<group>"; };
 		A77404F923912FFC0038851E /* UserDefExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefExt.swift; sourceTree = "<group>"; };
 		A774053A23918FE60038851E /* repo.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = repo.xib; sourceTree = "<group>"; };
+		A785A77D2396A73B0040D4CD /* ProjectForUploadToBack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectForUploadToBack.swift; sourceTree = "<group>"; };
+		A785A78A2396BF7A0040D4CD /* TasksTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksTableViewController.swift; sourceTree = "<group>"; };
 		A796F3342395AB4D007D7E51 /* RepositoriesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesTableViewCell.swift; sourceTree = "<group>"; };
 		A7A5DE6B23953CD4004271D9 /* URLParameterEncoderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLParameterEncoderTests.swift; sourceTree = "<group>"; };
 		A7A5DE6D239577CD004271D9 /* JSONParameterEncoderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParameterEncoderTests.swift; sourceTree = "<group>"; };
@@ -165,6 +174,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A7495FCB2396837B00C120DC /* GitHub */ = {
+			isa = PBXGroup;
+			children = (
+				A7495FC823967A7100C120DC /* RepositoriesBase.swift */,
+				A7FE06AC238C49F20093F07A /* RepoModel.swift */,
+				A7525B8323945F0D00AD8587 /* RepoFromGit.swift */,
+				A7525B8123945D3200AD8587 /* LoginModel.swift */,
+			);
+			path = GitHub;
+			sourceTree = "<group>";
+		};
+		A7495FCC2396838500C120DC /* FireBase */ = {
+			isa = PBXGroup;
+			children = (
+				A7495FCD2396839500C120DC /* ProjectsBase.swift */,
+				A7FE06AA238C46880093F07A /* ProjectModel.swift */,
+				A785A77D2396A73B0040D4CD /* ProjectForUploadToBack.swift */,
+			);
+			path = FireBase;
+			sourceTree = "<group>";
+		};
 		A7525B5B23942D0000AD8587 /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -175,11 +205,8 @@
 		A7525B5C23942D1000AD8587 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				A7495FC823967A7100C120DC /* RepositoriesBase.swift */,
-				A7FE06AC238C49F20093F07A /* RepoModel.swift */,
-				A7525B8323945F0D00AD8587 /* RepoFromGit.swift */,
-				A7525B8123945D3200AD8587 /* LoginModel.swift */,
-				A7FE06AA238C46880093F07A /* ProjectModel.swift */,
+				A7495FCB2396837B00C120DC /* GitHub */,
+				A7495FCC2396838500C120DC /* FireBase */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -289,6 +316,7 @@
 				A7B481EA239271A100AFA19E /* CollaboratorsTableViewCell.swift */,
 				A7B481EC2392725400AFA19E /* TasksTableViewCell.swift */,
 				A7A5DE6F239592C2004271D9 /* RepositoryWebViewController.swift */,
+				A785A78A2396BF7A0040D4CD /* TasksTableViewController.swift */,
 			);
 			path = Project;
 			sourceTree = "<group>";
@@ -415,10 +443,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7525B5A239301DA00AD8587 /* LogOutCommand.swift in Sources */,
+				A785A77E2396A73B0040D4CD /* ProjectForUploadToBack.swift in Sources */,
 				A7FE06A1238BF4540093F07A /* BaseTabBarController.swift in Sources */,
 				A7B481E72392643600AFA19E /* DescriptionTableViewCell.swift in Sources */,
 				A7FE069F238BF3510093F07A /* RootViewController.swift in Sources */,
 				A7FE06AB238C46880093F07A /* ProjectModel.swift in Sources */,
+				A785A78B2396BF7A0040D4CD /* TasksTableViewController.swift in Sources */,
 				A7FE06AD238C49F20093F07A /* RepoModel.swift in Sources */,
 				A7B481EF2392C26B00AFA19E /* SettingsViewController.swift in Sources */,
 				A7525B80239447A200AD8587 /* GitHubNetworkManager.swift in Sources */,
@@ -436,6 +466,7 @@
 				A7525B6823942E9C00AD8587 /* HTTPTask.swift in Sources */,
 				A7FE0689238BE7F30093F07A /* ProjectsTableVC.swift in Sources */,
 				A7FE0699238BEA3C0093F07A /* ProjectVC.swift in Sources */,
+				A7495FCE2396839500C120DC /* ProjectsBase.swift in Sources */,
 				A7FE0687238BE7F30093F07A /* AppDelegate.swift in Sources */,
 				A7525B8423945F0D00AD8587 /* RepoFromGit.swift in Sources */,
 				A7525B582392F80700AD8587 /* StartAppViewController.swift in Sources */,
@@ -460,6 +491,7 @@
 			files = (
 				A7A5DE5023952341004271D9 /* URLParameterEncoder.swift in Sources */,
 				A7A5DE6123952364004271D9 /* TasksTableViewCell.swift in Sources */,
+				A7495FCF239683AC00C120DC /* ProjectsBase.swift in Sources */,
 				A7A5DE6323952369004271D9 /* RepoViewController.swift in Sources */,
 				A7A5DE5B23952364004271D9 /* ProjectVC.swift in Sources */,
 				A7A5DE6023952364004271D9 /* CollaboratorsTableViewCell.swift in Sources */,
@@ -467,7 +499,9 @@
 				A7A5DE652395236F004271D9 /* LogOutCommand.swift in Sources */,
 				A7A5DE5F23952364004271D9 /* RepoTableViewCell.swift in Sources */,
 				A7A5DE5E23952364004271D9 /* DescriptionTableViewCell.swift in Sources */,
+				A785A77F2396A7CF0040D4CD /* ProjectForUploadToBack.swift in Sources */,
 				A7A5DE6623952382004271D9 /* EndPointType.swift in Sources */,
+				A785A78C2396C0450040D4CD /* TasksTableViewController.swift in Sources */,
 				A7A5DE532395234A004271D9 /* GitHubNetworkManager.swift in Sources */,
 				A7A5DE5223952347004271D9 /* GitHubEndPoint.swift in Sources */,
 				A7A5DE6E239577CD004271D9 /* JSONParameterEncoderTests.swift in Sources */,

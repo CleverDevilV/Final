@@ -65,6 +65,7 @@ extension ProjectViewController: UITableViewDataSource {
 		case 3:
 			let cell = tableView.dequeueReusableCell(withIdentifier: TasksTableViewCell.tasksReuseId, for: indexPath) as! TasksTableViewCell
 			cell.delegate = self
+			cell.project = project
 			return cell
 //			fallthrough
 		default:
@@ -101,7 +102,7 @@ extension ProjectViewController: RepoTableCellDelegate {
 					self.netWorkService.getGitHubData(endPoint: GitHubApi.oneRepo(url: repoName)) {
 						repo, error in
 						self.project?.repo = repo as? Repository
-						self.project?.repoUrl = url
+						self.project?.repoUrl = url.absoluteString
 						DispatchQueue.main.async {
 							self.tableView.reloadRows(at: [IndexPath(row: 1, section: 0)], with: .none)
 						}
@@ -143,7 +144,7 @@ extension ProjectViewController: RepoTableCellDelegate {
 						self.netWorkService.getGitHubData(endPoint: GitHubApi.oneRepo(url: repoName)) {
 							repo, error in
 							self.project?.repo = repo as? Repository
-							self.project?.repoUrl = url
+							self.project?.repoUrl = url.absoluteString
 							DispatchQueue.main.async {
 								self.tableView.reloadRows(at: [IndexPath(row: 1, section: 0)], with: .none)
 							}
@@ -156,16 +157,25 @@ extension ProjectViewController: RepoTableCellDelegate {
 				addRepoAlertController.addAction(okAction)
 				self.present(addRepoAlertController, animated: true, completion: nil)
 			})
-			let viewRepo = UIAlertAction(title: "Открыть репозиторий в браузере", style: .default, handler: {_ in
+			let viewRepositiryAtNet = UIAlertAction(title: "Открыть репозиторий в браузере", style: .default, handler: {_ in
 				let view = RepositoryWebViewController()
-				view.url = self.project?.repoUrl
+				view.url = URL(string: self.project?.repoUrl ?? "")
 				self.navigationController?.pushViewController(view, animated: true)
 				})
+			
+			let viewRepository = UIAlertAction(title: "Открыть станицу репозитория в приложении", style: .default, handler: {
+				_ in
+				let destinationView = RepoViewController()
+				destinationView.repo = self.project?.repo
+				self.navigationController?.pushViewController(destinationView, animated: true)
+			})
+			
 			let cancelAction = UIAlertAction(title: "Отмена", style: .cancel, handler: nil)
 			
 			alertList.addAction(resetAction)
-			alertList.addAction(viewRepo)
+			alertList.addAction(viewRepositiryAtNet)
 			alertList.addAction(cancelAction)
+			alertList.addAction(viewRepository)
 			
 			present(alertList, animated: true, completion: nil)
 		}
@@ -195,6 +205,11 @@ extension ProjectViewController: CollaboratorsTableViewCellDelegate {
 
 extension ProjectViewController: TasksTableViewCellDelegate {
 	func addTasksTable(){
+		
+		let destination = TasksTableViewController()
+		destination.project = self.project
+		self.navigationController?.pushViewController(destination, animated: true)
+		
 		//		collaboratorsTableViewHeight.isActive = false
 		//
 		//		if !isExtendedCollaborators {

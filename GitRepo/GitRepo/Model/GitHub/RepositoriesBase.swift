@@ -10,6 +10,10 @@ import Foundation
 
 final class RepositoriesBase {
 	
+	func copy(with zone: NSZone? = nil) -> Any {
+		return self
+	}
+	
 	private (set) var repositories: [Repository] = []
 	private (set) var userName: String = UserDefaults.standard.get(with: .oauth_user_login)
 	

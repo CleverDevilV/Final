@@ -10,7 +10,7 @@
 import UIKit
 
 /// Class for Repository from GitHub
-final class Repository: Decodable {
+public final class Repository: Codable {
 	
 	/// Name of repository
 	public var name: String?
@@ -59,7 +59,7 @@ final class Repository: Decodable {
 	- Parameters:
 		- decoder: Decoder for decode values.
 	*/
-	required init(from decoder: Decoder) throws {
+	required public init(from decoder: Decoder) throws {
 		let container = try decoder.container(keyedBy: GitHubApiResponseCodingKeys.self)
 		
 		

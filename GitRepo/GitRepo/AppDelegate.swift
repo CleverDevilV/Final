@@ -20,6 +20,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		window?.rootViewController = rootVC
 		window?.makeKeyAndVisible()
 		
+//		let network = FirebaseNetworkManager()
+//		network.getFirebaseData(endPoint: FirebaseApi.uploadProjects(data: ["hello": "hi"])) {
+//			result, error in
+//			if error != nil {
+//				print(error!)
+//			}
+//		}
+	
 		return true
 	}
 

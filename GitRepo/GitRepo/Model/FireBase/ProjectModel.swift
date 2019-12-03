@@ -9,16 +9,18 @@
 import Foundation
 
 /// Class for Project from Firebase
-final class Project: Decodable {
+public final class Project: Decodable {
 	
 	/// Name of project
 	public var projectName: String
 	/// Link to repository of project
-	public var repoUrl: URL?
+	public var repoUrl: String?
 	/// Repository of project
 	public var repo: Repository?
 	
-	init(projectName: String, repoURL: URL?, repo: Repository?) {
+	private (set) var projectTasks: [String]?
+	
+	init(projectName: String, repoURL: String?, repo: Repository?) {
 		self.projectName = projectName
 		self.repoUrl = repoURL
 		self.repo = repo
@@ -29,6 +31,7 @@ final class Project: Decodable {
 		
 		case name
 		case repoUrl
+		case projectTasks
 	}
 	
 	/**
@@ -37,17 +40,37 @@ final class Project: Decodable {
 	- Parameters:
 	- decoder: Decoder for decode values.
 	*/
-	required init(from decoder: Decoder) throws {
+	required public init(from decoder: Decoder) throws {
 		let container = try decoder.container(keyedBy: FirebaseApiResponseCodingKeys.self)
 		
-		
-		
 		self.projectName = try container.decode(String.self, forKey: .name)
-		self.repoUrl = try container.decode(URL?.self, forKey: .repoUrl)
+		
+		var url: String? = ""
+		do {
+			url = try container.decode(String?.self, forKey: .repoUrl)
+		} catch {
+			print(error)
+		}
+		self.repoUrl = url
+		
+		var tasks: [String]? = []
+		
+		do {
+			tasks = try container.decode([String]?.self, forKey: .projectTasks)
+		} catch {
+			print(error)
+		}
+		
+		self.projectTasks = tasks
 		
 		self.repo = nil
 	}
-
 	
+	public func addTask(_ task: String) {
+		self.projectTasks?.append(task)
+	}
 	
+	public func removeTask(at index: Int) {
+		self.projectTasks?.remove(at: index)
+	}
 }

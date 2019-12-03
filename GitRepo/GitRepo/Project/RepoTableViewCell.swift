@@ -43,7 +43,8 @@ class RepoTableViewCell: UITableViewCell {
 		repoLabel.text = "Репозиторий:"
 		
 	// repoButton
-		if let nameOfRepo: String = project?.repoUrl?.lastPathComponent {
+		if let nameOfRepo: String = URL(string: project?.repoUrl ?? "")?.lastPathComponent {
+			
 			repoButtonTitle = nameOfRepo.capitalized
 		}
 		repoButton.setTitle(repoButtonTitle, for: .normal)

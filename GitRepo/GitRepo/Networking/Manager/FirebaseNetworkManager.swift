@@ -65,15 +65,17 @@ struct FirebaseNetworkManager {
 					}
 					
 					do {
-						let text = try? JSONSerialization.jsonObject(with: responseData, options: [])
+//						let text = try? JSONSerialization.jsonObject(with: responseData, options: [])
 						switch endPoint {
 						case .getProjects:
-							let apiResponse = try JSONDecoder().decode([String : [String:Project]].self, from: responseData)
-							completion(apiResponse, nil)
+							let projects = ProjectsBase(with: responseData)
+//							let apiResponse = try JSONDecoder().decode([String : [String:Project]].self, from: responseData)
+//							completion(apiResponse, nil)
+							completion(projects, nil)
 						case .uploadProjects:
-							let newResponse = try JSONDecoder().decode([Repository].self, from: responseData)
-							completion(newResponse, nil)
-						case .oneProject(let url):
+//							let newResponse = try JSONDecoder().decode([Repository].self, from: responseData)
+							completion(true, nil)
+						case .oneProject( _):
 							let newResponse = try JSONDecoder().decode(Repository.self, from: responseData)
 							completion(newResponse, nil)
 						}

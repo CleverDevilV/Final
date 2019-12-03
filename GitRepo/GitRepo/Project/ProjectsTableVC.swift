@@ -10,15 +10,29 @@ import UIKit
 
 class ProjectsTableVC: UIViewController {
 	
-	var tableView: UITableView!
-	var projectsSelector: UISegmentedControl!
-	var projects: [Project] = [Project(projectName: "MyProject", repoURL: URL(string: "https://github.com/CleverDevilV/Final") , repo: nil)]
-
+	private var tableView: UITableView!
+	private var projectsSelector: UISegmentedControl!
+	
+	private var projectsBase: ProjectsBase?
+//	private var projects: [Project] = [] {
+//		didSet {
+//			DispatchQueue.main.async {
+//				self.tableView.reloadData()
+//			}
+//		}
+//	}
+	
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+	
+//		print(projectsBase)
+		projectsBase?.baseUpdated()
+	}
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
 		view.backgroundColor = .white
-		updateData()
 		
 		let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addProject))
 		let editButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(toggleEditing))
@@ -39,6 +53,26 @@ class ProjectsTableVC: UIViewController {
 		projectsSelector = UISegmentedControl(items: ["Все", "Мои"])
 		projectsSelector.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 50, height: 20))
 		navigationItem.titleView?.addSubview(projectsSelector)
+		
+		downloadProjects()
+	}
+	
+	private func downloadProjects() {
+		let network = FirebaseNetworkManager()
+		network.getFirebaseData(endPoint: FirebaseApi.getProjects) {
+			result, error in
+			if error != nil {
+				print(error!)
+			}
+			
+			self.projectsBase = result as? ProjectsBase
+//
+//			guard let result = self.projectsBase?.projects else { return }
+//			self.projects = result
+			DispatchQueue.main.async {
+				self.tableView.reloadData()
+			}
+		}
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -59,12 +93,13 @@ class ProjectsTableVC: UIViewController {
 			
 			let textField = addProjectAlertController.textFields![0] as UITextField
 			if let text = textField.text {
-				self.projects.append(Project(projectName: text, repoURL: nil, repo: nil))
+				self.projectsBase?.addProject(Project(projectName: text, repoURL: nil, repo: nil))
+				
+				self.tableView.reloadData()
+//				self.projects = self.projectsBase?.projects ?? []
 			} else {
 				return
 			}
-			
-			self.tableView.reloadData()
 		})
 		addProjectAlertController.addAction(cancelAction)
 		addProjectAlertController.addAction(okAction)
@@ -76,26 +111,19 @@ class ProjectsTableVC: UIViewController {
 		tableView.setEditing(!tableView.isEditing, animated: true)
 		navigationItem.rightBarButtonItems?[1].title = tableView.isEditing ? "Done" : "Edit"
 	}
-	
-	func updateData() {
-
-		if !UserDefaults.standard.isExist(with: .oauth_access_token) {
-			present(RequestViewController(), animated: false, completion: nil)
-		}
-	}
-
 }
 
 extension ProjectsTableVC: UITableViewDataSource {
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return projects.count
+		return projectsBase?.projects.count ?? 0
+//		return projects.count
 //		return 1
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 		
-		let project = projects[indexPath.row]
+		guard let project = projectsBase?.projects[indexPath.row]  else { return cell }
 //		cell.textLabel?.text = "\(indexPath.row)"
 		cell.textLabel?.text = project.projectName
 //		cell.detailTextLabel?.text = "Language: \(project.repo.languageOfProject)"
@@ -112,19 +140,9 @@ extension ProjectsTableVC: UITableViewDataSource {
 	func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
 		if editingStyle == .delete {
 			
-			projects.remove(at: indexPath.row)
-//			NoteService.shared.notes.remove(at: indexPath.row)
-//			uploadPosts(NoteService.shared.notes) {
-//				result in
-//				print(result)
-//				print("--------------------")
-//				print("Notes uploaded")
-//				DispatchQueue.main.async {
-//					self.tableView.reloadData()
-//				}
-//			}
-//			navigationController?.viewControllers[0].title = "Заметки (\(notesArray.count))"
-			tableView.reloadData()
+			projectsBase?.removeProject(atIndex: indexPath.row)
+			self.tableView.reloadData()
+//			projects = projectsBase?.projects ?? []
 		}
 	}
 	
@@ -136,7 +154,9 @@ extension ProjectsTableVC: UITableViewDelegate {
 		let destinationVC = ProjectViewController()
 		
 //		let destinationVC = ProjectVC()
-		destinationVC.project = projects[indexPath.row]
+		guard let project = projectsBase?.projects[indexPath.row] else { return }
+		
+		destinationVC.project = project
 		
 		navigationController?.pushViewController(destinationVC, animated: true)
 	}

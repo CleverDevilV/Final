@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A7495FC3239655F400C120DC /* FirebaseEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7495FC2239655F400C120DC /* FirebaseEndPoint.swift */; };
+		A7495FC5239670A200C120DC /* FirebaseNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7495FC4239670A200C120DC /* FirebaseNetworkManager.swift */; };
+		A7495FC62396714600C120DC /* FirebaseNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7495FC4239670A200C120DC /* FirebaseNetworkManager.swift */; };
+		A7495FC72396714A00C120DC /* FirebaseEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7495FC2239655F400C120DC /* FirebaseEndPoint.swift */; };
+		A7495FC923967A7100C120DC /* RepositoriesBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7495FC823967A7100C120DC /* RepositoriesBase.swift */; };
+		A7495FCA23967BBD00C120DC /* RepositoriesBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7495FC823967A7100C120DC /* RepositoriesBase.swift */; };
 		A7525B582392F80700AD8587 /* StartAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7525B572392F80700AD8587 /* StartAppViewController.swift */; };
 		A7525B5A239301DA00AD8587 /* LogOutCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7525B59239301DA00AD8587 /* LogOutCommand.swift */; };
 		A7525B6423942D8600AD8587 /* EndPointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7525B6323942D8600AD8587 /* EndPointType.swift */; };
@@ -93,6 +99,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A7495FC2239655F400C120DC /* FirebaseEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseEndPoint.swift; sourceTree = "<group>"; };
+		A7495FC4239670A200C120DC /* FirebaseNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseNetworkManager.swift; sourceTree = "<group>"; };
+		A7495FC823967A7100C120DC /* RepositoriesBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesBase.swift; sourceTree = "<group>"; };
 		A7525B572392F80700AD8587 /* StartAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartAppViewController.swift; sourceTree = "<group>"; };
 		A7525B59239301DA00AD8587 /* LogOutCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutCommand.swift; sourceTree = "<group>"; };
 		A7525B6323942D8600AD8587 /* EndPointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointType.swift; sourceTree = "<group>"; };
@@ -166,9 +175,11 @@
 		A7525B5C23942D1000AD8587 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A7495FC823967A7100C120DC /* RepositoriesBase.swift */,
 				A7FE06AC238C49F20093F07A /* RepoModel.swift */,
-				A7525B8123945D3200AD8587 /* LoginModel.swift */,
 				A7525B8323945F0D00AD8587 /* RepoFromGit.swift */,
+				A7525B8123945D3200AD8587 /* LoginModel.swift */,
+				A7FE06AA238C46880093F07A /* ProjectModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -188,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				A7525B7D2394444300AD8587 /* GitHubEndPoint.swift */,
+				A7495FC2239655F400C120DC /* FirebaseEndPoint.swift */,
 			);
 			path = EndPoint;
 			sourceTree = "<group>";
@@ -196,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				A7525B7F239447A200AD8587 /* GitHubNetworkManager.swift */,
+				A7495FC4239670A200C120DC /* FirebaseNetworkManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -270,7 +283,6 @@
 			children = (
 				A7FE0688238BE7F30093F07A /* ProjectsTableVC.swift */,
 				A7FE0698238BEA3C0093F07A /* ProjectVC.swift */,
-				A7FE06AA238C46880093F07A /* ProjectModel.swift */,
 				A7B481E4239260A500AFA19E /* ProjectViewController.swift */,
 				A7B481E62392643600AFA19E /* DescriptionTableViewCell.swift */,
 				A7B481E82392705600AFA19E /* RepoTableViewCell.swift */,
@@ -418,6 +430,7 @@
 				A7A5DE70239592C2004271D9 /* RepositoryWebViewController.swift in Sources */,
 				A77404FA23912FFC0038851E /* UserDefExt.swift in Sources */,
 				A796F3352395AB4D007D7E51 /* RepositoriesTableViewCell.swift in Sources */,
+				A7495FC3239655F400C120DC /* FirebaseEndPoint.swift in Sources */,
 				A7525B702394336400AD8587 /* NetworkRouter.swift in Sources */,
 				A7525B7E2394444300AD8587 /* GitHubEndPoint.swift in Sources */,
 				A7525B6823942E9C00AD8587 /* HTTPTask.swift in Sources */,
@@ -430,11 +443,13 @@
 				A7525B6A23942F7400AD8587 /* ParameterEncodingProtocol.swift in Sources */,
 				A7B481ED2392725400AFA19E /* TasksTableViewCell.swift in Sources */,
 				A7525B722394346200AD8587 /* Router.swift in Sources */,
+				A7495FC5239670A200C120DC /* FirebaseNetworkManager.swift in Sources */,
 				A7B481E92392705600AFA19E /* RepoTableViewCell.swift in Sources */,
 				A7FE069D238BF1B30093F07A /* RepoViewController.swift in Sources */,
 				A7FE069B238BF0E20093F07A /* ReposTableViewController.swift in Sources */,
 				A7525B6E2394327000AD8587 /* JSONParameterEncoder.swift in Sources */,
 				A7525B6623942E4500AD8587 /* HTTPMethod.swift in Sources */,
+				A7495FC923967A7100C120DC /* RepositoriesBase.swift in Sources */,
 				A7B481E5239260A500AFA19E /* ProjectViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -456,9 +471,11 @@
 				A7A5DE532395234A004271D9 /* GitHubNetworkManager.swift in Sources */,
 				A7A5DE5223952347004271D9 /* GitHubEndPoint.swift in Sources */,
 				A7A5DE6E239577CD004271D9 /* JSONParameterEncoderTests.swift in Sources */,
+				A7495FC72396714A00C120DC /* FirebaseEndPoint.swift in Sources */,
 				A7A5DE6823952390004271D9 /* HTTPMethod.swift in Sources */,
 				A7A5DE4F23952341004271D9 /* ParameterEncodingProtocol.swift in Sources */,
 				A7A5DE6C23953CD4004271D9 /* URLParameterEncoderTests.swift in Sources */,
+				A7495FCA23967BBD00C120DC /* RepositoriesBase.swift in Sources */,
 				A7A5DE6223952369004271D9 /* ReposTableViewController.swift in Sources */,
 				A7A5DE5D23952364004271D9 /* ProjectViewController.swift in Sources */,
 				A7A5DE5C23952364004271D9 /* ProjectModel.swift in Sources */,
@@ -477,6 +494,7 @@
 				A796F33323959815007D7E51 /* RepositoryWebViewController.swift in Sources */,
 				A7A5DE4C23952319004271D9 /* RootViewController.swift in Sources */,
 				A7A5DE4D23952326004271D9 /* StartAppViewController.swift in Sources */,
+				A7495FC62396714600C120DC /* FirebaseNetworkManager.swift in Sources */,
 				A7A5DE6A23952390004271D9 /* NetworkRouter.swift in Sources */,
 				A7A5DE5723952357004271D9 /* Registration.swift in Sources */,
 			);

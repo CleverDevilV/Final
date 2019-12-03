@@ -8,14 +8,14 @@
 
 import Foundation
 
-struct RepoFromGit: Codable {
-	var id: Int
-	var name: String
-	var html_url: String
-	var language: String?
-	var owner: Owner
-	
-	struct Owner: Codable {
-		var login: String
-	}
-}
+//struct RepoFromGit: Codable {
+//	var id: Int
+//	var name: String
+//	var html_url: String
+//	var language: String?
+//	var owner: Owner
+//	
+//	struct Owner: Codable {
+//		var login: String
+//	}
+//}

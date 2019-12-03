@@ -98,7 +98,7 @@ extension ProjectViewController: RepoTableCellDelegate {
 					let name = url.pathComponents.last
 					guard let repoName = name else {return}
 					
-					self.netWorkService.getUserLogin(endPoint: GitHubApi.oneRepo(url: repoName)) {
+					self.netWorkService.getGitHubData(endPoint: GitHubApi.oneRepo(url: repoName)) {
 						repo, error in
 						self.project?.repo = repo as? Repository
 						self.project?.repoUrl = url
@@ -133,14 +133,14 @@ extension ProjectViewController: RepoTableCellDelegate {
 				let okAction = UIAlertAction(title: "OK", style: .default, handler: {
 					_ in
 					
-					let textField = addRepoAlertController.textFields?[0] as! UITextField
+					let textField = addRepoAlertController.textFields![0] 
 					
 					if let text = textField.text {
 						let url = URL(string: text.replacingOccurrences(of: ".git", with: ""))!
 						let name = url.pathComponents.last
 						guard let repoName = name else {return}
 						
-						self.netWorkService.getUserLogin(endPoint: GitHubApi.oneRepo(url: repoName)) {
+						self.netWorkService.getGitHubData(endPoint: GitHubApi.oneRepo(url: repoName)) {
 							repo, error in
 							self.project?.repo = repo as? Repository
 							self.project?.repoUrl = url

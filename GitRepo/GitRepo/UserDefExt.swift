@@ -11,14 +11,15 @@ import Foundation
 enum UserDefaultsKeys : String {
 	case permission_denied
 	case access_token
-	case gist_id
 	case login
+	case firebase_apiKey = "AIzaSyC5e_n2lvpzIxoT3ZASjE6ZQXrE35_ou-o"
 }
 
 enum UserDefaultsType : String {
 	case oauth_permission_denied
 	case oauth_access_token
 	case oauth_user_login
+	case firebase_apiKey
 }
 
 extension UserDefaults {
@@ -51,6 +52,9 @@ extension UserDefaults {
 			return (string(forKey: UserDefaultsKeys.access_token.rawValue) ?? String())
 		case .oauth_user_login:
 			return (string(forKey: UserDefaultsKeys.login.rawValue) ?? String())
+		case .firebase_apiKey:
+			return "AIzaSyC5e_n2lvpzIxoT3ZASjE6ZQXrE35_ou-o"
+			
 		}
 	}
 	
@@ -62,6 +66,8 @@ extension UserDefaults {
 			return ((string(forKey: UserDefaultsKeys.access_token.rawValue) ?? String()).isEmpty) ? false : true
 		case .oauth_user_login:
 			return ((string(forKey: UserDefaultsKeys.login.rawValue) ?? String()).isEmpty) ? false : true
+		case .firebase_apiKey:
+			return ((string(forKey: UserDefaultsKeys.firebase_apiKey.rawValue) ?? String()).isEmpty) ? false : true
 		}
 	}
 	
@@ -73,6 +79,8 @@ extension UserDefaults {
 			UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.access_token.rawValue)
 		case .oauth_user_login:
 			UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.login.rawValue)
+		case .firebase_apiKey:
+			UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.firebase_apiKey.rawValue)
 		}
 	}
 }

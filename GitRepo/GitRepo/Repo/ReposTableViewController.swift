@@ -14,19 +14,14 @@ class ReposTableViewController: UIViewController {
 	private let network = GitHubNetworkManager()
 	
 	private var tableView: UITableView!
-	private var repos: [Repository]! {
+	private var repositoryBase: RepositoriesBase?
+	private var repositories: [Repository]! {
 		didSet {
-				DispatchQueue.main.async {
-					if self.segmentControl.selectedSegmentIndex == 0{
-						self.repos = self.repos.filter({$0.owner?.login == "CleverDevilV"})
-//						self.repos.sort{$0.name < $1.name}
-						self.tableView.reloadData()
-					} else {
-//						self.repos.sort{$0.name < $1.name}
-						self.tableView.reloadData()
-					}
-//
-					
+			DispatchQueue.main.async {
+				if self.segmentControl.selectedSegmentIndex == 0 {
+					self.repositories = self.repositoryBase?.repositories.filter({$0.owner?.login == self.repositoryBase?.userName})
+				}
+				self.tableView.reloadData()
 			}
 		}
 	}
@@ -54,14 +49,15 @@ class ReposTableViewController: UIViewController {
     }
 	
 	func downloadData() {
-		network.getUserLogin(endPoint: GitHubApi.repos) {
+		network.getGitHubData(endPoint: GitHubApi.repos) {
 			result, error in
 			if error != nil {
 				print(error!)
 			}
-			guard let result = result as? [Repository] else { return }
-
-			self.repos = result
+			guard let result = result as? RepositoriesBase else { return }
+			
+			self.repositoryBase = result
+			self.repositories = result.repositories
 			DispatchQueue.main.async {
 				self.tableView.reloadData()
 			}
@@ -85,30 +81,23 @@ class ReposTableViewController: UIViewController {
 	
 	@objc
 	func segmentChanged() {
-		downloadData()
-//		if segmentControl.selectedSegmentIndex == 0, !(repos?.isEmpty ?? true) {
-//			repos = repos.filter({$0.owner == "CleverDevilV"})
-//			tableView.reloadData()
-//		} else {
-//			repos = repos
-//		}
+		if segmentControl.selectedSegmentIndex == 0, !(repositories?.isEmpty ?? true) {
+			repositories = repositoryBase?.repositories.filter({$0.owner?.login == repositoryBase?.userName})
+		} else {
+			repositories = repositoryBase?.repositories
+		}
 	}
 	
 }
 
 extension ReposTableViewController: UITableViewDataSource {
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return repos?.count ?? 0
+		return repositories?.count ?? 0
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		var cell = tableView.dequeueReusableCell(withIdentifier: RepositoriesTableViewCell.repositoriesCellReuseId, for: indexPath) as! RepositoriesTableViewCell
-		cell.repository = repos[indexPath.row]
-//		cell = UITableViewCell(style: .subtitle, reuseIdentifier: "Cell")
-//		let repo = repos[indexPath.row]
-//		cell.textLabel?.text = "\(repo.name ?? "")"
-//		cell.detailTextLabel?.text = "Ownrer: \(repo.owner?.login ?? "")   Language: \(repo.languageOfProject ?? "")"
-//		cell.accessoryType = .disclosureIndicator
+		let cell = tableView.dequeueReusableCell(withIdentifier: RepositoriesTableViewCell.repositoriesCellReuseId, for: indexPath) as! RepositoriesTableViewCell
+		cell.repository = repositories[indexPath.row]
 		
 		cell.backgroundColor = .clear
 		return cell
@@ -120,7 +109,7 @@ extension ReposTableViewController: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		let destinationVC = RepoViewController()
 		
-		destinationVC.repo = repos[indexPath.row]
+		destinationVC.repo = repositories[indexPath.row]
 		
 		navigationController?.pushViewController(destinationVC, animated: true)
 	}

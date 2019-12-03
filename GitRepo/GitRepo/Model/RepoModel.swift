@@ -10,7 +10,7 @@
 import UIKit
 
 /// Class for Repository from GitHub
-class Repository: Decodable {
+final class Repository: Decodable {
 	
 	/// Name of repository
 	public var name: String?

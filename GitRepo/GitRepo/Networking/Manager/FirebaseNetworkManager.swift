@@ -1,16 +1,16 @@
 //
-//  GitHubNetworkManager.swift
+//  FirebaseNetworkManager.swift
 //  GitRepo
 //
-//  Created by Дарья Витер on 01/12/2019.
+//  Created by Дарья Витер on 03/12/2019.
 //  Copyright © 2019 Viter. All rights reserved.
 //
 
 import Foundation
 
-struct GitHubNetworkManager {
+struct FirebaseNetworkManager {
 	
-	private let router = Router<GitHubApi>(with: URLSession.init(configuration: .default))
+	private let router = Router<FirebaseApi>(with: URLSession.init(configuration: .default))
 	
 	enum Result<String> {
 		case success
@@ -44,8 +44,8 @@ struct GitHubNetworkManager {
 	//
 	//	8. В случае ошибки просто передаем ошибку в completion.
 	
-	func getGitHubData(endPoint: EndPointType?, completion: @escaping (_ movie: Any?, _ error: String?) -> ()) {
-		guard let endPoint = endPoint as? GitHubApi else {
+	func getFirebaseData(endPoint: EndPointType?, completion: @escaping (_ movie: Any?, _ error: String?) -> ()) {
+		guard let endPoint = endPoint as? FirebaseApi else {
 			completion(nil, "Unknown end point")
 			return
 			
@@ -65,16 +65,15 @@ struct GitHubNetworkManager {
 					}
 					
 					do {
-//						let text = try? JSONSerialization.jsonObject(with: responseData, options: [])
+						let text = try? JSONSerialization.jsonObject(with: responseData, options: [])
 						switch endPoint {
-						case .user:
-							let apiResponse = try JSONDecoder().decode(Owner.self, from: responseData)
-							completion(apiResponse.login, nil)
-						case .repos:
-							let repositories = RepositoriesBase(with: responseData)
-//							let newResponse = try JSONDecoder().decode([Repository].self, from: responseData)
-							completion(repositories, nil)
-						case .oneRepo:
+						case .getProjects:
+							let apiResponse = try JSONDecoder().decode([String : [String:Project]].self, from: responseData)
+							completion(apiResponse, nil)
+						case .uploadProjects:
+							let newResponse = try JSONDecoder().decode([Repository].self, from: responseData)
+							completion(newResponse, nil)
+						case .oneProject(let url):
 							let newResponse = try JSONDecoder().decode(Repository.self, from: responseData)
 							completion(newResponse, nil)
 						}
@@ -89,17 +88,4 @@ struct GitHubNetworkManager {
 			}
 		}
 	}
-}
-
-// Создайте перечисление NetworkResponse в NetworkManager.
-// Мы используем это перечисление при обработке ответов на запросы и будем выводить соответствующее сообщение.
-
-enum GitHubNetworkResponse: String {
-	case success
-	case authentificationError = "You need to be auth first"
-	case badRequest = "Bad request"
-	case outdated = "The url requesr outdated"
-	case failed = "Network request failed"
-	case noData = "Response with no data"
-	case unabledToDecode = "We could not decode"
 }

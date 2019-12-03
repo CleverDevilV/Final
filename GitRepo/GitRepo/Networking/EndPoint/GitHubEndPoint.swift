@@ -42,7 +42,7 @@ extension GitHubApi: EndPointType {
 //		}
 //	}
 	
-	/// Base URL for conncting GitHub : https://api.github.com/user
+	/// Base URL for connecting GitHub : https://api.github.com/user
 	var baseURL: URL {
 		switch self {
 		case .oneRepo:

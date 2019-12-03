@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ReposTableViewController: UIViewController {
+class RepositoriesTableViewController: UIViewController {
 	
 //	private var netWork = NetworkService()
 //	private let network = GitHubNetworkManager()
@@ -91,7 +91,7 @@ class ReposTableViewController: UIViewController {
 	
 }
 
-extension ReposTableViewController: UITableViewDataSource {
+extension RepositoriesTableViewController: UITableViewDataSource {
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return repositories?.count ?? 0
 	}
@@ -106,7 +106,7 @@ extension ReposTableViewController: UITableViewDataSource {
 	
 }
 
-extension ReposTableViewController: UITableViewDelegate {
+extension RepositoriesTableViewController: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		let destinationVC = RepoViewController()
 		

@@ -55,14 +55,13 @@
 		A7A5DE582395235B004271D9 /* UserDefExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77404F923912FFC0038851E /* UserDefExt.swift */; };
 		A7A5DE592395235D004271D9 /* NetWorkservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE06A4238BFAFE0093F07A /* NetWorkservice.swift */; };
 		A7A5DE5A23952361004271D9 /* ProjectsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE0688238BE7F30093F07A /* ProjectsTableVC.swift */; };
-		A7A5DE5B23952364004271D9 /* ProjectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE0698238BEA3C0093F07A /* ProjectVC.swift */; };
 		A7A5DE5C23952364004271D9 /* ProjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE06AA238C46880093F07A /* ProjectModel.swift */; };
 		A7A5DE5D23952364004271D9 /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B481E4239260A500AFA19E /* ProjectViewController.swift */; };
 		A7A5DE5E23952364004271D9 /* DescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B481E62392643600AFA19E /* DescriptionTableViewCell.swift */; };
 		A7A5DE5F23952364004271D9 /* RepoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B481E82392705600AFA19E /* RepoTableViewCell.swift */; };
 		A7A5DE6023952364004271D9 /* CollaboratorsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B481EA239271A100AFA19E /* CollaboratorsTableViewCell.swift */; };
 		A7A5DE6123952364004271D9 /* TasksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B481EC2392725400AFA19E /* TasksTableViewCell.swift */; };
-		A7A5DE6223952369004271D9 /* ReposTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE069A238BF0E20093F07A /* ReposTableViewController.swift */; };
+		A7A5DE6223952369004271D9 /* RepositoriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE069A238BF0E20093F07A /* RepositoriesTableViewController.swift */; };
 		A7A5DE6323952369004271D9 /* RepoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE069C238BF1B30093F07A /* RepoViewController.swift */; };
 		A7A5DE6423952369004271D9 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B481EE2392C26B00AFA19E /* SettingsViewController.swift */; };
 		A7A5DE652395236F004271D9 /* LogOutCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7525B59239301DA00AD8587 /* LogOutCommand.swift */; };
@@ -84,8 +83,7 @@
 		A7FE0689238BE7F30093F07A /* ProjectsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE0688238BE7F30093F07A /* ProjectsTableVC.swift */; };
 		A7FE068E238BE7F40093F07A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7FE068D238BE7F40093F07A /* Assets.xcassets */; };
 		A7FE0691238BE7F40093F07A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7FE068F238BE7F40093F07A /* LaunchScreen.storyboard */; };
-		A7FE0699238BEA3C0093F07A /* ProjectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE0698238BEA3C0093F07A /* ProjectVC.swift */; };
-		A7FE069B238BF0E20093F07A /* ReposTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE069A238BF0E20093F07A /* ReposTableViewController.swift */; };
+		A7FE069B238BF0E20093F07A /* RepositoriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE069A238BF0E20093F07A /* RepositoriesTableViewController.swift */; };
 		A7FE069D238BF1B30093F07A /* RepoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE069C238BF1B30093F07A /* RepoViewController.swift */; };
 		A7FE069F238BF3510093F07A /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE069E238BF3510093F07A /* RootViewController.swift */; };
 		A7FE06A1238BF4540093F07A /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE06A0238BF4540093F07A /* BaseTabBarController.swift */; };
@@ -144,8 +142,7 @@
 		A7FE068D238BE7F40093F07A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A7FE0690238BE7F40093F07A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A7FE0692238BE7F40093F07A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A7FE0698238BEA3C0093F07A /* ProjectVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectVC.swift; sourceTree = "<group>"; };
-		A7FE069A238BF0E20093F07A /* ReposTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposTableViewController.swift; sourceTree = "<group>"; };
+		A7FE069A238BF0E20093F07A /* RepositoriesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesTableViewController.swift; sourceTree = "<group>"; };
 		A7FE069C238BF1B30093F07A /* RepoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoViewController.swift; sourceTree = "<group>"; };
 		A7FE069E238BF3510093F07A /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		A7FE06A0238BF4540093F07A /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
@@ -197,6 +194,29 @@
 				A7FE06A4238BFAFE0093F07A /* NetWorkservice.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		A73FC6982396CBF6000F9F5C /* ProjectViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A7B481E4239260A500AFA19E /* ProjectViewController.swift */,
+				A7B481E62392643600AFA19E /* DescriptionTableViewCell.swift */,
+				A7B481E82392705600AFA19E /* RepoTableViewCell.swift */,
+				A7B481EA239271A100AFA19E /* CollaboratorsTableViewCell.swift */,
+				A7B481EC2392725400AFA19E /* TasksTableViewCell.swift */,
+				A7A5DE6F239592C2004271D9 /* RepositoryWebViewController.swift */,
+				A785A78A2396BF7A0040D4CD /* TasksTableViewController.swift */,
+			);
+			path = ProjectViewController;
+			sourceTree = "<group>";
+		};
+		A73FC6992396CC13000F9F5C /* RepositoriesTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A7FE069A238BF0E20093F07A /* RepositoriesTableViewController.swift */,
+				A796F3342395AB4D007D7E51 /* RepositoriesTableViewCell.swift */,
+			);
+			path = RepositoriesTableViewController;
 			sourceTree = "<group>";
 		};
 		A7495FCB2396837B00C120DC /* GitHub */ = {
@@ -325,14 +345,7 @@
 			isa = PBXGroup;
 			children = (
 				A7FE0688238BE7F30093F07A /* ProjectsTableVC.swift */,
-				A7FE0698238BEA3C0093F07A /* ProjectVC.swift */,
-				A7B481E4239260A500AFA19E /* ProjectViewController.swift */,
-				A7B481E62392643600AFA19E /* DescriptionTableViewCell.swift */,
-				A7B481E82392705600AFA19E /* RepoTableViewCell.swift */,
-				A7B481EA239271A100AFA19E /* CollaboratorsTableViewCell.swift */,
-				A7B481EC2392725400AFA19E /* TasksTableViewCell.swift */,
-				A7A5DE6F239592C2004271D9 /* RepositoryWebViewController.swift */,
-				A785A78A2396BF7A0040D4CD /* TasksTableViewController.swift */,
+				A73FC6982396CBF6000F9F5C /* ProjectViewController */,
 			);
 			path = Project;
 			sourceTree = "<group>";
@@ -340,8 +353,7 @@
 		A7FE06A3238BFAEF0093F07A /* Repo */ = {
 			isa = PBXGroup;
 			children = (
-				A7FE069A238BF0E20093F07A /* ReposTableViewController.swift */,
-				A796F3342395AB4D007D7E51 /* RepositoriesTableViewCell.swift */,
+				A73FC6992396CC13000F9F5C /* RepositoriesTableViewController */,
 				A7FE069C238BF1B30093F07A /* RepoViewController.swift */,
 			);
 			path = Repo;
@@ -481,7 +493,6 @@
 				A7525B7E2394444300AD8587 /* GitHubEndPoint.swift in Sources */,
 				A7525B6823942E9C00AD8587 /* HTTPTask.swift in Sources */,
 				A7FE0689238BE7F30093F07A /* ProjectsTableVC.swift in Sources */,
-				A7FE0699238BEA3C0093F07A /* ProjectVC.swift in Sources */,
 				A7495FCE2396839500C120DC /* ProjectsBase.swift in Sources */,
 				A7FE0687238BE7F30093F07A /* AppDelegate.swift in Sources */,
 				A7525B8423945F0D00AD8587 /* RepoFromGit.swift in Sources */,
@@ -493,7 +504,7 @@
 				A7495FC5239670A200C120DC /* FirebaseNetworkManager.swift in Sources */,
 				A7B481E92392705600AFA19E /* RepoTableViewCell.swift in Sources */,
 				A7FE069D238BF1B30093F07A /* RepoViewController.swift in Sources */,
-				A7FE069B238BF0E20093F07A /* ReposTableViewController.swift in Sources */,
+				A7FE069B238BF0E20093F07A /* RepositoriesTableViewController.swift in Sources */,
 				A7525B6E2394327000AD8587 /* JSONParameterEncoder.swift in Sources */,
 				A7525B6623942E4500AD8587 /* HTTPMethod.swift in Sources */,
 				A7495FC923967A7100C120DC /* RepositoriesBase.swift in Sources */,
@@ -509,7 +520,6 @@
 				A7A5DE6123952364004271D9 /* TasksTableViewCell.swift in Sources */,
 				A7495FCF239683AC00C120DC /* ProjectsBase.swift in Sources */,
 				A7A5DE6323952369004271D9 /* RepoViewController.swift in Sources */,
-				A7A5DE5B23952364004271D9 /* ProjectVC.swift in Sources */,
 				A7A5DE6023952364004271D9 /* CollaboratorsTableViewCell.swift in Sources */,
 				A7A5DE6723952389004271D9 /* Router.swift in Sources */,
 				A7A5DE652395236F004271D9 /* LogOutCommand.swift in Sources */,
@@ -526,7 +536,7 @@
 				A7A5DE4F23952341004271D9 /* ParameterEncodingProtocol.swift in Sources */,
 				A7A5DE6C23953CD4004271D9 /* URLParameterEncoderTests.swift in Sources */,
 				A7495FCA23967BBD00C120DC /* RepositoriesBase.swift in Sources */,
-				A7A5DE6223952369004271D9 /* ReposTableViewController.swift in Sources */,
+				A7A5DE6223952369004271D9 /* RepositoriesTableViewController.swift in Sources */,
 				A7A5DE5D23952364004271D9 /* ProjectViewController.swift in Sources */,
 				A7A5DE5C23952364004271D9 /* ProjectModel.swift in Sources */,
 				A7A5DE592395235D004271D9 /* NetWorkservice.swift in Sources */,

@@ -174,6 +174,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A73FC6962396CAC5000F9F5C /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				A7FE069E238BF3510093F07A /* RootViewController.swift */,
+				A7525B572392F80700AD8587 /* StartAppViewController.swift */,
+				A7525B59239301DA00AD8587 /* LogOutCommand.swift */,
+				A7FE06A0238BF4540093F07A /* BaseTabBarController.swift */,
+				A77404ED239110E90038851E /* Registration.swift */,
+				A7B481EE2392C26B00AFA19E /* SettingsViewController.swift */,
+				A7FE06A2238BFAE20093F07A /* Project */,
+				A7FE06A3238BFAEF0093F07A /* Repo */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		A73FC6972396CAF2000F9F5C /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				A7FE0686238BE7F30093F07A /* AppDelegate.swift */,
+				A77404F923912FFC0038851E /* UserDefExt.swift */,
+				A7FE06A4238BFAFE0093F07A /* NetWorkservice.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		A7495FCB2396837B00C120DC /* GitHub */ = {
 			isa = PBXGroup;
 			children = (
@@ -283,20 +308,11 @@
 		A7FE0685238BE7F30093F07A /* GitRepo */ = {
 			isa = PBXGroup;
 			children = (
+				A73FC6962396CAC5000F9F5C /* ViewControllers */,
 				A7525B5E23942D2000AD8587 /* Networking */,
 				A7525B5C23942D1000AD8587 /* Model */,
 				A7525B5B23942D0000AD8587 /* Application */,
-				A7FE0686238BE7F30093F07A /* AppDelegate.swift */,
-				A7FE069E238BF3510093F07A /* RootViewController.swift */,
-				A7525B572392F80700AD8587 /* StartAppViewController.swift */,
-				A7525B59239301DA00AD8587 /* LogOutCommand.swift */,
-				A7FE06A0238BF4540093F07A /* BaseTabBarController.swift */,
-				A77404ED239110E90038851E /* Registration.swift */,
-				A77404F923912FFC0038851E /* UserDefExt.swift */,
-				A7FE06A4238BFAFE0093F07A /* NetWorkservice.swift */,
-				A7FE06A2238BFAE20093F07A /* Project */,
-				A7FE06A3238BFAEF0093F07A /* Repo */,
-				A7B481EE2392C26B00AFA19E /* SettingsViewController.swift */,
+				A73FC6972396CAF2000F9F5C /* Service */,
 				A7FE068D238BE7F40093F07A /* Assets.xcassets */,
 				A7FE068F238BE7F40093F07A /* LaunchScreen.storyboard */,
 				A7FE0692238BE7F40093F07A /* Info.plist */,

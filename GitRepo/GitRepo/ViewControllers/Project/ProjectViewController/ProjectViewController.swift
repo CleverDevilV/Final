@@ -22,7 +22,8 @@ class ProjectViewController: UIViewController {
 		title = project?.projectName
 		
 		tableView = UITableView(frame: view.frame, style: .plain)
-		tableView.backgroundColor = UIColor(red: 1, green: 0.5781051517, blue: 0, alpha: 0.04508240583) 
+		tableView.backgroundColor = UIColor(red: 1, green: 0.5781051517, blue: 0, alpha: 0.04508240583)
+		tableView.separatorStyle = .none
 		
 		tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
 		tableView.register(DescriptionTableViewCell.self, forCellReuseIdentifier: DescriptionTableViewCell.descriptionReuseId)
@@ -166,7 +167,7 @@ extension ProjectViewController: RepoTableCellDelegate {
 			let viewRepository = UIAlertAction(title: "Открыть станицу репозитория в приложении", style: .default, handler: {
 				_ in
 				let destinationView = RepoViewController()
-				destinationView.repo = self.project?.repo
+				destinationView.repository = self.project?.repo
 				self.navigationController?.pushViewController(destinationView, animated: true)
 			})
 			

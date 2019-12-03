@@ -100,6 +100,7 @@ extension RepositoriesTableViewController: UITableViewDataSource {
 		let cell = tableView.dequeueReusableCell(withIdentifier: RepositoriesTableViewCell.repositoriesCellReuseId, for: indexPath) as! RepositoriesTableViewCell
 		cell.repository = repositories[indexPath.row]
 		
+		cell.accessoryType = .disclosureIndicator
 		cell.backgroundColor = .clear
 		return cell
 	}
@@ -110,7 +111,7 @@ extension RepositoriesTableViewController: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		let destinationVC = RepoViewController()
 		
-		destinationVC.repo = repositories[indexPath.row]
+		destinationVC.repository = repositories[indexPath.row]
 		
 		navigationController?.pushViewController(destinationVC, animated: true)
 	}

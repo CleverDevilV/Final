@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A73FC69B2396CFE6000F9F5C /* OwnerAndViewButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73FC69A2396CFE6000F9F5C /* OwnerAndViewButtonTableViewCell.swift */; };
+		A73FC69C2396D087000F9F5C /* OwnerAndViewButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73FC69A2396CFE6000F9F5C /* OwnerAndViewButtonTableViewCell.swift */; };
 		A7495FC3239655F400C120DC /* FirebaseEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7495FC2239655F400C120DC /* FirebaseEndPoint.swift */; };
 		A7495FC5239670A200C120DC /* FirebaseNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7495FC4239670A200C120DC /* FirebaseNetworkManager.swift */; };
 		A7495FC62396714600C120DC /* FirebaseNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7495FC4239670A200C120DC /* FirebaseNetworkManager.swift */; };
@@ -103,6 +105,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A73FC69A2396CFE6000F9F5C /* OwnerAndViewButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerAndViewButtonTableViewCell.swift; sourceTree = "<group>"; };
 		A7495FC2239655F400C120DC /* FirebaseEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseEndPoint.swift; sourceTree = "<group>"; };
 		A7495FC4239670A200C120DC /* FirebaseNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseNetworkManager.swift; sourceTree = "<group>"; };
 		A7495FC823967A7100C120DC /* RepositoriesBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesBase.swift; sourceTree = "<group>"; };
@@ -355,6 +358,7 @@
 			children = (
 				A73FC6992396CC13000F9F5C /* RepositoriesTableViewController */,
 				A7FE069C238BF1B30093F07A /* RepoViewController.swift */,
+				A73FC69A2396CFE6000F9F5C /* OwnerAndViewButtonTableViewCell.swift */,
 			);
 			path = Repo;
 			sourceTree = "<group>";
@@ -478,6 +482,7 @@
 				A7FE06AB238C46880093F07A /* ProjectModel.swift in Sources */,
 				A785A78B2396BF7A0040D4CD /* TasksTableViewController.swift in Sources */,
 				A7FE06AD238C49F20093F07A /* RepoModel.swift in Sources */,
+				A73FC69B2396CFE6000F9F5C /* OwnerAndViewButtonTableViewCell.swift in Sources */,
 				A7B481EF2392C26B00AFA19E /* SettingsViewController.swift in Sources */,
 				A7525B80239447A200AD8587 /* GitHubNetworkManager.swift in Sources */,
 				A77404EE239110E90038851E /* Registration.swift in Sources */,
@@ -528,6 +533,7 @@
 				A785A77F2396A7CF0040D4CD /* ProjectForUploadToBack.swift in Sources */,
 				A7A5DE6623952382004271D9 /* EndPointType.swift in Sources */,
 				A785A78C2396C0450040D4CD /* TasksTableViewController.swift in Sources */,
+				A73FC69C2396D087000F9F5C /* OwnerAndViewButtonTableViewCell.swift in Sources */,
 				A7A5DE532395234A004271D9 /* GitHubNetworkManager.swift in Sources */,
 				A7A5DE5223952347004271D9 /* GitHubEndPoint.swift in Sources */,
 				A7A5DE6E239577CD004271D9 /* JSONParameterEncoderTests.swift in Sources */,

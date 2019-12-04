@@ -23,6 +23,7 @@ class SegmentCommitsBranchesTableViewCell: UITableViewCell {
 	}
 	
 	private var segmentControl = UISegmentedControl(items: ["Коммиты", "Ветки"])
+	private var tableViewForCommitsOrBranches = UITableView()
 	
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: .default, reuseIdentifier: reuseIdentifier)
@@ -44,13 +45,21 @@ class SegmentCommitsBranchesTableViewCell: UITableViewCell {
 		segmentControl.sizeToFit()
 		segmentControl.selectedSegmentIndex = 0
 		segmentControl.addTarget(self, action: #selector(segmentValueChanged), for: .valueChanged)
-//		segmentControl.sendActions(for: .valueChanged)
+		
+		
+		tableViewForCommitsOrBranches.backgroundColor = .white
+		tableViewForCommitsOrBranches.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+
+		tableViewForCommitsOrBranches.dataSource = self
+		tableViewForCommitsOrBranches.delegate = self
 		
 		// add to contentView
 		contentView.addSubview(segmentControl)
+		contentView.addSubview(tableViewForCommitsOrBranches)
 		
 		// translatesAutoresizingMaskIntoConstraints
 		segmentControl.translatesAutoresizingMaskIntoConstraints = false
+		tableViewForCommitsOrBranches.translatesAutoresizingMaskIntoConstraints = false
 	}
 	
 	override func updateConstraints() {
@@ -61,8 +70,15 @@ class SegmentCommitsBranchesTableViewCell: UITableViewCell {
 			segmentControl.centerXAnchor.constraint(equalTo: contentView.centerXAnchor, constant: 0),
 			segmentControl.leadingAnchor.constraint(greaterThanOrEqualTo: contentView.leadingAnchor, constant: 20),
 			segmentControl.trailingAnchor.constraint(greaterThanOrEqualTo: contentView.leadingAnchor, constant: -10),
-			segmentControl.heightAnchor.constraint(equalToConstant: 30),
-			segmentControl.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
+			segmentControl.heightAnchor.constraint(equalToConstant: 30)
+			])
+		
+		NSLayoutConstraint.activate([
+			tableViewForCommitsOrBranches.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 50),
+			tableViewForCommitsOrBranches.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+			tableViewForCommitsOrBranches.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+			tableViewForCommitsOrBranches.heightAnchor.constraint(equalToConstant: 300),
+			tableViewForCommitsOrBranches.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
 			])
 		
 		super.updateConstraints()
@@ -90,6 +106,45 @@ class SegmentCommitsBranchesTableViewCell: UITableViewCell {
 	@objc
 	func segmentValueChanged() {
 		delegate.setSegmentControllerValue(segmentControl.selectedSegmentIndex)
+		tableViewForCommitsOrBranches.reloadData()
 	}
+	
+}
+
+extension SegmentCommitsBranchesTableViewCell: UITableViewDataSource {
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		if segmentControl.selectedSegmentIndex == 0 {
+			return repository?.commits?.count ?? 0
+		} else {
+			return repository?.branches?.count ?? 0
+		}
+	}
+	
+	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		var cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+		
+		switch segmentControl.selectedSegmentIndex {
+		case nil, 0:
+			let commitMessage = repository?.commits?[indexPath.row].message ?? ""
+			let commitDate = repository?.commits?[indexPath.row].getCommitDate()
+
+			cell = UITableViewCell(style: .subtitle, reuseIdentifier: "Cell")
+			cell.textLabel?.text = commitMessage
+			cell.textLabel?.numberOfLines = 0
+			cell.accessoryType = .disclosureIndicator
+			cell.detailTextLabel?.text = "\(commitDate!)"
+		default:
+			let brancheName = repository?.branches?[indexPath.row].name ?? ""
+			cell.textLabel?.text = brancheName
+			cell.accessoryType = .none
+		}
+		
+//		cell.textLabel?.text = "\(indexPath)"
+		
+		return cell
+	}
+}
+
+extension SegmentCommitsBranchesTableViewCell: UITableViewDelegate {
 	
 }

@@ -50,6 +50,10 @@
 		A777637E2397C83B007859CA /* BranchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A777637C2397C7E1007859CA /* BranchModel.swift */; };
 		A77763802398190C007859CA /* AddViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A777637F2398190C007859CA /* AddViewTableViewCell.swift */; };
 		A777638123981AA9007859CA /* AddViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A777637F2398190C007859CA /* AddViewTableViewCell.swift */; };
+		A777638423983711007859CA /* LoginSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A777638323983711007859CA /* LoginSettingsTableViewCell.swift */; };
+		A7776385239837DE007859CA /* LoginSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A777638323983711007859CA /* LoginSettingsTableViewCell.swift */; };
+		A7776387239838F1007859CA /* LogoutSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7776386239838F1007859CA /* LogoutSettingsTableViewCell.swift */; };
+		A7776388239839BA007859CA /* LogoutSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7776386239838F1007859CA /* LogoutSettingsTableViewCell.swift */; };
 		A785A77E2396A73B0040D4CD /* ProjectForUploadToBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A785A77D2396A73B0040D4CD /* ProjectForUploadToBack.swift */; };
 		A785A77F2396A7CF0040D4CD /* ProjectForUploadToBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A785A77D2396A73B0040D4CD /* ProjectForUploadToBack.swift */; };
 		A785A78B2396BF7A0040D4CD /* TasksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A785A78A2396BF7A0040D4CD /* TasksTableViewController.swift */; };
@@ -151,6 +155,8 @@
 		A77763792397BDF9007859CA /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
 		A777637C2397C7E1007859CA /* BranchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchModel.swift; sourceTree = "<group>"; };
 		A777637F2398190C007859CA /* AddViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewTableViewCell.swift; sourceTree = "<group>"; };
+		A777638323983711007859CA /* LoginSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSettingsTableViewCell.swift; sourceTree = "<group>"; };
+		A7776386239838F1007859CA /* LogoutSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		A785A77D2396A73B0040D4CD /* ProjectForUploadToBack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectForUploadToBack.swift; sourceTree = "<group>"; };
 		A785A78A2396BF7A0040D4CD /* TasksTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksTableViewController.swift; sourceTree = "<group>"; };
 		A796F3342395AB4D007D7E51 /* RepositoriesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesTableViewCell.swift; sourceTree = "<group>"; };
@@ -206,8 +212,8 @@
 				A7525B59239301DA00AD8587 /* LogOutCommand.swift */,
 				A7FE06A0238BF4540093F07A /* BaseTabBarController.swift */,
 				A77404ED239110E90038851E /* Registration.swift */,
-				A7B481EE2392C26B00AFA19E /* SettingsViewController.swift */,
 				A7A5DE6F239592C2004271D9 /* SomeUrlWebViewController.swift */,
+				A7776382239836E9007859CA /* SettingsViewController */,
 				A7FE06A2238BFAE20093F07A /* Project */,
 				A7FE06A3238BFAEF0093F07A /* Repo */,
 			);
@@ -337,6 +343,16 @@
 				A77763732396F089007859CA /* DiamondLoad.swift */,
 			);
 			path = Animation;
+			sourceTree = "<group>";
+		};
+		A7776382239836E9007859CA /* SettingsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A7B481EE2392C26B00AFA19E /* SettingsViewController.swift */,
+				A777638323983711007859CA /* LoginSettingsTableViewCell.swift */,
+				A7776386239838F1007859CA /* LogoutSettingsTableViewCell.swift */,
+			);
+			path = SettingsViewController;
 			sourceTree = "<group>";
 		};
 		A7FE067A238BE7F30093F07A = {
@@ -514,6 +530,7 @@
 				A7FE069F238BF3510093F07A /* RootViewController.swift in Sources */,
 				A7FE06AB238C46880093F07A /* ProjectModel.swift in Sources */,
 				A785A78B2396BF7A0040D4CD /* TasksTableViewController.swift in Sources */,
+				A7776387239838F1007859CA /* LogoutSettingsTableViewCell.swift in Sources */,
 				A7FE06AD238C49F20093F07A /* RepoModel.swift in Sources */,
 				A73FC69B2396CFE6000F9F5C /* OwnerAndViewButtonTableViewCell.swift in Sources */,
 				A7B481EF2392C26B00AFA19E /* SettingsViewController.swift in Sources */,
@@ -542,6 +559,7 @@
 				A7525B8223945D3200AD8587 /* LoginModel.swift in Sources */,
 				A7525B6A23942F7400AD8587 /* ParameterEncodingProtocol.swift in Sources */,
 				A7B481ED2392725400AFA19E /* TasksTableViewCell.swift in Sources */,
+				A777638423983711007859CA /* LoginSettingsTableViewCell.swift in Sources */,
 				A7525B722394346200AD8587 /* Router.swift in Sources */,
 				A7495FC5239670A200C120DC /* FirebaseNetworkManager.swift in Sources */,
 				A7B481E92392705600AFA19E /* RepoTableViewCell.swift in Sources */,
@@ -575,6 +593,7 @@
 				A7A5DE5E23952364004271D9 /* DescriptionTableViewCell.swift in Sources */,
 				A73FC69F2396D81E000F9F5C /* SegmentCommitsBranchesTableViewCell.swift in Sources */,
 				A785A77F2396A7CF0040D4CD /* ProjectForUploadToBack.swift in Sources */,
+				A7776388239839BA007859CA /* LogoutSettingsTableViewCell.swift in Sources */,
 				A7A5DE6623952382004271D9 /* EndPointType.swift in Sources */,
 				A785A78C2396C0450040D4CD /* TasksTableViewController.swift in Sources */,
 				A73FC69C2396D087000F9F5C /* OwnerAndViewButtonTableViewCell.swift in Sources */,
@@ -585,6 +604,7 @@
 				A77763782397BB4B007859CA /* NetworkManagerProtocol.swift in Sources */,
 				A7495FC72396714A00C120DC /* FirebaseEndPoint.swift in Sources */,
 				A7A5DE6823952390004271D9 /* HTTPMethod.swift in Sources */,
+				A7776385239837DE007859CA /* LoginSettingsTableViewCell.swift in Sources */,
 				A7A5DE4F23952341004271D9 /* ParameterEncodingProtocol.swift in Sources */,
 				A7A5DE6C23953CD4004271D9 /* URLParameterEncoderTests.swift in Sources */,
 				A7495FCA23967BBD00C120DC /* RepositoriesBase.swift in Sources */,

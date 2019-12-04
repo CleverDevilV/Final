@@ -29,6 +29,8 @@ class RepoViewController: UIViewController {
 	
 	func setupViews() {
 		
+		self.tabBarController?.tabBar.isHidden = true
+		
 //		tableViewFrame = CGRect(origin: view.frame.origin, size: CGSize(width: view.frame.width, height: 315))
 		
 		tableViewWithLabelsAndButtons = UITableView(frame: CGRect.zero, style: .plain)

@@ -55,6 +55,13 @@ class RootViewController: UIViewController {
 		}
 	}
 	
+	func switchToLogout() {
+		let loginVC = StartAppViewController()
+		let logouScreen = UINavigationController(rootViewController: loginVC)
+		
+		animateFadeTransition(to: logouScreen)
+	}
+	
 	
 	
 	/*

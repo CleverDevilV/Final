@@ -31,6 +31,7 @@ class RepositoriesTableViewController: UIViewController {
         super.viewDidLoad()
 		
 		view.backgroundColor = .white
+		self.tabBarController?.tabBar.isHidden = false
 		
 		tableView = UITableView(frame: view.frame, style: .plain)
 		tableView.backgroundColor = UIColor(red: 1, green: 0.5781051517, blue: 0, alpha: 0.04508240583)

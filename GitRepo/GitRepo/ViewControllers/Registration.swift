@@ -186,19 +186,21 @@ extension RequestViewController: WKNavigationDelegate {
 	func handleOAuthResponse(response: OAuthResponse) {
 		DispatchQueue.main.async {
 			UserDefaults.standard.update(with: .oauth_access_token, data: response)
-			self.dismiss(animated: true, completion: nil)
-			AppDelegate.shared.rootViewController.switchMainScreen()
 			
 			let networkManager = GitHubNetworkManager()
 			networkManager.getData(endPoint: GitHubApi.user) {
 				login, error in
-//				print("login: ", login, "error: ", error)
+				
 				guard let login = login as? String else {return}
-				UserDefaults.standard.setupLogin(with: .oauth_user_login, data: login)
+				DispatchQueue.main.async {
+					UserDefaults.standard.setupLogin(with: .oauth_user_login, data: login)
+					
+					self.dismiss(animated: true, completion: nil)
+					AppDelegate.shared.rootViewController.switchToLogout()
+				}
+				
 			}
 			
-//			let network = NetworkService()
-//				network.getUserName()
 			WebCacheCleaner.clear()
 		}
 	}

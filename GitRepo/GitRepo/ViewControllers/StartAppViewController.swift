@@ -19,62 +19,75 @@ class StartAppViewController: UIViewController {
 	private let loadView = DiamondLoad()
 	
 	private var login = UserDefaults.standard.get(with: .oauth_user_login)
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
 		
 		print("login: ", login)
 		
 		setupViews()
 		
-		let networkManagerForFirebase = FirebaseNetworkManager()
-		networkManagerForFirebase.getData(endPoint: FirebaseApi.getProjects){
-			result, error in
-			if error != nil {
-				print(error!)
-			}
-			DispatchQueue.main.async {
-				AppDelegate.shared.projectBase = result as? ProjectsBase
-			}
+		if UserDefaults.standard.isExist(with: .oauth_user_login) {
 			
-			let networlManagerForGitHub = GitHubNetworkManager()
-			networlManagerForGitHub.getData(endPoint: GitHubApi.repos) {
+			let networkManagerForFirebase = FirebaseNetworkManager()
+			networkManagerForFirebase.getData(endPoint: FirebaseApi.getProjects){
 				result, error in
 				if error != nil {
 					print(error!)
 				}
-				
 				DispatchQueue.main.async {
-					AppDelegate.shared.repositoryBase = result as? RepositoriesBase
-					UIView.animate(withDuration: 0.5, delay: 0.3, options: [], animations: {
-						self.welcomeButton.isEnabled = true
-						self.logOutButton.isEnabled = true
-						self.loadView.layer.opacity = 0
-						self.welcomeButton.layer.opacity = 1
-						self.logOutButton.layer.opacity = 1
-					}, completion: nil)
+					AppDelegate.shared.projectBase = result as? ProjectsBase
+				}
+				
+				
+				
+				let networlManagerForGitHub = GitHubNetworkManager()
+				networlManagerForGitHub.getData(endPoint: GitHubApi.repos) {
+					result, error in
+					if error != nil {
+						print(error!)
+					}
+					
+					DispatchQueue.main.async {
+						AppDelegate.shared.repositoryBase = result as? RepositoriesBase
+						UIView.animate(withDuration: 0.5, delay: 0.3, options: [], animations: {
+							self.welcomeButton.isEnabled = true
+							self.logOutButton.isEnabled = true
+							self.loadView.layer.opacity = 0
+							self.welcomeButton.layer.opacity = 1
+							self.logOutButton.layer.opacity = 1
+						}, completion: nil)
+					}
 				}
 			}
-			
 		}
 		
 		
-    }
+	}
 	
 	func setupViews() {
 		
 		view.backgroundColor = .white
+		navigationController?.setNavigationBarHidden(true, animated: true)
 		
 		view.addSubview(greetingLabel)
 		view.addSubview(userLoginLabel)
 		view.addSubview(welcomeButton)
 		view.addSubview(logOutButton)
 		
-		loadView.dotsColor = UIColor(red: 227 / 255, green: 172 / 255, blue: 1, alpha: 1)
-		loadView.frame.size = CGSize(width: 70, height: 70)
-		loadView.center = CGPoint(x: view.center.x, y: view.center.y + 150)
-		loadView.startAnimating()
-		view.addSubview(loadView)
+		if UserDefaults.standard.isExist(with: .oauth_user_login) {
+		
+			loadView.dotsColor = UIColor(red: 227 / 255, green: 172 / 255, blue: 1, alpha: 1)
+			loadView.frame.size = CGSize(width: 70, height: 70)
+			loadView.center = CGPoint(x: view.center.x, y: view.center.y + 150)
+			loadView.startAnimating()
+			view.addSubview(loadView)
+			
+			welcomeButton.layer.opacity = 0
+			logOutButton.layer.opacity = 0
+			welcomeButton.isEnabled = true
+			logOutButton.isEnabled = true
+		}
 		
 		
 		let defWidth = UIScreen.main.bounds.size.width
@@ -84,7 +97,7 @@ class StartAppViewController: UIViewController {
 		welcomeButton.translatesAutoresizingMaskIntoConstraints = false
 		logOutButton.translatesAutoresizingMaskIntoConstraints = false
 		
-	// greetingLabel
+		// greetingLabel
 		let greetingLabelTitle = (login.isEmpty) ? "Привет" : "Привет,"
 		greetingLabel.text = greetingLabelTitle
 		greetingLabel.font = UIFont.systemFont(ofSize: 20)
@@ -98,7 +111,7 @@ class StartAppViewController: UIViewController {
 			greetingLabel.bottomAnchor.constraint(equalTo: userLoginLabel.topAnchor, constant: 25)
 			])
 		
-	// userLoginLabel
+		// userLoginLabel
 		let userLoginLabelTitle = (login.isEmpty) ? "" : login
 		userLoginLabel.text = userLoginLabelTitle
 		userLoginLabel.font = UIFont.systemFont(ofSize: 24)
@@ -109,9 +122,9 @@ class StartAppViewController: UIViewController {
 			userLoginLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0),
 			userLoginLabel.heightAnchor.constraint(equalToConstant: 100),
 			userLoginLabel.widthAnchor.constraint(equalToConstant: defWidth)
-		])
+			])
 		
-	// welcomeButton
+		// welcomeButton
 		let welcomeButtonTitle = (login.isEmpty) ? "Войти" : "Продолжить"
 		welcomeButton.setTitle(welcomeButtonTitle, for: .normal)
 		welcomeButton.setTitleColor(UIColor(red: 1, green: 0.6, blue: 0, alpha: 0.6), for: .normal)
@@ -125,10 +138,10 @@ class StartAppViewController: UIViewController {
 			welcomeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
 			welcomeButton.widthAnchor.constraint(equalToConstant: defWidth / 3),
 			welcomeButton.heightAnchor.constraint(equalToConstant: 50),
-//			welcomeButton.bottomAnchor.constraint(lessThanOrEqualTo: view.bottomAnchor, constant: -50)
+			//			welcomeButton.bottomAnchor.constraint(lessThanOrEqualTo: view.bottomAnchor, constant: -50)
 			])
 		
-	// logOutButton
+		// logOutButton
 		logOutButton.isHidden = login.isEmpty
 		logOutButton.setTitle("Выйти", for: .normal)
 		logOutButton.setTitleColor(UIColor(red: 1, green: 0.6, blue: 0, alpha: 0.8), for: .normal)
@@ -145,10 +158,7 @@ class StartAppViewController: UIViewController {
 			logOutButton.bottomAnchor.constraint(lessThanOrEqualTo: view.bottomAnchor, constant: -50)
 			])
 		
-		welcomeButton.layer.opacity = 0
-		logOutButton.layer.opacity = 0
-		welcomeButton.isEnabled = true
-		logOutButton.isEnabled = true
+		
 	}
 }
 

@@ -19,7 +19,7 @@ class BaseTabBarController: UITabBarController {
 		let repoVC = UINavigationController(rootViewController: RepositoriesTableViewController())
 		repoVC.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 1)
 		
-		let settingsVC = SettingsViewController()
+		let settingsVC = UINavigationController(rootViewController: SettingsViewController())
 		settingsVC.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 2)
 		
 		viewControllers = [projectsVC, repoVC, settingsVC]

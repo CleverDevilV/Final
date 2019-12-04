@@ -10,5 +10,5 @@ import Foundation
 
 struct Branch: Codable {
 	let name: String
-	let commit: Commit
+//	let commit: Commit
 }

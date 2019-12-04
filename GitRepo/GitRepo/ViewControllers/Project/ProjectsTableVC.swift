@@ -44,6 +44,9 @@ class ProjectsTableVC: UIViewController {
 		tableView = UITableView(frame: view.frame, style: .plain)
 		tableView.backgroundColor = UIColor(red: 1, green: 0.5781051517, blue: 0, alpha: 0.04508240583) //#colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 0.04508240583)
 		tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+		
+		tableView.separatorStyle = .none
+		
 		tableView.dataSource = self
 		tableView.delegate = self
 		
@@ -142,7 +145,6 @@ extension ProjectsTableVC: UITableViewDataSource {
 			
 			projectsBase?.removeProject(atIndex: indexPath.row)
 			self.tableView.reloadData()
-//			projects = projectsBase?.projects ?? []
 		}
 	}
 	

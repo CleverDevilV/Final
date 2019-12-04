@@ -68,7 +68,7 @@ struct GitHubNetworkManager: NetworkManagerProtocol {
 					}
 					
 					do {
-//						let text = try? JSONSerialization.jsonObject(with: responseData, options: [])
+						let text = try? JSONSerialization.jsonObject(with: responseData, options: [])
 						switch endPoint {
 						case .user:
 							let apiResponse = try JSONDecoder().decode(User.self, from: responseData)
@@ -85,7 +85,7 @@ struct GitHubNetworkManager: NetworkManagerProtocol {
 										DispatchQueue.main.async {
 											repositiry.collaborators = result as? [User]
 //											print("Loaded collaborators at \(repositiry.name)")
-											if repositiry.branches != nil {
+											if repositiry.branches != nil, repositiry.commits != nil {
 												myGroup.leave()
 //												print("leave")
 											}
@@ -98,14 +98,40 @@ struct GitHubNetworkManager: NetworkManagerProtocol {
 										DispatchQueue.main.async {
 											repositiry.branches = result as? [Branch]
 //											print("Loaded branches at \(repositiry.name)")
-											if repositiry.collaborators != nil {
+											if repositiry.collaborators != nil, repositiry.commits != nil {
 												myGroup.leave()
 //												print("leave")
 											}
 										}
 									}
+									
+									self.getData(endPoint: GitHubApi.commits(url: repositiry.changes ?? "")) {
+										result, error in
+										
+										DispatchQueue.main.async {
+											var commitsArray = [Commit]()
+											let events = result as? [Event]
+											for event in events ?? [] {
+												if let commits : [Commit] = event.payload.commits {
+													for commit in commits {
+														var commit = commit
+														commit.date = event.created_at
+														commitsArray.append(commit)
+													}
+												}
+											}
+											repositiry.commits = commitsArray
+											
+//											print("Loaded commits at \(repositiry.name)")
+											if repositiry.collaborators != nil, repositiry.branches != nil {
+												myGroup.leave()
+												//												print("leave")
+											}
+										}
+									}
 								}
 								myGroup.notify(queue: DispatchQueue.main) {
+									print("End Loading Repositories Base")
 									completion(repositories, nil)
 								}
 							}
@@ -118,6 +144,24 @@ struct GitHubNetworkManager: NetworkManagerProtocol {
 							completion(newResponse, nil)
 						case .branches(_ ):
 							let newResponse = try JSONDecoder().decode([Branch].self, from: responseData)
+							completion(newResponse, nil)
+						case .commits(_ ):
+							
+							var newResponse: [Event]?
+							do {
+								newResponse = try JSONDecoder().decode([Event].self, from: responseData)
+							} catch {
+								print(error)
+							}
+							completion(newResponse, nil)
+							
+						case .oneCommit(_ ):
+							var newResponse: Commit?
+							do {
+								newResponse = try JSONDecoder().decode(Commit.self, from: responseData)
+							} catch {
+								print(error)
+							}
 							completion(newResponse, nil)
 						}
 						

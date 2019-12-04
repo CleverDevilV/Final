@@ -36,6 +36,8 @@ public final class Repository: Codable {
 	
 	var branches: [Branch]?
 	
+	var commits: [Commit]?
+	
 	/**
 	Keys for decode GitHub Api Response.
 	
@@ -83,6 +85,7 @@ public final class Repository: Codable {
 		self.id = try container.decode(Int?.self, forKey: .id)
 		self.lastChange = try container.decode(String.self, forKey: .lastChange)
 		self.branchesLink = try container.decode(String.self, forKey: .branchesUrl)
+		
 	}
 	
 //	private func getCollaborators(_ completion: @escaping ([User]?) -> ()) {

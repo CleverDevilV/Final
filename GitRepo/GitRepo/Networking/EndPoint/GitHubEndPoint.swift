@@ -41,6 +41,10 @@ public enum GitHubApi {
 	case collaborators(url: String)
 	/// for get array of branches
 	case branches(url: String)
+	
+	case commits(url: String)
+	
+	case oneCommit(url: String)
 }
 
 extension GitHubApi: EndPointType {
@@ -70,6 +74,13 @@ extension GitHubApi: EndPointType {
 			let trimmedUrl = url.replacingOccurrences(of: "{/branch}", with: "")
 			guard let url = URL(string: trimmedUrl) else { fatalError("baseURL could not be configured") }
 			return url
+		case .commits(let url):
+//			let trimmedUrl = url.replacingOccurrences(of: "{/branch}", with: "") 
+			guard let url = URL(string: url) else { fatalError("baseURL could not be configured") }
+			return url
+		case .oneCommit(let url):
+			guard let url = URL(string: url) else { fatalError("baseURL could not be configured") }
+			return url
 		default:
 			guard let url = URL(string: "https://api.github.com/user") else {fatalError("baseURL could not be configured")}
 			return url
@@ -86,6 +97,8 @@ extension GitHubApi: EndPointType {
 		case .oneRepo(let repoName): return "/\(repoName)"
 		case .collaborators(_ ): return ""
 		case .branches(_ ): return ""
+		case .commits(_ ): return ""
+		case .oneCommit(_ ): return ""
 		}
 	}
 	

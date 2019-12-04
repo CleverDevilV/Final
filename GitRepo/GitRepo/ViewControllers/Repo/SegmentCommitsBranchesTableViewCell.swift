@@ -8,10 +8,14 @@
 
 import UIKit
 
+protocol SegmentCommitsBranchesTableViewCellDelegate: class {
+	func setSegmentControllerValue(_ value: Int)
+}
+
 class SegmentCommitsBranchesTableViewCell: UITableViewCell {
 	
 	public static let separatorCommitsBranchesReuseId = "SeparatorCommitsBranchesReuseId"
-	public weak var delegate: OwnerAndViewButtonTableViewCellDelegate!
+	public weak var delegate: SegmentCommitsBranchesTableViewCellDelegate!
 	public var repository: Repository? {
 		didSet {
 			self.setupViews()
@@ -39,7 +43,7 @@ class SegmentCommitsBranchesTableViewCell: UITableViewCell {
 		}
 		segmentControl.sizeToFit()
 		segmentControl.selectedSegmentIndex = 0
-		//		segmentControl.addTarget(self, action: #selector(segmentChanged), for: .valueChanged)
+		segmentControl.addTarget(self, action: #selector(segmentValueChanged), for: .valueChanged)
 //		segmentControl.sendActions(for: .valueChanged)
 		
 		// add to contentView
@@ -82,4 +86,10 @@ class SegmentCommitsBranchesTableViewCell: UITableViewCell {
 		
 		// Configure the view for the selected state
 	}
+	
+	@objc
+	func segmentValueChanged() {
+		delegate.setSegmentControllerValue(segmentControl.selectedSegmentIndex)
+	}
+	
 }

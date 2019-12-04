@@ -48,11 +48,13 @@
 		A777637B2397BE2E007859CA /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77763792397BDF9007859CA /* EventModel.swift */; };
 		A777637D2397C7E1007859CA /* BranchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A777637C2397C7E1007859CA /* BranchModel.swift */; };
 		A777637E2397C83B007859CA /* BranchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A777637C2397C7E1007859CA /* BranchModel.swift */; };
+		A77763802398190C007859CA /* AddViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A777637F2398190C007859CA /* AddViewTableViewCell.swift */; };
+		A777638123981AA9007859CA /* AddViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A777637F2398190C007859CA /* AddViewTableViewCell.swift */; };
 		A785A77E2396A73B0040D4CD /* ProjectForUploadToBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A785A77D2396A73B0040D4CD /* ProjectForUploadToBack.swift */; };
 		A785A77F2396A7CF0040D4CD /* ProjectForUploadToBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A785A77D2396A73B0040D4CD /* ProjectForUploadToBack.swift */; };
 		A785A78B2396BF7A0040D4CD /* TasksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A785A78A2396BF7A0040D4CD /* TasksTableViewController.swift */; };
 		A785A78C2396C0450040D4CD /* TasksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A785A78A2396BF7A0040D4CD /* TasksTableViewController.swift */; };
-		A796F33323959815007D7E51 /* RepositoryWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A5DE6F239592C2004271D9 /* RepositoryWebViewController.swift */; };
+		A796F33323959815007D7E51 /* SomeUrlWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A5DE6F239592C2004271D9 /* SomeUrlWebViewController.swift */; };
 		A796F3352395AB4D007D7E51 /* RepositoriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A796F3342395AB4D007D7E51 /* RepositoriesTableViewCell.swift */; };
 		A796F3362395AD57007D7E51 /* RepositoriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A796F3342395AB4D007D7E51 /* RepositoriesTableViewCell.swift */; };
 		A7A5DE4B23952306004271D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE0686238BE7F30093F07A /* AppDelegate.swift */; };
@@ -88,7 +90,7 @@
 		A7A5DE6A23952390004271D9 /* NetworkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7525B6F2394336400AD8587 /* NetworkRouter.swift */; };
 		A7A5DE6C23953CD4004271D9 /* URLParameterEncoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A5DE6B23953CD4004271D9 /* URLParameterEncoderTests.swift */; };
 		A7A5DE6E239577CD004271D9 /* JSONParameterEncoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A5DE6D239577CD004271D9 /* JSONParameterEncoderTests.swift */; };
-		A7A5DE70239592C2004271D9 /* RepositoryWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A5DE6F239592C2004271D9 /* RepositoryWebViewController.swift */; };
+		A7A5DE70239592C2004271D9 /* SomeUrlWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A5DE6F239592C2004271D9 /* SomeUrlWebViewController.swift */; };
 		A7B481E5239260A500AFA19E /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B481E4239260A500AFA19E /* ProjectViewController.swift */; };
 		A7B481E72392643600AFA19E /* DescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B481E62392643600AFA19E /* DescriptionTableViewCell.swift */; };
 		A7B481E92392705600AFA19E /* RepoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B481E82392705600AFA19E /* RepoTableViewCell.swift */; };
@@ -148,12 +150,13 @@
 		A77763762397BB10007859CA /* NetworkManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerProtocol.swift; sourceTree = "<group>"; };
 		A77763792397BDF9007859CA /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
 		A777637C2397C7E1007859CA /* BranchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchModel.swift; sourceTree = "<group>"; };
+		A777637F2398190C007859CA /* AddViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewTableViewCell.swift; sourceTree = "<group>"; };
 		A785A77D2396A73B0040D4CD /* ProjectForUploadToBack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectForUploadToBack.swift; sourceTree = "<group>"; };
 		A785A78A2396BF7A0040D4CD /* TasksTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksTableViewController.swift; sourceTree = "<group>"; };
 		A796F3342395AB4D007D7E51 /* RepositoriesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesTableViewCell.swift; sourceTree = "<group>"; };
 		A7A5DE6B23953CD4004271D9 /* URLParameterEncoderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLParameterEncoderTests.swift; sourceTree = "<group>"; };
 		A7A5DE6D239577CD004271D9 /* JSONParameterEncoderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParameterEncoderTests.swift; sourceTree = "<group>"; };
-		A7A5DE6F239592C2004271D9 /* RepositoryWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryWebViewController.swift; sourceTree = "<group>"; };
+		A7A5DE6F239592C2004271D9 /* SomeUrlWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomeUrlWebViewController.swift; sourceTree = "<group>"; };
 		A7B481E4239260A500AFA19E /* ProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectViewController.swift; sourceTree = "<group>"; };
 		A7B481E62392643600AFA19E /* DescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionTableViewCell.swift; sourceTree = "<group>"; };
 		A7B481E82392705600AFA19E /* RepoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoTableViewCell.swift; sourceTree = "<group>"; };
@@ -204,6 +207,7 @@
 				A7FE06A0238BF4540093F07A /* BaseTabBarController.swift */,
 				A77404ED239110E90038851E /* Registration.swift */,
 				A7B481EE2392C26B00AFA19E /* SettingsViewController.swift */,
+				A7A5DE6F239592C2004271D9 /* SomeUrlWebViewController.swift */,
 				A7FE06A2238BFAE20093F07A /* Project */,
 				A7FE06A3238BFAEF0093F07A /* Repo */,
 			);
@@ -228,8 +232,8 @@
 				A7B481E82392705600AFA19E /* RepoTableViewCell.swift */,
 				A7B481EA239271A100AFA19E /* CollaboratorsTableViewCell.swift */,
 				A7B481EC2392725400AFA19E /* TasksTableViewCell.swift */,
-				A7A5DE6F239592C2004271D9 /* RepositoryWebViewController.swift */,
 				A785A78A2396BF7A0040D4CD /* TasksTableViewController.swift */,
+				A777637F2398190C007859CA /* AddViewTableViewCell.swift */,
 			);
 			path = ProjectViewController;
 			sourceTree = "<group>";
@@ -514,13 +518,14 @@
 				A73FC69B2396CFE6000F9F5C /* OwnerAndViewButtonTableViewCell.swift in Sources */,
 				A7B481EF2392C26B00AFA19E /* SettingsViewController.swift in Sources */,
 				A7525B80239447A200AD8587 /* GitHubNetworkManager.swift in Sources */,
+				A77763802398190C007859CA /* AddViewTableViewCell.swift in Sources */,
 				A73FC6A12396DADC000F9F5C /* RepositoryCollaboratorsTableViewCell.swift in Sources */,
 				A77404EE239110E90038851E /* Registration.swift in Sources */,
 				A7525B6C239430C100AD8587 /* URLParameterEncoder.swift in Sources */,
 				A7B481EB239271A100AFA19E /* CollaboratorsTableViewCell.swift in Sources */,
 				A7525B6423942D8600AD8587 /* EndPointType.swift in Sources */,
 				A7FE06A5238BFAFE0093F07A /* NetWorkservice.swift in Sources */,
-				A7A5DE70239592C2004271D9 /* RepositoryWebViewController.swift in Sources */,
+				A7A5DE70239592C2004271D9 /* SomeUrlWebViewController.swift in Sources */,
 				A77404FA23912FFC0038851E /* UserDefExt.swift in Sources */,
 				A796F3352395AB4D007D7E51 /* RepositoriesTableViewCell.swift in Sources */,
 				A7495FC3239655F400C120DC /* FirebaseEndPoint.swift in Sources */,
@@ -566,6 +571,7 @@
 				A7A5DE652395236F004271D9 /* LogOutCommand.swift in Sources */,
 				A73FC6A42396DBBF000F9F5C /* RepositoryCollaboratorsTableViewCell.swift in Sources */,
 				A7A5DE5F23952364004271D9 /* RepoTableViewCell.swift in Sources */,
+				A777638123981AA9007859CA /* AddViewTableViewCell.swift in Sources */,
 				A7A5DE5E23952364004271D9 /* DescriptionTableViewCell.swift in Sources */,
 				A73FC69F2396D81E000F9F5C /* SegmentCommitsBranchesTableViewCell.swift in Sources */,
 				A785A77F2396A7CF0040D4CD /* ProjectForUploadToBack.swift in Sources */,
@@ -598,7 +604,7 @@
 				A7A5DE582395235B004271D9 /* UserDefExt.swift in Sources */,
 				A7A5DE5123952341004271D9 /* JSONParameterEncoder.swift in Sources */,
 				A7A5DE6423952369004271D9 /* SettingsViewController.swift in Sources */,
-				A796F33323959815007D7E51 /* RepositoryWebViewController.swift in Sources */,
+				A796F33323959815007D7E51 /* SomeUrlWebViewController.swift in Sources */,
 				A7A5DE4C23952319004271D9 /* RootViewController.swift in Sources */,
 				A7A5DE4D23952326004271D9 /* StartAppViewController.swift in Sources */,
 				A7495FC62396714600C120DC /* FirebaseNetworkManager.swift in Sources */,

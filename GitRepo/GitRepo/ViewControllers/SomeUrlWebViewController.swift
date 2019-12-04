@@ -9,7 +9,7 @@
 import UIKit
 import WebKit
 
-final class RepositoryWebViewController: UIViewController {
+final class SomeUrlWebViewController: UIViewController {
 	
 	public var url: URL?
 	
@@ -40,7 +40,7 @@ final class RepositoryWebViewController: UIViewController {
 	
 }
 
-extension RepositoryWebViewController: WKNavigationDelegate {
+extension SomeUrlWebViewController: WKNavigationDelegate {
 	
 	func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
 		

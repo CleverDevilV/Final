@@ -36,6 +36,9 @@ class RepositoriesTableViewController: UIViewController {
 		tableView.backgroundColor = UIColor(red: 1, green: 0.5781051517, blue: 0, alpha: 0.04508240583)
 //		tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
 		tableView.register(RepositoriesTableViewCell.self, forCellReuseIdentifier: RepositoriesTableViewCell.repositoriesCellReuseId)
+		
+		tableView.separatorStyle = .none
+		
 		tableView.dataSource = self
 		tableView.delegate = self
 		

@@ -47,7 +47,11 @@ class StartAppViewController: UIViewController {
 				DispatchQueue.main.async {
 					AppDelegate.shared.repositoryBase = result as? RepositoriesBase
 					UIView.animate(withDuration: 0.5, delay: 0.3, options: [], animations: {
+						self.welcomeButton.isEnabled = true
+						self.logOutButton.isEnabled = true
 						self.loadView.layer.opacity = 0
+						self.welcomeButton.layer.opacity = 1
+						self.logOutButton.layer.opacity = 1
 					}, completion: nil)
 				}
 			}
@@ -140,6 +144,11 @@ class StartAppViewController: UIViewController {
 			logOutButton.heightAnchor.constraint(equalToConstant: 50),
 			logOutButton.bottomAnchor.constraint(lessThanOrEqualTo: view.bottomAnchor, constant: -50)
 			])
+		
+		welcomeButton.layer.opacity = 0
+		logOutButton.layer.opacity = 0
+		welcomeButton.isEnabled = true
+		logOutButton.isEnabled = true
 	}
 }
 

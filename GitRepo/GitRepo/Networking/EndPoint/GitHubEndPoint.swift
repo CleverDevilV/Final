@@ -17,8 +17,15 @@ import Foundation
 GitHubApi options.
 
 ````
+/// for get user info
 case user
-case repo
+/// for get repos
+case repos
+/// for get information about concrete repository
+case oneRepo(url: String)
+/// for get array of collaborators
+case collaborators(url: String)
+
 ````
 */
 
@@ -30,6 +37,10 @@ public enum GitHubApi {
 	case repos
 	/// for get information about concrete repository
 	case oneRepo(url: String)
+	/// for get array of collaborators
+	case collaborators(url: String)
+	/// for get array of branches
+	case branches(url: String)
 }
 
 extension GitHubApi: EndPointType {
@@ -51,6 +62,14 @@ extension GitHubApi: EndPointType {
 			return url
 //			guard let url = URL(string: stringUrl) else {fatalError("baseURL could not be configured")}
 //			return url
+		case .collaborators(let url):
+			let trimmedUrl = url.replacingOccurrences(of: "{/collaborator}", with: "")
+			guard let url = URL(string: trimmedUrl) else { fatalError("baseURL could not be configured") }
+			return url
+		case .branches(let url):
+			let trimmedUrl = url.replacingOccurrences(of: "{/branch}", with: "")
+			guard let url = URL(string: trimmedUrl) else { fatalError("baseURL could not be configured") }
+			return url
 		default:
 			guard let url = URL(string: "https://api.github.com/user") else {fatalError("baseURL could not be configured")}
 			return url
@@ -65,6 +84,8 @@ extension GitHubApi: EndPointType {
 			/// Path to users repositories
 		case .repos: return "/repos"
 		case .oneRepo(let repoName): return "/\(repoName)"
+		case .collaborators(_ ): return ""
+		case .branches(_ ): return ""
 		}
 	}
 	

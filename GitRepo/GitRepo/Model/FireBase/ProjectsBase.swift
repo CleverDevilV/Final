@@ -56,7 +56,7 @@ final class ProjectsBase {
 			let projectToUpload = ProjectForUploadToBack(name: project.projectName, repoUrl: project.repoUrl, projectTasks: project.projectTasks)
 			uploadData[userName]?.append(projectToUpload)
 		}
-		network.getFirebaseData(endPoint: FirebaseApi.uploadProjects(data: uploadData)) {
+		network.getData(endPoint: FirebaseApi.uploadProjects(data: uploadData)) {
 			result, error in
 //			print(result)
 		}

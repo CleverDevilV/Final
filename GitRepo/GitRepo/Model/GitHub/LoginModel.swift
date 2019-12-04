@@ -7,6 +7,6 @@
 //
 
 import Foundation
-struct Owner: Codable {
+public struct User: Codable {
 	var login: String
 }

@@ -13,7 +13,7 @@ class ProjectViewController: UIViewController {
 	public var project: Project?
 	
 	private var tableView: UITableView!
-	private var netWorkService = GitHubNetworkManager()
+	private var netWorkService: NetworkManagerProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +34,10 @@ class ProjectViewController: UIViewController {
 		tableView.dataSource = self
 		
 		view.addSubview(tableView)
+		
+		let projectRepoName = URL(string: project?.repoUrl ?? "")?.lastPathComponent
+		
+		project?.repo = AppDelegate.shared.repositoryBase?.repositories.first{$0.name?.uppercased() == projectRepoName?.uppercased()}
 		
 		self.tabBarController?.tabBar.isHidden = true
     }
@@ -100,7 +104,7 @@ extension ProjectViewController: RepoTableCellDelegate {
 					let name = url.pathComponents.last
 					guard let repoName = name else {return}
 					
-					self.netWorkService.getGitHubData(endPoint: GitHubApi.oneRepo(url: repoName)) {
+					self.netWorkService?.getData(endPoint: GitHubApi.oneRepo(url: repoName)) {
 						repo, error in
 						self.project?.repo = repo as? Repository
 						self.project?.repoUrl = url.absoluteString
@@ -142,7 +146,8 @@ extension ProjectViewController: RepoTableCellDelegate {
 						let name = url.pathComponents.last
 						guard let repoName = name else {return}
 						
-						self.netWorkService.getGitHubData(endPoint: GitHubApi.oneRepo(url: repoName)) {
+						self.netWorkService = GitHubNetworkManager()
+						self.netWorkService?.getData(endPoint: GitHubApi.oneRepo(url: repoName)) {
 							repo, error in
 							self.project?.repo = repo as? Repository
 							self.project?.repoUrl = url.absoluteString

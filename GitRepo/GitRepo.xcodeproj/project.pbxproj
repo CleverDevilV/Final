@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		A73FC69B2396CFE6000F9F5C /* OwnerAndViewButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73FC69A2396CFE6000F9F5C /* OwnerAndViewButtonTableViewCell.swift */; };
 		A73FC69C2396D087000F9F5C /* OwnerAndViewButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73FC69A2396CFE6000F9F5C /* OwnerAndViewButtonTableViewCell.swift */; };
+		A73FC69E2396D66B000F9F5C /* SegmentCommitsBranchesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73FC69D2396D66B000F9F5C /* SegmentCommitsBranchesTableViewCell.swift */; };
+		A73FC69F2396D81E000F9F5C /* SegmentCommitsBranchesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73FC69D2396D66B000F9F5C /* SegmentCommitsBranchesTableViewCell.swift */; };
+		A73FC6A12396DADC000F9F5C /* RepositoryCollaboratorsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73FC6A02396DADC000F9F5C /* RepositoryCollaboratorsTableViewCell.swift */; };
+		A73FC6A32396DAEA000F9F5C /* RepositoryBranchesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73FC6A22396DAEA000F9F5C /* RepositoryBranchesTableViewCell.swift */; };
+		A73FC6A42396DBBF000F9F5C /* RepositoryCollaboratorsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73FC6A02396DADC000F9F5C /* RepositoryCollaboratorsTableViewCell.swift */; };
+		A73FC6A52396DBBF000F9F5C /* RepositoryBranchesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73FC6A22396DAEA000F9F5C /* RepositoryBranchesTableViewCell.swift */; };
 		A7495FC3239655F400C120DC /* FirebaseEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7495FC2239655F400C120DC /* FirebaseEndPoint.swift */; };
 		A7495FC5239670A200C120DC /* FirebaseNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7495FC4239670A200C120DC /* FirebaseNetworkManager.swift */; };
 		A7495FC62396714600C120DC /* FirebaseNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7495FC4239670A200C120DC /* FirebaseNetworkManager.swift */; };
@@ -34,6 +40,14 @@
 		A77404EE239110E90038851E /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77404ED239110E90038851E /* Registration.swift */; };
 		A77404FA23912FFC0038851E /* UserDefExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77404F923912FFC0038851E /* UserDefExt.swift */; };
 		A774053B23918FE60038851E /* repo.xib in Resources */ = {isa = PBXBuildFile; fileRef = A774053A23918FE60038851E /* repo.xib */; };
+		A77763742396F089007859CA /* DiamondLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77763732396F089007859CA /* DiamondLoad.swift */; };
+		A77763752396F0B1007859CA /* DiamondLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77763732396F089007859CA /* DiamondLoad.swift */; };
+		A77763772397BB10007859CA /* NetworkManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77763762397BB10007859CA /* NetworkManagerProtocol.swift */; };
+		A77763782397BB4B007859CA /* NetworkManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77763762397BB10007859CA /* NetworkManagerProtocol.swift */; };
+		A777637A2397BDF9007859CA /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77763792397BDF9007859CA /* EventModel.swift */; };
+		A777637B2397BE2E007859CA /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77763792397BDF9007859CA /* EventModel.swift */; };
+		A777637D2397C7E1007859CA /* BranchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A777637C2397C7E1007859CA /* BranchModel.swift */; };
+		A777637E2397C83B007859CA /* BranchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A777637C2397C7E1007859CA /* BranchModel.swift */; };
 		A785A77E2396A73B0040D4CD /* ProjectForUploadToBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A785A77D2396A73B0040D4CD /* ProjectForUploadToBack.swift */; };
 		A785A77F2396A7CF0040D4CD /* ProjectForUploadToBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A785A77D2396A73B0040D4CD /* ProjectForUploadToBack.swift */; };
 		A785A78B2396BF7A0040D4CD /* TasksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A785A78A2396BF7A0040D4CD /* TasksTableViewController.swift */; };
@@ -106,6 +120,9 @@
 
 /* Begin PBXFileReference section */
 		A73FC69A2396CFE6000F9F5C /* OwnerAndViewButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerAndViewButtonTableViewCell.swift; sourceTree = "<group>"; };
+		A73FC69D2396D66B000F9F5C /* SegmentCommitsBranchesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentCommitsBranchesTableViewCell.swift; sourceTree = "<group>"; };
+		A73FC6A02396DADC000F9F5C /* RepositoryCollaboratorsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryCollaboratorsTableViewCell.swift; sourceTree = "<group>"; };
+		A73FC6A22396DAEA000F9F5C /* RepositoryBranchesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryBranchesTableViewCell.swift; sourceTree = "<group>"; };
 		A7495FC2239655F400C120DC /* FirebaseEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseEndPoint.swift; sourceTree = "<group>"; };
 		A7495FC4239670A200C120DC /* FirebaseNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseNetworkManager.swift; sourceTree = "<group>"; };
 		A7495FC823967A7100C120DC /* RepositoriesBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesBase.swift; sourceTree = "<group>"; };
@@ -127,6 +144,10 @@
 		A77404ED239110E90038851E /* Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration.swift; sourceTree = "<group>"; };
 		A77404F923912FFC0038851E /* UserDefExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefExt.swift; sourceTree = "<group>"; };
 		A774053A23918FE60038851E /* repo.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = repo.xib; sourceTree = "<group>"; };
+		A77763732396F089007859CA /* DiamondLoad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiamondLoad.swift; sourceTree = "<group>"; };
+		A77763762397BB10007859CA /* NetworkManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerProtocol.swift; sourceTree = "<group>"; };
+		A77763792397BDF9007859CA /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
+		A777637C2397C7E1007859CA /* BranchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchModel.swift; sourceTree = "<group>"; };
 		A785A77D2396A73B0040D4CD /* ProjectForUploadToBack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectForUploadToBack.swift; sourceTree = "<group>"; };
 		A785A78A2396BF7A0040D4CD /* TasksTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksTableViewController.swift; sourceTree = "<group>"; };
 		A796F3342395AB4D007D7E51 /* RepositoriesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesTableViewCell.swift; sourceTree = "<group>"; };
@@ -229,6 +250,8 @@
 				A7FE06AC238C49F20093F07A /* RepoModel.swift */,
 				A7525B8323945F0D00AD8587 /* RepoFromGit.swift */,
 				A7525B8123945D3200AD8587 /* LoginModel.swift */,
+				A77763792397BDF9007859CA /* EventModel.swift */,
+				A777637C2397C7E1007859CA /* BranchModel.swift */,
 			);
 			path = GitHub;
 			sourceTree = "<group>";
@@ -241,13 +264,6 @@
 				A785A77D2396A73B0040D4CD /* ProjectForUploadToBack.swift */,
 			);
 			path = FireBase;
-			sourceTree = "<group>";
-		};
-		A7525B5B23942D0000AD8587 /* Application */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Application;
 			sourceTree = "<group>";
 		};
 		A7525B5C23942D1000AD8587 /* Model */ = {
@@ -284,6 +300,7 @@
 			children = (
 				A7525B7F239447A200AD8587 /* GitHubNetworkManager.swift */,
 				A7495FC4239670A200C120DC /* FirebaseNetworkManager.swift */,
+				A77763762397BB10007859CA /* NetworkManagerProtocol.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -310,6 +327,14 @@
 			path = Encoding;
 			sourceTree = "<group>";
 		};
+		A77763722396F089007859CA /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				A77763732396F089007859CA /* DiamondLoad.swift */,
+			);
+			path = Animation;
+			sourceTree = "<group>";
+		};
 		A7FE067A238BE7F30093F07A = {
 			isa = PBXGroup;
 			children = (
@@ -331,10 +356,10 @@
 		A7FE0685238BE7F30093F07A /* GitRepo */ = {
 			isa = PBXGroup;
 			children = (
-				A73FC6962396CAC5000F9F5C /* ViewControllers */,
 				A7525B5E23942D2000AD8587 /* Networking */,
 				A7525B5C23942D1000AD8587 /* Model */,
-				A7525B5B23942D0000AD8587 /* Application */,
+				A77763722396F089007859CA /* Animation */,
+				A73FC6962396CAC5000F9F5C /* ViewControllers */,
 				A73FC6972396CAF2000F9F5C /* Service */,
 				A7FE068D238BE7F40093F07A /* Assets.xcassets */,
 				A7FE068F238BE7F40093F07A /* LaunchScreen.storyboard */,
@@ -359,6 +384,9 @@
 				A73FC6992396CC13000F9F5C /* RepositoriesTableViewController */,
 				A7FE069C238BF1B30093F07A /* RepoViewController.swift */,
 				A73FC69A2396CFE6000F9F5C /* OwnerAndViewButtonTableViewCell.swift */,
+				A73FC6A02396DADC000F9F5C /* RepositoryCollaboratorsTableViewCell.swift */,
+				A73FC69D2396D66B000F9F5C /* SegmentCommitsBranchesTableViewCell.swift */,
+				A73FC6A22396DAEA000F9F5C /* RepositoryBranchesTableViewCell.swift */,
 			);
 			path = Repo;
 			sourceTree = "<group>";
@@ -474,6 +502,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A73FC6A32396DAEA000F9F5C /* RepositoryBranchesTableViewCell.swift in Sources */,
 				A7525B5A239301DA00AD8587 /* LogOutCommand.swift in Sources */,
 				A785A77E2396A73B0040D4CD /* ProjectForUploadToBack.swift in Sources */,
 				A7FE06A1238BF4540093F07A /* BaseTabBarController.swift in Sources */,
@@ -485,6 +514,7 @@
 				A73FC69B2396CFE6000F9F5C /* OwnerAndViewButtonTableViewCell.swift in Sources */,
 				A7B481EF2392C26B00AFA19E /* SettingsViewController.swift in Sources */,
 				A7525B80239447A200AD8587 /* GitHubNetworkManager.swift in Sources */,
+				A73FC6A12396DADC000F9F5C /* RepositoryCollaboratorsTableViewCell.swift in Sources */,
 				A77404EE239110E90038851E /* Registration.swift in Sources */,
 				A7525B6C239430C100AD8587 /* URLParameterEncoder.swift in Sources */,
 				A7B481EB239271A100AFA19E /* CollaboratorsTableViewCell.swift in Sources */,
@@ -496,9 +526,11 @@
 				A7495FC3239655F400C120DC /* FirebaseEndPoint.swift in Sources */,
 				A7525B702394336400AD8587 /* NetworkRouter.swift in Sources */,
 				A7525B7E2394444300AD8587 /* GitHubEndPoint.swift in Sources */,
+				A77763742396F089007859CA /* DiamondLoad.swift in Sources */,
 				A7525B6823942E9C00AD8587 /* HTTPTask.swift in Sources */,
 				A7FE0689238BE7F30093F07A /* ProjectsTableVC.swift in Sources */,
 				A7495FCE2396839500C120DC /* ProjectsBase.swift in Sources */,
+				A77763772397BB10007859CA /* NetworkManagerProtocol.swift in Sources */,
 				A7FE0687238BE7F30093F07A /* AppDelegate.swift in Sources */,
 				A7525B8423945F0D00AD8587 /* RepoFromGit.swift in Sources */,
 				A7525B582392F80700AD8587 /* StartAppViewController.swift in Sources */,
@@ -508,8 +540,11 @@
 				A7525B722394346200AD8587 /* Router.swift in Sources */,
 				A7495FC5239670A200C120DC /* FirebaseNetworkManager.swift in Sources */,
 				A7B481E92392705600AFA19E /* RepoTableViewCell.swift in Sources */,
+				A777637A2397BDF9007859CA /* EventModel.swift in Sources */,
 				A7FE069D238BF1B30093F07A /* RepoViewController.swift in Sources */,
+				A777637D2397C7E1007859CA /* BranchModel.swift in Sources */,
 				A7FE069B238BF0E20093F07A /* RepositoriesTableViewController.swift in Sources */,
+				A73FC69E2396D66B000F9F5C /* SegmentCommitsBranchesTableViewCell.swift in Sources */,
 				A7525B6E2394327000AD8587 /* JSONParameterEncoder.swift in Sources */,
 				A7525B6623942E4500AD8587 /* HTTPMethod.swift in Sources */,
 				A7495FC923967A7100C120DC /* RepositoriesBase.swift in Sources */,
@@ -525,18 +560,23 @@
 				A7A5DE6123952364004271D9 /* TasksTableViewCell.swift in Sources */,
 				A7495FCF239683AC00C120DC /* ProjectsBase.swift in Sources */,
 				A7A5DE6323952369004271D9 /* RepoViewController.swift in Sources */,
+				A77763752396F0B1007859CA /* DiamondLoad.swift in Sources */,
 				A7A5DE6023952364004271D9 /* CollaboratorsTableViewCell.swift in Sources */,
 				A7A5DE6723952389004271D9 /* Router.swift in Sources */,
 				A7A5DE652395236F004271D9 /* LogOutCommand.swift in Sources */,
+				A73FC6A42396DBBF000F9F5C /* RepositoryCollaboratorsTableViewCell.swift in Sources */,
 				A7A5DE5F23952364004271D9 /* RepoTableViewCell.swift in Sources */,
 				A7A5DE5E23952364004271D9 /* DescriptionTableViewCell.swift in Sources */,
+				A73FC69F2396D81E000F9F5C /* SegmentCommitsBranchesTableViewCell.swift in Sources */,
 				A785A77F2396A7CF0040D4CD /* ProjectForUploadToBack.swift in Sources */,
 				A7A5DE6623952382004271D9 /* EndPointType.swift in Sources */,
 				A785A78C2396C0450040D4CD /* TasksTableViewController.swift in Sources */,
 				A73FC69C2396D087000F9F5C /* OwnerAndViewButtonTableViewCell.swift in Sources */,
 				A7A5DE532395234A004271D9 /* GitHubNetworkManager.swift in Sources */,
+				A73FC6A52396DBBF000F9F5C /* RepositoryBranchesTableViewCell.swift in Sources */,
 				A7A5DE5223952347004271D9 /* GitHubEndPoint.swift in Sources */,
 				A7A5DE6E239577CD004271D9 /* JSONParameterEncoderTests.swift in Sources */,
+				A77763782397BB4B007859CA /* NetworkManagerProtocol.swift in Sources */,
 				A7495FC72396714A00C120DC /* FirebaseEndPoint.swift in Sources */,
 				A7A5DE6823952390004271D9 /* HTTPMethod.swift in Sources */,
 				A7A5DE4F23952341004271D9 /* ParameterEncodingProtocol.swift in Sources */,
@@ -546,6 +586,7 @@
 				A7A5DE5D23952364004271D9 /* ProjectViewController.swift in Sources */,
 				A7A5DE5C23952364004271D9 /* ProjectModel.swift in Sources */,
 				A7A5DE592395235D004271D9 /* NetWorkservice.swift in Sources */,
+				A777637E2397C83B007859CA /* BranchModel.swift in Sources */,
 				A7A5DE6923952390004271D9 /* HTTPTask.swift in Sources */,
 				A7A5DE4B23952306004271D9 /* AppDelegate.swift in Sources */,
 				A7A5DE542395234D004271D9 /* RepoModel.swift in Sources */,
@@ -562,6 +603,7 @@
 				A7A5DE4D23952326004271D9 /* StartAppViewController.swift in Sources */,
 				A7495FC62396714600C120DC /* FirebaseNetworkManager.swift in Sources */,
 				A7A5DE6A23952390004271D9 /* NetworkRouter.swift in Sources */,
+				A777637B2397BE2E007859CA /* EventModel.swift in Sources */,
 				A7A5DE5723952357004271D9 /* Registration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

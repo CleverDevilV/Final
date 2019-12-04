@@ -16,6 +16,8 @@ class StartAppViewController: UIViewController {
 	private var welcomeButton = UIButton()
 	private var logOutButton = UIButton()
 	
+	private let loadView = DiamondLoad()
+	
 	private var login = UserDefaults.standard.get(with: .oauth_user_login)
 
     override func viewDidLoad() {
@@ -24,19 +26,54 @@ class StartAppViewController: UIViewController {
 		print("login: ", login)
 		
 		setupViews()
+		
+		let networkManagerForFirebase = FirebaseNetworkManager()
+		networkManagerForFirebase.getData(endPoint: FirebaseApi.getProjects){
+			result, error in
+			if error != nil {
+				print(error!)
+			}
+			DispatchQueue.main.async {
+				AppDelegate.shared.projectBase = result as? ProjectsBase
+			}
+			
+			let networlManagerForGitHub = GitHubNetworkManager()
+			networlManagerForGitHub.getData(endPoint: GitHubApi.repos) {
+				result, error in
+				if error != nil {
+					print(error!)
+				}
+				
+				DispatchQueue.main.async {
+					AppDelegate.shared.repositoryBase = result as? RepositoriesBase
+					UIView.animate(withDuration: 0.5, delay: 0.3, options: [], animations: {
+						self.loadView.layer.opacity = 0
+					}, completion: nil)
+				}
+			}
+			
+		}
+		
+		
     }
 	
 	func setupViews() {
 		
 		view.backgroundColor = .white
 		
-		let defWidth = UIScreen.main.bounds.size.width
-		
 		view.addSubview(greetingLabel)
 		view.addSubview(userLoginLabel)
 		view.addSubview(welcomeButton)
 		view.addSubview(logOutButton)
 		
+		loadView.dotsColor = UIColor(red: 227 / 255, green: 172 / 255, blue: 1, alpha: 1)
+		loadView.frame.size = CGSize(width: 70, height: 70)
+		loadView.center = CGPoint(x: view.center.x, y: view.center.y + 150)
+		loadView.startAnimating()
+		view.addSubview(loadView)
+		
+		
+		let defWidth = UIScreen.main.bounds.size.width
 		
 		greetingLabel.translatesAutoresizingMaskIntoConstraints = false
 		userLoginLabel.translatesAutoresizingMaskIntoConstraints = false

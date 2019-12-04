@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct FirebaseNetworkManager {
+struct FirebaseNetworkManager: NetworkManagerProtocol {
 	
 	private let router = Router<FirebaseApi>(with: URLSession.init(configuration: .default))
 	
@@ -44,7 +44,7 @@ struct FirebaseNetworkManager {
 	//
 	//	8. В случае ошибки просто передаем ошибку в completion.
 	
-	func getFirebaseData(endPoint: EndPointType?, completion: @escaping (_ movie: Any?, _ error: String?) -> ()) {
+	func getData(endPoint: EndPointType?, completion: @escaping (_ result: Any?, _ error: String?) -> ()) {
 		guard let endPoint = endPoint as? FirebaseApi else {
 			completion(nil, "Unknown end point")
 			return

@@ -8,9 +8,11 @@
 
 import Foundation
 
-struct GitHubNetworkManager {
+struct GitHubNetworkManager: NetworkManagerProtocol {
 	
 	private let router = Router<GitHubApi>(with: URLSession.init(configuration: .default))
+	
+	private var queue = DispatchQueue(label: "com.sber.final", qos: .default, attributes: .concurrent)
 	
 	enum Result<String> {
 		case success
@@ -44,7 +46,8 @@ struct GitHubNetworkManager {
 	//
 	//	8. В случае ошибки просто передаем ошибку в completion.
 	
-	func getGitHubData(endPoint: EndPointType?, completion: @escaping (_ movie: Any?, _ error: String?) -> ()) {
+	
+	public func getData(endPoint: EndPointType?, completion: @escaping (_ result: Any?, _ error: String?) -> ()) {
 		guard let endPoint = endPoint as? GitHubApi else {
 			completion(nil, "Unknown end point")
 			return
@@ -68,14 +71,53 @@ struct GitHubNetworkManager {
 //						let text = try? JSONSerialization.jsonObject(with: responseData, options: [])
 						switch endPoint {
 						case .user:
-							let apiResponse = try JSONDecoder().decode(Owner.self, from: responseData)
+							let apiResponse = try JSONDecoder().decode(User.self, from: responseData)
 							completion(apiResponse.login, nil)
 						case .repos:
 							let repositories = RepositoriesBase(with: responseData)
-//							let newResponse = try JSONDecoder().decode([Repository].self, from: responseData)
-							completion(repositories, nil)
+							self.queue.async {
+								let myGroup = DispatchGroup()
+								for repositiry in repositories.repositories {
+									myGroup.enter()
+									self.getData(endPoint: GitHubApi.collaborators(url: repositiry.collaboratorsLink ?? "")) {
+										result, error in
+										
+										DispatchQueue.main.async {
+											repositiry.collaborators = result as? [User]
+//											print("Loaded collaborators at \(repositiry.name)")
+											if repositiry.branches != nil {
+												myGroup.leave()
+//												print("leave")
+											}
+										}
+									}
+//
+									self.getData(endPoint: GitHubApi.branches(url: repositiry.branchesLink ?? "")) {
+										result, error in
+										
+										DispatchQueue.main.async {
+											repositiry.branches = result as? [Branch]
+//											print("Loaded branches at \(repositiry.name)")
+											if repositiry.collaborators != nil {
+												myGroup.leave()
+//												print("leave")
+											}
+										}
+									}
+								}
+								myGroup.notify(queue: DispatchQueue.main) {
+									completion(repositories, nil)
+								}
+							}
+							
 						case .oneRepo:
 							let newResponse = try JSONDecoder().decode(Repository.self, from: responseData)
+							completion(newResponse, nil)
+						case .collaborators(_ ):
+							let newResponse = try JSONDecoder().decode([User].self, from: responseData)
+							completion(newResponse, nil)
+						case .branches(_ ):
+							let newResponse = try JSONDecoder().decode([Branch].self, from: responseData)
 							completion(newResponse, nil)
 						}
 						

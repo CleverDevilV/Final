@@ -190,7 +190,7 @@ extension RequestViewController: WKNavigationDelegate {
 			AppDelegate.shared.rootViewController.switchMainScreen()
 			
 			let networkManager = GitHubNetworkManager()
-			networkManager.getGitHubData(endPoint: GitHubApi.user) {
+			networkManager.getData(endPoint: GitHubApi.user) {
 				login, error in
 //				print("login: ", login, "error: ", error)
 				guard let login = login as? String else {return}

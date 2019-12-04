@@ -13,6 +13,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
 	
+	var repositoryBase: RepositoriesBase?
+	var projectBase: ProjectsBase?
+	
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		
 		window = UIWindow(frame: UIScreen.main.bounds)
@@ -20,8 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		window?.rootViewController = rootVC
 		window?.makeKeyAndVisible()
 		
-//		let network = FirebaseNetworkManager()
-//		network.getFirebaseData(endPoint: FirebaseApi.uploadProjects(data: ["hello": "hi"])) {
+//		let network = GitHubNetworkManager()
+//		network.getGitHubData(endPoint: GitHubApi.collaborators(url: "https://api.github.com/repos/Oabshire/Raspberry_Team_S2/collaborators")) {
 //			result, error in
 //			if error != nil {
 //				print(error!)

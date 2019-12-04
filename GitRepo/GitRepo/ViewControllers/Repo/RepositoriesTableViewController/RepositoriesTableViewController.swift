@@ -14,7 +14,7 @@ class RepositoriesTableViewController: UIViewController {
 //	private let network = GitHubNetworkManager()
 	
 	private var tableView: UITableView!
-	private var repositoryBase: RepositoriesBase?
+	private var repositoryBase: RepositoriesBase? = AppDelegate.shared.repositoryBase
 	private var repositories: [Repository]! {
 		didSet {
 			DispatchQueue.main.async {
@@ -43,27 +43,27 @@ class RepositoriesTableViewController: UIViewController {
 		
 		
 		
-		downloadData()
+//		downloadData()
 		
 		setupSegmentControll()
     }
 	
-	func downloadData() {
-		let network = GitHubNetworkManager()
-		network.getGitHubData(endPoint: GitHubApi.repos) {
-			result, error in
-			if error != nil {
-				print(error!)
-			}
-			guard let result = result as? RepositoriesBase else { return }
-			
-			self.repositoryBase = result
-			self.repositories = result.repositories
+//	func downloadData() {
+//		let network = GitHubNetworkManager()
+//		network.getGitHubData(endPoint: GitHubApi.repos) {
+//			result, error in
+//			if error != nil {
+//				print(error!)
+//			}
+//			guard let result = result as? RepositoriesBase else { return }
+//			
+//			self.repositoryBase = result
+//			self.repositories = result.repositories
 //			DispatchQueue.main.async {
 //				self.tableView.reloadData()
 //			}
-		}
-	}
+//		}
+//	}
 	
 	func setupSegmentControll() {
 		let titles = ["Мои", "Все"]

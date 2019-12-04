@@ -13,7 +13,7 @@ class ProjectsTableVC: UIViewController {
 	private var tableView: UITableView!
 	private var projectsSelector: UISegmentedControl!
 	
-	private var projectsBase: ProjectsBase?
+	private var projectsBase: ProjectsBase? = AppDelegate.shared.projectBase
 //	private var projects: [Project] = [] {
 //		didSet {
 //			DispatchQueue.main.async {
@@ -54,26 +54,26 @@ class ProjectsTableVC: UIViewController {
 		projectsSelector.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 50, height: 20))
 		navigationItem.titleView?.addSubview(projectsSelector)
 		
-		downloadProjects()
+//		downloadProjects()
 	}
 	
-	private func downloadProjects() {
-		let network = FirebaseNetworkManager()
-		network.getFirebaseData(endPoint: FirebaseApi.getProjects) {
-			result, error in
-			if error != nil {
-				print(error!)
-			}
-			
-			self.projectsBase = result as? ProjectsBase
+//	private func downloadProjects() {
+//		let network = FirebaseNetworkManager()
+//		network.getFirebaseData(endPoint: FirebaseApi.getProjects) {
+//			result, error in
+//			if error != nil {
+//				print(error!)
+//			}
 //
-//			guard let result = self.projectsBase?.projects else { return }
-//			self.projects = result
-			DispatchQueue.main.async {
-				self.tableView.reloadData()
-			}
-		}
-	}
+//			self.projectsBase = result as? ProjectsBase
+////
+////			guard let result = self.projectsBase?.projects else { return }
+////			self.projects = result
+//			DispatchQueue.main.async {
+//				self.tableView.reloadData()
+//			}
+//		}
+//	}
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)

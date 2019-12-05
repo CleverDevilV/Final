@@ -95,6 +95,10 @@
 		A7A5DE6C23953CD4004271D9 /* URLParameterEncoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A5DE6B23953CD4004271D9 /* URLParameterEncoderTests.swift */; };
 		A7A5DE6E239577CD004271D9 /* JSONParameterEncoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A5DE6D239577CD004271D9 /* JSONParameterEncoderTests.swift */; };
 		A7A5DE70239592C2004271D9 /* SomeUrlWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A5DE6F239592C2004271D9 /* SomeUrlWebViewController.swift */; };
+		A7B405DF239950610092AD85 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B405DE239950610092AD85 /* CoreDataStack.swift */; };
+		A7B405E62399510E0092AD85 /* GitRepoCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A7B405E42399510E0092AD85 /* GitRepoCoreData.xcdatamodeld */; };
+		A7B405E7239953420092AD85 /* GitRepoCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A7B405E42399510E0092AD85 /* GitRepoCoreData.xcdatamodeld */; };
+		A7B405E8239953440092AD85 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B405DE239950610092AD85 /* CoreDataStack.swift */; };
 		A7B481E5239260A500AFA19E /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B481E4239260A500AFA19E /* ProjectViewController.swift */; };
 		A7B481E72392643600AFA19E /* DescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B481E62392643600AFA19E /* DescriptionTableViewCell.swift */; };
 		A7B481E92392705600AFA19E /* RepoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B481E82392705600AFA19E /* RepoTableViewCell.swift */; };
@@ -163,6 +167,8 @@
 		A7A5DE6B23953CD4004271D9 /* URLParameterEncoderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLParameterEncoderTests.swift; sourceTree = "<group>"; };
 		A7A5DE6D239577CD004271D9 /* JSONParameterEncoderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParameterEncoderTests.swift; sourceTree = "<group>"; };
 		A7A5DE6F239592C2004271D9 /* SomeUrlWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomeUrlWebViewController.swift; sourceTree = "<group>"; };
+		A7B405DE239950610092AD85 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		A7B405E52399510E0092AD85 /* GitRepoCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GitRepoCoreData.xcdatamodel; sourceTree = "<group>"; };
 		A7B481E4239260A500AFA19E /* ProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectViewController.swift; sourceTree = "<group>"; };
 		A7B481E62392643600AFA19E /* DescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionTableViewCell.swift; sourceTree = "<group>"; };
 		A7B481E82392705600AFA19E /* RepoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoTableViewCell.swift; sourceTree = "<group>"; };
@@ -355,6 +361,15 @@
 			path = SettingsViewController;
 			sourceTree = "<group>";
 		};
+		A7B405E0239950650092AD85 /* GitRepoCoreData */ = {
+			isa = PBXGroup;
+			children = (
+				A7B405DE239950610092AD85 /* CoreDataStack.swift */,
+				A7B405E42399510E0092AD85 /* GitRepoCoreData.xcdatamodeld */,
+			);
+			path = GitRepoCoreData;
+			sourceTree = "<group>";
+		};
 		A7FE067A238BE7F30093F07A = {
 			isa = PBXGroup;
 			children = (
@@ -376,6 +391,7 @@
 		A7FE0685238BE7F30093F07A /* GitRepo */ = {
 			isa = PBXGroup;
 			children = (
+				A7B405E0239950650092AD85 /* GitRepoCoreData */,
 				A7525B5E23942D2000AD8587 /* Networking */,
 				A7525B5C23942D1000AD8587 /* Model */,
 				A77763722396F089007859CA /* Animation */,
@@ -534,6 +550,7 @@
 				A7FE06AD238C49F20093F07A /* RepoModel.swift in Sources */,
 				A73FC69B2396CFE6000F9F5C /* OwnerAndViewButtonTableViewCell.swift in Sources */,
 				A7B481EF2392C26B00AFA19E /* SettingsViewController.swift in Sources */,
+				A7B405DF239950610092AD85 /* CoreDataStack.swift in Sources */,
 				A7525B80239447A200AD8587 /* GitHubNetworkManager.swift in Sources */,
 				A77763802398190C007859CA /* AddViewTableViewCell.swift in Sources */,
 				A73FC6A12396DADC000F9F5C /* RepositoryCollaboratorsTableViewCell.swift in Sources */,
@@ -550,6 +567,7 @@
 				A7525B7E2394444300AD8587 /* GitHubEndPoint.swift in Sources */,
 				A77763742396F089007859CA /* DiamondLoad.swift in Sources */,
 				A7525B6823942E9C00AD8587 /* HTTPTask.swift in Sources */,
+				A7B405E62399510E0092AD85 /* GitRepoCoreData.xcdatamodeld in Sources */,
 				A7FE0689238BE7F30093F07A /* ProjectsTableVC.swift in Sources */,
 				A7495FCE2396839500C120DC /* ProjectsBase.swift in Sources */,
 				A77763772397BB10007859CA /* NetworkManagerProtocol.swift in Sources */,
@@ -582,6 +600,7 @@
 				A7A5DE5023952341004271D9 /* URLParameterEncoder.swift in Sources */,
 				A7A5DE6123952364004271D9 /* TasksTableViewCell.swift in Sources */,
 				A7495FCF239683AC00C120DC /* ProjectsBase.swift in Sources */,
+				A7B405E8239953440092AD85 /* CoreDataStack.swift in Sources */,
 				A7A5DE6323952369004271D9 /* RepoViewController.swift in Sources */,
 				A77763752396F0B1007859CA /* DiamondLoad.swift in Sources */,
 				A7A5DE6023952364004271D9 /* CollaboratorsTableViewCell.swift in Sources */,
@@ -593,6 +612,7 @@
 				A7A5DE5E23952364004271D9 /* DescriptionTableViewCell.swift in Sources */,
 				A73FC69F2396D81E000F9F5C /* SegmentCommitsBranchesTableViewCell.swift in Sources */,
 				A785A77F2396A7CF0040D4CD /* ProjectForUploadToBack.swift in Sources */,
+				A7B405E7239953420092AD85 /* GitRepoCoreData.xcdatamodeld in Sources */,
 				A7776388239839BA007859CA /* LogoutSettingsTableViewCell.swift in Sources */,
 				A7A5DE6623952382004271D9 /* EndPointType.swift in Sources */,
 				A785A78C2396C0450040D4CD /* TasksTableViewController.swift in Sources */,
@@ -878,6 +898,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A7B405E42399510E0092AD85 /* GitRepoCoreData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A7B405E52399510E0092AD85 /* GitRepoCoreData.xcdatamodel */,
+			);
+			currentVersion = A7B405E52399510E0092AD85 /* GitRepoCoreData.xcdatamodel */;
+			path = GitRepoCoreData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = A7FE067B238BE7F30093F07A /* Project object */;
 }

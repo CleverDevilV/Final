@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14492.1" systemVersion="18G1012" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Author" representedClassName="Author" syncable="YES">
+        <attribute name="date" attributeType="String" syncable="YES"/>
+        <attribute name="email" attributeType="String" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Branch" representedClassName="Branch" syncable="YES">
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <relationship name="repository" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Repository" inverseName="branches" inverseEntity="Repository" syncable="YES"/>
+    </entity>
+    <entity name="Collaborators" representedClassName="Collaborators" syncable="YES">
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <relationship name="repository" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Repository" inverseName="collaborators" inverseEntity="Repository" syncable="YES"/>
+    </entity>
+    <entity name="Commit" representedClassName="Commit" syncable="YES">
+        <attribute name="author" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="html_url" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="message" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sha" attributeType="String" syncable="YES"/>
+        <attribute name="url" attributeType="String" syncable="YES"/>
+        <relationship name="repository" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Repository" inverseName="commits" inverseEntity="Repository" syncable="YES"/>
+    </entity>
+    <entity name="Project" representedClassName="Project" syncable="YES">
+        <attribute name="projectName" attributeType="String" syncable="YES"/>
+        <attribute name="repositoryURL" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="reposiitory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="reposiitory" inverseEntity="Project" syncable="YES"/>
+        <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Task" inverseName="project" inverseEntity="Task" syncable="YES"/>
+    </entity>
+    <entity name="Repository" representedClassName="Repository" syncable="YES">
+        <attribute name="brakchesLink" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="changesLink" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="collaboratorsLink" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="languageOfRepository" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastChange" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="owner" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="repositoryLink" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="branches" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Branch" inverseName="repository" inverseEntity="Branch" syncable="YES"/>
+        <relationship name="collaborators" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Collaborators" inverseName="repository" inverseEntity="Collaborators" syncable="YES"/>
+        <relationship name="commits" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Commit" inverseName="repository" inverseEntity="Commit" syncable="YES"/>
+        <relationship name="project" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Project" syncable="YES"/>
+    </entity>
+    <entity name="Task" representedClassName="Task" syncable="YES">
+        <attribute name="taskContent" attributeType="String" syncable="YES"/>
+        <relationship name="project" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="tasks" inverseEntity="Project" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Project" positionX="-63" positionY="-18" width="128" height="105"/>
+        <element name="Task" positionX="-54" positionY="18" width="128" height="75"/>
+        <element name="Repository" positionX="-36" positionY="27" width="128" height="225"/>
+        <element name="Collaborators" positionX="-18" positionY="117" width="128" height="75"/>
+        <element name="Branch" positionX="0" positionY="126" width="128" height="75"/>
+        <element name="Commit" positionX="18" positionY="135" width="128" height="150"/>
+        <element name="Author" positionX="36" positionY="162" width="128" height="90"/>
+    </elements>
+</model>

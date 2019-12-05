@@ -19,12 +19,14 @@ internal final class CoreDataStack {
 		createCoordinator()
 	}
 	
+	/// Sync Context
 	lazy var readContext: NSManagedObjectContext = {
 		let readContext  = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
 		readContext.persistentStoreCoordinator = coordinator
 		return readContext
 	}()
 	
+	/// Async Context
 	lazy var writeContext: NSManagedObjectContext = {
 		let writeContext  = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
 		writeContext.persistentStoreCoordinator = coordinator

@@ -99,6 +99,28 @@
 		A7B405E62399510E0092AD85 /* GitRepoCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A7B405E42399510E0092AD85 /* GitRepoCoreData.xcdatamodeld */; };
 		A7B405E7239953420092AD85 /* GitRepoCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A7B405E42399510E0092AD85 /* GitRepoCoreData.xcdatamodeld */; };
 		A7B405E8239953440092AD85 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B405DE239950610092AD85 /* CoreDataStack.swift */; };
+		A7B405EA2399559A0092AD85 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B405E92399559A0092AD85 /* CoreDataService.swift */; };
+		A7B405EC239955D60092AD85 /* MOProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B405EB239955D60092AD85 /* MOProject.swift */; };
+		A7B405EE239958440092AD85 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B405E92399559A0092AD85 /* CoreDataService.swift */; };
+		A7B405F123995B0F0092AD85 /* MOProjectService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B405F023995B0F0092AD85 /* MOProjectService.swift */; };
+		A7B405F223995B3E0092AD85 /* MOProjectService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B405F023995B0F0092AD85 /* MOProjectService.swift */; };
+		A7B405F423995C380092AD85 /* MOTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B405F323995C380092AD85 /* MOTask.swift */; };
+		A7B405F723996D1F0092AD85 /* MOAuthor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B405F623996D1F0092AD85 /* MOAuthor.swift */; };
+		A7B405F923996DAD0092AD85 /* MOBranch.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B405F823996DAD0092AD85 /* MOBranch.swift */; };
+		A7B405FB23996E860092AD85 /* MORepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B405FA23996E860092AD85 /* MORepository.swift */; };
+		A7B405FF23996EE20092AD85 /* MOAuthor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B405F623996D1F0092AD85 /* MOAuthor.swift */; };
+		A7B4060023996EE20092AD85 /* MOBranch.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B405F823996DAD0092AD85 /* MOBranch.swift */; };
+		A7B4060123996EE20092AD85 /* MOProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B405EB239955D60092AD85 /* MOProject.swift */; };
+		A7B4060223996EE20092AD85 /* MOTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B405F323995C380092AD85 /* MOTask.swift */; };
+		A7B4060323996EE20092AD85 /* MORepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B405FA23996E860092AD85 /* MORepository.swift */; };
+		A7B4060523996F570092AD85 /* MOCollaborator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B4060423996F570092AD85 /* MOCollaborator.swift */; };
+		A7B4060623996F930092AD85 /* MOCollaborator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B4060423996F570092AD85 /* MOCollaborator.swift */; };
+		A7B4060823996FEE0092AD85 /* MOCommit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B4060723996FEE0092AD85 /* MOCommit.swift */; };
+		A7B4060B239979950092AD85 /* CoreDataAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B4060A239979950092AD85 /* CoreDataAdapter.swift */; };
+		A7B4060C2399807C0092AD85 /* CoreDataAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B4060A239979950092AD85 /* CoreDataAdapter.swift */; };
+		A7B4060E239982960092AD85 /* MORepositoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B4060D239982960092AD85 /* MORepositoryService.swift */; };
+		A7B4060F239982CB0092AD85 /* MORepositoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B4060D239982960092AD85 /* MORepositoryService.swift */; };
+		A7B406102399857D0092AD85 /* MOCommit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B4060723996FEE0092AD85 /* MOCommit.swift */; };
 		A7B481E5239260A500AFA19E /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B481E4239260A500AFA19E /* ProjectViewController.swift */; };
 		A7B481E72392643600AFA19E /* DescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B481E62392643600AFA19E /* DescriptionTableViewCell.swift */; };
 		A7B481E92392705600AFA19E /* RepoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B481E82392705600AFA19E /* RepoTableViewCell.swift */; };
@@ -169,6 +191,17 @@
 		A7A5DE6F239592C2004271D9 /* SomeUrlWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomeUrlWebViewController.swift; sourceTree = "<group>"; };
 		A7B405DE239950610092AD85 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		A7B405E52399510E0092AD85 /* GitRepoCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GitRepoCoreData.xcdatamodel; sourceTree = "<group>"; };
+		A7B405E92399559A0092AD85 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
+		A7B405EB239955D60092AD85 /* MOProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MOProject.swift; sourceTree = "<group>"; };
+		A7B405F023995B0F0092AD85 /* MOProjectService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MOProjectService.swift; path = ../MOProjectService.swift; sourceTree = "<group>"; };
+		A7B405F323995C380092AD85 /* MOTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MOTask.swift; sourceTree = "<group>"; };
+		A7B405F623996D1F0092AD85 /* MOAuthor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MOAuthor.swift; sourceTree = "<group>"; };
+		A7B405F823996DAD0092AD85 /* MOBranch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MOBranch.swift; sourceTree = "<group>"; };
+		A7B405FA23996E860092AD85 /* MORepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MORepository.swift; sourceTree = "<group>"; };
+		A7B4060423996F570092AD85 /* MOCollaborator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MOCollaborator.swift; sourceTree = "<group>"; };
+		A7B4060723996FEE0092AD85 /* MOCommit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MOCommit.swift; sourceTree = "<group>"; };
+		A7B4060A239979950092AD85 /* CoreDataAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataAdapter.swift; sourceTree = "<group>"; };
+		A7B4060D239982960092AD85 /* MORepositoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MORepositoryService.swift; sourceTree = "<group>"; };
 		A7B481E4239260A500AFA19E /* ProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectViewController.swift; sourceTree = "<group>"; };
 		A7B481E62392643600AFA19E /* DescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionTableViewCell.swift; sourceTree = "<group>"; };
 		A7B481E82392705600AFA19E /* RepoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoTableViewCell.swift; sourceTree = "<group>"; };
@@ -364,10 +397,38 @@
 		A7B405E0239950650092AD85 /* GitRepoCoreData */ = {
 			isa = PBXGroup;
 			children = (
+				A7B405E92399559A0092AD85 /* CoreDataService.swift */,
 				A7B405DE239950610092AD85 /* CoreDataStack.swift */,
 				A7B405E42399510E0092AD85 /* GitRepoCoreData.xcdatamodeld */,
+				A7B405ED239956F40092AD85 /* ManagedObjectModels */,
+				A7B40609239971260092AD85 /* MOservice */,
+				A7B4060A239979950092AD85 /* CoreDataAdapter.swift */,
 			);
 			path = GitRepoCoreData;
+			sourceTree = "<group>";
+		};
+		A7B405ED239956F40092AD85 /* ManagedObjectModels */ = {
+			isa = PBXGroup;
+			children = (
+				A7B405F623996D1F0092AD85 /* MOAuthor.swift */,
+				A7B405F823996DAD0092AD85 /* MOBranch.swift */,
+				A7B4060423996F570092AD85 /* MOCollaborator.swift */,
+				A7B4060723996FEE0092AD85 /* MOCommit.swift */,
+				A7B405EB239955D60092AD85 /* MOProject.swift */,
+				A7B405FA23996E860092AD85 /* MORepository.swift */,
+				A7B405F323995C380092AD85 /* MOTask.swift */,
+			);
+			path = ManagedObjectModels;
+			sourceTree = "<group>";
+		};
+		A7B40609239971260092AD85 /* MOservice */ = {
+			isa = PBXGroup;
+			children = (
+				A7B405F023995B0F0092AD85 /* MOProjectService.swift */,
+				A7B4060D239982960092AD85 /* MORepositoryService.swift */,
+			);
+			name = MOservice;
+			path = MOService.temp_caseinsensitive_rename.;
 			sourceTree = "<group>";
 		};
 		A7FE067A238BE7F30093F07A = {
@@ -540,12 +601,15 @@
 			files = (
 				A73FC6A32396DAEA000F9F5C /* RepositoryBranchesTableViewCell.swift in Sources */,
 				A7525B5A239301DA00AD8587 /* LogOutCommand.swift in Sources */,
+				A7B405F723996D1F0092AD85 /* MOAuthor.swift in Sources */,
+				A7B405F923996DAD0092AD85 /* MOBranch.swift in Sources */,
 				A785A77E2396A73B0040D4CD /* ProjectForUploadToBack.swift in Sources */,
 				A7FE06A1238BF4540093F07A /* BaseTabBarController.swift in Sources */,
 				A7B481E72392643600AFA19E /* DescriptionTableViewCell.swift in Sources */,
 				A7FE069F238BF3510093F07A /* RootViewController.swift in Sources */,
 				A7FE06AB238C46880093F07A /* ProjectModel.swift in Sources */,
 				A785A78B2396BF7A0040D4CD /* TasksTableViewController.swift in Sources */,
+				A7B4060E239982960092AD85 /* MORepositoryService.swift in Sources */,
 				A7776387239838F1007859CA /* LogoutSettingsTableViewCell.swift in Sources */,
 				A7FE06AD238C49F20093F07A /* RepoModel.swift in Sources */,
 				A73FC69B2396CFE6000F9F5C /* OwnerAndViewButtonTableViewCell.swift in Sources */,
@@ -559,6 +623,7 @@
 				A7B481EB239271A100AFA19E /* CollaboratorsTableViewCell.swift in Sources */,
 				A7525B6423942D8600AD8587 /* EndPointType.swift in Sources */,
 				A7FE06A5238BFAFE0093F07A /* NetWorkservice.swift in Sources */,
+				A7B4060523996F570092AD85 /* MOCollaborator.swift in Sources */,
 				A7A5DE70239592C2004271D9 /* SomeUrlWebViewController.swift in Sources */,
 				A77404FA23912FFC0038851E /* UserDefExt.swift in Sources */,
 				A796F3352395AB4D007D7E51 /* RepositoriesTableViewCell.swift in Sources */,
@@ -567,15 +632,21 @@
 				A7525B7E2394444300AD8587 /* GitHubEndPoint.swift in Sources */,
 				A77763742396F089007859CA /* DiamondLoad.swift in Sources */,
 				A7525B6823942E9C00AD8587 /* HTTPTask.swift in Sources */,
+				A7B405FB23996E860092AD85 /* MORepository.swift in Sources */,
 				A7B405E62399510E0092AD85 /* GitRepoCoreData.xcdatamodeld in Sources */,
+				A7B405F423995C380092AD85 /* MOTask.swift in Sources */,
 				A7FE0689238BE7F30093F07A /* ProjectsTableVC.swift in Sources */,
+				A7B405EA2399559A0092AD85 /* CoreDataService.swift in Sources */,
 				A7495FCE2396839500C120DC /* ProjectsBase.swift in Sources */,
 				A77763772397BB10007859CA /* NetworkManagerProtocol.swift in Sources */,
 				A7FE0687238BE7F30093F07A /* AppDelegate.swift in Sources */,
+				A7B4060823996FEE0092AD85 /* MOCommit.swift in Sources */,
+				A7B405F123995B0F0092AD85 /* MOProjectService.swift in Sources */,
 				A7525B8423945F0D00AD8587 /* RepoFromGit.swift in Sources */,
 				A7525B582392F80700AD8587 /* StartAppViewController.swift in Sources */,
 				A7525B8223945D3200AD8587 /* LoginModel.swift in Sources */,
 				A7525B6A23942F7400AD8587 /* ParameterEncodingProtocol.swift in Sources */,
+				A7B405EC239955D60092AD85 /* MOProject.swift in Sources */,
 				A7B481ED2392725400AFA19E /* TasksTableViewCell.swift in Sources */,
 				A777638423983711007859CA /* LoginSettingsTableViewCell.swift in Sources */,
 				A7525B722394346200AD8587 /* Router.swift in Sources */,
@@ -585,6 +656,7 @@
 				A7FE069D238BF1B30093F07A /* RepoViewController.swift in Sources */,
 				A777637D2397C7E1007859CA /* BranchModel.swift in Sources */,
 				A7FE069B238BF0E20093F07A /* RepositoriesTableViewController.swift in Sources */,
+				A7B4060B239979950092AD85 /* CoreDataAdapter.swift in Sources */,
 				A73FC69E2396D66B000F9F5C /* SegmentCommitsBranchesTableViewCell.swift in Sources */,
 				A7525B6E2394327000AD8587 /* JSONParameterEncoder.swift in Sources */,
 				A7525B6623942E4500AD8587 /* HTTPMethod.swift in Sources */,
@@ -599,6 +671,8 @@
 			files = (
 				A7A5DE5023952341004271D9 /* URLParameterEncoder.swift in Sources */,
 				A7A5DE6123952364004271D9 /* TasksTableViewCell.swift in Sources */,
+				A7B405FF23996EE20092AD85 /* MOAuthor.swift in Sources */,
+				A7B4060023996EE20092AD85 /* MOBranch.swift in Sources */,
 				A7495FCF239683AC00C120DC /* ProjectsBase.swift in Sources */,
 				A7B405E8239953440092AD85 /* CoreDataStack.swift in Sources */,
 				A7A5DE6323952369004271D9 /* RepoViewController.swift in Sources */,
@@ -609,9 +683,11 @@
 				A73FC6A42396DBBF000F9F5C /* RepositoryCollaboratorsTableViewCell.swift in Sources */,
 				A7A5DE5F23952364004271D9 /* RepoTableViewCell.swift in Sources */,
 				A777638123981AA9007859CA /* AddViewTableViewCell.swift in Sources */,
+				A7B4060223996EE20092AD85 /* MOTask.swift in Sources */,
 				A7A5DE5E23952364004271D9 /* DescriptionTableViewCell.swift in Sources */,
 				A73FC69F2396D81E000F9F5C /* SegmentCommitsBranchesTableViewCell.swift in Sources */,
 				A785A77F2396A7CF0040D4CD /* ProjectForUploadToBack.swift in Sources */,
+				A7B4060123996EE20092AD85 /* MOProject.swift in Sources */,
 				A7B405E7239953420092AD85 /* GitRepoCoreData.xcdatamodeld in Sources */,
 				A7776388239839BA007859CA /* LogoutSettingsTableViewCell.swift in Sources */,
 				A7A5DE6623952382004271D9 /* EndPointType.swift in Sources */,
@@ -619,12 +695,15 @@
 				A73FC69C2396D087000F9F5C /* OwnerAndViewButtonTableViewCell.swift in Sources */,
 				A7A5DE532395234A004271D9 /* GitHubNetworkManager.swift in Sources */,
 				A73FC6A52396DBBF000F9F5C /* RepositoryBranchesTableViewCell.swift in Sources */,
+				A7B4060C2399807C0092AD85 /* CoreDataAdapter.swift in Sources */,
 				A7A5DE5223952347004271D9 /* GitHubEndPoint.swift in Sources */,
+				A7B406102399857D0092AD85 /* MOCommit.swift in Sources */,
 				A7A5DE6E239577CD004271D9 /* JSONParameterEncoderTests.swift in Sources */,
 				A77763782397BB4B007859CA /* NetworkManagerProtocol.swift in Sources */,
 				A7495FC72396714A00C120DC /* FirebaseEndPoint.swift in Sources */,
 				A7A5DE6823952390004271D9 /* HTTPMethod.swift in Sources */,
 				A7776385239837DE007859CA /* LoginSettingsTableViewCell.swift in Sources */,
+				A7B4060F239982CB0092AD85 /* MORepositoryService.swift in Sources */,
 				A7A5DE4F23952341004271D9 /* ParameterEncodingProtocol.swift in Sources */,
 				A7A5DE6C23953CD4004271D9 /* URLParameterEncoderTests.swift in Sources */,
 				A7495FCA23967BBD00C120DC /* RepositoriesBase.swift in Sources */,
@@ -632,7 +711,9 @@
 				A7A5DE5D23952364004271D9 /* ProjectViewController.swift in Sources */,
 				A7A5DE5C23952364004271D9 /* ProjectModel.swift in Sources */,
 				A7A5DE592395235D004271D9 /* NetWorkservice.swift in Sources */,
+				A7B4060623996F930092AD85 /* MOCollaborator.swift in Sources */,
 				A777637E2397C83B007859CA /* BranchModel.swift in Sources */,
+				A7B4060323996EE20092AD85 /* MORepository.swift in Sources */,
 				A7A5DE6923952390004271D9 /* HTTPTask.swift in Sources */,
 				A7A5DE4B23952306004271D9 /* AppDelegate.swift in Sources */,
 				A7A5DE542395234D004271D9 /* RepoModel.swift in Sources */,
@@ -649,8 +730,10 @@
 				A7A5DE4D23952326004271D9 /* StartAppViewController.swift in Sources */,
 				A7495FC62396714600C120DC /* FirebaseNetworkManager.swift in Sources */,
 				A7A5DE6A23952390004271D9 /* NetworkRouter.swift in Sources */,
+				A7B405EE239958440092AD85 /* CoreDataService.swift in Sources */,
 				A777637B2397BE2E007859CA /* EventModel.swift in Sources */,
 				A7A5DE5723952357004271D9 /* Registration.swift in Sources */,
+				A7B405F223995B3E0092AD85 /* MOProjectService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

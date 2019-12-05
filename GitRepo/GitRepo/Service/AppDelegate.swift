@@ -14,7 +14,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	var window: UIWindow?
 	
 	var repositoryBase: RepositoriesBase?
-	var projectBase: ProjectsBase?
+	{
+		didSet {
+			print("set RepositoriesBase")
+			let reposerv = MORepositoryService()
+			
+			let t = reposerv.getRepositoriesFromCoreData()
+			print("hello")
+//			reposerv.addObjectTo(repository: (repositoryBase?.repositories[0])!)
+//			reposerv.readRepositoriesData()
+		}
+	}
+	var projectBase: ProjectsBase? {
+		didSet {
+			print("set ProjectsBase")
+		}
+	}
 	
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		
@@ -22,6 +37,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		let rootVC = RootViewController.shared
 		window?.rootViewController = rootVC
 		window?.makeKeyAndVisible()
+		
+//		let coredataService = CoreDataService()
+//		coredataService.writeData(nil)
+		
+//		coredataService.readDataTasks("Project") {
+//			result in
+//			print(result)
+//		}
+		
+//		coredataService.writeData()
+//		coredataService.writeTask {
+//			result in
+//			print(result)
+//		}
+		
+//		coredataService.readData("Project") {
+//			project in
+//			coredataService.readDataTasks("Task") {
+//				tasks in
+//				let projserv = MOProjectService()
+//				projserv.addTasks(tasks, to: project[0])
+//			}
+//		}
+		
+//		coredataService.writeData()
+//		coredataService.readData("Project") {
+//			resultProj in
+//			let projectServ = MOProjectService()
+//			coredataService.readDataTasks("Task") {
+//				result in
+//				projectServ.addTasks(result, to: resultProj[0])
+//			}
+//
+//
+//		}
+		
+//		coredataService.deleteAllData()
 		
 //		let network = GitHubNetworkManager()
 //		network.getGitHubData(endPoint: GitHubApi.collaborators(url: "https://api.github.com/repos/Oabshire/Raspberry_Team_S2/collaborators")) {

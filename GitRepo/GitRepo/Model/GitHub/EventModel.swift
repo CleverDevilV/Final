@@ -23,22 +23,31 @@ struct Commits: Codable {
 }
 
 struct Commit: Codable {
-	let sha: String
+	let sha: String?
 	let message: String?
 	let author: Author?
-	let url: String
+	let url: String?
 	var date: String?
 	private var html_url: String?
 	
 	mutating func getUrlOfCommit() -> String? {
 		if self.html_url == nil {
-			self.html_url = self.url.replacingOccurrences(of: "https://api.", with: "https://").replacingOccurrences(of: "repos/", with: "").replacingOccurrences(of: "commits", with: "commit")
+			self.html_url = self.url?.replacingOccurrences(of: "https://api.", with: "https://").replacingOccurrences(of: "repos/", with: "").replacingOccurrences(of: "commits", with: "commit")
 		}
 		return self.html_url
 	}
+	
+	init(sha: String?, message: String?, author: Author?, url: String?, date: String?) {
+		self.sha = sha
+		self.message = message
+		self.author = author
+		self.url = url
+		self.date = date
+	}
+	
 	struct Author: Codable {
 		let name: String
-		let email: String
+		let email: String?
 		let date: String?
 	}
 	

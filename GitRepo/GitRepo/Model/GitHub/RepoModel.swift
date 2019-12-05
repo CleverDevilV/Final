@@ -30,7 +30,7 @@ public final class Repository: Codable {
 	/// Id of repository
 	var id: Int?
 	
-	var lastChange: String
+	var lastChange: String?
 	
 	var branchesLink: String?
 	
@@ -87,6 +87,8 @@ public final class Repository: Codable {
 		self.branchesLink = try container.decode(String.self, forKey: .branchesUrl)
 		
 	}
+	
+	public init() {	}
 	
 //	private func getCollaborators(_ completion: @escaping ([User]?) -> ()) {
 //		let networkManager = GitHubNetworkManager()

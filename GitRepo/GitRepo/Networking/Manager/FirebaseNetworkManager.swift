@@ -51,6 +51,7 @@ struct FirebaseNetworkManager: NetworkManagerProtocol {
 			
 		}
 		router.request(endPoint) { data, response, error in
+			// Отсутствие сети!
 			if error != nil {
 				completion(nil, "Plese check your network connection")
 			}

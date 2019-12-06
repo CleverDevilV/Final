@@ -59,8 +59,6 @@ extension SettingsViewController: UITableViewDataSource {
 		default:
 			return cell
 		}
-		
-		return cell
 	}
 }
 

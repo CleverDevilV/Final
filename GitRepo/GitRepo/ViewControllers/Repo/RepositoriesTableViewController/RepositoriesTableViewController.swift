@@ -45,29 +45,15 @@ class RepositoriesTableViewController: UIViewController {
 		
 		view.addSubview(tableView)
 		
-		
-		
-//		downloadData()
-		
 		setupSegmentControll()
     }
 	
-//	func downloadData() {
-//		let network = GitHubNetworkManager()
-//		network.getGitHubData(endPoint: GitHubApi.repos) {
-//			result, error in
-//			if error != nil {
-//				print(error!)
-//			}
-//			guard let result = result as? RepositoriesBase else { return }
-//			
-//			self.repositoryBase = result
-//			self.repositories = result.repositories
-//			DispatchQueue.main.async {
-//				self.tableView.reloadData()
-//			}
-//		}
-//	}
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		self.tabBarController?.tabBar.isHidden = false
+	}
+	
 	
 	func setupSegmentControll() {
 		let titles = ["Мои", "Все"]

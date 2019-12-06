@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	{
 		didSet {
 			print("set RepositoriesBase")
-			print(repositoryBase)
+//			print(repositoryBase)
 			
 //			self.reposerv.saveCoreDataObjectsFrom(base: repositoryBase, baseType: .repositoryBase)
 
@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	var projectBase: ProjectsBase? {
 		didSet {
 			print("set ProjectsBase")
-			print(projectBase)
+//			print(projectBase)
 			
 //			self.reposerv.saveCoreDataObjectsFrom(base: projectBase, baseType: .projectBase)
 		}

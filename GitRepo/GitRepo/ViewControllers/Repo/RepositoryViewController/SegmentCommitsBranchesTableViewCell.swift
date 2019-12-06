@@ -10,6 +10,7 @@ import UIKit
 
 protocol SegmentCommitsBranchesTableViewCellDelegate: class {
 	func setSegmentControllerValue(_ value: Int)
+	func showWebView(at indexPath: IndexPath)
 }
 
 class SegmentCommitsBranchesTableViewCell: UITableViewCell {
@@ -100,7 +101,6 @@ class SegmentCommitsBranchesTableViewCell: UITableViewCell {
 	override func setSelected(_ selected: Bool, animated: Bool) {
 		super.setSelected(selected, animated: animated)
 		
-		// Configure the view for the selected state
 	}
 	
 	@objc
@@ -146,5 +146,8 @@ extension SegmentCommitsBranchesTableViewCell: UITableViewDataSource {
 }
 
 extension SegmentCommitsBranchesTableViewCell: UITableViewDelegate {
-	
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		tableView.cellForRow(at: indexPath)?.isSelected = false
+		delegate.showWebView(at: indexPath)
+	}
 }

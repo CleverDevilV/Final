@@ -18,7 +18,7 @@ protocol CoreDataServiceProtocol {
 	
 }
 
-final class Loader {
+final class Loader: LoaderProtocol {
 	
 	private var networkManager: NetworkManagerProtocol!
 	private let coreDataService: CoreDataServiceProtocol!

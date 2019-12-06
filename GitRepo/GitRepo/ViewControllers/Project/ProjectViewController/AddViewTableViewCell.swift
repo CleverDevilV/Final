@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol AddTaskProtocol {
+	func addTask()
+}
+
 class AddViewTableViewCell: UITableViewCell {
 	
 	public static var reusedId = "AddViewTableViewCell"
@@ -19,6 +23,14 @@ class AddViewTableViewCell: UITableViewCell {
 //			self.setupViews()
 		}
 	}
+	
+	public var typeOfData: String! {
+		didSet {
+			self.defaultView.reloadData()
+		}
+	}
+	
+	public var addTaskDelegate: AddTaskProtocol!
 	
 	private var defaultView = UITableView()
 	
@@ -79,7 +91,6 @@ class AddViewTableViewCell: UITableViewCell {
 extension AddViewTableViewCell: UITableViewDataSource {
 	
 	
-	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return arrayOfDataForPresent?.count ?? 0
 	}
@@ -87,9 +98,11 @@ extension AddViewTableViewCell: UITableViewDataSource {
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 		
-		if let arrayOfDataForPresent = arrayOfDataForPresent as? [User] {
+		if typeOfData == "collaborators" {
+			if let arrayOfDataForPresent = arrayOfDataForPresent as? [User] {
 			cell.textLabel?.text = arrayOfDataForPresent[indexPath.row].login
-		} else if let arrayOfDataForPresent = arrayOfDataForPresent as? [String] {
+			}
+		} else if typeOfData == "tasks", let arrayOfDataForPresent = arrayOfDataForPresent as? [String] {
 			cell.textLabel?.text = arrayOfDataForPresent[indexPath.row]
 		}
 		
@@ -97,8 +110,7 @@ extension AddViewTableViewCell: UITableViewDataSource {
 	}
 	
 	func numberOfSections(in tableView: UITableView) -> Int {
-		let numberOfSections = arrayOfDataForPresent == nil ? 0 : 1
-		return numberOfSections
+		return 1
 	}
 	
 }
@@ -112,9 +124,9 @@ extension AddViewTableViewCell: UITableViewDelegate {
 	}
 	
 	func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-		if (arrayOfDataForPresent as? [User]) != nil {
+		if typeOfData == "collaborators" {
 			return 0
-		} else if (arrayOfDataForPresent as? [String]) != nil {
+		} else if typeOfData == "tasks" {
 			return 50
 		}
 		return 0
@@ -122,9 +134,9 @@ extension AddViewTableViewCell: UITableViewDelegate {
 	
 	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 		
-		if (arrayOfDataForPresent as? [User]) != nil {
+		if typeOfData == "collaborators" {
 			return nil
-		} else if (arrayOfDataForPresent as? [String]) != nil {
+		} else if typeOfData == "tasks" {
 			
 			let frame: CGRect = defaultView.frame
 			let headerView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height))
@@ -135,7 +147,7 @@ extension AddViewTableViewCell: UITableViewDelegate {
 			let addTaskButton = UIButton(type: .contactAdd)
 			addTaskButton.frame = CGRect(x: frame.width - 50, y: 10, width: 30, height: 30)
 			addTaskButton.setTitleColor(.orange, for: .normal)
-			addTaskButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+			addTaskButton.addTarget(self, action: #selector(addTaskButtonTapped), for: .touchUpInside)
 			
 			let editTasksButton = UIButton(frame: CGRect(x: frame.width - 110, y: 10, width: 50, height: 30))
 			editTasksButton.setTitle("Edit", for: .normal)
@@ -152,9 +164,10 @@ extension AddViewTableViewCell: UITableViewDelegate {
 	}
 	
 	@objc
-	func buttonTapped() {
-		project?.addTask("task")
-		arrayOfDataForPresent = project?.projectTasks
+	func addTaskButtonTapped() {
+		
+		addTaskDelegate.addTask()
+		
 		defaultView.reloadData()
 	}
 	
@@ -165,9 +178,9 @@ extension AddViewTableViewCell: UITableViewDelegate {
 	
 	func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
 		
-		if (arrayOfDataForPresent as? [User]) != nil {
+		if typeOfData == "collaborators" {
 			return UITableViewCell.EditingStyle.none
-		} else if (arrayOfDataForPresent as? [String]) != nil {
+		} else if typeOfData == "tasks" {
 			return UITableViewCell.EditingStyle.delete
 		}
 		
@@ -176,9 +189,9 @@ extension AddViewTableViewCell: UITableViewDelegate {
 	
 	func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
 		
-		if (arrayOfDataForPresent as? [User]) != nil {
+		if typeOfData == "collaborators" {
 			return false
-		} else if (arrayOfDataForPresent as? [String]) != nil {
+		} else if typeOfData == "tasks" {
 			return true
 		}
 		

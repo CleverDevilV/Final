@@ -59,7 +59,7 @@ final class ProjectsBase {
 		var uploadData: [String : [ProjectForUploadToBack]] = [userName : []]
 		
 		for project in projects {
-			let projectToUpload = ProjectForUploadToBack(name: project.projectName, repoUrl: project.repoUrl, projectTasks: project.projectTasks)
+			let projectToUpload = ProjectForUploadToBack(name: project.projectName, repoUrl: project.repoUrl, repositoryName: project.repositoryName, projectTasks: project.projectTasks, descriptionOfProject: project.descriptionOfProject)
 			uploadData[userName]?.append(projectToUpload)
 		}
 		network.getData(endPoint: FirebaseApi.uploadProjects(data: uploadData)) {

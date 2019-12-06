@@ -20,13 +20,16 @@ public final class Project: Decodable {
 	/// Repository of project
 	public var repo: Repository?
 	
+	public var descriptionOfProject: String?
+	
 	public var projectTasks: [String]?
 	
-	init(projectName: String, repoURL: String?, repositoryName: String? , repo: Repository?) {
+	init(projectName: String, repoURL: String?, repositoryName: String? , repo: Repository?, descriptionOfProject: String?) {
 		self.projectName = projectName
 		self.repoUrl = repoURL
 		self.repositoryName = repositoryName
 		self.repo = repo
+		self.descriptionOfProject = descriptionOfProject
 	}
 	
 	/// Keys for decode Firebase Api Response
@@ -35,6 +38,7 @@ public final class Project: Decodable {
 		case name
 		case repoUrl
 		case projectTasks
+		case descriptionOfProject
 	}
 	
 	/**
@@ -66,7 +70,16 @@ public final class Project: Decodable {
 		
 		self.projectTasks = tasks
 		
+		do {
+			self.descriptionOfProject = try container.decode(String?.self, forKey: .descriptionOfProject)
+		} catch {
+			print(error)
+			self.descriptionOfProject = nil
+		}
+		
 		self.repo = nil
+		
+		self.repositoryName = nil
 	}
 	
 	public func addTask(_ task: String) {

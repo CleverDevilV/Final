@@ -86,7 +86,7 @@ final class CoreDataService {
 			
 			do {
 				let results = try fetch.execute() as? [MOProject]
-				print(results)
+//				print(results)
 				if let results = results {
 					for result in results {
 						print(result.projectName)
@@ -109,11 +109,11 @@ final class CoreDataService {
 			
 			do {
 				let results = try fetch.execute() as? [MOTask]
-				print(results)
+//				print(results)
 				if let results = results {
-					for result in results {
+//					for result in results {
 //						print(result.projectName)
-					}
+//					}
 					completion(results)
 				}
 			} catch {

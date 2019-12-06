@@ -27,9 +27,13 @@ class RepoViewController: UIViewController {
 		setupViews()
     }
 	
-	func setupViews() {
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
 		
 		self.tabBarController?.tabBar.isHidden = true
+	}
+	
+	func setupViews() {
 		
 //		tableViewFrame = CGRect(origin: view.frame.origin, size: CGSize(width: view.frame.width, height: 315))
 		
@@ -200,5 +204,13 @@ extension RepoViewController: SegmentCommitsBranchesTableViewCellDelegate {
 	func setSegmentControllerValue(_ value: Int) {
 		segmentControllerValue = value
 //		self.tableForSegmentChoose.reloadData()
+	}
+	
+	func showWebView(at indexPath: IndexPath) {
+		let webView = SomeUrlWebViewController()
+		let newURL = repository?.commits?[indexPath.row].getUrlOfCommit() ?? ""
+		guard let url = URL(string: newURL) else { return }
+		webView.url = url
+		self.navigationController?.pushViewController(webView, animated: true)
 	}
 }

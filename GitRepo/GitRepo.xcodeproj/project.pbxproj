@@ -15,6 +15,8 @@
 		A73FC6A32396DAEA000F9F5C /* RepositoryBranchesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73FC6A22396DAEA000F9F5C /* RepositoryBranchesTableViewCell.swift */; };
 		A73FC6A42396DBBF000F9F5C /* RepositoryCollaboratorsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73FC6A02396DADC000F9F5C /* RepositoryCollaboratorsTableViewCell.swift */; };
 		A73FC6A52396DBBF000F9F5C /* RepositoryBranchesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73FC6A22396DAEA000F9F5C /* RepositoryBranchesTableViewCell.swift */; };
+		A742042E239AE28D009D344F /* ProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A742042D239AE28D009D344F /* ProjectTableViewCell.swift */; };
+		A742042F239AE3F4009D344F /* ProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A742042D239AE28D009D344F /* ProjectTableViewCell.swift */; };
 		A7495FC3239655F400C120DC /* FirebaseEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7495FC2239655F400C120DC /* FirebaseEndPoint.swift */; };
 		A7495FC5239670A200C120DC /* FirebaseNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7495FC4239670A200C120DC /* FirebaseNetworkManager.swift */; };
 		A7495FC62396714600C120DC /* FirebaseNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7495FC4239670A200C120DC /* FirebaseNetworkManager.swift */; };
@@ -155,6 +157,7 @@
 		A73FC69D2396D66B000F9F5C /* SegmentCommitsBranchesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentCommitsBranchesTableViewCell.swift; sourceTree = "<group>"; };
 		A73FC6A02396DADC000F9F5C /* RepositoryCollaboratorsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryCollaboratorsTableViewCell.swift; sourceTree = "<group>"; };
 		A73FC6A22396DAEA000F9F5C /* RepositoryBranchesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryBranchesTableViewCell.swift; sourceTree = "<group>"; };
+		A742042D239AE28D009D344F /* ProjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTableViewCell.swift; sourceTree = "<group>"; };
 		A7495FC2239655F400C120DC /* FirebaseEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseEndPoint.swift; sourceTree = "<group>"; };
 		A7495FC4239670A200C120DC /* FirebaseNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseNetworkManager.swift; sourceTree = "<group>"; };
 		A7495FC823967A7100C120DC /* RepositoriesBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesBase.swift; sourceTree = "<group>"; };
@@ -252,10 +255,10 @@
 				A7FE06A0238BF4540093F07A /* BaseTabBarController.swift */,
 				A77404ED239110E90038851E /* Registration.swift */,
 				A7A5DE6F239592C2004271D9 /* SomeUrlWebViewController.swift */,
+				A7B40611239A886C0092AD85 /* Loader.swift */,
 				A7776382239836E9007859CA /* SettingsViewController */,
 				A7FE06A2238BFAE20093F07A /* Project */,
 				A7FE06A3238BFAEF0093F07A /* Repo */,
-				A7B40611239A886C0092AD85 /* Loader.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -395,6 +398,27 @@
 			path = SettingsViewController;
 			sourceTree = "<group>";
 		};
+		A7A1E80D239AE6C400FAE25E /* ProjectsTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A7FE0688238BE7F30093F07A /* ProjectsTableVC.swift */,
+				A742042D239AE28D009D344F /* ProjectTableViewCell.swift */,
+			);
+			path = ProjectsTableViewController;
+			sourceTree = "<group>";
+		};
+		A7A1E80E239AE6DF00FAE25E /* RepositoryViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A7FE069C238BF1B30093F07A /* RepoViewController.swift */,
+				A73FC69A2396CFE6000F9F5C /* OwnerAndViewButtonTableViewCell.swift */,
+				A73FC6A02396DADC000F9F5C /* RepositoryCollaboratorsTableViewCell.swift */,
+				A73FC69D2396D66B000F9F5C /* SegmentCommitsBranchesTableViewCell.swift */,
+				A73FC6A22396DAEA000F9F5C /* RepositoryBranchesTableViewCell.swift */,
+			);
+			path = RepositoryViewController;
+			sourceTree = "<group>";
+		};
 		A7B405E0239950650092AD85 /* GitRepoCoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -469,7 +493,7 @@
 		A7FE06A2238BFAE20093F07A /* Project */ = {
 			isa = PBXGroup;
 			children = (
-				A7FE0688238BE7F30093F07A /* ProjectsTableVC.swift */,
+				A7A1E80D239AE6C400FAE25E /* ProjectsTableViewController */,
 				A73FC6982396CBF6000F9F5C /* ProjectViewController */,
 			);
 			path = Project;
@@ -479,11 +503,7 @@
 			isa = PBXGroup;
 			children = (
 				A73FC6992396CC13000F9F5C /* RepositoriesTableViewController */,
-				A7FE069C238BF1B30093F07A /* RepoViewController.swift */,
-				A73FC69A2396CFE6000F9F5C /* OwnerAndViewButtonTableViewCell.swift */,
-				A73FC6A02396DADC000F9F5C /* RepositoryCollaboratorsTableViewCell.swift */,
-				A73FC69D2396D66B000F9F5C /* SegmentCommitsBranchesTableViewCell.swift */,
-				A73FC6A22396DAEA000F9F5C /* RepositoryBranchesTableViewCell.swift */,
+				A7A1E80E239AE6DF00FAE25E /* RepositoryViewController */,
 			);
 			path = Repo;
 			sourceTree = "<group>";
@@ -614,6 +634,7 @@
 				A7FE06AD238C49F20093F07A /* RepoModel.swift in Sources */,
 				A73FC69B2396CFE6000F9F5C /* OwnerAndViewButtonTableViewCell.swift in Sources */,
 				A7B481EF2392C26B00AFA19E /* SettingsViewController.swift in Sources */,
+				A742042E239AE28D009D344F /* ProjectTableViewCell.swift in Sources */,
 				A7B405DF239950610092AD85 /* CoreDataStack.swift in Sources */,
 				A7525B80239447A200AD8587 /* GitHubNetworkManager.swift in Sources */,
 				A77763802398190C007859CA /* AddViewTableViewCell.swift in Sources */,
@@ -688,6 +709,7 @@
 				A7A5DE5E23952364004271D9 /* DescriptionTableViewCell.swift in Sources */,
 				A73FC69F2396D81E000F9F5C /* SegmentCommitsBranchesTableViewCell.swift in Sources */,
 				A785A77F2396A7CF0040D4CD /* ProjectForUploadToBack.swift in Sources */,
+				A742042F239AE3F4009D344F /* ProjectTableViewCell.swift in Sources */,
 				A7B4060123996EE20092AD85 /* MOProject.swift in Sources */,
 				A7B405E7239953420092AD85 /* GitRepoCoreData.xcdatamodeld in Sources */,
 				A7776388239839BA007859CA /* LogoutSettingsTableViewCell.swift in Sources */,

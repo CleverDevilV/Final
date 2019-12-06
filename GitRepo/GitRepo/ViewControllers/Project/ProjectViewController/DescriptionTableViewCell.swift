@@ -8,12 +8,17 @@
 
 import UIKit
 
+protocol DescriptionTableViewCellDelegate {
+	func projectDescriptionUpdate(_ description: String?)
+}
+
 class DescriptionTableViewCell: UITableViewCell {
 	
 	public static let descriptionReuseId = "DescriptionReuseId"
+	public var descriptionCellDelegate: DescriptionTableViewCellDelegate!
 	
 	private var descriptionLabel = UILabel()
-	private var descriptionTextView = UITextView()
+	public var descriptionTextView = UITextView()
 	
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: .default, reuseIdentifier: reuseIdentifier)
@@ -40,11 +45,12 @@ class DescriptionTableViewCell: UITableViewCell {
 		descriptionTextView.layer.cornerRadius = 25
 		descriptionTextView.textContainerInset = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
 		descriptionTextView.isScrollEnabled = false
-		descriptionTextView.text = """
-		Tratata
-		Tratata
-		"""
+//		descriptionTextView.text = """
+//		Tratata
+//		Tratata
+//		"""
 		descriptionTextView.delegate = self
+		
 		
 	// add to contentView
 		contentView.addSubview(descriptionLabel)
@@ -101,13 +107,21 @@ extension DescriptionTableViewCell: UITextViewDelegate {
 		return newText.count <= 70
 	}
 	
-	// чтобы была ссылка?
-//	func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
-//		//и здесь пишете что-то типа такого
-//		if URL.scheme == "ваше слово" {
-//			// делаете что надо
-//			return true
-//		}
-//		return false
-//	}
+	func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+		let keypadToolbar: UIToolbar = UIToolbar()
+
+		// add a done button to the numberpad
+		keypadToolbar.items = [
+			UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.done, target: textView, action: #selector(UITextView.resignFirstResponder)),
+			UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: self, action: nil)
+		]
+		keypadToolbar.sizeToFit()
+		// add a toolbar with a done button above the number pad
+		textView.inputAccessoryView = keypadToolbar
+		return true
+	}
+	
+	func textViewDidEndEditing(_ textView: UITextView) {
+		descriptionCellDelegate.projectDescriptionUpdate(textView.text)
+	}
 }

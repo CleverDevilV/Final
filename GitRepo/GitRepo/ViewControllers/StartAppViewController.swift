@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol LoaderProtocol {
+	
+}
+
 class StartAppViewController: UIViewController {
 	
 	private var greetingLabel = UILabel()
@@ -19,6 +23,8 @@ class StartAppViewController: UIViewController {
 	private let loadView = DiamondLoad()
 	
 	private var login = UserDefaults.standard.get(with: .oauth_user_login)
+	
+	private var loader: LoaderProtocol!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()

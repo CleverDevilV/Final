@@ -42,7 +42,7 @@ class ProjectsTableVC: UIViewController {
 		
 		tableView = UITableView(frame: view.frame, style: .plain)
 		tableView.backgroundColor = UIColor(red: 1, green: 0.5781051517, blue: 0, alpha: 0.04508240583) //#colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 0.04508240583)
-		tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+		tableView.register(ProjectTableViewCell.self, forCellReuseIdentifier: ProjectTableViewCell.reusedId)
 		
 		tableView.separatorStyle = .none
 		
@@ -81,6 +81,7 @@ class ProjectsTableVC: UIViewController {
 		super.viewWillAppear(animated)
 		
 		self.tabBarController?.tabBar.isHidden = false
+		
 	}
 
 	@objc
@@ -95,7 +96,8 @@ class ProjectsTableVC: UIViewController {
 			
 			let textField = addProjectAlertController.textFields![0] as UITextField
 			if let text = textField.text {
-				self.projectsBase?.addProject(Project(projectName: text, repoURL: nil, repositoryName: nil, repo: nil))
+				self.projectsBase?.addProject(Project(projectName: text, repoURL: nil, repositoryName: nil, repo: nil, descriptionOfProject: nil))
+				self.projectsBase?.baseUpdated()
 				
 				self.tableView.reloadData()
 //				self.projects = self.projectsBase?.projects ?? []
@@ -123,14 +125,13 @@ extension ProjectsTableVC: UITableViewDataSource {
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+		let cell = tableView.dequeueReusableCell(withIdentifier: ProjectTableViewCell.reusedId, for: indexPath) as! ProjectTableViewCell
 		
 		guard let project = projectsBase?.projects[indexPath.row]  else { return cell }
-//		cell.textLabel?.text = "\(indexPath.row)"
-		cell.textLabel?.text = project.projectName
-//		cell.detailTextLabel?.text = "Language: \(project.repo.languageOfProject)"
+		
+		cell.project = project
+		
 		cell.accessoryType = .disclosureIndicator
-		cell.backgroundColor = .clear
 		
 		return cell
 	}

@@ -68,11 +68,11 @@ public class DiamondLoad: UIView {
 		}
 		createLayersIfNeeded()
 		setupInitialPlaces()
-		var dotsDelay = 0.1
-		switch style{
-		case .NoSpin:
-			dotsDelay = 0
-		}
+//		var dotsDelay = 0.1
+//		switch style{
+//		case .NoSpin:
+//			dotsDelay = 0
+//		}
 		let time = DispatchTime.now() + 1
 		
 		self.startLayerAnimation(layer: self.dots[0], toPosition: CGPoint(x: self.localCenter.x, y: self.localCenter.y - self.dotSide - self.dotLargestDistance))

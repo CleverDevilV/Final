@@ -43,12 +43,9 @@ class TasksTableViewCell: UITableViewCell {
 		tasksLabel.text = "Задачи:"
 		
 		// tasksButton
-		if let countOfTasks = project?.projectTasks?.count {
-			tasksButton.setTitle("\(countOfTasks)", for: .normal)
-		} else {
-			tasksButton.setTitle("Нет задач", for: .normal)
-		}
+		
 //		tasksButton.setTitle("▿", for: .normal)
+		tasksButton.setImage(UIImage(named: "arrowDown"), for: .normal)
 		tasksButton.titleLabel?.font = UIFont.systemFont(ofSize: 20)
 		tasksButton.setTitleColor(.blue, for: .normal)
 		tasksButton.setTitleColor(.white, for: .highlighted)
@@ -120,13 +117,11 @@ class TasksTableViewCell: UITableViewCell {
 	@objc
 	func taptasksButton() {
 		
-//		if !isExtendedCollaborators {
-//			tasksButton.titleLabel?.transform = CGAffineTransform(rotationAngle: .pi)
-			//			heightOfCollaboratorsTable = 100
-//		} else {
-			//			heightOfCollaboratorsTable = 0
-//			tasksButton.titleLabel?.transform = CGAffineTransform(rotationAngle: 0)
-//		}
+		if !isExtendedCollaborators {
+			tasksButton.imageView?.transform = CGAffineTransform(rotationAngle: .pi)
+		} else {
+			tasksButton.imageView?.transform = CGAffineTransform(rotationAngle: 0)
+		}
 		
 		isExtendedCollaborators = !isExtendedCollaborators
 		delegate.addTasksTable()

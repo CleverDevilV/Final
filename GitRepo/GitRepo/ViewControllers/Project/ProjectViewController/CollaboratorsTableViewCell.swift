@@ -40,7 +40,8 @@ class CollaboratorsTableViewCell: UITableViewCell {
 		collaboratorsLabel.text = "Участники:"
 		
 		// collaboratorsButton
-		collaboratorsButton.setTitle("▿", for: .normal)
+//		collaboratorsButton.setTitle("▿", for: .normal)
+		collaboratorsButton.setImage(UIImage(named: "arrowDown"), for: .normal)
 		collaboratorsButton.titleLabel?.font = UIFont.systemFont(ofSize: 20)
 		collaboratorsButton.setTitleColor(.blue, for: .normal)
 		collaboratorsButton.setTitleColor(.white, for: .highlighted)
@@ -116,11 +117,11 @@ extension CollaboratorsTableViewCell {
 //		collaboratorsTableViewHeight.isActive = false
 
 		if !isExtendedCollaborators {
-			collaboratorsButton.titleLabel?.transform = CGAffineTransform(rotationAngle: .pi)
+			collaboratorsButton.imageView?.transform = CGAffineTransform(rotationAngle: .pi)
 //			heightOfCollaboratorsTable = 100
 		} else {
 //			heightOfCollaboratorsTable = 0
-			collaboratorsButton.titleLabel?.transform = CGAffineTransform(rotationAngle: 0)
+			collaboratorsButton.imageView?.transform = CGAffineTransform(rotationAngle: 0)
 		}
 		isExtendedCollaborators = !isExtendedCollaborators
 		delegate.addCollaboratorsTable()

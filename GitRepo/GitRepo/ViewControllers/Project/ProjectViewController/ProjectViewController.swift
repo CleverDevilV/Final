@@ -38,6 +38,7 @@ class ProjectViewController: UIViewController {
 		tableView.register(TasksTableViewCell.self, forCellReuseIdentifier: TasksTableViewCell.tasksReuseId)
 		
 		tableView.dataSource = self
+		tableView.delegate = self
 		
 		view.addSubview(tableView)
 		
@@ -45,8 +46,19 @@ class ProjectViewController: UIViewController {
 		
 		project?.repo = AppDelegate.shared.repositoryBase?.repositories.first{$0.name?.uppercased() == project?.repositoryName?.uppercased()}
 		
-		self.tabBarController?.tabBar.isHidden = true
     }
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		self.tabBarController?.tabBar.isHidden = true
+	}
+	
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+		
+		AppDelegate.shared.projectBase?.baseUpdated()
+	}
 
 }
 
@@ -63,20 +75,29 @@ extension ProjectViewController: UITableViewDataSource {
 			let cell = tableView.dequeueReusableCell(withIdentifier: AddViewTableViewCell.reusedId, for: indexPath) as! AddViewTableViewCell
 			
 			cell.project = project
-			cell.arrayOfDataForPresent = project?.repo?.collaborators ?? []
+			cell.arrayOfDataForPresent = project?.repo?.collaborators
+			cell.typeOfData = "collaborators"
+			
 			return cell
 		}
 		if (numberOfCells == 5 && indexPath.row == 4 && numberOfTasksTableViewCell == 3) || (numberOfCells == 6 && indexPath.row == 5 && numberOfTasksTableViewCell == 4) {
 			let cell = tableView.dequeueReusableCell(withIdentifier: AddViewTableViewCell.reusedId, for: indexPath) as! AddViewTableViewCell
 			
 			cell.project = project
+//			cell.arrayOfDataForPresent = nil
 			cell.arrayOfDataForPresent = project?.projectTasks
+			cell.typeOfData = "tasks"
+			cell.addTaskDelegate = self
+			
 			return cell
 		}
 		
 		switch indexPath.row {
 		case 0:
 			let cell = tableView.dequeueReusableCell(withIdentifier: DescriptionTableViewCell.descriptionReuseId, for: indexPath) as! DescriptionTableViewCell
+			cell.descriptionTextView.text = project?.descriptionOfProject ?? ""
+			cell.descriptionCellDelegate = self
+			
 			return cell
 		case 1:
 			let cell = tableView.dequeueReusableCell(withIdentifier: RepoTableViewCell.repoReuseId, for: indexPath) as! RepoTableViewCell
@@ -100,16 +121,16 @@ extension ProjectViewController: UITableViewDataSource {
 	}
 }
 
-//extension ProjectViewController: UITableViewDelegate {
-//	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//
-//	}
-//}
+extension ProjectViewController: UITableViewDelegate {
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		tableView.cellForRow(at: indexPath)?.isSelected = false
+	}
+}
 
 
 extension ProjectViewController: RepoTableCellDelegate {
 	func setupRepo() {
-		if project?.repoUrl == nil {
+		if project?.repositoryName == nil {
 			let addRepoAlertController = UIAlertController(title: "Добавить репозиторий в проект?", message: "Введите URL репозитория", preferredStyle: .alert)
 
 			addRepoAlertController.addTextField(configurationHandler: nil)
@@ -124,13 +145,15 @@ extension ProjectViewController: RepoTableCellDelegate {
 					let url = URL(string: text.replacingOccurrences(of: ".git", with: ""))!
 					let name = url.pathComponents.last
 					guard let repoName = name else {return}
-					
+					self.netWorkService = GitHubNetworkManager()
 					self.netWorkService?.getData(endPoint: GitHubApi.oneRepo(url: repoName)) {
 						repo, error in
 						self.project?.repo = repo as? Repository
 						self.project?.repoUrl = url.absoluteString
+						self.project?.repositoryName = self.project?.repo?.name
 						DispatchQueue.main.async {
-							self.tableView.reloadRows(at: [IndexPath(row: 1, section: 0)], with: .none)
+							self.tableView.reloadData()
+//							self.tableView.reloadRows(at: [IndexPath(row: 1, section: 0)], with: .none)
 						}
 					}
 					
@@ -219,21 +242,6 @@ extension ProjectViewController: CollaboratorsTableViewCellDelegate {
 			numberOfCells -= 1
 		}
 		tableView.reloadData()
-		
-//		collaboratorsTableViewHeight.isActive = false
-//
-//		if !isExtendedCollaborators {
-//			collaboratorsButton.titleLabel?.transform = CGAffineTransform(rotationAngle: .pi)
-//			heightOfCollaboratorsTable = 100
-//		} else {
-//			heightOfCollaboratorsTable = 0
-//			collaboratorsButton.titleLabel?.transform = CGAffineTransform(rotationAngle: 0)
-//		}
-//
-//		isExtendedCollaborators = !isExtendedCollaborators
-//
-//		collaboratorsTableViewHeight = collaboratorsTableView.heightAnchor.constraint(equalToConstant: heightOfCollaboratorsTable)
-//		collaboratorsTableViewHeight.isActive = true
 	}
 	
 	
@@ -248,27 +256,43 @@ extension ProjectViewController: TasksTableViewCellDelegate {
 		}
 		
 		tableView.reloadData()
-		
-//		let destination = TasksTableViewController()
-//		destination.project = self.project
-//		self.navigationController?.pushViewController(destination, animated: true)
-		
-		//		collaboratorsTableViewHeight.isActive = false
-		//
-		//		if !isExtendedCollaborators {
-		//			collaboratorsButton.titleLabel?.transform = CGAffineTransform(rotationAngle: .pi)
-		//			heightOfCollaboratorsTable = 100
-		//		} else {
-		//			heightOfCollaboratorsTable = 0
-		//			collaboratorsButton.titleLabel?.transform = CGAffineTransform(rotationAngle: 0)
-		//		}
-		//
-		//		isExtendedCollaborators = !isExtendedCollaborators
-		//
-		//		collaboratorsTableViewHeight = collaboratorsTableView.heightAnchor.constraint(equalToConstant: heightOfCollaboratorsTable)
-		//		collaboratorsTableViewHeight.isActive = true
 	}
 	
+	
+}
+
+extension ProjectViewController: AddTaskProtocol {
+	func addTask() {
+		
+		let addProjectAlertController = UIAlertController(title: "Добавить задачу", message: "", preferredStyle: .alert)
+		
+		addProjectAlertController.addTextField(configurationHandler: nil)
+		
+		let cancelAction = UIAlertAction(title: "Отмена", style: .cancel, handler: nil)
+		let okAction = UIAlertAction(title: "OK", style: .default, handler: {
+			_ in
+			
+			let textField = addProjectAlertController.textFields![0] as UITextField
+			if let text = textField.text {
+				self.project?.addTask(text)
+				
+				self.tableView.reloadData()
+			} else {
+				return
+			}
+		})
+		addProjectAlertController.addAction(cancelAction)
+		addProjectAlertController.addAction(okAction)
+		
+		present(addProjectAlertController, animated: true, completion: nil)
+		
+	}
+}
+
+extension ProjectViewController: DescriptionTableViewCellDelegate {
+	func projectDescriptionUpdate(_ description: String?) {
+		project?.descriptionOfProject = description
+	}
 	
 }
 

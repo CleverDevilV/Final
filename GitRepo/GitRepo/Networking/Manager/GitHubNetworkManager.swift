@@ -68,13 +68,14 @@ struct GitHubNetworkManager: NetworkManagerProtocol {
 					}
 					
 					do {
-						let text = try? JSONSerialization.jsonObject(with: responseData, options: [])
+//						let text = try? JSONSerialization.jsonObject(with: responseData, options: [])
 						switch endPoint {
 						case .user:
 							let apiResponse = try JSONDecoder().decode(User.self, from: responseData)
 							completion(apiResponse.login, nil)
 						case .repos:
 							let repositories = RepositoriesBase(with: responseData)
+							
 							self.queue.async {
 								let myGroup = DispatchGroup()
 								for repositiry in repositories.repositories {
@@ -138,7 +139,62 @@ struct GitHubNetworkManager: NetworkManagerProtocol {
 							
 						case .oneRepo:
 							let newResponse = try JSONDecoder().decode(Repository.self, from: responseData)
-							completion(newResponse, nil)
+							
+							self.queue.async {
+								let myGroup = DispatchGroup()
+								
+								myGroup.enter()
+								self.getData(endPoint: GitHubApi.collaborators(url: newResponse.collaboratorsLink ?? "")) {
+									result, error in
+									
+									DispatchQueue.main.async {
+										newResponse.collaborators = result as? [User]
+										if newResponse.branches != nil, newResponse.commits != nil {
+											myGroup.leave()
+										}
+									}
+								}
+								
+								self.getData(endPoint: GitHubApi.branches(url: newResponse.branchesLink ?? "")) {
+									result, error in
+									
+									DispatchQueue.main.async {
+										newResponse.branches = result as? [Branch]
+										if newResponse.collaborators != nil, newResponse.commits != nil {
+											myGroup.leave()
+										}
+									}
+								}
+								
+								self.getData(endPoint: GitHubApi.commits(url: newResponse.changes ?? "")) {
+									result, error in
+									
+									DispatchQueue.main.async {
+										var commitsArray = [Commit]()
+										let events = result as? [Event]
+										for event in events ?? [] {
+											if let commits : [Commit] = event.payload.commits {
+												for commit in commits {
+													var commit = commit
+													commit.date = event.created_at
+													commitsArray.append(commit)
+												}
+											}
+										}
+										newResponse.commits = commitsArray
+										if newResponse.collaborators != nil, newResponse.branches != nil {
+											myGroup.leave()
+										}
+									}
+								}
+								myGroup.notify(queue: DispatchQueue.main) {
+									print("End Loading Repositories Base")
+									completion(newResponse, nil)
+								}
+							}
+							
+							
+//							completion(newResponse, nil)
 						case .collaborators(_ ):
 							let newResponse = try JSONDecoder().decode([User].self, from: responseData)
 							completion(newResponse, nil)

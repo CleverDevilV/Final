@@ -11,5 +11,7 @@ import Foundation
 public struct ProjectForUploadToBack: Codable {
 	var name: String
 	var repoUrl: String?
+	var repositoryName: String?
 	var projectTasks: [String]?
+	var descriptionOfProject: String?
 }

@@ -130,7 +130,7 @@ final class ManagedObjectFromCoreDataService: CoreDataServiceProtocol {
 						
 						do {
 							try self.writeContext.save()
-							print("Success repository with name: ", repositoryObject.name)
+							print("Success repository with name: ", repositoryObject.name ?? "")
 //							print(repositoryObject)
 						} catch {
 							print(error)
@@ -172,8 +172,7 @@ final class ManagedObjectFromCoreDataService: CoreDataServiceProtocol {
 				}
 			}
 			print("Project Saved into CoreData")
-		default:
-			break
+			
 		}
 		
 		
@@ -232,7 +231,7 @@ final class ManagedObjectFromCoreDataService: CoreDataServiceProtocol {
 					print("Error reading data by FetchRequest, error: ", error)
 				}
 				
-				guard let repositoriesInCoreData = repositoriesInCoreData as? [MORepository] else { return }
+				guard let repositoriesInCoreData = repositoriesInCoreData else { return }
 				
 				for repositoryObject in repositoriesInCoreData {
 					
@@ -272,7 +271,7 @@ final class ManagedObjectFromCoreDataService: CoreDataServiceProtocol {
 					print("Error reading data by FetchRequest, error: ", error)
 				}
 				
-				guard let projectsInCoreData = projectsInCoreData as? [MOProject] else { return }
+				guard let projectsInCoreData = projectsInCoreData else { return }
 				
 				for projectObject in projectsInCoreData {
 					

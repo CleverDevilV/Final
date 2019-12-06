@@ -14,9 +14,9 @@ internal class MOProject: NSManagedObject {
 	
 	@NSManaged var projectName: String
 	@NSManaged var repositoryURL: String?
+	@NSManaged var repositoryName: String?
 	
 	// Relationships
-	@NSManaged var repository: MORepository?
 	@NSManaged var tasks: NSSet?
 }
 

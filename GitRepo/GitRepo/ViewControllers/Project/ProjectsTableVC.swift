@@ -96,7 +96,7 @@ class ProjectsTableVC: UIViewController {
 			
 			let textField = addProjectAlertController.textFields![0] as UITextField
 			if let text = textField.text {
-				self.projectsBase?.addProject(Project(projectName: text, repoURL: nil, repo: nil))
+				self.projectsBase?.addProject(Project(projectName: text, repoURL: nil, repositoryName: nil, repo: nil))
 				
 				self.tableView.reloadData()
 //				self.projects = self.projectsBase?.projects ?? []

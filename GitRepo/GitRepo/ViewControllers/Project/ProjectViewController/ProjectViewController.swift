@@ -41,9 +41,9 @@ class ProjectViewController: UIViewController {
 		
 		view.addSubview(tableView)
 		
-		let projectRepoName = URL(string: project?.repoUrl ?? "")?.lastPathComponent
+		project?.repositoryName = URL(string: project?.repoUrl ?? "")?.lastPathComponent
 		
-		project?.repo = AppDelegate.shared.repositoryBase?.repositories.first{$0.name?.uppercased() == projectRepoName?.uppercased()}
+		project?.repo = AppDelegate.shared.repositoryBase?.repositories.first{$0.name?.uppercased() == project?.repositoryName?.uppercased()}
 		
 		self.tabBarController?.tabBar.isHidden = true
     }

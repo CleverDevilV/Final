@@ -126,13 +126,18 @@ final class CoreDataService {
 	func deleteAllData(){
 		
 		let managedContext = stack.readContext
-		let DelAllReqVar = NSBatchDeleteRequest(fetchRequest: NSFetchRequest<NSFetchRequestResult>(entityName: "Task"))
-		do {
-			try managedContext.execute(DelAllReqVar)
-			print("CoreData is empty")
-		}
-		catch {
-			print(error)
+		
+		let arrayOfTypes = ["Project", "Repository","Author", "Branch", "Collaborator", "Commit", "Task"]
+		
+		for type in arrayOfTypes {
+			let DelAllReqVar = NSBatchDeleteRequest(fetchRequest: NSFetchRequest<NSFetchRequestResult>(entityName: type))
+			do {
+				try managedContext.execute(DelAllReqVar)
+				print("CoreData is empty, type: ", type)
+			}
+			catch {
+				print("Type: ", type, ", error: ", error)
+			}
 		}
 	}
 	

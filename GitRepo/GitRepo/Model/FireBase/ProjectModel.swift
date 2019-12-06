@@ -15,14 +15,17 @@ public final class Project: Decodable {
 	public var projectName: String
 	/// Link to repository of project
 	public var repoUrl: String?
+	/// Name of projects retository
+	public var repositoryName: String?
 	/// Repository of project
 	public var repo: Repository?
 	
 	private (set) var projectTasks: [String]?
 	
-	init(projectName: String, repoURL: String?, repo: Repository?) {
+	init(projectName: String, repoURL: String?, repositoryName: String? , repo: Repository?) {
 		self.projectName = projectName
 		self.repoUrl = repoURL
+		self.repositoryName = repositoryName
 		self.repo = repo
 	}
 	

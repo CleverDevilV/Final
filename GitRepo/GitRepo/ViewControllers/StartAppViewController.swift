@@ -35,6 +35,11 @@ class StartAppViewController: UIViewController {
 				if error != nil {
 					print(error!)
 				}
+				
+				if result == nil {
+					
+				}
+				
 				DispatchQueue.main.async {
 					AppDelegate.shared.projectBase = result as? ProjectsBase
 				}
@@ -46,6 +51,10 @@ class StartAppViewController: UIViewController {
 					result, error in
 					if error != nil {
 						print(error!)
+					}
+					
+					if result == nil {
+						
 					}
 					
 					DispatchQueue.main.async {

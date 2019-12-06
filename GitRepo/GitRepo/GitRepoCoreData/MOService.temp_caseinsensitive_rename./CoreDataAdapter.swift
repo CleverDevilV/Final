@@ -55,11 +55,16 @@ final class CoreDataAdapter: CoreDataAdapterProtocol {
 			return [dataForApp]
 			
 		case .task:
-			guard let object = oneObject as? MOTask else { return nil }
+			guard let objects = objects as? [MOTask] else { return nil }
 			
-			let dataForApp = object.taskContent
+			var datasForApp = [String]()
 			
-			return [dataForApp]
+			for object in objects {
+				let dataForApp = object.taskContent
+				datasForApp.append(dataForApp)
+			}
+			
+			return [datasForApp]
 			
 		case .author:
 			guard let objects = objects as? [MOAuthor] else { return nil }

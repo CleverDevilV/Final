@@ -164,7 +164,7 @@ final class ManagedObjectFromCoreDataService: CoreDataServiceProtocol {
 						do {
 							try self.writeContext.save()
 							print("Success project with name: ", projectObject.projectName)
-							//						print(projectObject)
+													print(projectObject)
 						} catch {
 							print(error)
 						}
@@ -276,7 +276,7 @@ final class ManagedObjectFromCoreDataService: CoreDataServiceProtocol {
 				for projectObject in projectsInCoreData {
 					
 					if let project = self.adapter.translate(objects: nil, oneObject: projectObject, dataType: .project)?[0] as? Project {
-						project.projectTasks = self.adapter.translate(objects: projectObject.tasks?.allObjects as? [NSManagedObject], oneObject: nil, dataType: .task) as? [String]
+						project.projectTasks = self.adapter.translate(objects: projectObject.tasks?.allObjects as? [NSManagedObject], oneObject: nil, dataType: .task)?[0] as? [String]
 						
 						projects.append(project)
 					}

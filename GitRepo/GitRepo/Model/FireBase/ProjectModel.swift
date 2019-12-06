@@ -20,7 +20,7 @@ public final class Project: Decodable {
 	/// Repository of project
 	public var repo: Repository?
 	
-	private (set) var projectTasks: [String]?
+	public var projectTasks: [String]?
 	
 	init(projectName: String, repoURL: String?, repositoryName: String? , repo: Repository?) {
 		self.projectName = projectName

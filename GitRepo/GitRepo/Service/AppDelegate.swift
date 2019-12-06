@@ -13,24 +13,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
 	
-	let reposerv = ManagedObjectFromCoreDataService(withDeleting: true)
+//	let reposerv = ManagedObjectFromCoreDataService(withDeleting: true)
 	
 	var repositoryBase: RepositoriesBase?
 	{
 		didSet {
 			print("set RepositoriesBase")
+			print(repositoryBase)
 			
-			self.reposerv.addObjectsTo(base: repositoryBase, baseType: .repositoryBase)
+//			self.reposerv.saveCoreDataObjectsFrom(base: repositoryBase, baseType: .repositoryBase)
 
 		}
 	}
 	var projectBase: ProjectsBase? {
 		didSet {
 			print("set ProjectsBase")
+			print(projectBase)
 			
-			self.reposerv.addObjectsTo(base: projectBase, baseType: .projectBase)
+//			self.reposerv.saveCoreDataObjectsFrom(base: projectBase, baseType: .projectBase)
 		}
 	}
+	
+	
 	
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		
@@ -38,6 +42,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		let rootVC = RootViewController.shared
 		window?.rootViewController = rootVC
 		window?.makeKeyAndVisible()
+		
+//		let serv = ManagedObjectFromCoreDataService(withDeleting: true)
+//		serv.getDataFromCoreData(to: .projectBase) {
+//			result in
+//			print(result?.count)
+//		}
 	
 		return true
 	}

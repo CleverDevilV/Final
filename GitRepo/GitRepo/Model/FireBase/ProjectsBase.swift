@@ -20,6 +20,12 @@ final class ProjectsBase {
 		}
 	}
 	
+	init(with projects: [Project]?) {
+		if let projects: [Project] = projects {
+			self.projects = projects
+		}
+	}
+	
 	private func decodeRepositories(_ data: Data) {
 		do {
 			let allProjects = try JSONDecoder().decode([String : [Project]].self, from: data)

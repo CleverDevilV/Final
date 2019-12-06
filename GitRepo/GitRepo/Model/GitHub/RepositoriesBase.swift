@@ -24,6 +24,12 @@ final class RepositoriesBase {
 		}
 	}
 	
+	init(with repositories: [Repository]?) {
+		if let repositories: [Repository] = repositories {
+			self.repositories = repositories
+		}
+	}
+	
 	private func decodeRepositories(_ data: Data) {
 		do {
 			let newResponse = try JSONDecoder().decode([Repository].self, from: data)

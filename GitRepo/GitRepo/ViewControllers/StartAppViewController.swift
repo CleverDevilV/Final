@@ -29,6 +29,8 @@ class StartAppViewController: UIViewController {
 		
 		if UserDefaults.standard.isExist(with: .oauth_user_login) {
 			
+			var repoServ: ManagedObjectFromCoreDataService!
+			
 			let networkManagerForFirebase = FirebaseNetworkManager()
 			networkManagerForFirebase.getData(endPoint: FirebaseApi.getProjects){
 				result, error in
@@ -37,13 +39,28 @@ class StartAppViewController: UIViewController {
 				}
 				
 				if result == nil {
-					
+					repoServ = ManagedObjectFromCoreDataService(withDeleting: false)
+					repoServ.getDataFromCoreData(to: .projectBase){
+						result in
+						print("OK")
+						guard let result = result as? [Project] else {return}
+						let base = ProjectsBase(with: result)
+						
+						DispatchQueue.main.async {
+							print(base)
+							AppDelegate.shared.projectBase = base
+						}
+						
+					}
 				}
-				
-				DispatchQueue.main.async {
-					AppDelegate.shared.projectBase = result as? ProjectsBase
+				else {
+					repoServ = ManagedObjectFromCoreDataService(withDeleting: true)
+					repoServ.saveCoreDataObjectsFrom(base: result as? ProjectsBase, baseType: .projectBase)
+					DispatchQueue.main.async {
+						AppDelegate.shared.projectBase = result as? ProjectsBase
+						
+					}
 				}
-				
 				
 				
 				let networlManagerForGitHub = GitHubNetworkManager()
@@ -54,18 +71,38 @@ class StartAppViewController: UIViewController {
 					}
 					
 					if result == nil {
-						
+						repoServ.getDataFromCoreData(to: .repositoryBase){
+							result in
+							print("OK")
+							guard let result = result as? [Repository] else {return}
+							let base = RepositoriesBase(with: result)
+							
+							DispatchQueue.main.async {
+								print(base)
+								AppDelegate.shared.repositoryBase = base
+								UIView.animate(withDuration: 0.5, delay: 0.3, options: [], animations: {
+									self.welcomeButton.isEnabled = true
+									self.logOutButton.isEnabled = true
+									self.loadView.layer.opacity = 0
+									self.welcomeButton.layer.opacity = 1
+									self.logOutButton.layer.opacity = 1
+								}, completion: nil)
+							}
+							
+						}
 					}
-					
-					DispatchQueue.main.async {
-						AppDelegate.shared.repositoryBase = result as? RepositoriesBase
-						UIView.animate(withDuration: 0.5, delay: 0.3, options: [], animations: {
-							self.welcomeButton.isEnabled = true
-							self.logOutButton.isEnabled = true
-							self.loadView.layer.opacity = 0
-							self.welcomeButton.layer.opacity = 1
-							self.logOutButton.layer.opacity = 1
-						}, completion: nil)
+					else {
+						repoServ.saveCoreDataObjectsFrom(base: result as? RepositoriesBase, baseType: .repositoryBase)
+						DispatchQueue.main.async {
+							AppDelegate.shared.repositoryBase = result as? RepositoriesBase
+							UIView.animate(withDuration: 0.5, delay: 0.3, options: [], animations: {
+								self.welcomeButton.isEnabled = true
+								self.logOutButton.isEnabled = true
+								self.loadView.layer.opacity = 0
+								self.welcomeButton.layer.opacity = 1
+								self.logOutButton.layer.opacity = 1
+							}, completion: nil)
+						}
 					}
 				}
 			}

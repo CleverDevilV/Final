@@ -24,9 +24,8 @@ class ProjectsTableVC: UIViewController {
 	
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
-	
-//		print(projectsBase)
-		projectsBase?.baseUpdated()
+		
+		
 	}
 	
 	override func viewDidLoad() {

@@ -119,6 +119,8 @@
 		A7B4060E239982960092AD85 /* ManagedObjectFromCoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B4060D239982960092AD85 /* ManagedObjectFromCoreDataService.swift */; };
 		A7B4060F239982CB0092AD85 /* ManagedObjectFromCoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B4060D239982960092AD85 /* ManagedObjectFromCoreDataService.swift */; };
 		A7B406102399857D0092AD85 /* MOCommit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B4060723996FEE0092AD85 /* MOCommit.swift */; };
+		A7B40612239A886C0092AD85 /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B40611239A886C0092AD85 /* Loader.swift */; };
+		A7B40613239A8BA30092AD85 /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B40611239A886C0092AD85 /* Loader.swift */; };
 		A7B481E5239260A500AFA19E /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B481E4239260A500AFA19E /* ProjectViewController.swift */; };
 		A7B481E72392643600AFA19E /* DescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B481E62392643600AFA19E /* DescriptionTableViewCell.swift */; };
 		A7B481E92392705600AFA19E /* RepoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B481E82392705600AFA19E /* RepoTableViewCell.swift */; };
@@ -199,6 +201,7 @@
 		A7B4060723996FEE0092AD85 /* MOCommit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MOCommit.swift; sourceTree = "<group>"; };
 		A7B4060A239979950092AD85 /* CoreDataAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataAdapter.swift; sourceTree = "<group>"; };
 		A7B4060D239982960092AD85 /* ManagedObjectFromCoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjectFromCoreDataService.swift; sourceTree = "<group>"; };
+		A7B40611239A886C0092AD85 /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
 		A7B481E4239260A500AFA19E /* ProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectViewController.swift; sourceTree = "<group>"; };
 		A7B481E62392643600AFA19E /* DescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionTableViewCell.swift; sourceTree = "<group>"; };
 		A7B481E82392705600AFA19E /* RepoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoTableViewCell.swift; sourceTree = "<group>"; };
@@ -252,6 +255,7 @@
 				A7776382239836E9007859CA /* SettingsViewController */,
 				A7FE06A2238BFAE20093F07A /* Project */,
 				A7FE06A3238BFAEF0093F07A /* Repo */,
+				A7B40611239A886C0092AD85 /* Loader.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -399,7 +403,6 @@
 				A7B405E42399510E0092AD85 /* GitRepoCoreData.xcdatamodeld */,
 				A7B405ED239956F40092AD85 /* ManagedObjectModels */,
 				A7B40609239971260092AD85 /* MOservice */,
-				A7B4060A239979950092AD85 /* CoreDataAdapter.swift */,
 			);
 			path = GitRepoCoreData;
 			sourceTree = "<group>";
@@ -422,6 +425,7 @@
 			isa = PBXGroup;
 			children = (
 				A7B4060D239982960092AD85 /* ManagedObjectFromCoreDataService.swift */,
+				A7B4060A239979950092AD85 /* CoreDataAdapter.swift */,
 			);
 			name = MOservice;
 			path = MOService.temp_caseinsensitive_rename.;
@@ -621,6 +625,7 @@
 				A7FE06A5238BFAFE0093F07A /* NetWorkservice.swift in Sources */,
 				A7B4060523996F570092AD85 /* MOCollaborator.swift in Sources */,
 				A7A5DE70239592C2004271D9 /* SomeUrlWebViewController.swift in Sources */,
+				A7B40612239A886C0092AD85 /* Loader.swift in Sources */,
 				A77404FA23912FFC0038851E /* UserDefExt.swift in Sources */,
 				A796F3352395AB4D007D7E51 /* RepositoriesTableViewCell.swift in Sources */,
 				A7495FC3239655F400C120DC /* FirebaseEndPoint.swift in Sources */,
@@ -673,6 +678,7 @@
 				A7A5DE6323952369004271D9 /* RepoViewController.swift in Sources */,
 				A77763752396F0B1007859CA /* DiamondLoad.swift in Sources */,
 				A7A5DE6023952364004271D9 /* CollaboratorsTableViewCell.swift in Sources */,
+				A7B40613239A8BA30092AD85 /* Loader.swift in Sources */,
 				A7A5DE6723952389004271D9 /* Router.swift in Sources */,
 				A7A5DE652395236F004271D9 /* LogOutCommand.swift in Sources */,
 				A73FC6A42396DBBF000F9F5C /* RepositoryCollaboratorsTableViewCell.swift in Sources */,

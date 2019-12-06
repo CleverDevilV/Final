@@ -10,17 +10,37 @@
 import Foundation
 import CoreData
 
-final class ManagedObjectFromCoreDataService {
+enum BaseType {
+	case projectBase
+	case repositoryBase
+}
+
+
+
+protocol ManagedObjectServiceProtocol: class {
+	func saveCoreDataObjectsFrom(base: Any?, baseType: BaseType)
+	func getDataFromCoreData(to baseType: BaseType, completion: @escaping ([Any]?) ->())
+}
+
+final class ManagedObjectFromCoreDataService: CoreDataServiceProtocol {
 	
 	let writeContext = CoreDataStack.shared.writeContext
 	let readContext = CoreDataStack.shared.readContext
 	
-	var repositoryEntytiName = "Repository"
+	let repositoryEntityName = "Repository"
+	let projectEntityName = "Project"
+	
 	private var adapter: CoreDataAdapterProtocol!
 	
 	private var repositoriesInCoreData: [MORepository]? {
 		didSet {
 			print("set repositoriesInCoreData")
+		}
+	}
+	
+	private var projectsInCoreData: [MOProject]? {
+		didSet {
+			print("set projectsInCoreData")
 		}
 	}
 	
@@ -38,7 +58,20 @@ final class ManagedObjectFromCoreDataService {
 		
 		let arrayOfTypes = ["Project", "Repository","Author", "Branch", "Collaborator", "Commit", "Task"]
 		
-		readContext.performAndWait {
+		readContext.perform {
+			for type in arrayOfTypes {
+				let DelAllReqVar = NSBatchDeleteRequest(fetchRequest: NSFetchRequest<NSFetchRequestResult>(entityName: type))
+				do {
+					try self.readContext.execute(DelAllReqVar)
+					print("CoreData is empty, type: ", type)
+				}
+				catch {
+					print("Type: ", type, ", error: ", error)
+				}
+			}
+		}
+		
+		writeContext.perform {
 			for type in arrayOfTypes {
 				let DelAllReqVar = NSBatchDeleteRequest(fetchRequest: NSFetchRequest<NSFetchRequestResult>(entityName: type))
 				do {
@@ -52,15 +85,8 @@ final class ManagedObjectFromCoreDataService {
 		}
 	}
 	
-	
-	
-	enum BaseType {
-		case projectBase
-		case repositoryBase
-	}
-	
-	/// Aync function
-	func addObjectsTo(base: Any?, baseType: BaseType) {
+	/// Async function for save data from base into CoreData
+	func saveCoreDataObjectsFrom(base: Any?, baseType: BaseType) {
 		
 		switch baseType {
 		case .repositoryBase:
@@ -153,49 +179,156 @@ final class ManagedObjectFromCoreDataService {
 		
 	}
 	
-	public func getRepositoriesFromCoreData() -> [Repository]? {
+//	public func getRepositoriesFromCoreData(completion: @escaping ([Repository]) ->()) {
+//		
+//		var repositories = [Repository]()
+//		
+////		guard let repositoriesInCoreData = repositoriesInCoreData else { return }
+//		
+//		getDataFromCoreData(to: .repositoryBase) {
+//			repositoriesInCoreData in
+//			
+//			guard let repositoriesInCoreData = repositoriesInCoreData as? [MORepository] else { return }
+//			
+//			for repositoryObject in repositoriesInCoreData {
+//				
+//				if let repository = self.adapter.translate(objects: nil, oneObject: repositoryObject, dataType: .repository)?[0] as? Repository {
+//					repository.branches = self.adapter.translate(objects: repositoryObject.branches?.allObjects as? [NSManagedObject], oneObject: nil, dataType: .branch) as? [Branch]
+//					
+//					
+//					repository.collaborators = self.adapter.translate(objects: repositoryObject.collaborators?.allObjects as? [NSManagedObject], oneObject: nil, dataType: .collaborator) as? [User]
+//					
+//					repository.commits = self.adapter.translate(objects: repositoryObject.commits?.allObjects as? [NSManagedObject], oneObject: nil, dataType: .commit) as? [Commit]
+//					
+//					repositories.append(repository)
+//					
+////					return repositories
+//				}
+//			}
+//			completion(repositories)
+//		}
+//	}
+	
+	/// Sync function for read data from CoreData
+	public func getDataFromCoreData(to baseType: BaseType, completion: @escaping ([Any]?) ->()) {
 		
-		var repositories = [Repository]()
-		
-		guard let repositoriesInCoreData = repositoriesInCoreData else { return nil }
-		
-		for repositoryObject in repositoriesInCoreData {
+		switch baseType {
+		case .repositoryBase:
 			
-			if let repository = adapter.translate(objects: nil, oneObject: repositoryObject, dataType: .repository)?[0] as? Repository {
-				repository.branches = adapter.translate(objects: repositoryObject.branches?.allObjects as? [NSManagedObject], oneObject: nil, dataType: .branch) as? [Branch]
+			readContext.performAndWait {
+				let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: repositoryEntityName)
 				
+				var repositories = [Repository]()
 				
-				repository.collaborators = adapter.translate(objects: repositoryObject.collaborators?.allObjects as? [NSManagedObject], oneObject: nil, dataType: .collaborator) as? [User]
+				do {
+					let results = try fetch.execute() as? [MORepository]
+					if let results = results {
+						print(results.count)
+						repositoriesInCoreData = results
+//						completion(results)
+						//self.repositoriesInCoreData = results
+					}
+				} catch {
+					print("Error reading data by FetchRequest, error: ", error)
+				}
 				
-				repository.commits = adapter.translate(objects: repositoryObject.commits?.allObjects as? [NSManagedObject], oneObject: nil, dataType: .commit) as? [Commit]
+				guard let repositoriesInCoreData = repositoriesInCoreData as? [MORepository] else { return }
 				
-				repositories.append(repository)
+				for repositoryObject in repositoriesInCoreData {
+					
+					if let repository = self.adapter.translate(objects: nil, oneObject: repositoryObject, dataType: .repository)?[0] as? Repository {
+						repository.branches = self.adapter.translate(objects: repositoryObject.branches?.allObjects as? [NSManagedObject], oneObject: nil, dataType: .branch) as? [Branch]
+						
+						
+						repository.collaborators = self.adapter.translate(objects: repositoryObject.collaborators?.allObjects as? [NSManagedObject], oneObject: nil, dataType: .collaborator) as? [User]
+						
+						repository.commits = self.adapter.translate(objects: repositoryObject.commits?.allObjects as? [NSManagedObject], oneObject: nil, dataType: .commit) as? [Commit]
+						
+						repositories.append(repository)
+						
+						//					return repositories
+					}
+				}
+				
+				completion(repositories)
+			}
+			
+		case .projectBase:
+			
+			readContext.performAndWait {
+				let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: projectEntityName)
+				
+				var projects = [Project]()
+				
+				do {
+					let results = try fetch.execute() as? [MOProject]
+					if let results = results {
+						print(results.count)
+						projectsInCoreData = results
+						//						completion(results)
+						//self.repositoriesInCoreData = results
+					}
+				} catch {
+					print("Error reading data by FetchRequest, error: ", error)
+				}
+				
+				guard let projectsInCoreData = projectsInCoreData as? [MOProject] else { return }
+				
+				for projectObject in projectsInCoreData {
+					
+					if let project = self.adapter.translate(objects: nil, oneObject: projectObject, dataType: .project)?[0] as? Project {
+						project.projectTasks = self.adapter.translate(objects: projectObject.tasks?.allObjects as? [NSManagedObject], oneObject: nil, dataType: .task) as? [String]
+						
+						projects.append(project)
+					}
+				}
+				
+				completion(projects)
 			}
 		}
-		
-		return repositories
 	}
 	
-	private func readRepositoriesData() {
-		writeContext.performAndWait {
-			
-			let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: repositoryEntytiName)
-			
-			do {
-				let results = try fetch.execute() as? [MORepository]
-//				print(results?.count)
-				if let results = results {
-					self.repositoriesInCoreData = results
-//					complition(results)
-//					for result in results {
-//						print(result.name)
-//					}
-				}
-			} catch {
-				print("Error reading data by FetchRequest, error: ", error)
-			}
-		}
-	}
+	
+	
+//	private func readRepositoriesData(completion: @escaping ([MORepository]) ->()) {
+//
+//		readContext.performAndWait {
+//			let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: repositoryEntityName)
+//
+//			do {
+//				let results = try fetch.execute() as? [MORepository]
+//				//				print(results?.count)
+//				if let results = results {
+//					self.repositoriesInCoreData = results
+//					//					complition(results)
+//					//					for result in results {
+//					//						print(result.name)
+//					//					}
+//				}
+//			} catch {
+//				print("Error reading data by FetchRequest, error: ", error)
+//			}
+//
+//		}
+//
+//
+//			let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: repositoryEntityName)
+//
+//			do {
+//				let results = try fetch.execute() as? [MORepository]
+////				print(results?.count)
+//				if let results = results {
+//					self.repositoriesInCoreData = results
+////					complition(results)
+////					for result in results {
+////						print(result.name)
+////					}
+//				}
+//			} catch {
+//				print("Error reading data by FetchRequest, error: ", error)
+//			}
+//
+//	}
 	
 	
 }

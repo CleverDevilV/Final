@@ -61,8 +61,6 @@ final class CoreDataAdapter: CoreDataAdapterProtocol {
 			
 			return [dataForApp]
 			
-			
-			
 		case .author:
 			guard let objects = objects as? [MOAuthor] else { return nil }
 			
@@ -84,6 +82,7 @@ final class CoreDataAdapter: CoreDataAdapterProtocol {
 				let dataForApp = Branch(name: object.name)
 				datasForApp.append(dataForApp)
 			}
+			
 			return datasForApp
 			
 		case .collaborator:
@@ -104,12 +103,11 @@ final class CoreDataAdapter: CoreDataAdapterProtocol {
 			var datasForApp = [Commit]()
 			
 			for object in objects {
-				let dataForApp = Commit(sha: object.sha, message: object.message, author: Commit.Author(name: object.author ?? "", email: nil, date: nil), url: object.url, date: object.date)
+				let dataForApp = Commit(sha: object.sha, message: object.message, author: Commit.Author(name: object.author ?? "", email: nil, date: object.date), url: object.url, date: object.date)
 				datasForApp.append(dataForApp)
 			}
 			
 			return datasForApp
-			
 			
 		}
 	}
@@ -192,6 +190,7 @@ final class CoreDataAdapter: CoreDataAdapterProtocol {
 			object.author = data.author?.name
 			object.sha = data.sha ?? ""
 			object.url = data.url ?? ""
+			object.date = data.date 
 		
 			return object
 		}

@@ -26,7 +26,7 @@
         <attribute name="projectName" attributeType="String" syncable="YES"/>
         <attribute name="repositoryName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="repositoryURL" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Deny" destinationEntity="Task" inverseName="project" inverseEntity="Task" syncable="YES"/>
+        <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Task" inverseName="project" inverseEntity="Task" syncable="YES"/>
     </entity>
     <entity name="Repository" representedClassName="MORepository" syncable="YES">
         <attribute name="branchesLink" optional="YES" attributeType="String" syncable="YES"/>

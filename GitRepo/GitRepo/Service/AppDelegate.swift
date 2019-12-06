@@ -13,7 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
 	
-	let reposerv = MORepositoryService(withDeleting: true)
+	let reposerv = ManagedObjectFromCoreDataService(withDeleting: true)
 	
 	var repositoryBase: RepositoriesBase?
 	{

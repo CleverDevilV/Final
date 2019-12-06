@@ -1,5 +1,6 @@
 //
-//  MORepositoryService.swift
+//  ManagedObjectFromCoreDataService.swift
+//  Old MORepositoryService.swift
 //  GitRepo
 //
 //  Created by Дарья Витер on 05/12/2019.
@@ -9,7 +10,7 @@
 import Foundation
 import CoreData
 
-final class MORepositoryService {
+final class ManagedObjectFromCoreDataService {
 	
 	let writeContext = CoreDataStack.shared.writeContext
 	let readContext = CoreDataStack.shared.readContext

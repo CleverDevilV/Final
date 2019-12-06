@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15508" systemVersion="18G1012" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Author" representedClassName="MOAuthor" syncable="YES">
+        <attribute name="date" attributeType="String"/>
+        <attribute name="email" optional="YES" attributeType="String"/>
+        <attribute name="name" attributeType="String"/>
+    </entity>
+    <entity name="Branch" representedClassName="MOBranch" syncable="YES">
+        <attribute name="name" attributeType="String"/>
+        <relationship name="repository" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Repository" inverseName="branches" inverseEntity="Repository"/>
+    </entity>
+    <entity name="Collaborator" representedClassName="MOCollaborator" syncable="YES">
+        <attribute name="name" attributeType="String"/>
+        <relationship name="repository" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Repository" inverseName="collaborators" inverseEntity="Repository"/>
+    </entity>
+    <entity name="Commit" representedClassName="MOCommit" syncable="YES">
+        <attribute name="author" optional="YES" attributeType="String"/>
+        <attribute name="date" optional="YES" attributeType="String"/>
+        <attribute name="html_url" optional="YES" attributeType="String"/>
+        <attribute name="message" optional="YES" attributeType="String"/>
+        <attribute name="sha" attributeType="String"/>
+        <attribute name="url" attributeType="String"/>
+        <relationship name="repository" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Repository" inverseName="commits" inverseEntity="Repository"/>
+    </entity>
+    <entity name="Project" representedClassName="MOProject" syncable="YES">
+        <attribute name="descriptionOfProject" optional="YES" attributeType="String"/>
+        <attribute name="projectName" attributeType="String"/>
+        <attribute name="repositoryName" optional="YES" attributeType="String"/>
+        <attribute name="repositoryURL" optional="YES" attributeType="String"/>
+        <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Task" inverseName="project" inverseEntity="Task"/>
+    </entity>
+    <entity name="Repository" representedClassName="MORepository" syncable="YES">
+        <attribute name="branchesLink" optional="YES" attributeType="String"/>
+        <attribute name="changesLink" optional="YES" attributeType="String"/>
+        <attribute name="collaboratorsLink" optional="YES" attributeType="String"/>
+        <attribute name="languageOfRepository" optional="YES" attributeType="String"/>
+        <attribute name="lastChange" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="owner" optional="YES" attributeType="String"/>
+        <attribute name="repositoryLink" optional="YES" attributeType="String"/>
+        <relationship name="branches" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Branch" inverseName="repository" inverseEntity="Branch"/>
+        <relationship name="collaborators" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Collaborator" inverseName="repository" inverseEntity="Collaborator"/>
+        <relationship name="commits" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Commit" inverseName="repository" inverseEntity="Commit"/>
+    </entity>
+    <entity name="Task" representedClassName="MOTask" syncable="YES">
+        <attribute name="taskContent" attributeType="String"/>
+        <relationship name="project" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="tasks" inverseEntity="Project"/>
+    </entity>
+    <elements>
+        <element name="Author" positionX="36" positionY="162" width="128" height="90"/>
+        <element name="Branch" positionX="0" positionY="126" width="128" height="75"/>
+        <element name="Collaborator" positionX="-18" positionY="117" width="128" height="75"/>
+        <element name="Commit" positionX="18" positionY="135" width="128" height="150"/>
+        <element name="Project" positionX="-63" positionY="-18" width="128" height="118"/>
+        <element name="Repository" positionX="-36" positionY="27" width="128" height="210"/>
+        <element name="Task" positionX="-54" positionY="18" width="128" height="75"/>
+    </elements>
+</model>

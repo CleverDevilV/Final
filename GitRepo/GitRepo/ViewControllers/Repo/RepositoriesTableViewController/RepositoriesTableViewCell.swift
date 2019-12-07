@@ -46,21 +46,11 @@ final class RepositoriesTableViewCell: UITableViewCell {
 		lastChangesLabel.numberOfLines = 0
 		lastChangesLabel.font = UIFont.systemFont(ofSize: 16)
 		lastChangesLabel.textAlignment = .left
-		// TODO: - Дата последних изменений - избавиться от +0000 и сделать короче запись всю
-		
-		let dateFormatter = DateFormatter()
-		let calendar = NSCalendar.current
-		dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ssZZZ"
-		let date = dateFormatter.date(from: repository?.lastChange ?? "")
-		
-		
-		if let date = date {
-			let dateComponents = calendar.dateComponents([.day, .month, .year, .hour, .minute], from: date) //([.Day, .Month, .Year, .Hour, .Minute, fromDate: repository?.lastChange!)
-			lastChangesLabel.text = """
-			Дата последних изменений:
-			\(dateComponents.day!).\(dateComponents.month!).\(dateComponents.year!) \(dateComponents.hour!):\(dateComponents.minute!)
+		lastChangesLabel.text =
 			"""
-		}
+			Дата последнего изменения: \(repository?.getRepositoryDateString() ?? "")
+			"""
+		
 		
 		beautyfulView.addSubview(repositiryNameLabel)
 		beautyfulView.addSubview(lastChangesLabel)

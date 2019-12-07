@@ -126,14 +126,15 @@ extension SegmentCommitsBranchesTableViewCell: UITableViewDataSource {
 		switch segmentControl.selectedSegmentIndex {
 		case nil, 0:
 			let commitMessage = repository?.commits?[indexPath.row].message ?? ""
-			let commitDate = repository?.commits?[indexPath.row].getCommitDate()
+			let commitDate = repository?.commits?[indexPath.row].getCommitDateString()
 
 			cell = UITableViewCell(style: .subtitle, reuseIdentifier: "Cell")
 			cell.textLabel?.text = commitMessage
 			cell.textLabel?.numberOfLines = 0
 			cell.accessoryType = .disclosureIndicator
-			cell.detailTextLabel?.text = "\(commitDate!)"
+			cell.detailTextLabel?.text = commitDate ?? ""
 		default:
+			cell = UITableViewCell(style: .default, reuseIdentifier: "Cell")
 			let brancheName = repository?.branches?[indexPath.row].name ?? ""
 			cell.textLabel?.text = brancheName
 			cell.accessoryType = .none

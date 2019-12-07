@@ -51,9 +51,12 @@ struct Commit: Codable {
 		let date: String?
 	}
 	
-	func getCommitDate() -> Date? {
+	func getCommitDateString() -> String? {
 		let dateFormatter = DateFormatter()
-		dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ssZZZ"
-		return dateFormatter.date(from: self.date ?? "")
+		dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+		dateFormatter.timeZone = TimeZone(abbreviation: "MSK")
+		guard let date = dateFormatter.date(from: self.date ?? "") else { return nil }
+		dateFormatter.dateFormat = "yyyy-MM-dd' 'HH:mm:ss"
+		return dateFormatter.string(from: date)
 	}
 }

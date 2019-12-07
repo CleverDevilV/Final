@@ -90,15 +90,13 @@ public final class Repository: Codable {
 	
 	public init() {	}
 	
-//	private func getCollaborators(_ completion: @escaping ([User]?) -> ()) {
-//		let networkManager = GitHubNetworkManager()
-//		networkManager.getGitHubData(endPoint: GitHubApi.collaborators(url: self.collaboratorsLink?.replacingOccurrences(of: "{/collaborator}", with: "") ?? "")) {
-//			result, error in
-////			if let result: [User] = result as? [User] {
-//			completion(result as?  [User])
-////			}
-////			completion(nil)
-//		}
-//	}
+	func getRepositoryDateString() -> String? {
+		let dateFormatter = DateFormatter()
+		dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+		dateFormatter.timeZone = TimeZone(abbreviation: "MSK")
+		guard let date = dateFormatter.date(from: self.lastChange ?? "") else { return nil }
+		dateFormatter.dateFormat = "yyyy-MM-dd' 'HH:mm:ss"
+		return dateFormatter.string(from: date)
+	}
 	
 }

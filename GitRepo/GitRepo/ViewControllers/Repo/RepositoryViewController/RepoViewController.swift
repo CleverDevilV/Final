@@ -112,11 +112,12 @@ extension RepoViewController: UITableViewDataSource {
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		
-		if tableView == tableViewWithLabelsAndButtons {
+//		if tableView == tableViewWithLabelsAndButtons {
 			return createCellForTableView(tableView, indexPath: indexPath)
-		} else {
-			return createCellForSegmentedTableView(tableView, indexPath: indexPath)
-		}
+//		}
+//		else {
+//			return createCellForSegmentedTableView(tableView, indexPath: indexPath)
+//		}
 	}
 	
 	func createCellForTableView(_ tableView: UITableView, indexPath: IndexPath) -> UITableViewCell{
@@ -150,36 +151,37 @@ extension RepoViewController: UITableViewDataSource {
 		}
 	}
 	
-	func createCellForSegmentedTableView(_ tableView: UITableView, indexPath: IndexPath) -> UITableViewCell{
-		var cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-		
-		switch segmentControllerValue {
-		case nil, 0:
-			let commitMessage = repository?.commits?[indexPath.row].message ?? ""
-			let commitDate = repository?.commits?[indexPath.row].getCommitDate()
-			
-			cell = UITableViewCell(style: .subtitle, reuseIdentifier: "Cell")
-			cell.textLabel?.text = commitMessage
-			cell.textLabel?.numberOfLines = 0
-			cell.accessoryType = .disclosureIndicator
-			cell.detailTextLabel?.text = "\(commitDate!)"
-		default:
-			let brancheName = repository?.branches?[indexPath.row].name ?? ""
-			cell.textLabel?.text = brancheName
-			cell.accessoryType = .none
-		}
-		
-		
-		
-		return cell
-	}
+//	func createCellForSegmentedTableView(_ tableView: UITableView, indexPath: IndexPath) -> UITableViewCell{
+//		var cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+//
+//		switch segmentControllerValue {
+//		case nil, 0:
+//			let commitMessage = repository?.commits?[indexPath.row].message ?? ""
+//			let commitDate = repository?.commits?[indexPath.row].getCommitDateString()
+//
+//			cell = UITableViewCell(style: .subtitle, reuseIdentifier: "Cell")
+//			cell.textLabel?.text = commitMessage
+//			cell.textLabel?.numberOfLines = 0
+//			cell.accessoryType = .disclosureIndicator
+//			cell.detailTextLabel?.text = "\(commitDate!)"
+//		default:
+//			let brancheName = repository?.branches?[indexPath.row].name ?? ""
+//			cell.detailTextLabel?.text = ""
+//			cell.textLabel?.text = brancheName
+//			cell.accessoryType = .none
+//		}
+//
+//
+//
+//		return cell
+//	}
 	
 }
 
 extension RepoViewController: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //		if tableView == tableForSegmentChoose {
-//			tableView.cellForRow(at: indexPath)?.isSelected = false
+			tableView.cellForRow(at: indexPath)?.isSelected = false
 //
 //			let webView = SomeUrlWebViewController()
 ////			guard let url = URL(string: repository?.commits?[indexPath.row].url ?? "") else { return }
@@ -203,7 +205,7 @@ extension RepoViewController: OwnerAndViewButtonTableViewCellDelegate {
 extension RepoViewController: SegmentCommitsBranchesTableViewCellDelegate {
 	func setSegmentControllerValue(_ value: Int) {
 		segmentControllerValue = value
-//		self.tableForSegmentChoose.reloadData()
+//		self.tableViewWithLabelsAndButtons.reloadData()
 	}
 	
 	func showWebView(at indexPath: IndexPath) {

@@ -8,6 +8,8 @@
 
 import Foundation
 
+// Unit tests ???
+
 final class ProjectsBase: Decodable {
 	
 	private (set) var projects: [Project] = []
@@ -55,7 +57,7 @@ final class ProjectsBase: Decodable {
 	}
 	
 	private func loadToBack() {
-		let network = FirebaseNetworkManager()
+		let network = FirebaseNetworkManager(with: AppDelegate.shared.session)
 		var uploadData: [String : [ProjectForUploadToBack]] = [userName : []]
 		
 		for project in projects {

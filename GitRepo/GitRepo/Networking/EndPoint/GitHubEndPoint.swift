@@ -8,6 +8,8 @@
 
 import Foundation
 
+// Unit Tests
+
 /**
 [GitHubApi](x-source-tag://GitHubApi) options.
 Tests - [GitHubApiTests](x-source-tag://URLParameterEncoderTests).

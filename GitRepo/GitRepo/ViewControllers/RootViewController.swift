@@ -8,13 +8,13 @@
 
 import UIKit
 
+// Unit tests ???
+
 class RootViewController: UIViewController {
 	
 	private var currentVC: UIViewController
 	static let shared = RootViewController()
 	var token: String = ""
-	
-	var loader = Loader(coreDataService: nil)
 	
 	func copy(with zone: NSZone? = nil) -> Any {
 		return self

@@ -8,15 +8,22 @@
 
 import Foundation
 
+// Unit tests ???
+
 struct GitHubNetworkManager: NetworkManagerProtocol {
 	
-	private let router = Router<GitHubApi>(with: URLSession.init(configuration: .default))
+	private let router: Router<GitHubApi>!
+//		= Router<GitHubApi>(with: URLSession.init(configuration: .default))
 	
 	private var queue = DispatchQueue(label: "com.sber.final", qos: .default, attributes: .concurrent)
 	
 	enum Result<String> {
 		case success
 		case failure(String)
+	}
+	
+	init(with session: URLSession) {
+		self.router = Router<GitHubApi>(with: session)
 	}
 	
 	fileprivate func handleNetworkResponse(_ response: HTTPURLResponse) -> Result<String> {
@@ -30,23 +37,7 @@ struct GitHubNetworkManager: NetworkManagerProtocol {
 		}
 	}
 	
-	// 1. Мы определяем метод getNewMovies с двумя аргументами: номер страницы пагинации и completion handler, который возвращает опциональный массив моделей Movie, либо опциональную ошибку.
-	//
-	//	2. Вызываем Router. Передаем номер страницы и обрабатываем completion в замыкании.
-	//
-	//	3. URLSession возвращает ошибку если нет сети или не получилось сделать запрос по какой-либо причине. Обратите внимание, что это не ошибка API, такие ошибки происходят на клиенте и происходят обычно из-за плохого качества интернет-соединения.
-	//
-	//	4. Нам необходимо привести наш response к HTTPURLResponse, потому что нам надо получить доступ к свойству statusCode.
-	//
-	//	5. Объявляем result и инициализируем его с помощью метода handleNetworkResponse
-	//
-	//	6. Success означает что запрос прошел успешно и мы получили ожидаемый ответ. Затем мы проверяем, пришли ли с ответом данные, и если нет, то просто завершаем метод через return.
-	//
-	//	7. Если же ответ приходит с данными, то необходимо распарсить полученные данные в модель. После этого передаем полученный массив моделей в completion.
-	//
-	//	8. В случае ошибки просто передаем ошибку в completion.
-	
-	
+	/// Get Decodable data from EndPointType.
 	public func getData(endPoint: EndPointType, completion: @escaping (_ result: Decodable?, _ error: String?) -> ()) {
 		guard let endPoint = endPoint as? GitHubApi else {
 			completion(nil, "Unknown end point")
@@ -198,9 +189,11 @@ struct GitHubNetworkManager: NetworkManagerProtocol {
 						case .collaborators(_ ):
 							let newResponse = try JSONDecoder().decode([User].self, from: responseData)
 							completion(newResponse, nil)
+							
 						case .branches(_ ):
 							let newResponse = try JSONDecoder().decode([Branch].self, from: responseData)
 							completion(newResponse, nil)
+							
 						case .commits(_ ):
 							
 							var newResponse: [Event]?

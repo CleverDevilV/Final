@@ -8,7 +8,13 @@
 
 import Foundation
 
+// Unit tests ???
+
+/**
+
+*/
 class Router <EndPoint: EndPointType>: NetworkRouter {
+	
 	private var task: URLSessionTask?
 	private let session: URLSession?
 	
@@ -16,7 +22,7 @@ class Router <EndPoint: EndPointType>: NetworkRouter {
 		self.session = session
 	}
 	
-	// Тут мы создаем URLSession с помощью URLSession.shared, это самый простой способ создания. Но помните, что этот способ не единственный. Можно использовать и более сложные конфигурации URLSession, которые могут менять ее поведение
+	/// Тут мы создаем URLSession с помощью URLSession.shared, это самый простой способ создания. Но помните, что этот способ не единственный. Можно использовать и более сложные конфигурации URLSession, которые могут менять ее поведение
 	
 	func request(_ route: EndPoint, complition: @escaping NetworkRouterCompletion) {
 	
@@ -35,17 +41,7 @@ class Router <EndPoint: EndPointType>: NetworkRouter {
 		self.task?.cancel()
 	}
 	
-	// Мы создаем наш запрос с помощью функции buildRequest. Эта функция отвечает за всю жизненно важную работу в нашем сетевом слое. По сути, конвертирует EndPointType в URLRequest. И как только EndPoint превращается в запрос, мы можем передать его в session. Здесь происходит много всего, поэтому давайте разберем по методам. Сначала разберем метод buildRequest:
-	
-//	1. Мы инициализируем переменную запроса URLRequest. Задаем в ней наш базовый URL-адрес и добавляем к нему путь конкретного запроса, который будет использоваться.
-//
-//	2. Присваиваем request.httpMethod http-метод из нашего EndPoint.
-//
-//	3. Создаем блок do-try-catch, потому что наши кодировщики могут выдавать ошибку. Создавая один большой блок do-try-catch мы избавляем себя от необходимости создавать отдельный блок для каждого try.
-//
-//	4. В switch проверяем route.task.
-//
-//	5. В зависимости от вида task вызываем соответствующий кодировщик.
+	/// Мы создаем наш запрос с помощью функции buildRequest. Эта функция отвечает за всю жизненно важную работу в нашем сетевом слое. По сути, конвертирует EndPointType в URLRequest. И как только EndPoint превращается в запрос, мы можем передать его в session.
 	
 	fileprivate func buildRequest(from route: EndPoint) throws -> URLRequest {
 		var url = route.baseURL.appendingPathComponent(route.path)

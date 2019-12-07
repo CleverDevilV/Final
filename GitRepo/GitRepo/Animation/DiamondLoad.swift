@@ -68,11 +68,7 @@ public class DiamondLoad: UIView {
 		}
 		createLayersIfNeeded()
 		setupInitialPlaces()
-//		var dotsDelay = 0.1
-//		switch style{
-//		case .NoSpin:
-//			dotsDelay = 0
-//		}
+		
 		let time = DispatchTime.now() + 1
 		
 		self.startLayerAnimation(layer: self.dots[0], toPosition: CGPoint(x: self.localCenter.x, y: self.localCenter.y - self.dotSide - self.dotLargestDistance))
@@ -188,10 +184,7 @@ public class DiamondLoad: UIView {
 	private var rotationKeyTimes: [NSNumber] {
 		get{
 			switch style{
-//			case .SpinInEnd:
-//				return [0.0, 0.3, 0.5, 0.5, 1]
-//			case .SpinInMove:
-//				return [0.0, 0.25, 0.5, 1]
+				
 			case .NoSpin:
 				return []
 			}
@@ -201,10 +194,7 @@ public class DiamondLoad: UIView {
 	private var rotationValues: [Double] {
 		get{
 			switch style{
-//			case .SpinInEnd:
-//				return [M_PI_4, M_PI_4, 5 * M_PI_4, M_PI_4, M_PI_4]
-//			case .SpinInMove:
-//				return [M_PI_4, 5 * M_PI_4 , 2 * M_PI + M_PI_4, 2 * M_PI + M_PI_4]
+				
 			case .NoSpin:
 				return []
 			}

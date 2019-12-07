@@ -8,6 +8,8 @@
 
 import Foundation
 
+ // Unit tests???
+
 enum UserDefaultsKeys : String {
 	case permission_denied
 	case access_token

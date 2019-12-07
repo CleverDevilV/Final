@@ -187,7 +187,7 @@ extension RequestViewController: WKNavigationDelegate {
 		DispatchQueue.main.async {
 			UserDefaults.standard.update(with: .oauth_access_token, data: response)
 			
-			let networkManager = GitHubNetworkManager()
+			let networkManager = GitHubNetworkManager(with: AppDelegate.shared.session)
 			networkManager.getData(endPoint: GitHubApi.user) {
 				login, error in
 				

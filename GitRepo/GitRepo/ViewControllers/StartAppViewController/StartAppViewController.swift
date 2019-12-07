@@ -9,26 +9,29 @@
 import UIKit
 
 protocol LoaderProtocol {
-	var coreDataService: CoreDataServiceProtocol! { get set }
-	func getBaseDataFrom(source: SourceType?, endPoint: EndPointType?, completion: @escaping (_ result: Decodable?, _ error: String?) -> ())
+	func getBaseDataFrom(source: SourceType, endPoint: EndPointType?, baseType: BaseType?, completion: @escaping (_ result: Decodable?, _ error: String?) -> ())
 }
 
 class StartAppViewController: UIViewController {
 	
-	//MARK: - Presenter
-	var presenter: StartViewPresenterProtocol?
-	
+	//MARK: UI
 	private var greetingLabel = UILabel()
 	private var userLoginLabel = UILabel()
-	
 	private var welcomeButton = UIButton()
 	private var logOutButton = UIButton()
 	
 	private let loadView = DiamondLoad()
 	
+	//MARK: service VARs
+	
 	private var login = UserDefaults.standard.get(with: .oauth_user_login)
 	
 	private var loader: LoaderProtocol!
+	
+	//MARK: Presenter
+	var presenter: StartViewPresenterProtocol?
+	
+	//MARK: -
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -40,16 +43,24 @@ class StartAppViewController: UIViewController {
 		presenter?.setupLoader()
 		
 		downloadData()
-		
+	}
+	
+	func showButtons(){
+		UIView.animate(withDuration: 0.5, delay: 0.3, options: [], animations: {
+			self.welcomeButton.isEnabled = true
+			self.logOutButton.isEnabled = true
+			self.loadView.layer.opacity = 0
+			self.welcomeButton.layer.opacity = 1
+			self.logOutButton.layer.opacity = 1
+		}, completion: nil)
 	}
 	
 	func downloadData() {
 		if UserDefaults.standard.isExist(with: .oauth_user_login) {
 			
-			loader = Loader(coreDataService: nil)
 			var repoServ: ManagedObjectFromCoreDataService!
 			
-			loader.getBaseDataFrom(source: .firebase, endPoint: FirebaseApi.getProjects) {
+			loader.getBaseDataFrom(source: .firebase, endPoint: FirebaseApi.getProjects, baseType: nil) {
 				result, error in
 				
 				if error != nil {
@@ -57,70 +68,59 @@ class StartAppViewController: UIViewController {
 				}
 				
 				if result == nil {
-					repoServ = ManagedObjectFromCoreDataService(withDeleting: false)
-					repoServ.getDataFromCoreData(to: .projectBase){
-						result in
-						print("OK")
-						guard let result = result as? [Project] else {return}
-						let base = ProjectsBase(with: result)
+					
+					self.loader.getBaseDataFrom(source: .coreData, endPoint: nil, baseType: .projectBase) {
+						result,error  in
+						
+						guard let projectBase = result as? ProjectsBase else {return}
+						print(projectBase)
 						
 						DispatchQueue.main.async {
-							print(base)
-							AppDelegate.shared.projectBase = base
+							
+							AppDelegate.shared.projectBase = projectBase
 						}
-						
 					}
 				} else {
-					repoServ = ManagedObjectFromCoreDataService(withDeleting: true)
+					repoServ = ManagedObjectFromCoreDataService(withDeleting: true, writeContext: CoreDataStack.shared.writeContext, readContext: CoreDataStack.shared.readContext)
 					repoServ.saveCoreDataObjectsFrom(base: result as? ProjectsBase, baseType: .projectBase)
+					
+					guard let base = result as? ProjectsBase else {return}
+					print(base)
+					
 					DispatchQueue.main.async {
-						AppDelegate.shared.projectBase = result as? ProjectsBase
-						
+						AppDelegate.shared.projectBase = base
 					}
 				}
 				
-				self.loader.getBaseDataFrom(source: .gitHub, endPoint: GitHubApi.repos) {
+				self.loader.getBaseDataFrom(source: .gitHub, endPoint: GitHubApi.repos, baseType: nil) {
 					result, error in
-					print(result)
 					
 					if error != nil {
 						print(error!)
 					}
 					
 					if result == nil {
-						repoServ.getDataFromCoreData(to: .repositoryBase){
-							result in
-							print("OK")
-							guard let result = result as? [Repository] else {return}
-							let base = RepositoriesBase(with: result)
+						
+						self.loader.getBaseDataFrom(source: .coreData, endPoint: nil, baseType: .repositoryBase) {
+							result,error  in
+							print(result)
+							
+							guard let repositoryBase = result as? RepositoriesBase else {return}
 							
 							DispatchQueue.main.async {
-								print(base)
-								AppDelegate.shared.repositoryBase = base
-								UIView.animate(withDuration: 0.5, delay: 0.3, options: [], animations: {
-									self.welcomeButton.isEnabled = true
-									self.logOutButton.isEnabled = true
-									self.loadView.layer.opacity = 0
-									self.welcomeButton.layer.opacity = 1
-									self.logOutButton.layer.opacity = 1
-								}, completion: nil)
+								print(repositoryBase)
+								AppDelegate.shared.repositoryBase = repositoryBase
+								self.showButtons()
 							}
-							
 						}
-					}
-					else {
+						
+					} else {
 						repoServ.saveCoreDataObjectsFrom(base: result as? RepositoriesBase, baseType: .repositoryBase)
 						DispatchQueue.main.async {
 							AppDelegate.shared.repositoryBase = result as? RepositoriesBase
-							UIView.animate(withDuration: 0.5, delay: 0.3, options: [], animations: {
-								self.welcomeButton.isEnabled = true
-								self.logOutButton.isEnabled = true
-								self.loadView.layer.opacity = 0
-								self.welcomeButton.layer.opacity = 1
-								self.logOutButton.layer.opacity = 1
-							}, completion: nil)
+							self.showButtons()
 						}
-					}
+					}	
 				}
 			}
 		}
@@ -219,7 +219,6 @@ class StartAppViewController: UIViewController {
 			logOutButton.bottomAnchor.constraint(lessThanOrEqualTo: view.bottomAnchor, constant: -50)
 			])
 		
-		
 	}
 }
 
@@ -227,7 +226,6 @@ extension StartAppViewController {
 	@objc
 	func tapWelcomeButton(_ sender: UIButton) {
 		
-		if sender.titleLabel?.text == "Войти" {
 			UIView.animate(withDuration: 0.5, delay: 0.3, options: [], animations: {
 				self.greetingLabel.layer.opacity = 1
 				self.userLoginLabel.layer.opacity = 1
@@ -235,19 +233,16 @@ extension StartAppViewController {
 				self.view.layer.opacity = 1
 			}, completion: {
 				_ in
-				self.present(RequestViewController(), animated: false, completion: nil)
+				
+				if sender.titleLabel?.text == "Войти" {
+					let registrationView = RequestViewController()
+					registrationView.modalPresentationStyle = .fullScreen
+					
+					self.present(registrationView, animated: false, completion: nil)
+				} else {
+					AppDelegate.shared.rootViewController.switchMainScreen()
+				}
 			})
-		} else {
-			UIView.animate(withDuration: 0.5, delay: 0.3, options: [], animations: {
-				self.greetingLabel.layer.opacity = 1
-				self.userLoginLabel.layer.opacity = 1
-				self.welcomeButton.layer.opacity = 0
-				self.view.layer.opacity = 1
-			}, completion: {
-				_ in
-				AppDelegate.shared.rootViewController.switchMainScreen()
-			})
-		}
 	}
 	
 	@objc

@@ -8,7 +8,9 @@
 
 import Foundation
 
-/** [SourceType](x-source-tag://SourceType) options
+// Unit Tests
+
+/** [SourceType](x-source-tag://SourceType) options.
 
 ````
 /// Use GitHubNetworkManager
@@ -18,7 +20,6 @@ case firebase
 /// Use CoreDataManager
 case coreData
 ````
-
 */
 /// - Tag: SourceType
 enum SourceType {
@@ -31,17 +32,23 @@ enum SourceType {
 }
 
 protocol CoreDataServiceProtocol {
-	func getData(endPoint: EndPointType?, _ completion: @escaping (_ result: Decodable?, _ error: String?) -> () )
+	func getData(baseType: BaseType, _ completion: @escaping (_ result: Decodable?, _ error: String?) -> () )
 }
 
+/// Service for load Data from Back and CoreData
 ///Tests - [LoaderTests](x-source-tag://LoaderTests).
 final class Loader: LoaderProtocol {
 	
-	var networkManager: NetworkManagerProtocol!
+	var githubNetworkManager: NetworkManagerProtocol!
+	var firebaseNetworkManager: NetworkManagerProtocol!
 	var coreDataService: CoreDataServiceProtocol!
 	
-	init(coreDataService: CoreDataServiceProtocol?) {
+	init(githubNetworkManager: NetworkManagerProtocol?, firebaseNetworkManager: NetworkManagerProtocol?, coreDataService: CoreDataServiceProtocol?) {
+		self.githubNetworkManager = githubNetworkManager
+		self.firebaseNetworkManager = firebaseNetworkManager
+		
 		self.coreDataService = coreDataService
+		
 	}
 	
 	enum Result{
@@ -51,40 +58,36 @@ final class Loader: LoaderProtocol {
 	}
 	
 	/** Get data from different sourece types using endPoints.
-	- Parameters:
-		- source: value of SourceType
-		- endPoint: value of EndPointType
-	
-	- Returns:
-		- result: Decodable?
-		- completion: @escaping (_ result: Decodable?, _ error: String?) -> ()
 	
 	If HTTPHeader field "Content-Type" == nil - setValue("application/x-www-form-urlencoded; charset=utf-8", forHTTPHeaderField: "Content-Type").
 	*/
-	func getBaseDataFrom(source: SourceType?, endPoint: EndPointType?, completion: @escaping (_ result: Decodable?, _ error: String?) -> ()) {
-		
-		guard let source = source else {return}
-		
-		guard let endPoint = endPoint else {return}
+	func getBaseDataFrom(source: SourceType, endPoint: EndPointType?, baseType: BaseType?, completion: @escaping (_ result: Decodable?, _ error: String?) -> ()) {
 		
 		switch source {
 		case .gitHub:
-			networkManager = GitHubNetworkManager()
-			networkManager.getData(endPoint: endPoint) {
+			guard let endPoint = endPoint else {return}
+			
+			githubNetworkManager.getData(endPoint: endPoint) {
 				result, error in
+				
 				completion(result, error)
 			}
 			
 		case .firebase:
-			networkManager = FirebaseNetworkManager()
-			networkManager.getData(endPoint: FirebaseApi.getProjects) {
+			guard let endPoint = endPoint else {return}
+			
+			firebaseNetworkManager.getData(endPoint: FirebaseApi.getProjects) {
 				result, error in
+				
 				completion(result, error)
+				
 			}
 			
 		case .coreData:
-			self.coreDataService.getData(endPoint: endPoint) {
+			guard let baseType = baseType else {return}
+			self.coreDataService.getData(baseType: baseType) {
 				result, error in
+				
 				completion(result, error)
 			}
 		}

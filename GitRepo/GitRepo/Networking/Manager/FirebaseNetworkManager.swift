@@ -8,13 +8,19 @@
 
 import Foundation
 
+// Unit tests ???
+
 struct FirebaseNetworkManager: NetworkManagerProtocol {
 	
-	private let router = Router<FirebaseApi>(with: URLSession.init(configuration: .default))
+	private let router: Router<FirebaseApi>!
 	
 	enum Result<String> {
 		case success
 		case failure(String)
+	}
+	
+	init(with session: URLSession) {
+		self.router = Router<FirebaseApi>(with: session)
 	}
 	
 	fileprivate func handleNetworkResponse(_ response: HTTPURLResponse) -> Result<String> {

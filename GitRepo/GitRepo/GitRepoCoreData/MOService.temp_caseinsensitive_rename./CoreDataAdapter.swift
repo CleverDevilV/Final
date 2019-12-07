@@ -9,8 +9,23 @@
 import Foundation
 import CoreData
 
+// Unit tests ???
+
+/**
+Core Data Types enum.
+```
+case project
+case repository
+case task
+case author
+case branch
+case collaborator
+case commit
+```
+*/
+/// - Tag: CoreDataType
 enum CoreDataType {
-	
+
 	case project
 	case repository
 	case task
@@ -22,14 +37,18 @@ enum CoreDataType {
 }
 
 protocol CoreDataAdapterProtocol {
-	
-	func translate(objects: [NSManagedObject]?, oneObject: NSManagedObject?,  dataType: CoreDataType) -> [Any]?
-	func translateData(_ data: Any?, arrayOfData: [Any]?, dataType: CoreDataType, into object: inout NSManagedObject) -> NSManagedObject? 
+	/// Function for translate CoreData Objects to App Models
+	func translate(objects: [NSManagedObject]?, oneObject: NSManagedObject?,  dataType: CoreDataType) -> [Decodable]?
+	/// Function for translate App Models to  CoreData Objects
+	func translateModelToObject(_ data: Decodable?, arrayOfData: [Decodable]?, dataType: CoreDataType, into object: inout NSManagedObject) -> NSManagedObject?
 }
 
+/// Adapter between Core Data and App Models. Tests - [CoreDataAdapterTests](x-source-tag://CoreDataAdapterTests)
 final class CoreDataAdapter: CoreDataAdapterProtocol {
 	
-	func translate(objects: [NSManagedObject]?, oneObject: NSManagedObject?,  dataType: CoreDataType) -> [Any]? {
+	/// Function for translate CoreData Objects to App Models
+	public func translate(objects: [NSManagedObject]?, oneObject: NSManagedObject?,  dataType: CoreDataType) -> [Decodable]? {
+		
 		switch dataType {
 			
 		case .repository:
@@ -117,14 +136,15 @@ final class CoreDataAdapter: CoreDataAdapterProtocol {
 		}
 	}
 	
-	func translateData(_ data: Any?, arrayOfData: [Any]?, dataType: CoreDataType, into object: inout NSManagedObject) -> NSManagedObject? {
+	/// Function for translate App Models to  CoreData Objects
+	public func translateModelToObject(_ data: Decodable?, arrayOfData: [Decodable]?, dataType: CoreDataType, into object: inout NSManagedObject) -> NSManagedObject? {
 		
 		switch dataType {
 		case .project:
 			guard let data = data as? Project else { return nil }
 			
 			guard let object = object as? MOProject else { return nil }
-//			let object = MOProject(context: context)
+			
 			object.projectName = data.projectName
 			object.repositoryName = data.repositoryName
 			object.repositoryURL = data.repoUrl
@@ -137,7 +157,6 @@ final class CoreDataAdapter: CoreDataAdapterProtocol {
 			
 			guard let object = object as? MORepository else { return nil }
 			
-//			let object = MORepository(context: context)
 			object.name = data.name
 			
 			object.branchesLink = data.branchesLink
@@ -154,7 +173,7 @@ final class CoreDataAdapter: CoreDataAdapterProtocol {
 			guard let data = data as? String else { return nil }
 			
 			guard let object = object as? MOTask else { return nil }
-//			let object = MOTask(context: context)
+			
 			object.taskContent = data
 			
 			return object
@@ -163,7 +182,6 @@ final class CoreDataAdapter: CoreDataAdapterProtocol {
 		case .author:
 			guard let data = data as? User else { return nil }
 			
-//			let object = MOAuthor(context: context)
 			guard let object = object as? MOAuthor else { return nil }
 			object.name = data.login
 			
@@ -172,7 +190,6 @@ final class CoreDataAdapter: CoreDataAdapterProtocol {
 		case .branch:
 			guard let data = data as? Branch else { return nil }
 			
-//			let object = MOBranch(context: context)
 			guard let object = object as? MOBranch else { return nil }
 			object.name = data.name
 			
@@ -181,7 +198,6 @@ final class CoreDataAdapter: CoreDataAdapterProtocol {
 		case .collaborator:
 			guard let data = data as? User else { return nil }
 			
-//			let object = MOCollaborator(context: context)
 			guard let object = object as? MOCollaborator else { return nil }
 			object.name = data.login
 			
@@ -190,7 +206,6 @@ final class CoreDataAdapter: CoreDataAdapterProtocol {
 		case .commit:
 			guard let data = data as? Commit else { return nil }
 			
-//			let object = MOCommit(context: context)
 			guard let object = object as? MOCommit else { return nil }
 			object.message = data.message
 			object.author = data.author?.name

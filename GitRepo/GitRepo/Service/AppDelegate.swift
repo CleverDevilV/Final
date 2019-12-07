@@ -13,6 +13,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
 	
+	let session = URLSession(configuration: .default)
+	
 //	let reposerv = ManagedObjectFromCoreDataService(withDeleting: true)
 	
 	var repositoryBase: RepositoriesBase?

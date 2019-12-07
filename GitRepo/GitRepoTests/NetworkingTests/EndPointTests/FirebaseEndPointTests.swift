@@ -76,7 +76,6 @@ class FirebaseEndPointTests: XCTestCase {
 		// act
 //		let apiKey = UserDefaults.standard.get(with: .firebase_apiKey)
 		// assert
-//		XCTAssertEqual(endPoint?.baseURL, URL(string: "https://final-project-sb.firebaseio.com/projects.json?avvrdd_token=\(apiKey)"))
 		XCTAssertEqual(endPoint?.path, "")
 	}
 	

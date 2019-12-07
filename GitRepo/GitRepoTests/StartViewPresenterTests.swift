@@ -14,7 +14,7 @@ import XCTest
 class MockLoader: LoaderProtocol {
 	var coreDataService: CoreDataServiceProtocol!
 	
-	func getBaseDataFrom(source: SourceType?, endPoint: EndPointType?, completion: @escaping (Decodable?, String?) -> ()) {
+	func getBaseDataFrom(source: SourceType, endPoint: EndPointType?, baseType: BaseType?, completion: @escaping (Decodable?, String?) -> ()) {
 		completion("result", nil)
 	}
 }
@@ -52,7 +52,7 @@ class StartViewPresenterTests: XCTestCase {
 	
 	func testView() {
 		presenter.setupLoader()
-		view.loader?.getBaseDataFrom(source: nil, endPoint: nil) {
+		view.loader?.getBaseDataFrom(source: .coreData, endPoint: nil, baseType: nil) {
 			result, error in
 			guard let resultStr: String = result as? String else {return}
 			XCTAssertEqual(resultStr, "result")

@@ -8,6 +8,8 @@
 
 import Foundation
 
+// Unit Tests
+
 /// Structure for creating a URLRequest based on  [Parameters](x-source-tag://Parameters). If HTTPHeader field "Content-Type" == nil - setValue("application/json", forHTTPHeaderField: "Content-Type").
 /// Tests - [JSONParameterEncoderTests](x-source-tag://JSONParameterEncoderTests).
 public struct JSONParameterEncoder: ParameterEncoder {

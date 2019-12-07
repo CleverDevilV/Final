@@ -10,6 +10,18 @@
 import Foundation
 import CoreData
 
+// Unit tests ???
+
+/**
+App bases types
+
+```
+case projectBase
+case repositoryBase
+```
+
+*/
+/// - Tag: BaseType
 enum BaseType {
 	case projectBase
 	case repositoryBase
@@ -20,10 +32,18 @@ protocol ManagedObjectServiceProtocol: class {
 	func getDataFromCoreData(to baseType: BaseType, completion: @escaping ([Any]?) ->())
 }
 
+/**
+Manager for CoreData (save and read).
+```
+func saveCoreDataObjectsFrom(base: Any?, baseType: BaseType)
+func getDataFromCoreData(to baseType: BaseType, completion: @escaping ([Any]?) ->())
+```
+
+*/
 final class ManagedObjectFromCoreDataService {
 	
-	let writeContext = CoreDataStack.shared.writeContext
-	let readContext = CoreDataStack.shared.readContext
+	let writeContext: NSManagedObjectContext!
+	let readContext: NSManagedObjectContext!
 	
 	let repositoryEntityName = "Repository"
 	let projectEntityName = "Project"
@@ -42,9 +62,16 @@ final class ManagedObjectFromCoreDataService {
 		}
 	}
 	
-	init(withDeleting: Bool) {
+	init(withDeleting: Bool, writeContext: NSManagedObjectContext!, readContext: NSManagedObjectContext?) {
 //		self.readRepositoriesData()
 		self.adapter = CoreDataAdapter()
+		
+		self.writeContext = writeContext//CoreDataStack.shared.writeContext
+		if let readContext = readContext {
+			self.readContext = readContext
+		} else {
+			self.readContext = writeContext
+		}
 		
 		if withDeleting {
 			self.deleteAllData()
@@ -96,13 +123,13 @@ final class ManagedObjectFromCoreDataService {
 				writeContext.perform {
 					
 					var repositoryObjectStart: NSManagedObject = MORepository(context: self.writeContext)
-					if let repositoryObject = self.adapter.translateData(repository, arrayOfData: nil, dataType: .repository, into: &repositoryObjectStart) as? MORepository {
+					if let repositoryObject = self.adapter.translateModelToObject(repository, arrayOfData: nil, dataType: .repository, into: &repositoryObjectStart) as? MORepository {
 						
 						
 						if let branches = repository.branches {
 							for branch in branches {
 								var branchObject: NSManagedObject = MOBranch(context: self.writeContext)
-								if let branchObject = self.adapter.translateData(branch, arrayOfData: nil, dataType: .branch, into: &branchObject) as? MOBranch {
+								if let branchObject = self.adapter.translateModelToObject(branch, arrayOfData: nil, dataType: .branch, into: &branchObject) as? MOBranch {
 									branchObject.repository = repositoryObject
 								}
 							}
@@ -111,7 +138,7 @@ final class ManagedObjectFromCoreDataService {
 						if let collaborators = repository.collaborators {
 							for collaborator in collaborators {
 								var collaboratorObject: NSManagedObject = MOCollaborator(context: self.writeContext)
-								if let collaboratorObject = self.adapter.translateData(collaborator, arrayOfData: nil, dataType: .collaborator, into: &collaboratorObject) as? MOCollaborator {
+								if let collaboratorObject = self.adapter.translateModelToObject(collaborator, arrayOfData: nil, dataType: .collaborator, into: &collaboratorObject) as? MOCollaborator {
 									collaboratorObject.repository = repositoryObject
 								}
 							}
@@ -120,7 +147,7 @@ final class ManagedObjectFromCoreDataService {
 						if let commits = repository.commits {
 							for commit in commits {
 								var commitObject: NSManagedObject = MOCommit(context: self.writeContext)
-								if let commitObject = self.adapter.translateData(commit, arrayOfData: nil, dataType: .commit, into: &commitObject) as? MOCommit {
+								if let commitObject = self.adapter.translateModelToObject(commit, arrayOfData: nil, dataType: .commit, into: &commitObject) as? MOCommit {
 									commitObject.repository = repositoryObject
 								}
 							}
@@ -147,13 +174,13 @@ final class ManagedObjectFromCoreDataService {
 				writeContext.perform {
 					
 					var projectObject: NSManagedObject = MOProject(context: self.writeContext)
-					if let projectObject = self.adapter.translateData(project, arrayOfData: nil, dataType: .project, into: &projectObject) as? MOProject {
+					if let projectObject = self.adapter.translateModelToObject(project, arrayOfData: nil, dataType: .project, into: &projectObject) as? MOProject {
 						
 						if let tasks = project.projectTasks {
 							
 							for task in tasks {
 								var taskObject: NSManagedObject = MOTask(context: self.writeContext)
-								if let taskObject = self.adapter.translateData(task, arrayOfData: nil, dataType: .task, into: &taskObject) as? MOTask {
+								if let taskObject = self.adapter.translateModelToObject(task, arrayOfData: nil, dataType: .task, into: &taskObject) as? MOTask {
 									taskObject.project = projectObject
 								}
 							}
@@ -177,7 +204,7 @@ final class ManagedObjectFromCoreDataService {
 	
 	
 	/// Sync function for read data from CoreData
-	public func getDataFromCoreData(to baseType: BaseType, completion: @escaping ([Any]?) ->()) {
+	public func getDataFromCoreData(to baseType: BaseType, completion: @escaping ([Decodable]?, String?) ->()) {
 		
 		switch baseType {
 		case .repositoryBase:
@@ -217,7 +244,7 @@ final class ManagedObjectFromCoreDataService {
 					}
 				}
 				
-				completion(repositories)
+				completion(repositories, nil)
 			}
 			
 		case .projectBase:
@@ -250,7 +277,7 @@ final class ManagedObjectFromCoreDataService {
 					}
 				}
 				
-				completion(projects)
+				completion(projects, nil)
 			}
 		}
 	}
@@ -258,8 +285,17 @@ final class ManagedObjectFromCoreDataService {
 
 //MARK: CoreDataServiceProtocol
 extension ManagedObjectFromCoreDataService: CoreDataServiceProtocol {
-	func getData(endPoint: EndPointType?, _ completion: @escaping (Decodable?, String?) -> ()) {
-		
+	func getData(baseType: BaseType, _ completion: @escaping (Decodable?, String?) -> ()) {
+		self.getDataFromCoreData(to: baseType) {
+			result, error in
+			print(result, "; ", error)
+			
+			if let result = result as? [Project] {
+				completion(ProjectsBase(with: result), nil)
+			} else if let result = result as? [Repository] {
+				completion(RepositoriesBase(with: result), nil)
+			}
+		}
 	}
 	
 	

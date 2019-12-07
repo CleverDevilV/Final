@@ -79,12 +79,6 @@ class JSONParameterEncoderTests: XCTestCase {
 		// assert
 		XCTAssertThrowsError(try URLParameterEncoder.encode(urlRequest: &request, with: parameters))
 		// TODO: выброс ошибки
-//		do {
-//			try URLParameterEncoder.encode(urlRequest: &request, with: parameters)
-//		} catch {
-//
-//			XCTAssertEqual(error.localizedDescription, "The operation couldn’t be completed. (GitRepoTests.NetworkError error 2.)")
-//		}
 	}
 
 }

@@ -8,14 +8,24 @@
 
 import Foundation
 
+// Unit Tests
+
+
 protocol LoaderBuilderProtocol: class {
 	static func createLoader() -> LoaderProtocol
 }
 
+/// Tests - [LoaderBuilderTests](x-source-tag://LoaderBuilderTests)
 class LoaderBuilder: LoaderBuilderProtocol {
 	static func createLoader() -> LoaderProtocol {
-		let coreDataManagerService = ManagedObjectFromCoreDataService(withDeleting: false)
-		let loader = Loader(coreDataService: coreDataManagerService)
+		
+		let session = AppDelegate.shared.session
+		
+		let githubNetworkManager = GitHubNetworkManager(with: session)
+		let firebaseNetworkManager = FirebaseNetworkManager(with: session)
+		
+		let coreDataManagerService = ManagedObjectFromCoreDataService(withDeleting: false, writeContext: CoreDataStack.shared.writeContext, readContext: CoreDataStack.shared.readContext)
+		let loader = Loader(githubNetworkManager: githubNetworkManager, firebaseNetworkManager: firebaseNetworkManager, coreDataService: coreDataManagerService)
 		
 		return loader
 	}

@@ -145,7 +145,7 @@ extension ProjectViewController: RepoTableCellDelegate {
 					let url = URL(string: text.replacingOccurrences(of: ".git", with: ""))!
 					let name = url.pathComponents.last
 					guard let repoName = name else {return}
-					self.netWorkService = GitHubNetworkManager()
+					self.netWorkService = GitHubNetworkManager(with: AppDelegate.shared.session)
 					self.netWorkService?.getData(endPoint: GitHubApi.oneRepo(repositoryName: repoName)) {
 						repo, error in
 						self.project?.repo = repo as? Repository
@@ -190,7 +190,7 @@ extension ProjectViewController: RepoTableCellDelegate {
 						let name = url.pathComponents.last
 						guard let repoName = name else {return}
 						
-						self.netWorkService = GitHubNetworkManager()
+						self.netWorkService = GitHubNetworkManager(with: AppDelegate.shared.session)
 						self.netWorkService?.getData(endPoint: GitHubApi.oneRepo(repositoryName: repoName)) {
 							repo, error in
 							self.project?.repo = repo as? Repository

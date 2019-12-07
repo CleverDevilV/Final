@@ -7,13 +7,14 @@
 //
 
 import Foundation
+// Unit tests
 
 protocol StartViewProtocol: class {
 	func setLoader(loader: LoaderProtocol?)
 }
 
 protocol StartViewPresenterProtocol: class {
-	init(view: StartViewProtocol, loader: LoaderProtocol?) // , person: Person
+	init(view: StartViewProtocol, loader: LoaderProtocol?)
 	
 	func setupLoader()
 }

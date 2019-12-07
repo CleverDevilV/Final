@@ -1,6 +1,6 @@
 
 //
-//  RepoModel.swift
+//  RepositoryModel.swift
 //  GitRepo
 //
 //  Created by Дарья Витер on 25/11/2019.
@@ -8,6 +8,8 @@
 //
 
 import UIKit
+
+// Unit tests
 
 /// Class for Repository from GitHub
 public final class Repository: Codable {

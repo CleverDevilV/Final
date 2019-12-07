@@ -8,6 +8,8 @@
 
 import UIKit
 
+// Unit tests !!!
+
 protocol AddTaskProtocol {
 	func addTask()
 }
@@ -16,17 +18,15 @@ class AddViewTableViewCell: UITableViewCell {
 	
 	public static var reusedId = "AddViewTableViewCell"
 	public var project: Project?
-	public var arrayOfDataForPresent: [Any]? {
+	public var arrayOfDataForPresent: [Decodable]? {
 		didSet {
-//			self.setupViews()
-			self.defaultView.reloadData()
-//			self.setupViews()
+			self.setupViews()
 		}
 	}
 	
 	public var typeOfData: String! {
 		didSet {
-			self.defaultView.reloadData()
+			self.setupViews()
 		}
 	}
 	
@@ -46,6 +46,8 @@ class AddViewTableViewCell: UITableViewCell {
 	}
 	
 	func setupViews() {
+		
+		self.defaultView.reloadData()
 		
 		defaultView.backgroundColor = .white
 		defaultView.layer.cornerRadius = 20

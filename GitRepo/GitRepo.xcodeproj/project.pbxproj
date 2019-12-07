@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A70A4622239C5834005325C7 /* RootViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70A4621239C5834005325C7 /* RootViewControllerTests.swift */; };
+		A70A4624239C6279005325C7 /* FakeAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70A4623239C6279005325C7 /* FakeAppDelegate.swift */; };
+		A70A4626239C62F4005325C7 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70A4625239C62F4005325C7 /* main.swift */; };
 		A73FC69B2396CFE6000F9F5C /* OwnerAndViewButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73FC69A2396CFE6000F9F5C /* OwnerAndViewButtonTableViewCell.swift */; };
 		A73FC69C2396D087000F9F5C /* OwnerAndViewButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73FC69A2396CFE6000F9F5C /* OwnerAndViewButtonTableViewCell.swift */; };
 		A73FC69E2396D66B000F9F5C /* SegmentCommitsBranchesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73FC69D2396D66B000F9F5C /* SegmentCommitsBranchesTableViewCell.swift */; };
@@ -137,6 +140,7 @@
 		A7B71FB0239C36AA00218CEB /* RepositoriesBaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B71FAF239C36AA00218CEB /* RepositoriesBaseTests.swift */; };
 		A7B71FB3239C3F7C00218CEB /* CommitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B71FB2239C3F7C00218CEB /* CommitModel.swift */; };
 		A7B71FB4239C3FA500218CEB /* CommitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B71FB2239C3F7C00218CEB /* CommitModel.swift */; };
+		A7B71FBA239C440500218CEB /* AddViewTableViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B71FB9239C440500218CEB /* AddViewTableViewCellTests.swift */; };
 		A7F55053239BD36E0035B807 /* StartViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F55052239BD36E0035B807 /* StartViewPresenter.swift */; };
 		A7F55054239BD5110035B807 /* StartViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F55052239BD36E0035B807 /* StartViewPresenter.swift */; };
 		A7F55060239BDC700035B807 /* StartAppViewControllerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F5505F239BDC700035B807 /* StartAppViewControllerBuilder.swift */; };
@@ -168,6 +172,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A70A4621239C5834005325C7 /* RootViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewControllerTests.swift; sourceTree = "<group>"; };
+		A70A4623239C6279005325C7 /* FakeAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeAppDelegate.swift; sourceTree = "<group>"; };
+		A70A4625239C62F4005325C7 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		A73FC69A2396CFE6000F9F5C /* OwnerAndViewButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerAndViewButtonTableViewCell.swift; sourceTree = "<group>"; };
 		A73FC69D2396D66B000F9F5C /* SegmentCommitsBranchesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentCommitsBranchesTableViewCell.swift; sourceTree = "<group>"; };
 		A73FC6A02396DADC000F9F5C /* RepositoryCollaboratorsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryCollaboratorsTableViewCell.swift; sourceTree = "<group>"; };
@@ -234,6 +241,7 @@
 		A7B481EE2392C26B00AFA19E /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		A7B71FAF239C36AA00218CEB /* RepositoriesBaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesBaseTests.swift; sourceTree = "<group>"; };
 		A7B71FB2239C3F7C00218CEB /* CommitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitModel.swift; sourceTree = "<group>"; };
+		A7B71FB9239C440500218CEB /* AddViewTableViewCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewTableViewCellTests.swift; sourceTree = "<group>"; };
 		A7F55052239BD36E0035B807 /* StartViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewPresenter.swift; sourceTree = "<group>"; };
 		A7F5505F239BDC700035B807 /* StartAppViewControllerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartAppViewControllerBuilder.swift; sourceTree = "<group>"; };
 		A7F55062239BDD690035B807 /* LoaderBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderBuilder.swift; sourceTree = "<group>"; };
@@ -559,6 +567,7 @@
 		A7FE067A238BE7F30093F07A = {
 			isa = PBXGroup;
 			children = (
+				A70A4625239C62F4005325C7 /* main.swift */,
 				A7FE0685238BE7F30093F07A /* GitRepo */,
 				A7FE06B5238D90610093F07A /* GitRepoTests */,
 				A7FE0684238BE7F30093F07A /* Products */,
@@ -617,6 +626,9 @@
 				A78A36FE239C2E0000A68BF0 /* Service */,
 				A7F55065239BEE0C0035B807 /* StartViewPresenterTests.swift */,
 				A7FE06B8238D90610093F07A /* Info.plist */,
+				A7B71FB9239C440500218CEB /* AddViewTableViewCellTests.swift */,
+				A70A4621239C5834005325C7 /* RootViewControllerTests.swift */,
+				A70A4623239C6279005325C7 /* FakeAppDelegate.swift */,
 			);
 			path = GitRepoTests;
 			sourceTree = "<group>";
@@ -803,6 +815,7 @@
 				A7F55066239BEE0C0035B807 /* StartViewPresenterTests.swift in Sources */,
 				A78A3703239C308300A68BF0 /* RouterTests.swift in Sources */,
 				A7495FCF239683AC00C120DC /* ProjectsBase.swift in Sources */,
+				A70A4624239C6279005325C7 /* FakeAppDelegate.swift in Sources */,
 				A7B405E8239953440092AD85 /* CoreDataStack.swift in Sources */,
 				A7A5DE6323952369004271D9 /* RepoViewController.swift in Sources */,
 				A77763752396F0B1007859CA /* DiamondLoad.swift in Sources */,
@@ -853,6 +866,7 @@
 				A777637E2397C83B007859CA /* BranchModel.swift in Sources */,
 				A7B4060323996EE20092AD85 /* MORepository.swift in Sources */,
 				A7A5DE6923952390004271D9 /* HTTPTask.swift in Sources */,
+				A70A4626239C62F4005325C7 /* main.swift in Sources */,
 				A7F55054239BD5110035B807 /* StartViewPresenter.swift in Sources */,
 				A7A5DE4B23952306004271D9 /* AppDelegate.swift in Sources */,
 				A7A5DE542395234D004271D9 /* RepositoryModel.swift in Sources */,
@@ -872,7 +886,9 @@
 				A7495FC62396714600C120DC /* FirebaseNetworkManager.swift in Sources */,
 				A7A5DE6A23952390004271D9 /* NetworkRouterProtocol.swift in Sources */,
 				A7B405EE239958440092AD85 /* CoreDataService.swift in Sources */,
+				A7B71FBA239C440500218CEB /* AddViewTableViewCellTests.swift in Sources */,
 				A777637B2397BE2E007859CA /* EventModel.swift in Sources */,
+				A70A4622239C5834005325C7 /* RootViewControllerTests.swift in Sources */,
 				A7A5DE5723952357004271D9 /* Registration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

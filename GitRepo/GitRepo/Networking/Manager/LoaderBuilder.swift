@@ -8,7 +8,7 @@
 
 import Foundation
 
-// Unit Tests
+// Unit Tests ???
 
 
 protocol LoaderBuilderProtocol: class {
@@ -19,7 +19,13 @@ protocol LoaderBuilderProtocol: class {
 class LoaderBuilder: LoaderBuilderProtocol {
 	static func createLoader() -> LoaderProtocol {
 		
-		let session = AppDelegate.shared.session
+		var session: URLSession!
+		
+		if AppDelegate().self != nil {
+			session = AppDelegate.shared.session
+		} else {
+			session = URLSession(configuration: .default)
+		}
 		
 		let githubNetworkManager = GitHubNetworkManager(with: session)
 		let firebaseNetworkManager = FirebaseNetworkManager(with: session)

@@ -9,30 +9,23 @@
 import UIKit
 
 @UIApplicationMain
+
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
 	
 	let session = URLSession(configuration: .default)
 	
-//	let reposerv = ManagedObjectFromCoreDataService(withDeleting: true)
-	
 	var repositoryBase: RepositoriesBase?
 	{
 		didSet {
 			print("set RepositoriesBase")
-//			print(repositoryBase)
-			
-//			self.reposerv.saveCoreDataObjectsFrom(base: repositoryBase, baseType: .repositoryBase)
 
 		}
 	}
 	var projectBase: ProjectsBase? {
 		didSet {
 			print("set ProjectsBase")
-//			print(projectBase)
-			
-//			self.reposerv.saveCoreDataObjectsFrom(base: projectBase, baseType: .projectBase)
 		}
 	}
 	
@@ -45,12 +38,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		window?.rootViewController = rootVC
 		window?.makeKeyAndVisible()
 		
-//		let serv = ManagedObjectFromCoreDataService(withDeleting: true)
-//		serv.getDataFromCoreData(to: .projectBase) {
-//			result in
-//			print(result?.count)
-//		}
-	
 		return true
 	}
 

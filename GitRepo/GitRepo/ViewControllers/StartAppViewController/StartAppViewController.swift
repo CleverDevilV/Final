@@ -12,6 +12,11 @@ protocol LoaderProtocol {
 	func getBaseDataFrom(source: SourceType, endPoint: EndPointType?, baseType: BaseType?, completion: @escaping (_ result: Decodable?, _ error: String?) -> ())
 }
 
+protocol RootViewControllerProtocol {
+	func switchMainScreen()
+	func switchToLogout()
+}
+
 class StartAppViewController: UIViewController {
 	
 	//MARK: UI
@@ -30,6 +35,8 @@ class StartAppViewController: UIViewController {
 	
 	//MARK: Presenter
 	var presenter: StartViewPresenterProtocol?
+	//MARK: RootView
+	var rootView: RootViewControllerProtocol!
 	
 	//MARK: -
 	
@@ -240,7 +247,8 @@ extension StartAppViewController {
 					
 					self.present(registrationView, animated: false, completion: nil)
 				} else {
-					AppDelegate.shared.rootViewController.switchMainScreen()
+					self.switchRootViewControllerToMainScreen()
+//					AppDelegate.shared.rootViewController.switchMainScreen()
 				}
 			})
 	}
@@ -260,5 +268,21 @@ extension StartAppViewController {
 extension StartAppViewController: StartViewProtocol {
 	func setLoader(loader: LoaderProtocol?) {
 		self.loader = loader
+	}
+}
+
+//MARK: - ManagedViewControllerByRootViewControllerProtocol
+extension StartAppViewController: ManagedViewControllerByRootViewControllerProtocol {
+	
+	func setupRootViewController(_ rootView: RootViewControllerProtocol) {
+		self.rootView = rootView
+	}
+	
+	func switchRootViewControllerToMainScreen() {
+		rootView.switchMainScreen()
+	}
+	
+	func switchRootViewControllerToLogoutScreen() {
+		rootView.switchToLogout()
 	}
 }

@@ -8,21 +8,30 @@
 
 import UIKit
 
-// Unit tests ???
+// Unit tests - no, because of AppDelegate = nil (
 
-class RootViewController: UIViewController {
+protocol ManagedViewControllerByRootViewControllerProtocol {
+	func setupRootViewController(_ rootView: RootViewControllerProtocol)
 	
-	private var currentVC: UIViewController
+	func switchRootViewControllerToMainScreen()
+	func switchRootViewControllerToLogoutScreen()
+}
+
+class RootViewController: UIViewController, RootViewControllerProtocol {
+	
+	private var currentVC: UIViewController!
 	static let shared = RootViewController()
 	var token: String = ""
 	
-	func copy(with zone: NSZone? = nil) -> Any {
-		return self
-	}
 	
 	init() {
 		self.currentVC = StartAppViewControllerBuilder.createStartAppViewController() //StartAppViewController()
+		
 		super.init(nibName: nil, bundle: nil)
+		
+		if let currentVC: ManagedViewControllerByRootViewControllerProtocol = self.currentVC as? ManagedViewControllerByRootViewControllerProtocol {
+			currentVC.setupRootViewController(self)
+		}
 	}
 	
 	required init?(coder: NSCoder) {

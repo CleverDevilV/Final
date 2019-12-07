@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class ProjectsBase {
+final class ProjectsBase: Decodable {
 	
 	private (set) var projects: [Project] = []
 	private var userName: String = UserDefaults.standard.get(with: .oauth_user_login)

@@ -44,7 +44,7 @@ struct FirebaseNetworkManager: NetworkManagerProtocol {
 	//
 	//	8. В случае ошибки просто передаем ошибку в completion.
 	
-	func getData(endPoint: EndPointType?, completion: @escaping (_ result: Any?, _ error: String?) -> ()) {
+	func getData(endPoint: EndPointType, completion: @escaping (_ result: Decodable?, _ error: String?) -> ()) {
 		guard let endPoint = endPoint as? FirebaseApi else {
 			completion(nil, "Unknown end point")
 			return

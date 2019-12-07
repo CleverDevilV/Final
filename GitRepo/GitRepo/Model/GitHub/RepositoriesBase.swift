@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class RepositoriesBase {
+final class RepositoriesBase: Decodable {
 	
 	func copy(with zone: NSZone? = nil) -> Any {
 		return self

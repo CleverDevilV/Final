@@ -9,10 +9,14 @@
 import UIKit
 
 protocol LoaderProtocol {
-	
+	var coreDataService: CoreDataServiceProtocol! { get set }
+	func getBaseDataFrom(source: SourceType?, endPoint: EndPointType?, completion: @escaping (_ result: Decodable?, _ error: String?) -> ())
 }
 
 class StartAppViewController: UIViewController {
+	
+	//MARK: - Presenter
+	var presenter: StartViewPresenterProtocol?
 	
 	private var greetingLabel = UILabel()
 	private var userLoginLabel = UILabel()
@@ -33,13 +37,21 @@ class StartAppViewController: UIViewController {
 		
 		setupViews()
 		
+		presenter?.setupLoader()
+		
+		downloadData()
+		
+	}
+	
+	func downloadData() {
 		if UserDefaults.standard.isExist(with: .oauth_user_login) {
 			
+			loader = Loader(coreDataService: nil)
 			var repoServ: ManagedObjectFromCoreDataService!
 			
-			let networkManagerForFirebase = FirebaseNetworkManager()
-			networkManagerForFirebase.getData(endPoint: FirebaseApi.getProjects){
+			loader.getBaseDataFrom(source: .firebase, endPoint: FirebaseApi.getProjects) {
 				result, error in
+				
 				if error != nil {
 					print(error!)
 				}
@@ -58,8 +70,7 @@ class StartAppViewController: UIViewController {
 						}
 						
 					}
-				}
-				else {
+				} else {
 					repoServ = ManagedObjectFromCoreDataService(withDeleting: true)
 					repoServ.saveCoreDataObjectsFrom(base: result as? ProjectsBase, baseType: .projectBase)
 					DispatchQueue.main.async {
@@ -68,10 +79,10 @@ class StartAppViewController: UIViewController {
 					}
 				}
 				
-				
-				let networlManagerForGitHub = GitHubNetworkManager()
-				networlManagerForGitHub.getData(endPoint: GitHubApi.repos) {
+				self.loader.getBaseDataFrom(source: .gitHub, endPoint: GitHubApi.repos) {
 					result, error in
+					print(result)
+					
 					if error != nil {
 						print(error!)
 					}
@@ -113,8 +124,6 @@ class StartAppViewController: UIViewController {
 				}
 			}
 		}
-		
-		
 	}
 	
 	func setupViews() {
@@ -217,6 +226,7 @@ class StartAppViewController: UIViewController {
 extension StartAppViewController {
 	@objc
 	func tapWelcomeButton(_ sender: UIButton) {
+		
 		if sender.titleLabel?.text == "Войти" {
 			UIView.animate(withDuration: 0.5, delay: 0.3, options: [], animations: {
 				self.greetingLabel.layer.opacity = 1
@@ -247,5 +257,13 @@ extension StartAppViewController {
 		login = UserDefaults.standard.get(with: .oauth_user_login)
 		loadView()
 		setupViews()
+		
+	}
+}
+
+//MARK: - StartViewProtocol
+extension StartAppViewController: StartViewProtocol {
+	func setLoader(loader: LoaderProtocol?) {
+		self.loader = loader
 	}
 }

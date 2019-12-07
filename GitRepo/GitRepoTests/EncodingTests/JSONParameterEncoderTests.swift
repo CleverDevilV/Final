@@ -7,7 +7,9 @@
 //
 
 import XCTest
+@testable import GitRepo
 
+/// - Tag: JSONParameterEncoderTests
 class JSONParameterEncoderTests: XCTestCase {
 
 	var request: URLRequest!
@@ -35,26 +37,54 @@ class JSONParameterEncoderTests: XCTestCase {
 	}
 	
 	func testNotNil() {
+		// arrange
+		// act
+		
+		// assert
 		XCTAssertNotNil(request)
 		XCTAssertNotNil(request.url)
 	}
 	
 	func testURLRequestConteinsUrl() {
+		// arrange
+		// act
+		
+		// assert
 		XCTAssertEqual(request.url, url)
 	}
 	
 	func testURLRequestContainsAtLeastOneHeader() {
+		// arrange
+		// act
+		
+		// assert
 		XCTAssertEqual(request.allHTTPHeaderFields?.count, 1)
 	}
 	
 	func testURLRequestContainsContentTypeHeader() {
+		// arrange
+		// act
+		
+		// assert
 		XCTAssertEqual(request.allHTTPHeaderFields?.first?.key, "Content-Type")
 		XCTAssertEqual(request.allHTTPHeaderFields?.first?.value, "application/json")
 	}
 	
 	func testEncodingThrowsErrorIfURLIsEqualToNil() {
+		// arrange
 		request.url = nil
+		
+		// act
+		
+		// assert
 		XCTAssertThrowsError(try URLParameterEncoder.encode(urlRequest: &request, with: parameters))
+		// TODO: выброс ошибки
+//		do {
+//			try URLParameterEncoder.encode(urlRequest: &request, with: parameters)
+//		} catch {
+//
+//			XCTAssertEqual(error.localizedDescription, "The operation couldn’t be completed. (GitRepoTests.NetworkError error 2.)")
+//		}
 	}
 
 }

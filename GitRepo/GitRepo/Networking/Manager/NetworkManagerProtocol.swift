@@ -9,5 +9,5 @@
 import Foundation
 
 protocol NetworkManagerProtocol {
-	func getData(endPoint: EndPointType?, completion: @escaping (_ result: Any?, _ error: String?) -> ())
+	func getData(endPoint: EndPointType, completion: @escaping (_ result: Decodable?, _ error: String?) -> ())
 }

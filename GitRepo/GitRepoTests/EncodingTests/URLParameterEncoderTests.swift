@@ -7,6 +7,7 @@
 //
 
 import XCTest
+@testable import GitRepo
 
 /// - Tag: URLParameterEncoderTests
 
@@ -17,10 +18,11 @@ class URLParameterEncoderTests: XCTestCase {
 	var url: URL!
 
     override func setUp() {
-		
 		url = URL(string: "testUrlEncoder")
 		request = URLRequest(url: url)
 		parameters = Parameters(dictionaryLiteral: ("Baz", "Bar"))
+		
+		
 		do {
 			try URLParameterEncoder.encode(urlRequest: &request, with: parameters)
 		} catch {
@@ -37,25 +39,47 @@ class URLParameterEncoderTests: XCTestCase {
     }
 	
 	func testNotNil() {
+		// arrange
+		// act
+		
+		// assert
 		XCTAssertNotNil(request)
 		XCTAssertNotNil(request.url)
 	}
 
 	func testURLRequestConteinsUrl() {
+		// arrange
+		// act
+		
+		// assert
 		XCTAssertEqual(request.url, url)
 	}
 	
     func testURLRequestContainsAtLeastOneHeader() {
+		// arrange
+		// act
+		
+		// assert
 		XCTAssertEqual(request.allHTTPHeaderFields?.count, 1)
     }
 	
 	func testURLRequestContainsContentTypeHeader() {
+		// arrange
+		// act
+		
+		// assert
 		XCTAssertEqual(request.allHTTPHeaderFields?.first?.key, "Content-Type")
 		XCTAssertEqual(request.allHTTPHeaderFields?.first?.value, "application/x-www-form-urlencoded; charset=utf-8")
 	}
 	
 	func testEncodingThrowsErrorIfURLIsEqualToNil() {
+		
+		// arrange
 		request.url = nil
+		parameters = ["" : ""]
+		// act
+		
+		// assert
 		XCTAssertThrowsError(try URLParameterEncoder.encode(urlRequest: &request, with: parameters))
 	}
 }

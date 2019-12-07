@@ -15,14 +15,12 @@ enum BaseType {
 	case repositoryBase
 }
 
-
-
 protocol ManagedObjectServiceProtocol: class {
 	func saveCoreDataObjectsFrom(base: Any?, baseType: BaseType)
 	func getDataFromCoreData(to baseType: BaseType, completion: @escaping ([Any]?) ->())
 }
 
-final class ManagedObjectFromCoreDataService: CoreDataServiceProtocol {
+final class ManagedObjectFromCoreDataService {
 	
 	let writeContext = CoreDataStack.shared.writeContext
 	let readContext = CoreDataStack.shared.readContext
@@ -174,39 +172,9 @@ final class ManagedObjectFromCoreDataService: CoreDataServiceProtocol {
 			print("Project Saved into CoreData")
 			
 		}
-		
-		
 	}
 	
-//	public func getRepositoriesFromCoreData(completion: @escaping ([Repository]) ->()) {
-//		
-//		var repositories = [Repository]()
-//		
-////		guard let repositoriesInCoreData = repositoriesInCoreData else { return }
-//		
-//		getDataFromCoreData(to: .repositoryBase) {
-//			repositoriesInCoreData in
-//			
-//			guard let repositoriesInCoreData = repositoriesInCoreData as? [MORepository] else { return }
-//			
-//			for repositoryObject in repositoriesInCoreData {
-//				
-//				if let repository = self.adapter.translate(objects: nil, oneObject: repositoryObject, dataType: .repository)?[0] as? Repository {
-//					repository.branches = self.adapter.translate(objects: repositoryObject.branches?.allObjects as? [NSManagedObject], oneObject: nil, dataType: .branch) as? [Branch]
-//					
-//					
-//					repository.collaborators = self.adapter.translate(objects: repositoryObject.collaborators?.allObjects as? [NSManagedObject], oneObject: nil, dataType: .collaborator) as? [User]
-//					
-//					repository.commits = self.adapter.translate(objects: repositoryObject.commits?.allObjects as? [NSManagedObject], oneObject: nil, dataType: .commit) as? [Commit]
-//					
-//					repositories.append(repository)
-//					
-////					return repositories
-//				}
-//			}
-//			completion(repositories)
-//		}
-//	}
+	
 	
 	/// Sync function for read data from CoreData
 	public func getDataFromCoreData(to baseType: BaseType, completion: @escaping ([Any]?) ->()) {
@@ -286,48 +254,13 @@ final class ManagedObjectFromCoreDataService: CoreDataServiceProtocol {
 			}
 		}
 	}
-	
-	
-	
-//	private func readRepositoriesData(completion: @escaping ([MORepository]) ->()) {
-//
-//		readContext.performAndWait {
-//			let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: repositoryEntityName)
-//
-//			do {
-//				let results = try fetch.execute() as? [MORepository]
-//				//				print(results?.count)
-//				if let results = results {
-//					self.repositoriesInCoreData = results
-//					//					complition(results)
-//					//					for result in results {
-//					//						print(result.name)
-//					//					}
-//				}
-//			} catch {
-//				print("Error reading data by FetchRequest, error: ", error)
-//			}
-//
-//		}
-//
-//
-//			let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: repositoryEntityName)
-//
-//			do {
-//				let results = try fetch.execute() as? [MORepository]
-////				print(results?.count)
-//				if let results = results {
-//					self.repositoriesInCoreData = results
-////					complition(results)
-////					for result in results {
-////						print(result.name)
-////					}
-//				}
-//			} catch {
-//				print("Error reading data by FetchRequest, error: ", error)
-//			}
-//
-//	}
+}
+
+//MARK: CoreDataServiceProtocol
+extension ManagedObjectFromCoreDataService: CoreDataServiceProtocol {
+	func getData(endPoint: EndPointType?, _ completion: @escaping (Decodable?, String?) -> ()) {
+		
+	}
 	
 	
 }

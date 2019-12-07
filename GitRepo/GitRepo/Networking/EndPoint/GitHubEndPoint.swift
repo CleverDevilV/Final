@@ -8,13 +8,9 @@
 
 import Foundation
 
-//enum GitHubNetworkEnvironment {
-//	case user
-//	case repo
-//}
-
 /**
-GitHubApi options.
+[GitHubApi](x-source-tag://GitHubApi) options.
+Tests - [GitHubApiTests](x-source-tag://URLParameterEncoderTests).
 
 ````
 /// for get user info
@@ -25,10 +21,16 @@ case repos
 case oneRepo(url: String)
 /// for get array of collaborators
 case collaborators(url: String)
+/// for get array of branches
+case branches(url: String)
+/// for get array of commits
+case commits(url: String)
+/// for get one commit
+case oneCommit(url: String)
 
 ````
 */
-
+/// - Tag: GitHubApi
 public enum GitHubApi {
 	
 	/// for get user info
@@ -36,53 +38,50 @@ public enum GitHubApi {
 	/// for get repos
 	case repos
 	/// for get information about concrete repository
-	case oneRepo(url: String)
+	case oneRepo(repositoryName: String)
 	/// for get array of collaborators
-	case collaborators(url: String)
+	case collaborators(repositoryName: String)
 	/// for get array of branches
-	case branches(url: String)
+	case branches(repositoryName: String)
+	/// for get array of commits
+	case commits(repositoryName: String)
+	/// for get one commit
+	case oneCommit(repositoryName: String)
 	
-	case commits(url: String)
-	
-	case oneCommit(url: String)
 }
+
 
 extension GitHubApi: EndPointType {
 	
-	// ?
-//	var differentBaseURLs: String {
-//		switch GitHubNetworkEnvironment {
-//		case .user: return ""
-//		case .repo: return ""
-//		}
-//	}
-	
 	/// Base URL for connecting GitHub : https://api.github.com/user
 	var baseURL: URL {
+		
 		switch self {
 		case .oneRepo:
 			let userName = UserDefaults.standard.get(with: .oauth_user_login)
 			guard let url = URL(string: "https://api.github.com/repos/\(userName)") else {fatalError("baseURL could not be configured")}
 			return url
-//			guard let url = URL(string: stringUrl) else {fatalError("baseURL could not be configured")}
-//			return url
+			
 		case .collaborators(let url):
 			let trimmedUrl = url.replacingOccurrences(of: "{/collaborator}", with: "")
 			guard let url = URL(string: trimmedUrl) else { fatalError("baseURL could not be configured") }
 			return url
+			
 		case .branches(let url):
 			let trimmedUrl = url.replacingOccurrences(of: "{/branch}", with: "")
 			guard let url = URL(string: trimmedUrl) else { fatalError("baseURL could not be configured") }
 			return url
+			
 		case .commits(let url):
-//			let trimmedUrl = url.replacingOccurrences(of: "{/branch}", with: "") 
 			guard let url = URL(string: url) else { fatalError("baseURL could not be configured") }
 			return url
+			
 		case .oneCommit(let url):
 			guard let url = URL(string: url) else { fatalError("baseURL could not be configured") }
 			return url
+			
 		default:
-			guard let url = URL(string: "https://api.github.com/user") else {fatalError("baseURL could not be configured")}
+			guard let url = URL(string: "https://api.github.com/user") else { fatalError("baseURL could not be configured") }
 			return url
 		}
 	}
@@ -90,11 +89,13 @@ extension GitHubApi: EndPointType {
 	/// Path to adding for **baseURL**
 	var path: String {
 		switch self {
-			/// Path to user login
+		/// Path to user login
 		case .user: return ""
-			/// Path to users repositories
+		/// Path to users repositories
 		case .repos: return "/repos"
+		/// Path to one repository with repository name
 		case .oneRepo(let repoName): return "/\(repoName)"
+			
 		case .collaborators(_ ): return ""
 		case .branches(_ ): return ""
 		case .commits(_ ): return ""

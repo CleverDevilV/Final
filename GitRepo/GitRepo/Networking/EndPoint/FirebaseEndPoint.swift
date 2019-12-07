@@ -8,40 +8,31 @@
 
 import Foundation
 
-//enum GitHubNetworkEnvironment {
-//	case user
-//	case repo
-//}
-
 /**
-FirebaseApi options.
+[FirebaseApi](x-source-tag://GitHubApi) options.
+Tests - [FirebaseApiTests](x-source-tag://URLParameterEncoderTests).
 
 ````
+/// for get user info
 case getProjects
-case uploadProjects
-case oneProject(url: String)
+/// for get repos
+case uploadProjects(data: [String : [ProjectForUploadToBack]]?)
+/// for get information about concrete repository
+case oneProject(url: String?)
 ````
 */
-
+/// - Tag: FirebaseApi
 public enum FirebaseApi {
 	
 	/// for get user info
 	case getProjects
 	/// for get repos
-	case uploadProjects(data: [String : [ProjectForUploadToBack]])
+	case uploadProjects(data: [String : [ProjectForUploadToBack]]?)
 	/// for get information about concrete repository
-	case oneProject(url: String)
+	case oneProject(url: String?)
 }
 
 extension FirebaseApi: EndPointType {
-	
-	// ?
-	//	var differentBaseURLs: String {
-	//		switch GitHubNetworkEnvironment {
-	//		case .user: return ""
-	//		case .repo: return ""
-	//		}
-	//	}
 	
 	/// Base URL for connecting Firebase : https://finalproject-sb.firebaseio.com/Projects
 	var baseURL: URL {
@@ -85,7 +76,7 @@ extension FirebaseApi: EndPointType {
 	var task: HTTPTask {
 		switch self {
 		case .uploadProjects(let data):
-			return .uploadData(bodyParameters: nil, urlParameters: nil, additionHeaders: self.headers, uploadData: data)
+			return .uploadData(bodyParameters: nil, urlParameters: nil, additionHeaders: self.headers, uploadData: data!)
 		default:
 			return .requestParametersAndHeaders(bodyParameters: nil, urlParameters: nil, additionHeaders: self.headers)
 		}
@@ -93,8 +84,7 @@ extension FirebaseApi: EndPointType {
 	
 	/// HttpHeaders for Auth at GitHub
 	var headers: HTTPHeaders? {
-//		let token = UserDefaults.standard.get(with: .oauth_access_token)
-//		let header = HTTPHeaders(dictionaryLiteral: ("Authorization", "token \(token)"))
+		
 		return nil
 	}
 	

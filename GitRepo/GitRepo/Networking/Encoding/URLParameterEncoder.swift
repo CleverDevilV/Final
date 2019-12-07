@@ -10,9 +10,6 @@ import Foundation
 
 // Unit Tests
 
-
-//Этот код берет список параметров, преобразует и форматирует их для использования в качестве параметров URL. Как вы знаете, некоторые символы запрещено использовать в URL. Параметры также разделяются символом "&", следовательно мы должны позаботиться об этом. Мы также должны задать дефолтное значение заголовкам, если они не установлены в запросе.
-
 /// Structure for creating a URLRequest based on  [Parameters](x-source-tag://Parameters). If HTTPHeader field "Content-Type" == nil - setValue("application/x-www-form-urlencoded; charset=utf-8", forHTTPHeaderField: "Content-Type").
 /// Tests - [URLParameterEncoderTests](x-source-tag://URLParameterEncoderTests).
 

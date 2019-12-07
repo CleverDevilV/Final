@@ -8,9 +8,8 @@
 
 import Foundation
 
-// Все аналогично как и в случае с URLParameter, просто здесь мы преобразуем параметры для JSON и опять же добавляем параметры, определяющие кодировку «application/json», в хедер.
-
-
+/// Structure for creating a URLRequest based on  [Parameters](x-source-tag://Parameters). If HTTPHeader field "Content-Type" == nil - setValue("application/json", forHTTPHeaderField: "Content-Type").
+/// Tests - [JSONParameterEncoderTests](x-source-tag://JSONParameterEncoderTests).
 public struct JSONParameterEncoder: ParameterEncoder {
 	
 	/**

@@ -47,7 +47,7 @@ struct GitHubNetworkManager: NetworkManagerProtocol {
 	//	8. В случае ошибки просто передаем ошибку в completion.
 	
 	
-	public func getData(endPoint: EndPointType?, completion: @escaping (_ result: Any?, _ error: String?) -> ()) {
+	public func getData(endPoint: EndPointType, completion: @escaping (_ result: Decodable?, _ error: String?) -> ()) {
 		guard let endPoint = endPoint as? GitHubApi else {
 			completion(nil, "Unknown end point")
 			return
@@ -80,7 +80,7 @@ struct GitHubNetworkManager: NetworkManagerProtocol {
 								let myGroup = DispatchGroup()
 								for repositiry in repositories.repositories {
 									myGroup.enter()
-									self.getData(endPoint: GitHubApi.collaborators(url: repositiry.collaboratorsLink ?? "")) {
+									self.getData(endPoint: GitHubApi.collaborators(repositoryName: repositiry.collaboratorsLink ?? "")) {
 										result, error in
 										
 										DispatchQueue.main.async {
@@ -93,7 +93,7 @@ struct GitHubNetworkManager: NetworkManagerProtocol {
 										}
 									}
 //
-									self.getData(endPoint: GitHubApi.branches(url: repositiry.branchesLink ?? "")) {
+									self.getData(endPoint: GitHubApi.branches(repositoryName: repositiry.branchesLink ?? "")) {
 										result, error in
 										
 										DispatchQueue.main.async {
@@ -106,7 +106,7 @@ struct GitHubNetworkManager: NetworkManagerProtocol {
 										}
 									}
 									
-									self.getData(endPoint: GitHubApi.commits(url: repositiry.changes ?? "")) {
+									self.getData(endPoint: GitHubApi.commits(repositoryName: repositiry.changes ?? "")) {
 										result, error in
 										
 										DispatchQueue.main.async {
@@ -144,7 +144,7 @@ struct GitHubNetworkManager: NetworkManagerProtocol {
 								let myGroup = DispatchGroup()
 								
 								myGroup.enter()
-								self.getData(endPoint: GitHubApi.collaborators(url: newResponse.collaboratorsLink ?? "")) {
+								self.getData(endPoint: GitHubApi.collaborators(repositoryName: newResponse.collaboratorsLink ?? "")) {
 									result, error in
 									
 									DispatchQueue.main.async {
@@ -155,7 +155,7 @@ struct GitHubNetworkManager: NetworkManagerProtocol {
 									}
 								}
 								
-								self.getData(endPoint: GitHubApi.branches(url: newResponse.branchesLink ?? "")) {
+								self.getData(endPoint: GitHubApi.branches(repositoryName: newResponse.branchesLink ?? "")) {
 									result, error in
 									
 									DispatchQueue.main.async {
@@ -166,7 +166,7 @@ struct GitHubNetworkManager: NetworkManagerProtocol {
 									}
 								}
 								
-								self.getData(endPoint: GitHubApi.commits(url: newResponse.changes ?? "")) {
+								self.getData(endPoint: GitHubApi.commits(repositoryName: newResponse.changes ?? "")) {
 									result, error in
 									
 									DispatchQueue.main.async {

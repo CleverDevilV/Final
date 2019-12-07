@@ -146,7 +146,7 @@ extension ProjectViewController: RepoTableCellDelegate {
 					let name = url.pathComponents.last
 					guard let repoName = name else {return}
 					self.netWorkService = GitHubNetworkManager()
-					self.netWorkService?.getData(endPoint: GitHubApi.oneRepo(url: repoName)) {
+					self.netWorkService?.getData(endPoint: GitHubApi.oneRepo(repositoryName: repoName)) {
 						repo, error in
 						self.project?.repo = repo as? Repository
 						self.project?.repoUrl = url.absoluteString
@@ -191,7 +191,7 @@ extension ProjectViewController: RepoTableCellDelegate {
 						guard let repoName = name else {return}
 						
 						self.netWorkService = GitHubNetworkManager()
-						self.netWorkService?.getData(endPoint: GitHubApi.oneRepo(url: repoName)) {
+						self.netWorkService?.getData(endPoint: GitHubApi.oneRepo(repositoryName: repoName)) {
 							repo, error in
 							self.project?.repo = repo as? Repository
 							self.project?.repoUrl = url.absoluteString

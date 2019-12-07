@@ -14,12 +14,14 @@ class RootViewController: UIViewController {
 	static let shared = RootViewController()
 	var token: String = ""
 	
+	var loader = Loader(coreDataService: nil)
+	
 	func copy(with zone: NSZone? = nil) -> Any {
 		return self
 	}
 	
 	init() {
-		self.currentVC = StartAppViewController()
+		self.currentVC = StartAppViewControllerBuilder.createStartAppViewController() //StartAppViewController()
 		super.init(nibName: nil, bundle: nil)
 	}
 	
@@ -56,82 +58,9 @@ class RootViewController: UIViewController {
 	}
 	
 	func switchToLogout() {
-		let loginVC = StartAppViewController()
+		let loginVC = StartAppViewControllerBuilder.createStartAppViewController() //StartAppViewController()
 		let logouScreen = UINavigationController(rootViewController: loginVC)
 		
 		animateFadeTransition(to: logouScreen)
 	}
-	
-	
-	
-	/*
-	//MARK: - Navigation
-	
-	func showLoginScreen() {
-		let newNC = UINavigationController(rootViewController: LoginViewController())
-		addChild(newNC)
-		newNC.view.frame = view.bounds
-		view.addSubview(newNC.view)
-		newNC.didMove(toParent: self)
-		
-		// подготавливаем currentVC к удалению
-		currentVC.willMove(toParent: nil)
-		// удаляем currentVC
-		currentVC.view.removeFromSuperview()
-		currentVC.removeFromParent()
-		currentVC = newNC
-	}
-	
-	func switchMainScreen() {
-		let mainVC = MainViewController()
-		let mainScreen = UINavigationController(rootViewController: mainVC)
-	
-		animateFadeTransition(to: mainScreen)
-	}
-	
-	func switchToLogout() {
-		let loginVC = LoginViewController()
-		let logouScreen = UINavigationController(rootViewController: loginVC)
-		
-		animatedDismissTransition(to: logouScreen)
-	}
-	
-	//MARK: - Animation for transition
-	
-	private func animateFadeTransition(to new: UIViewController, completion: (() -> Void)? = nil) {
-		
-		currentVC.willMove(toParent: nil)
-		addChild(new)
-		
-		transition(from: currentVC, to: new, duration: 0.3, options: [.transitionCrossDissolve, .curveEaseOut], animations: {}) { completed in
-			self.currentVC.removeFromParent()
-			new.didMove(toParent: self)
-			self.currentVC = new
-			completion?() // чтобы уведомить вызывающий метод
-		}
-	}
-	
-	// слайд-анимация
-	private func animatedDismissTransition(to new: UIViewController, completion: (() -> Void)? = nil) {
-		
-		new.view.frame = CGRect(x: -view.bounds.width, y: 0, width: view.bounds.width, height: view.bounds.height)
-		currentVC.willMove(toParent: nil)
-		addChild(new)
-		transition(from: currentVC, to: new, duration: 0.3, options: [], animations: {new.view.frame = self.view.bounds}) { completed in
-			self.currentVC.removeFromParent()
-			new.didMove(toParent: self)
-			self.currentVC = new
-			completion?()
-		}
-	}
-	*/
-	
 }
-
-//extension RootVC: AuthViewControllerDelegateMy {
-//	func handleTokenChanged(token: String) {
-//		self.token = token
-//		print("New token \(token)")
-//		updateData()
-//	}
-//}

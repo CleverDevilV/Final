@@ -42,6 +42,9 @@
 		A77404EE239110E90038851E /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77404ED239110E90038851E /* Registration.swift */; };
 		A77404FA23912FFC0038851E /* UserDefExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77404F923912FFC0038851E /* UserDefExt.swift */; };
 		A774053B23918FE60038851E /* repo.xib in Resources */ = {isa = PBXBuildFile; fileRef = A774053A23918FE60038851E /* repo.xib */; };
+		A7751775239BBA1800716795 /* GitHubEndPointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7751773239BBA1700716795 /* GitHubEndPointTests.swift */; };
+		A7751779239BC7BF00716795 /* FirebaseEndPointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7751777239BC7BF00716795 /* FirebaseEndPointTests.swift */; };
+		A775177B239BCD1700716795 /* LoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A775177A239BCD1700716795 /* LoaderTests.swift */; };
 		A77763742396F089007859CA /* DiamondLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77763732396F089007859CA /* DiamondLoad.swift */; };
 		A77763752396F0B1007859CA /* DiamondLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77763732396F089007859CA /* DiamondLoad.swift */; };
 		A77763772397BB10007859CA /* NetworkManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77763762397BB10007859CA /* NetworkManagerProtocol.swift */; };
@@ -129,6 +132,13 @@
 		A7B481EB239271A100AFA19E /* CollaboratorsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B481EA239271A100AFA19E /* CollaboratorsTableViewCell.swift */; };
 		A7B481ED2392725400AFA19E /* TasksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B481EC2392725400AFA19E /* TasksTableViewCell.swift */; };
 		A7B481EF2392C26B00AFA19E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B481EE2392C26B00AFA19E /* SettingsViewController.swift */; };
+		A7F55053239BD36E0035B807 /* StartViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F55052239BD36E0035B807 /* StartViewPresenter.swift */; };
+		A7F55054239BD5110035B807 /* StartViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F55052239BD36E0035B807 /* StartViewPresenter.swift */; };
+		A7F55060239BDC700035B807 /* StartAppViewControllerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F5505F239BDC700035B807 /* StartAppViewControllerBuilder.swift */; };
+		A7F55061239BDC700035B807 /* StartAppViewControllerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F5505F239BDC700035B807 /* StartAppViewControllerBuilder.swift */; };
+		A7F55063239BDD690035B807 /* LoaderBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F55062239BDD690035B807 /* LoaderBuilder.swift */; };
+		A7F55064239BDD690035B807 /* LoaderBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F55062239BDD690035B807 /* LoaderBuilder.swift */; };
+		A7F55066239BEE0C0035B807 /* StartViewPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F55065239BEE0C0035B807 /* StartViewPresenterTests.swift */; };
 		A7FE0687238BE7F30093F07A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE0686238BE7F30093F07A /* AppDelegate.swift */; };
 		A7FE0689238BE7F30093F07A /* ProjectsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FE0688238BE7F30093F07A /* ProjectsTableVC.swift */; };
 		A7FE068E238BE7F40093F07A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7FE068D238BE7F40093F07A /* Assets.xcassets */; };
@@ -179,6 +189,9 @@
 		A77404ED239110E90038851E /* Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration.swift; sourceTree = "<group>"; };
 		A77404F923912FFC0038851E /* UserDefExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefExt.swift; sourceTree = "<group>"; };
 		A774053A23918FE60038851E /* repo.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = repo.xib; sourceTree = "<group>"; };
+		A7751773239BBA1700716795 /* GitHubEndPointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubEndPointTests.swift; sourceTree = "<group>"; };
+		A7751777239BC7BF00716795 /* FirebaseEndPointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseEndPointTests.swift; sourceTree = "<group>"; };
+		A775177A239BCD1700716795 /* LoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderTests.swift; sourceTree = "<group>"; };
 		A77763732396F089007859CA /* DiamondLoad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiamondLoad.swift; sourceTree = "<group>"; };
 		A77763762397BB10007859CA /* NetworkManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerProtocol.swift; sourceTree = "<group>"; };
 		A77763792397BDF9007859CA /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
@@ -204,13 +217,17 @@
 		A7B4060723996FEE0092AD85 /* MOCommit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MOCommit.swift; sourceTree = "<group>"; };
 		A7B4060A239979950092AD85 /* CoreDataAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataAdapter.swift; sourceTree = "<group>"; };
 		A7B4060D239982960092AD85 /* ManagedObjectFromCoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjectFromCoreDataService.swift; sourceTree = "<group>"; };
-		A7B40611239A886C0092AD85 /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
+		A7B40611239A886C0092AD85 /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Loader.swift; path = ../../ViewControllers/Loader.swift; sourceTree = "<group>"; };
 		A7B481E4239260A500AFA19E /* ProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectViewController.swift; sourceTree = "<group>"; };
 		A7B481E62392643600AFA19E /* DescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionTableViewCell.swift; sourceTree = "<group>"; };
 		A7B481E82392705600AFA19E /* RepoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoTableViewCell.swift; sourceTree = "<group>"; };
 		A7B481EA239271A100AFA19E /* CollaboratorsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollaboratorsTableViewCell.swift; sourceTree = "<group>"; };
 		A7B481EC2392725400AFA19E /* TasksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksTableViewCell.swift; sourceTree = "<group>"; };
 		A7B481EE2392C26B00AFA19E /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		A7F55052239BD36E0035B807 /* StartViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewPresenter.swift; sourceTree = "<group>"; };
+		A7F5505F239BDC700035B807 /* StartAppViewControllerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartAppViewControllerBuilder.swift; sourceTree = "<group>"; };
+		A7F55062239BDD690035B807 /* LoaderBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderBuilder.swift; sourceTree = "<group>"; };
+		A7F55065239BEE0C0035B807 /* StartViewPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewPresenterTests.swift; sourceTree = "<group>"; };
 		A7FE0683238BE7F30093F07A /* GitRepo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitRepo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7FE0686238BE7F30093F07A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A7FE0688238BE7F30093F07A /* ProjectsTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsTableVC.swift; sourceTree = "<group>"; };
@@ -250,12 +267,11 @@
 			isa = PBXGroup;
 			children = (
 				A7FE069E238BF3510093F07A /* RootViewController.swift */,
-				A7525B572392F80700AD8587 /* StartAppViewController.swift */,
+				A7F55055239BD62B0035B807 /* StartAppViewController */,
 				A7525B59239301DA00AD8587 /* LogOutCommand.swift */,
 				A7FE06A0238BF4540093F07A /* BaseTabBarController.swift */,
 				A77404ED239110E90038851E /* Registration.swift */,
 				A7A5DE6F239592C2004271D9 /* SomeUrlWebViewController.swift */,
-				A7B40611239A886C0092AD85 /* Loader.swift */,
 				A7776382239836E9007859CA /* SettingsViewController */,
 				A7FE06A2238BFAE20093F07A /* Project */,
 				A7FE06A3238BFAEF0093F07A /* Repo */,
@@ -351,6 +367,8 @@
 		A7525B6023942D3C00AD8587 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				A7B40611239A886C0092AD85 /* Loader.swift */,
+				A7F55062239BDD690035B807 /* LoaderBuilder.swift */,
 				A7525B7F239447A200AD8587 /* GitHubNetworkManager.swift */,
 				A7495FC4239670A200C120DC /* FirebaseNetworkManager.swift */,
 				A77763762397BB10007859CA /* NetworkManagerProtocol.swift */,
@@ -378,6 +396,24 @@
 				A7525B6D2394327000AD8587 /* JSONParameterEncoder.swift */,
 			);
 			path = Encoding;
+			sourceTree = "<group>";
+		};
+		A7751772239BB9F800716795 /* EncodingTests */ = {
+			isa = PBXGroup;
+			children = (
+				A7A5DE6B23953CD4004271D9 /* URLParameterEncoderTests.swift */,
+				A7A5DE6D239577CD004271D9 /* JSONParameterEncoderTests.swift */,
+			);
+			path = EncodingTests;
+			sourceTree = "<group>";
+		};
+		A7751776239BBA2700716795 /* EndPointTests */ = {
+			isa = PBXGroup;
+			children = (
+				A7751773239BBA1700716795 /* GitHubEndPointTests.swift */,
+				A7751777239BC7BF00716795 /* FirebaseEndPointTests.swift */,
+			);
+			path = EndPointTests;
 			sourceTree = "<group>";
 		};
 		A77763722396F089007859CA /* Animation */ = {
@@ -455,6 +491,16 @@
 			path = MOService.temp_caseinsensitive_rename.;
 			sourceTree = "<group>";
 		};
+		A7F55055239BD62B0035B807 /* StartAppViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A7525B572392F80700AD8587 /* StartAppViewController.swift */,
+				A7F55052239BD36E0035B807 /* StartViewPresenter.swift */,
+				A7F5505F239BDC700035B807 /* StartAppViewControllerBuilder.swift */,
+			);
+			path = StartAppViewController;
+			sourceTree = "<group>";
+		};
 		A7FE067A238BE7F30093F07A = {
 			isa = PBXGroup;
 			children = (
@@ -512,8 +558,10 @@
 			isa = PBXGroup;
 			children = (
 				A7FE06B8238D90610093F07A /* Info.plist */,
-				A7A5DE6B23953CD4004271D9 /* URLParameterEncoderTests.swift */,
-				A7A5DE6D239577CD004271D9 /* JSONParameterEncoderTests.swift */,
+				A7751772239BB9F800716795 /* EncodingTests */,
+				A7751776239BBA2700716795 /* EndPointTests */,
+				A775177A239BCD1700716795 /* LoaderTests.swift */,
+				A7F55065239BEE0C0035B807 /* StartViewPresenterTests.swift */,
 			);
 			path = GitRepoTests;
 			sourceTree = "<group>";
@@ -626,7 +674,9 @@
 				A785A77E2396A73B0040D4CD /* ProjectForUploadToBack.swift in Sources */,
 				A7FE06A1238BF4540093F07A /* BaseTabBarController.swift in Sources */,
 				A7B481E72392643600AFA19E /* DescriptionTableViewCell.swift in Sources */,
+				A7F55060239BDC700035B807 /* StartAppViewControllerBuilder.swift in Sources */,
 				A7FE069F238BF3510093F07A /* RootViewController.swift in Sources */,
+				A7F55063239BDD690035B807 /* LoaderBuilder.swift in Sources */,
 				A7FE06AB238C46880093F07A /* ProjectModel.swift in Sources */,
 				A785A78B2396BF7A0040D4CD /* TasksTableViewController.swift in Sources */,
 				A7B4060E239982960092AD85 /* ManagedObjectFromCoreDataService.swift in Sources */,
@@ -649,6 +699,7 @@
 				A7B40612239A886C0092AD85 /* Loader.swift in Sources */,
 				A77404FA23912FFC0038851E /* UserDefExt.swift in Sources */,
 				A796F3352395AB4D007D7E51 /* RepositoriesTableViewCell.swift in Sources */,
+				A7F55053239BD36E0035B807 /* StartViewPresenter.swift in Sources */,
 				A7495FC3239655F400C120DC /* FirebaseEndPoint.swift in Sources */,
 				A7525B702394336400AD8587 /* NetworkRouter.swift in Sources */,
 				A7525B7E2394444300AD8587 /* GitHubEndPoint.swift in Sources */,
@@ -694,6 +745,7 @@
 				A7A5DE6123952364004271D9 /* TasksTableViewCell.swift in Sources */,
 				A7B405FF23996EE20092AD85 /* MOAuthor.swift in Sources */,
 				A7B4060023996EE20092AD85 /* MOBranch.swift in Sources */,
+				A7F55066239BEE0C0035B807 /* StartViewPresenterTests.swift in Sources */,
 				A7495FCF239683AC00C120DC /* ProjectsBase.swift in Sources */,
 				A7B405E8239953440092AD85 /* CoreDataStack.swift in Sources */,
 				A7A5DE6323952369004271D9 /* RepoViewController.swift in Sources */,
@@ -707,11 +759,14 @@
 				A777638123981AA9007859CA /* AddViewTableViewCell.swift in Sources */,
 				A7B4060223996EE20092AD85 /* MOTask.swift in Sources */,
 				A7A5DE5E23952364004271D9 /* DescriptionTableViewCell.swift in Sources */,
+				A7751775239BBA1800716795 /* GitHubEndPointTests.swift in Sources */,
 				A73FC69F2396D81E000F9F5C /* SegmentCommitsBranchesTableViewCell.swift in Sources */,
+				A7F55061239BDC700035B807 /* StartAppViewControllerBuilder.swift in Sources */,
 				A785A77F2396A7CF0040D4CD /* ProjectForUploadToBack.swift in Sources */,
 				A742042F239AE3F4009D344F /* ProjectTableViewCell.swift in Sources */,
 				A7B4060123996EE20092AD85 /* MOProject.swift in Sources */,
 				A7B405E7239953420092AD85 /* GitRepoCoreData.xcdatamodeld in Sources */,
+				A7751779239BC7BF00716795 /* FirebaseEndPointTests.swift in Sources */,
 				A7776388239839BA007859CA /* LogoutSettingsTableViewCell.swift in Sources */,
 				A7A5DE6623952382004271D9 /* EndPointType.swift in Sources */,
 				A785A78C2396C0450040D4CD /* TasksTableViewController.swift in Sources */,
@@ -738,13 +793,16 @@
 				A777637E2397C83B007859CA /* BranchModel.swift in Sources */,
 				A7B4060323996EE20092AD85 /* MORepository.swift in Sources */,
 				A7A5DE6923952390004271D9 /* HTTPTask.swift in Sources */,
+				A7F55054239BD5110035B807 /* StartViewPresenter.swift in Sources */,
 				A7A5DE4B23952306004271D9 /* AppDelegate.swift in Sources */,
 				A7A5DE542395234D004271D9 /* RepoModel.swift in Sources */,
 				A7A5DE5A23952361004271D9 /* ProjectsTableVC.swift in Sources */,
 				A7A5DE4E2395232D004271D9 /* BaseTabBarController.swift in Sources */,
+				A7F55064239BDD690035B807 /* LoaderBuilder.swift in Sources */,
 				A796F3362395AD57007D7E51 /* RepositoriesTableViewCell.swift in Sources */,
 				A7A5DE5623952351004271D9 /* RepoFromGit.swift in Sources */,
 				A7A5DE552395234F004271D9 /* LoginModel.swift in Sources */,
+				A775177B239BCD1700716795 /* LoaderTests.swift in Sources */,
 				A7A5DE582395235B004271D9 /* UserDefExt.swift in Sources */,
 				A7A5DE5123952341004271D9 /* JSONParameterEncoder.swift in Sources */,
 				A7A5DE6423952369004271D9 /* SettingsViewController.swift in Sources */,

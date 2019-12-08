@@ -8,7 +8,7 @@
 
 import Foundation
 
-// Unit tests ???
+// Unit tests
 
 /// Class for Project from Firebase
 public final class Project: Decodable {
@@ -85,10 +85,25 @@ public final class Project: Decodable {
 	}
 	
 	public func addTask(_ task: String) {
-		self.projectTasks?.append(task)
+		if self.projectTasks != nil {
+			self.projectTasks?.append(task)
+		} else {
+			self.projectTasks = [task]
+		}
+		
 	}
 	
 	public func removeTask(at index: Int) {
-		self.projectTasks?.remove(at: index)
+		
+		if self.projectTasks != nil {
+			self.projectTasks?.remove(at: index)
+		} else {
+			self.projectTasks = nil
+		}
+		
+		if self.projectTasks?.count == 0 {
+			self.projectTasks = nil
+		}
+		
 	}
 }

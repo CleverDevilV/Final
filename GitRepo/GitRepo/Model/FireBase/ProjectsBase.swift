@@ -8,8 +8,17 @@
 
 import Foundation
 
-// Unit tests ???
+// Unit tests
 
+
+/**
+Base for projects
+```
+private (set) var projects: [Project]
+private var userName: String from UserDefaults.standard
+```
+*/
+/// - Tag: ProjectsBase
 final class ProjectsBase: Decodable {
 	
 	private (set) var projects: [Project] = []
@@ -50,6 +59,7 @@ final class ProjectsBase: Decodable {
 	
 	public func removeProject(atIndex index: Int) {
 		self.projects.remove(at: index)
+		self.loadToBack()
 	}
 	
 	public func baseUpdated() {
@@ -57,6 +67,9 @@ final class ProjectsBase: Decodable {
 	}
 	
 	private func loadToBack() {
+		
+		guard NSClassFromString("ProjectBaseTests") != nil else { return }
+		
 		let network = FirebaseNetworkManager(with: AppDelegate.shared.session)
 		var uploadData: [String : [ProjectForUploadToBack]] = [userName : []]
 		

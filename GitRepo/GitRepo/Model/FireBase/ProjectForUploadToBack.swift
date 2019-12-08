@@ -8,6 +8,8 @@
 
 import Foundation
 
+// No Unit Tests
+
 public struct ProjectForUploadToBack: Codable {
 	var name: String
 	var repoUrl: String?

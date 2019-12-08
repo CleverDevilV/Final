@@ -37,15 +37,14 @@ class GitHubNetworkManagerTests: XCTestCase {
 		}
 	}
 	
-	func testDataIsNotNil() {
+	func testErrorIsNot() {
 		// arrange
 		// act
-//		githubManager.getData(endPoint: GitHubApi.repos) {
-//			result, error in
+		githubManager.getData(endPoint: GitHubApi.repos) {
+			result, error in
 //		// assert
-//			XCTAssertNotNil(result)
-//			XCTAssertNil(error)
-//		}
+			XCTAssertEqual(error, "Plese check your network connection")
+		}
 	}
 
 }

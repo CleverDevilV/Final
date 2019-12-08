@@ -58,7 +58,7 @@ struct GitHubNetworkManager: NetworkManagerProtocol {
 					}
 					
 					do {
-//						let text = try? JSONSerialization.jsonObject(with: responseData, options: [])
+						let text = try? JSONSerialization.jsonObject(with: responseData, options: [])
 						switch endPoint {
 						case .user:
 							let apiResponse = try JSONDecoder().decode(User.self, from: responseData)

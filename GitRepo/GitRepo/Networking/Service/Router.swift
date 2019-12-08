@@ -31,6 +31,7 @@ class Router <EndPoint: EndPointType>: NetworkRouter {
 				complition(data, response, error)
 			})
 		} catch {
+			print(error)
 			complition(nil, nil, error)
 		}
 		self.task?.resume()

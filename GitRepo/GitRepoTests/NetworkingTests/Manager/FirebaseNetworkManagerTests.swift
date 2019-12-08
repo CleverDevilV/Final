@@ -32,5 +32,15 @@ class FirebaseNetworkManagerTests: XCTestCase {
 			XCTAssertEqual(error, "Unknown end point")
 		}
 	}
+	
+	func testErrorIsNot() {
+		// arrange
+		// act
+		firebaseManager.getData(endPoint: FirebaseApi.getProjects) {
+			result, error in
+			//		// assert
+			XCTAssertEqual(error, "Plese check your network connection")
+		}
+	}
 
 }

@@ -8,6 +8,8 @@
 
 import Foundation
 
+// No Unit Tests
+
 struct Event: Codable {
 	let id: String
 	let type: String

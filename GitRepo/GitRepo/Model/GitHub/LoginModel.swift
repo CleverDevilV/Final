@@ -8,6 +8,8 @@
 
 import Foundation
 
+// No Unit Tests
+
 public struct User: Codable {
 	var login: String
 }

@@ -8,6 +8,8 @@
 
 import Foundation
 
+// No Unit Tests
+
 struct Branch: Codable {
 	let name: String
 }

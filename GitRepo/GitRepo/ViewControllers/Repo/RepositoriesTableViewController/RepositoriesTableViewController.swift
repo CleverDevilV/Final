@@ -8,10 +8,9 @@
 
 import UIKit
 
+// No Unit Tests
+
 class RepositoriesTableViewController: UIViewController {
-	
-//	private var netWork = NetworkService()
-//	private let network = GitHubNetworkManager()
 	
 	private var tableView: UITableView!
 	private var repositoryBase: RepositoriesBase? = AppDelegate.shared.repositoryBase
@@ -25,6 +24,7 @@ class RepositoriesTableViewController: UIViewController {
 			}
 		}
 	}
+	
 	private var segmentControl: UISegmentedControl!
 
     override func viewDidLoad() {
@@ -35,7 +35,6 @@ class RepositoriesTableViewController: UIViewController {
 		
 		tableView = UITableView(frame: view.frame, style: .plain)
 		tableView.backgroundColor = UIColor(red: 1, green: 0.5781051517, blue: 0, alpha: 0.04508240583)
-//		tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
 		tableView.register(RepositoriesTableViewCell.self, forCellReuseIdentifier: RepositoriesTableViewCell.repositoriesCellReuseId)
 		
 		tableView.separatorStyle = .none
@@ -99,6 +98,8 @@ extension RepositoriesTableViewController: UITableViewDataSource {
 
 extension RepositoriesTableViewController: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		tableView.cellForRow(at: indexPath)?.isSelected = false
+		
 		let destinationVC = RepoViewController()
 		
 		destinationVC.repository = repositories[indexPath.row]

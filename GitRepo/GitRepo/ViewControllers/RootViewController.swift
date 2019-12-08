@@ -17,6 +17,7 @@ protocol ManagedViewControllerByRootViewControllerProtocol {
 	func switchRootViewControllerToLogoutScreen()
 }
 
+/// Root class for presents View Controllers
 class RootViewController: UIViewController, RootViewControllerProtocol {
 	
 	private var currentVC: UIViewController!
@@ -44,15 +45,25 @@ class RootViewController: UIViewController, RootViewControllerProtocol {
 		addChild(currentVC)
 		currentVC.view.frame = view.bounds
 		view.addSubview(currentVC.view)
-		currentVC.didMove(toParent: self) // завершает операцию добавления контроллера
+		currentVC.didMove(toParent: self)
 	}
 	
+	/// Switch View to Main view with TabBar
 	func switchMainScreen() {
 		let mainVC = BaseTabBarController()
 		
 		animateFadeTransition(to: mainVC)
 	}
 	
+	/// Switch View to Start View Controller after Logout User
+	func switchToLogout() {
+		let loginVC = StartAppViewControllerBuilder.createStartAppViewController() //StartAppViewController()
+		let logouScreen = UINavigationController(rootViewController: loginVC)
+		
+		animateFadeTransition(to: logouScreen)
+	}
+	
+	/// Animation
 	private func animateFadeTransition(to new: UIViewController, completion: (() -> Void)? = nil) {
 		currentVC.willMove(toParent: nil)
 		addChild(new)
@@ -64,12 +75,5 @@ class RootViewController: UIViewController, RootViewControllerProtocol {
 			self.currentVC = new
 			completion?()
 		}
-	}
-	
-	func switchToLogout() {
-		let loginVC = StartAppViewControllerBuilder.createStartAppViewController() //StartAppViewController()
-		let logouScreen = UINavigationController(rootViewController: loginVC)
-		
-		animateFadeTransition(to: logouScreen)
 	}
 }

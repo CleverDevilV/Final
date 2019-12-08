@@ -16,8 +16,6 @@ class LoginSettingsTableViewCell: UITableViewCell {
 	
 	private var userLoginLabel = UILabel()
 	
-	
-	
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: .default, reuseIdentifier: reuseIdentifier)
 		

@@ -18,7 +18,7 @@ enum UserDefaultsKeys : String {
 }
 
 enum UserDefaultsType : String {
-	case oauth_permission_denied
+	
 	case oauth_access_token
 	case oauth_user_login
 	case firebase_apiKey
@@ -26,30 +26,33 @@ enum UserDefaultsType : String {
 
 extension UserDefaults {
 	
+	/// Function For Set Value For Specified Key.
 	func update(with type: UserDefaultsType, data: Any?) {
 		switch type {
-		case .oauth_permission_denied:
-			guard let permission_status = data as? Bool else { return }
-			set(permission_status, forKey: UserDefaultsKeys.permission_denied.rawValue)
+			
 		case .oauth_access_token:
-			guard let oauth = data as? OAuthResponse else { return }
-			set(oauth.access_token, forKey: UserDefaultsKeys.access_token.rawValue)
-			print("token updated, token = ", oauth.access_token)
+			if let oauth = data as? OAuthResponse {
+				set(oauth.access_token, forKey: UserDefaultsKeys.access_token.rawValue)
+				print("token updated, token = ", oauth.access_token)
+			} else {
+				guard let login = data as? String else { return }
+				set(login, forKey: UserDefaultsKeys.access_token.rawValue)
+			}
+			
+		case .oauth_user_login:
+			guard let login = data as? String else { return }
+			set(login, forKey: UserDefaultsKeys.login.rawValue)
+			print("login updated, login = ", login)
+			
 		default:
 			return
 		}
 	}
 	
-	func setupLogin(with type: UserDefaultsType, data: String?) {
-		guard let login = data else {return}
-		set(login, forKey: UserDefaultsKeys.login.rawValue)
-		print("login updated, login = ", login)
-	}
-	
+	/// Function For Get Value For Specified Key.
 	func get(with type: UserDefaultsType) -> String {
 		switch type {
-		case .oauth_permission_denied:
-			return String()
+			
 		case .oauth_access_token:
 			return (string(forKey: UserDefaultsKeys.access_token.rawValue) ?? String())
 		case .oauth_user_login:
@@ -60,10 +63,10 @@ extension UserDefaults {
 		}
 	}
 	
+	/// Function For Get Boolean Value if Sets Specified Key.
 	func isExist(with type: UserDefaultsType) -> Bool {
 		switch type {
-		case .oauth_permission_denied:
-			return bool(forKey: UserDefaultsKeys.permission_denied.rawValue)
+			
 		case .oauth_access_token:
 			return ((string(forKey: UserDefaultsKeys.access_token.rawValue) ?? String()).isEmpty) ? false : true
 		case .oauth_user_login:
@@ -73,10 +76,10 @@ extension UserDefaults {
 		}
 	}
 	
+	/// Function For Remove Value For Specified Key.
 	func remove(with type: UserDefaultsType) {
 		switch type {
-		case .oauth_permission_denied:
-			UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.permission_denied.rawValue)
+			
 		case .oauth_access_token:
 			UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.access_token.rawValue)
 		case .oauth_user_login:

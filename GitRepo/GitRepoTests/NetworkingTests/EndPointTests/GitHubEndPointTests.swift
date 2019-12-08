@@ -16,8 +16,7 @@ class GitHubEndPointTests: XCTestCase {
 	var endPoint: GitHubApi?
 	
 	override func setUp() {
-//		UserDefaults.standard.update(with: .oauth_access_token, data: "Bar")
-//		UserDefaults.standard.update(with: .oauth_user_login, data: "Baz")
+		
 	}
 
 	override func tearDown() {

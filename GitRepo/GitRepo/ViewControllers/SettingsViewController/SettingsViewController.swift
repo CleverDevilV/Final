@@ -63,19 +63,21 @@ extension SettingsViewController: UITableViewDataSource {
 	}
 }
 
+extension SettingsViewController: UITableViewDelegate {
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		tableView.cellForRow(at: indexPath)?.isSelected = false
+	}
+}
+
 extension SettingsViewController: LogoutSettingsTableViewCellDelegate {
+	
+	/// Logout User
 	func logoutButtonTapped() {
 		let logOtcommand = LogOutCommand()
 		logOtcommand.logOut()
 		
-		
-		guard NSClassFromString("SettingsViewControllerTests") != nil else { return }
-		AppDelegate.shared.rootViewController.switchToLogout()
-	}
-}
-
-extension SettingsViewController: UITableViewDelegate {
-	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		tableView.cellForRow(at: indexPath)?.isSelected = false
+		guard NSClassFromString("XCTestCase") == nil else { return }
+		guard AppDelegate.shared != nil else { return }
+			AppDelegate.shared.rootViewController.switchToLogout()
 	}
 }

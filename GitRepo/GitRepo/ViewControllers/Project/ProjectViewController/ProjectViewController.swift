@@ -8,6 +8,8 @@
 
 import UIKit
 
+// Unit Tests ???
+
 class ProjectViewController: UIViewController {
 	
 	public var project: Project?
@@ -33,7 +35,7 @@ class ProjectViewController: UIViewController {
 		tableView.register(RepoTableViewCell.self, forCellReuseIdentifier: RepoTableViewCell.repoReuseId)
 		tableView.register(CollaboratorsTableViewCell.self, forCellReuseIdentifier: CollaboratorsTableViewCell.collaboratorsReuseId)
 		
-		tableView.register(AddViewTableViewCell.self, forCellReuseIdentifier: AddViewTableViewCell.reusedId)
+		tableView.register(ViewWithCustomTableTableViewCell.self, forCellReuseIdentifier: ViewWithCustomTableTableViewCell.reusedId)
 		
 		tableView.register(TasksTableViewCell.self, forCellReuseIdentifier: TasksTableViewCell.tasksReuseId)
 		
@@ -69,10 +71,9 @@ extension ProjectViewController: UITableViewDataSource {
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-//		cell.backgroundColor = .clear
 		
 		if numberOfTasksTableViewCell != 3, indexPath.row == 3 {
-			let cell = tableView.dequeueReusableCell(withIdentifier: AddViewTableViewCell.reusedId, for: indexPath) as! AddViewTableViewCell
+			let cell = tableView.dequeueReusableCell(withIdentifier: ViewWithCustomTableTableViewCell.reusedId, for: indexPath) as! ViewWithCustomTableTableViewCell
 			
 			cell.project = project
 			cell.arrayOfDataForPresent = project?.repo?.collaborators
@@ -81,10 +82,9 @@ extension ProjectViewController: UITableViewDataSource {
 			return cell
 		}
 		if (numberOfCells == 5 && indexPath.row == 4 && numberOfTasksTableViewCell == 3) || (numberOfCells == 6 && indexPath.row == 5 && numberOfTasksTableViewCell == 4) {
-			let cell = tableView.dequeueReusableCell(withIdentifier: AddViewTableViewCell.reusedId, for: indexPath) as! AddViewTableViewCell
+			let cell = tableView.dequeueReusableCell(withIdentifier: ViewWithCustomTableTableViewCell.reusedId, for: indexPath) as! ViewWithCustomTableTableViewCell
 			
 			cell.project = project
-//			cell.arrayOfDataForPresent = nil
 			cell.arrayOfDataForPresent = project?.projectTasks
 			cell.typeOfData = "tasks"
 			cell.addTaskDelegate = self
@@ -97,24 +97,25 @@ extension ProjectViewController: UITableViewDataSource {
 			let cell = tableView.dequeueReusableCell(withIdentifier: DescriptionTableViewCell.descriptionReuseId, for: indexPath) as! DescriptionTableViewCell
 			cell.descriptionTextView.text = project?.descriptionOfProject ?? ""
 			cell.descriptionCellDelegate = self
-			
 			return cell
+			
 		case 1:
 			let cell = tableView.dequeueReusableCell(withIdentifier: RepoTableViewCell.repoReuseId, for: indexPath) as! RepoTableViewCell
 			cell.project = project
 			cell.delegate = self
 			return cell
+			
 		case 2:
 			let cell = tableView.dequeueReusableCell(withIdentifier: CollaboratorsTableViewCell.collaboratorsReuseId, for: indexPath) as! CollaboratorsTableViewCell
 			cell.delegate = self
 			return cell
-//			fallthrough
+			
 		case numberOfTasksTableViewCell:
 			let cell = tableView.dequeueReusableCell(withIdentifier: TasksTableViewCell.tasksReuseId, for: indexPath) as! TasksTableViewCell
 			cell.delegate = self
 			cell.project = project
 			return cell
-//			fallthrough
+			
 		default:
 			return cell
 		}
@@ -127,6 +128,14 @@ extension ProjectViewController: UITableViewDelegate {
 	}
 }
 
+//MARK: - Cells Protocols
+
+extension ProjectViewController: DescriptionTableViewCellDelegate {
+	func projectDescriptionUpdate(_ description: String?) {
+		project?.descriptionOfProject = description
+	}
+	
+}
 
 extension ProjectViewController: RepoTableCellDelegate {
 	func setupRepo() {
@@ -151,17 +160,15 @@ extension ProjectViewController: RepoTableCellDelegate {
 						self.project?.repo = repo as? Repository
 						self.project?.repoUrl = url.absoluteString
 						self.project?.repositoryName = self.project?.repo?.name
+						self.project?.languageOfProject = self.project?.repo?.languageOfProject
 						DispatchQueue.main.async {
 							self.tableView.reloadData()
-//							self.tableView.reloadRows(at: [IndexPath(row: 1, section: 0)], with: .none)
 						}
 					}
 					
 				} else {
 					return
 				}
-
-				//				self.tableView.reloadData()
 			})
 			addRepoAlertController.addAction(cancelAction)
 			addRepoAlertController.addAction(okAction)
@@ -243,8 +250,6 @@ extension ProjectViewController: CollaboratorsTableViewCellDelegate {
 		}
 		tableView.reloadData()
 	}
-	
-	
 }
 
 extension ProjectViewController: TasksTableViewCellDelegate {
@@ -254,14 +259,11 @@ extension ProjectViewController: TasksTableViewCellDelegate {
 		} else if (numberOfCells == 5 && numberOfTasksTableViewCell == 3) || (numberOfCells == 6 && numberOfTasksTableViewCell == 4) {
 			numberOfCells -= 1
 		}
-		
 		tableView.reloadData()
 	}
-	
-	
 }
 
-extension ProjectViewController: AddTaskProtocol {
+extension ProjectViewController: ViewWithCustomTableTableViewCellDelegate {
 	func addTask() {
 		
 		let addProjectAlertController = UIAlertController(title: "Добавить задачу", message: "", preferredStyle: .alert)
@@ -288,11 +290,3 @@ extension ProjectViewController: AddTaskProtocol {
 		
 	}
 }
-
-extension ProjectViewController: DescriptionTableViewCellDelegate {
-	func projectDescriptionUpdate(_ description: String?) {
-		project?.descriptionOfProject = description
-	}
-	
-}
-

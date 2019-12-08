@@ -9,11 +9,12 @@
 import XCTest
 @testable import GitRepo
 
+/// - Tag: ProjectModelTests
 class ProjectModelTests: XCTestCase {
 	var project: Project!
 
     override func setUp() {
-		project = Project(projectName: "BaZ", repoURL: nil, repositoryName: nil, repo: nil, descriptionOfProject: "BaRBaZ")
+		project = Project(projectName: "BaZ", repoURL: nil, repositoryName: nil, repo: nil, descriptionOfProject: "BaRBaZ", languageOfProject: nil)
     }
 
     override func tearDown() {

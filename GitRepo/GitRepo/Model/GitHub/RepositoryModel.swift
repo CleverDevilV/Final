@@ -92,6 +92,7 @@ public final class Repository: Codable {
 	
 	public init() {	}
 	
+	/// Get date from self.lastChange and create String with date format "yyyy-MM-dd' 'HH:mm:ss", time zone MSK
 	func getRepositoryDateString() -> String? {
 		let dateFormatter = DateFormatter()
 		dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"

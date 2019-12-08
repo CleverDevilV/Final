@@ -16,4 +16,5 @@ public struct ProjectForUploadToBack: Codable {
 	var repositoryName: String?
 	var projectTasks: [String]?
 	var descriptionOfProject: String?
+	var languageOfProject: String?
 }

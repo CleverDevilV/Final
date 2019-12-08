@@ -21,17 +21,20 @@ public final class Project: Decodable {
 	public var repositoryName: String?
 	/// Repository of project
 	public var repo: Repository?
-	
+	/// Description
 	public var descriptionOfProject: String?
-	
+	/// Tssks of project
 	public var projectTasks: [String]?
+	/// Language of project repository
+	public var languageOfProject: String?
 	
-	init(projectName: String, repoURL: String?, repositoryName: String? , repo: Repository?, descriptionOfProject: String?) {
+	init(projectName: String, repoURL: String?, repositoryName: String? , repo: Repository?, descriptionOfProject: String?, languageOfProject: String?) {
 		self.projectName = projectName
 		self.repoUrl = repoURL
 		self.repositoryName = repositoryName
 		self.repo = repo
 		self.descriptionOfProject = descriptionOfProject
+		self.languageOfProject = languageOfProject
 	}
 	
 	/// Keys for decode Firebase Api Response
@@ -41,6 +44,7 @@ public final class Project: Decodable {
 		case repoUrl
 		case projectTasks
 		case descriptionOfProject
+		case languageOfProject
 	}
 	
 	/**
@@ -77,6 +81,13 @@ public final class Project: Decodable {
 		} catch {
 			print(error)
 			self.descriptionOfProject = nil
+		}
+		
+		do {
+			self.languageOfProject = try container.decode(String?.self, forKey: .languageOfProject)
+		} catch {
+			print(error)
+			self.languageOfProject = nil
 		}
 		
 		self.repo = nil

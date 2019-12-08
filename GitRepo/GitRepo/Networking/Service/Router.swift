@@ -11,7 +11,7 @@ import Foundation
 // Unit tests ???
 
 /**
-
+Class for create Request and get NetworkRouterCompletion as (_ data: Data?, _ respose: URLResponse?, _ error: Error?) -> ()
 */
 class Router <EndPoint: EndPointType>: NetworkRouter {
 	
@@ -22,8 +22,7 @@ class Router <EndPoint: EndPointType>: NetworkRouter {
 		self.session = session
 	}
 	
-	/// Тут мы создаем URLSession с помощью URLSession.shared, это самый простой способ создания. Но помните, что этот способ не единственный. Можно использовать и более сложные конфигурации URLSession, которые могут менять ее поведение
-	
+	/// Create URLSessionRequest and pass NetworkRouterCompletion as (_ data: Data?, _ respose: URLResponse?, _ error: Error?) -> ()
 	func request(_ route: EndPoint, complition: @escaping NetworkRouterCompletion) {
 	
 		do {
@@ -41,8 +40,7 @@ class Router <EndPoint: EndPointType>: NetworkRouter {
 		self.task?.cancel()
 	}
 	
-	/// Мы создаем наш запрос с помощью функции buildRequest. Эта функция отвечает за всю жизненно важную работу в нашем сетевом слое. По сути, конвертирует EndPointType в URLRequest. И как только EndPoint превращается в запрос, мы можем передать его в session.
-	
+	/// Builer for request
 	fileprivate func buildRequest(from route: EndPoint) throws -> URLRequest {
 		var url = route.baseURL.appendingPathComponent(route.path)
 		if route.path == "" {
@@ -85,7 +83,7 @@ class Router <EndPoint: EndPointType>: NetworkRouter {
 		}
 	}
 	
-	// Эта функция отвечает за преобразование наших параметров запроса. Поскольку наш API предполагает использование bodyParameters в виде JSON и URLParameters преобразованными в формат URL, то мы просто передаем соответствующие параметры в соответствующие функции преобразования, которые мы описывали в начале статьи
+	/// Add parameters to request
 	fileprivate func configureParameters(bodyParameters: Parameters?, urlParameters: Parameters?, request: inout URLRequest) throws {
 		
 		do {
@@ -100,7 +98,7 @@ class Router <EndPoint: EndPointType>: NetworkRouter {
 		}
 	}
 	
-	// Добавляем необходимые заголовки в запрос
+	/// Add headers to request
 	fileprivate func addAdditionalHeaders(_ additionalHeaders: HTTPHeaders?, request: inout URLRequest) {
 		guard let headers = additionalHeaders else { return }
 		

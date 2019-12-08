@@ -35,8 +35,10 @@ protocol CoreDataServiceProtocol {
 	func getData(baseType: BaseType, _ completion: @escaping (_ result: Decodable?, _ error: String?) -> () )
 }
 
-/// Service for load Data from Back and CoreData
-///Tests - [LoaderTests](x-source-tag://LoaderTests).
+/**
+Service for load Data from Back and CoreData.
+Tests - [LoaderTests](x-source-tag://LoaderTests).
+*/
 final class Loader: LoaderProtocol {
 	
 	var githubNetworkManager: NetworkManagerProtocol!
@@ -80,7 +82,6 @@ final class Loader: LoaderProtocol {
 				result, error in
 				
 				completion(result, error)
-				
 			}
 			
 		case .coreData:

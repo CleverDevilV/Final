@@ -9,6 +9,7 @@
 import XCTest
 @testable import GitRepo
 
+/// - Tag: MockCoreDataService
 class MockCoreDataService: CoreDataServiceProtocol {
 	func getData(baseType: BaseType, _ completion: @escaping (Decodable?, String?) -> ()) {
 		completion("resultFormCoreData", nil)

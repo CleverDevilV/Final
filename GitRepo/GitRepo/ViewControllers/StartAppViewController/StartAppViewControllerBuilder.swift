@@ -8,11 +8,14 @@
 
 import UIKit
 
+// No Unit Tests
+
 protocol StartAppViewControllerBuilderProtocol: class {
 	static func createStartAppViewController() -> UIViewController
 }
 
 class StartAppViewControllerBuilder: StartAppViewControllerBuilderProtocol {
+	
 	static func createStartAppViewController() -> UIViewController {
 		
 		let loader = LoaderBuilder.createLoader()

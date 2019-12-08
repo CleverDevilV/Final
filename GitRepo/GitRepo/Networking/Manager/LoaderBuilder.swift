@@ -14,27 +14,26 @@ protocol LoaderBuilderProtocol: class {
 	static func createLoader() -> LoaderProtocol
 }
 
-/// Tests - [LoaderBuilderTests](x-source-tag://LoaderBuilderTests)
+/// Setup Loader with GitHubNetworkManager, FirebaseNetworkManager, ManagedObjectFromCoreDataService
 class LoaderBuilder: LoaderBuilderProtocol {
 	static func createLoader() -> LoaderProtocol {
 		
 		var session: URLSession!
 		var loader: LoaderProtocol!
 		
+//		guard NSClassFromString("XCTestCase") == nil else { return }
+//		guard AppDelegate.shared != nil else {
+		guard NSClassFromString("XCTestCase") == nil else {
+			session = URLSession(configuration: .default)
+			loader = Loader(githubNetworkManager: nil, firebaseNetworkManager: nil, coreDataService: nil)
+			return loader}
 		
-		let isRunningTests = NSClassFromString("RootViewControllerTests") != nil
-		
-		if !isRunningTests {
 			session = AppDelegate.shared.session
 			let githubNetworkManager = GitHubNetworkManager(with: session)
 			let firebaseNetworkManager = FirebaseNetworkManager(with: session)
 			
 			let coreDataManagerService = ManagedObjectFromCoreDataService(withDeleting: false, writeContext: CoreDataStack.shared.writeContext, readContext: CoreDataStack.shared.readContext)
 			loader = Loader(githubNetworkManager: githubNetworkManager, firebaseNetworkManager: firebaseNetworkManager, coreDataService: coreDataManagerService)
-		} else {
-			session = URLSession(configuration: .default)
-			loader = Loader(githubNetworkManager: nil, firebaseNetworkManager: nil, coreDataService: nil)
-		}
 		
 		return loader
 	}

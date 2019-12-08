@@ -9,6 +9,12 @@
 import UIKit
 import WebKit
 
+/**
+Class for show pages in WebView. Need to insert URL.
+```
+public var url: URL?
+```
+*/
 final class SomeUrlWebViewController: UIViewController {
 	
 	public var url: URL?

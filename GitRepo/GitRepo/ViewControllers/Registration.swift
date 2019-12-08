@@ -193,7 +193,7 @@ extension RequestViewController: WKNavigationDelegate {
 				
 				guard let login = login as? String else {return}
 				DispatchQueue.main.async {
-					UserDefaults.standard.setupLogin(with: .oauth_user_login, data: login)
+					UserDefaults.standard.update(with: .oauth_user_login, data: login)
 					
 					self.dismiss(animated: true, completion: nil)
 					AppDelegate.shared.rootViewController.switchToLogout()

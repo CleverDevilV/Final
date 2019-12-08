@@ -69,7 +69,7 @@ final class CoreDataAdapter: CoreDataAdapterProtocol {
 		case.project:
 			guard let object = oneObject as? MOProject else { return nil }
 			
-			let dataForApp = Project(projectName: object.projectName, repoURL: object.repositoryURL, repositoryName: object.repositoryName, repo: nil, descriptionOfProject: object.descriptionOfProject)
+			let dataForApp = Project(projectName: object.projectName, repoURL: object.repositoryURL, repositoryName: object.repositoryName, repo: nil, descriptionOfProject: object.descriptionOfProject, languageOfProject: object.languageOfProject)
 			
 			return [dataForApp]
 			
@@ -149,6 +149,7 @@ final class CoreDataAdapter: CoreDataAdapterProtocol {
 			object.repositoryName = data.repositoryName
 			object.repositoryURL = data.repoUrl
 			object.descriptionOfProject = data.descriptionOfProject
+			object.languageOfProject = data.languageOfProject
 			
 			return object
 			

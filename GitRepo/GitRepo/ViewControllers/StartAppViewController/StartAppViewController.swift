@@ -8,6 +8,8 @@
 
 import UIKit
 
+// No Unit Tests
+
 protocol LoaderProtocol {
 	func getBaseDataFrom(source: SourceType, endPoint: EndPointType?, baseType: BaseType?, completion: @escaping (_ result: Decodable?, _ error: String?) -> ())
 }
@@ -62,11 +64,15 @@ class StartAppViewController: UIViewController {
 		}, completion: nil)
 	}
 	
-	func downloadData() {
+	/// Loading data from Back or CoreData if it's no connection
+	private func downloadData() {
 		if UserDefaults.standard.isExist(with: .oauth_user_login) {
 			
-			var repoServ: ManagedObjectFromCoreDataService!
 			
+			
+			var coreDataService: ManagedObjectFromCoreDataService!
+			
+			// Load ProjectBase from Back
 			loader.getBaseDataFrom(source: .firebase, endPoint: FirebaseApi.getProjects, baseType: nil) {
 				result, error in
 				
@@ -75,7 +81,7 @@ class StartAppViewController: UIViewController {
 				}
 				
 				if result == nil {
-					
+					// Load ProjectBase From CoreData
 					self.loader.getBaseDataFrom(source: .coreData, endPoint: nil, baseType: .projectBase) {
 						result,error  in
 						
@@ -88,8 +94,9 @@ class StartAppViewController: UIViewController {
 						}
 					}
 				} else {
-					repoServ = ManagedObjectFromCoreDataService(withDeleting: true, writeContext: CoreDataStack.shared.writeContext, readContext: CoreDataStack.shared.readContext)
-					repoServ.saveCoreDataObjectsFrom(base: result as? ProjectsBase, baseType: .projectBase)
+					// Save loaded ProjectBase in CoreData
+					coreDataService = ManagedObjectFromCoreDataService(withDeleting: true, writeContext: CoreDataStack.shared.writeContext, readContext: CoreDataStack.shared.readContext)
+					coreDataService.saveCoreDataObjectsFrom(base: result as? ProjectsBase, baseType: .projectBase)
 					
 					guard let base = result as? ProjectsBase else {return}
 					print(base)
@@ -99,6 +106,7 @@ class StartAppViewController: UIViewController {
 					}
 				}
 				
+				// Load RepositoryBase From Back
 				self.loader.getBaseDataFrom(source: .gitHub, endPoint: GitHubApi.repos, baseType: nil) {
 					result, error in
 					
@@ -107,7 +115,7 @@ class StartAppViewController: UIViewController {
 					}
 					
 					if result == nil {
-						
+						// Load RepositoryBase From CoreData
 						self.loader.getBaseDataFrom(source: .coreData, endPoint: nil, baseType: .repositoryBase) {
 							result,error  in
 							print(result)
@@ -122,7 +130,8 @@ class StartAppViewController: UIViewController {
 						}
 						
 					} else {
-						repoServ.saveCoreDataObjectsFrom(base: result as? RepositoriesBase, baseType: .repositoryBase)
+						// Save loaded RepositoryBase in CoreData
+						coreDataService.saveCoreDataObjectsFrom(base: result as? RepositoriesBase, baseType: .repositoryBase)
 						DispatchQueue.main.async {
 							AppDelegate.shared.repositoryBase = result as? RepositoriesBase
 							self.showButtons()
@@ -205,8 +214,7 @@ class StartAppViewController: UIViewController {
 			welcomeButton.topAnchor.constraint(equalTo: userLoginLabel.bottomAnchor, constant: 0),
 			welcomeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
 			welcomeButton.widthAnchor.constraint(equalToConstant: defWidth / 3),
-			welcomeButton.heightAnchor.constraint(equalToConstant: 50),
-			//			welcomeButton.bottomAnchor.constraint(lessThanOrEqualTo: view.bottomAnchor, constant: -50)
+			welcomeButton.heightAnchor.constraint(equalToConstant: 50)
 			])
 		
 		// logOutButton
@@ -247,12 +255,15 @@ extension StartAppViewController {
 					
 					self.present(registrationView, animated: false, completion: nil)
 				} else {
-					self.switchRootViewControllerToMainScreen()
-//					AppDelegate.shared.rootViewController.switchMainScreen()
+//					self.switchRootViewControllerToMainScreen()
+					guard NSClassFromString("XCTestCase") == nil else { return }
+					guard AppDelegate.shared != nil else { return }
+					AppDelegate.shared.rootViewController.switchMainScreen()
 				}
 			})
 	}
 	
+	/// Logout User
 	@objc
 	func tapLogOutButton() {
 		let logOtcommand = LogOutCommand()

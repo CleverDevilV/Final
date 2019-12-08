@@ -9,6 +9,7 @@
 import XCTest
 @testable import GitRepo
 
+/// - Tag: RepositoriesBaseTests
 class RepositoriesBaseTests: XCTestCase {
 
 	var repository: Repository!
@@ -221,9 +222,9 @@ class RepositoriesBaseTests: XCTestCase {
 	func testGetDataFromRepository() {
 		// arrange
 		// act
-		var dataIsNotNil = repositoriesBase?.repositories[0].getRepositoryDateString()
+		let dataIsNotNil = repositoriesBase?.repositories[0].getRepositoryDateString()
 		repository.lastChange = ""
-		var dataIsNil = repository.getRepositoryDateString()
+		let dataIsNil = repository.getRepositoryDateString()
 		
 		// assert
 		XCTAssertNotNil(dataIsNotNil)

@@ -1,5 +1,5 @@
 //
-//  RepositoryBranchesTableViewCell.swift
+//  OwnerAndViewButtonTableViewCell.swift
 //  GitRepo
 //
 //  Created by Дарья Витер on 03/12/2019.
@@ -8,17 +8,25 @@
 
 import UIKit
 
-class RepositoryBranchesTableViewCell: UITableViewCell {
+// Unit Tests
+
+protocol OwnerAndViewButtonTableViewCellDelegate: class {
+	func tapRepoButton()
+}
+
+/// Shows reporitory info and page in WebView
+class OwnerAndViewButtonTableViewCell: UITableViewCell {
 	
-	public static let branchesReuseId = "BranchesReuseId"
+	public static let ownerReuseId = "OwnerAndViewButtonReuseId"
 	public weak var delegate: OwnerAndViewButtonTableViewCellDelegate!
+	
 	public var repository: Repository? {
 		didSet {
 			self.setupViews()
 		}
 	}
 	
-	private var repoButtonTitle = "Ветки: "
+	private var repoButtonTitle = "Открыть в браузере"
 	private var repoOwnerLabel = UILabel()
 	private var repoViewButton = UIButton()
 	
@@ -32,19 +40,17 @@ class RepositoryBranchesTableViewCell: UITableViewCell {
 	
 	func setupViews() {
 		
-		// descriptionLabel
+		// repoOwnerLabel
 		repoOwnerLabel.numberOfLines = 0
 		repoOwnerLabel.font = UIFont.systemFont(ofSize: 18)
-		//		descriptionLabel.textColor
-		repoOwnerLabel.text = "Ветки: "
-		// repoButton
+		repoOwnerLabel.text = "Владелец: "
 		if let nameOfRepoOwner: String = repository?.owner?.login {
-			
-			repoButtonTitle = "Ветки: " + nameOfRepoOwner.capitalized
+			repoOwnerLabel.text = "Владелец: " + nameOfRepoOwner.capitalized
 		}
 		
+		// repoViewButton
 		repoViewButton.setTitle(repoButtonTitle, for: .normal)
-		repoViewButton.titleLabel?.font = UIFont.systemFont(ofSize: 18)
+		repoViewButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
 		repoViewButton.titleEdgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
 		repoViewButton.layer.cornerRadius = 20
 		repoViewButton.layer.masksToBounds = true
@@ -52,7 +58,7 @@ class RepositoryBranchesTableViewCell: UITableViewCell {
 		
 		repoViewButton.setTitleColor(.blue, for: .normal)
 		repoViewButton.setTitleColor(.white, for: .highlighted)
-		//		repoViewButton.addTarget(self, action: #selector(tapRepoViewButton), for: .touchUpInside)
+		repoViewButton.addTarget(self, action: #selector(tapRepoViewButton), for: .touchUpInside)
 		
 		// add to contentView
 		contentView.addSubview(repoOwnerLabel)
@@ -65,17 +71,20 @@ class RepositoryBranchesTableViewCell: UITableViewCell {
 	
 	override func updateConstraints() {
 		
+		// repoOwnerLabel
 		NSLayoutConstraint.activate([
-			// repoLabel
+			
 			repoOwnerLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant:  10),
 			repoOwnerLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-			repoOwnerLabel.trailingAnchor.constraint(equalTo: repoViewButton.leadingAnchor, constant: -10),
+			repoOwnerLabel.trailingAnchor.constraint(equalTo: repoViewButton.leadingAnchor, constant: -25),
 			repoOwnerLabel.heightAnchor.constraint(equalToConstant: 80),
-			repoOwnerLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
-			// repoButton
-			repoViewButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant:  30),
-			repoViewButton.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -20),
-			repoViewButton.heightAnchor.constraint(equalToConstant: 40)
+			repoOwnerLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)])
+		
+		// repoViewButton
+		NSLayoutConstraint.activate([
+			repoViewButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant:  20),
+			repoViewButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+			repoViewButton.heightAnchor.constraint(equalToConstant: 60)
 			
 			])
 		
@@ -92,12 +101,20 @@ class RepositoryBranchesTableViewCell: UITableViewCell {
 	
 	override func awakeFromNib() {
 		super.awakeFromNib()
-		// Initialization code
+		
 	}
 	
 	override func setSelected(_ selected: Bool, animated: Bool) {
 		super.setSelected(selected, animated: animated)
 		
-		// Configure the view for the selected state
+	}
+}
+
+extension OwnerAndViewButtonTableViewCell {
+	
+	/// Open repository in WebView throw delegate
+	@objc
+	func tapRepoViewButton() {
+		delegate.tapRepoButton()
 	}
 }

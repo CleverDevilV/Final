@@ -37,7 +37,7 @@ class RepoTableCellTests: XCTestCase {
 		cellDelegate = MockRepoTableCellDelegate()
 		cell.delegate = cellDelegate
 		
-		project = Project(projectName: "Bar", repoURL: "Foo", repositoryName: "Baz", repo: nil, descriptionOfProject: nil)
+		project = Project(projectName: "Bar", repoURL: "Foo", repositoryName: "Baz", repo: nil, descriptionOfProject: nil, languageOfProject: nil)
     }
 
     override func tearDown() {

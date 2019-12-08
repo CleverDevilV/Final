@@ -8,6 +8,8 @@
 
 import UIKit
 
+// Unit Tests
+
 protocol SegmentCommitsBranchesTableViewCellDelegate: class {
 	func setSegmentControllerValue(_ value: Int)
 	func showWebView(at indexPath: IndexPath)
@@ -36,8 +38,6 @@ class SegmentCommitsBranchesTableViewCell: UITableViewCell {
 	
 	func setupViews() {
 		
-//		let titles = ["Коммиты", "Ветки"]
-//		segmentControl = UISegmentedControl(items: titles)
 		segmentControl.tintColor = UIColor(red: 0, green: 0.4784313725, blue: 1, alpha: 1) // #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
 		segmentControl.selectedSegmentIndex = 0
 		for index in 0...1 {
@@ -65,8 +65,8 @@ class SegmentCommitsBranchesTableViewCell: UITableViewCell {
 	
 	override func updateConstraints() {
 		
+		// segmentControl
 		NSLayoutConstraint.activate([
-			// repoLabel
 			segmentControl.topAnchor.constraint(equalTo: contentView.topAnchor, constant:  10),
 			segmentControl.centerXAnchor.constraint(equalTo: contentView.centerXAnchor, constant: 0),
 			segmentControl.leadingAnchor.constraint(greaterThanOrEqualTo: contentView.leadingAnchor, constant: 20),
@@ -74,6 +74,7 @@ class SegmentCommitsBranchesTableViewCell: UITableViewCell {
 			segmentControl.heightAnchor.constraint(equalToConstant: 30)
 			])
 		
+		// tableViewForCommitsOrBranches
 		NSLayoutConstraint.activate([
 			tableViewForCommitsOrBranches.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 50),
 			tableViewForCommitsOrBranches.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
@@ -95,7 +96,7 @@ class SegmentCommitsBranchesTableViewCell: UITableViewCell {
 	
 	override func awakeFromNib() {
 		super.awakeFromNib()
-		// Initialization code
+		
 	}
 	
 	override func setSelected(_ selected: Bool, animated: Bool) {
@@ -140,15 +141,17 @@ extension SegmentCommitsBranchesTableViewCell: UITableViewDataSource {
 			cell.accessoryType = .none
 		}
 		
-//		cell.textLabel?.text = "\(indexPath)"
-		
 		return cell
 	}
 }
 
 extension SegmentCommitsBranchesTableViewCell: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		
 		tableView.cellForRow(at: indexPath)?.isSelected = false
-		delegate.showWebView(at: indexPath)
+		
+		if segmentControl.selectedSegmentIndex == 0 {
+			delegate.showWebView(at: indexPath)
+		}
 	}
 }

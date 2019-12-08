@@ -27,7 +27,7 @@ class SettingsViewControllerTests: XCTestCase {
 	
 	func testLogOutCommandCall() {
 		// arrange
-		// act
+//		 act
 		settingsView.logoutButtonTapped()
 		// assert
 		XCTAssertFalse(UserDefaults.standard.isExist(with: UserDefaultsType.oauth_user_login))

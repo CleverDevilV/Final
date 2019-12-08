@@ -33,23 +33,7 @@ struct FirebaseNetworkManager: NetworkManagerProtocol {
 			
 		}
 	}
-	
-	// 1. Мы определяем метод getNewMovies с двумя аргументами: номер страницы пагинации и completion handler, который возвращает опциональный массив моделей Movie, либо опциональную ошибку.
-	//
-	//	2. Вызываем Router. Передаем номер страницы и обрабатываем completion в замыкании.
-	//
-	//	3. URLSession возвращает ошибку если нет сети или не получилось сделать запрос по какой-либо причине. Обратите внимание, что это не ошибка API, такие ошибки происходят на клиенте и происходят обычно из-за плохого качества интернет-соединения.
-	//
-	//	4. Нам необходимо привести наш response к HTTPURLResponse, потому что нам надо получить доступ к свойству statusCode.
-	//
-	//	5. Объявляем result и инициализируем его с помощью метода handleNetworkResponse
-	//
-	//	6. Success означает что запрос прошел успешно и мы получили ожидаемый ответ. Затем мы проверяем, пришли ли с ответом данные, и если нет, то просто завершаем метод через return.
-	//
-	//	7. Если же ответ приходит с данными, то необходимо распарсить полученные данные в модель. После этого передаем полученный массив моделей в completion.
-	//
-	//	8. В случае ошибки просто передаем ошибку в completion.
-	
+	/// Get Decodable data from EndPointType.
 	func getData(endPoint: EndPointType, completion: @escaping (_ result: Decodable?, _ error: String?) -> ()) {
 		guard let endPoint = endPoint as? FirebaseApi else {
 			completion(nil, "Unknown end point")
@@ -75,12 +59,11 @@ struct FirebaseNetworkManager: NetworkManagerProtocol {
 						switch endPoint {
 						case .getProjects:
 							let projects = ProjectsBase(with: responseData)
-//							let apiResponse = try JSONDecoder().decode([String : [String:Project]].self, from: responseData)
-//							completion(apiResponse, nil)
 							completion(projects, nil)
+							
 						case .uploadProjects:
-//							let newResponse = try JSONDecoder().decode([Repository].self, from: responseData)
 							completion(true, nil)
+							
 						case .oneProject( _):
 							let newResponse = try JSONDecoder().decode(Repository.self, from: responseData)
 							completion(newResponse, nil)

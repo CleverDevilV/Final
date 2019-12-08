@@ -9,6 +9,7 @@
 import XCTest
 @testable import GitRepo
 
+/// - Tag: LogOutCommandTests
 class LogOutCommandTests: XCTestCase {
 	
 	var command: LogOutCommand!

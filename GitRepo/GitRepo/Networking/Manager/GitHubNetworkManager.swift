@@ -13,7 +13,6 @@ import Foundation
 struct GitHubNetworkManager: NetworkManagerProtocol {
 	
 	private let router: Router<GitHubApi>!
-//		= Router<GitHubApi>(with: URLSession.init(configuration: .default))
 	
 	private var queue = DispatchQueue(label: "com.sber.final", qos: .default, attributes: .concurrent)
 	
@@ -114,10 +113,8 @@ struct GitHubNetworkManager: NetworkManagerProtocol {
 											}
 											repositiry.commits = commitsArray
 											
-//											print("Loaded commits at \(repositiry.name)")
 											if repositiry.collaborators != nil, repositiry.branches != nil {
 												myGroup.leave()
-												//												print("leave")
 											}
 										}
 									}
@@ -184,8 +181,6 @@ struct GitHubNetworkManager: NetworkManagerProtocol {
 								}
 							}
 							
-							
-//							completion(newResponse, nil)
 						case .collaborators(_ ):
 							let newResponse = try JSONDecoder().decode([User].self, from: responseData)
 							completion(newResponse, nil)
@@ -226,9 +221,7 @@ struct GitHubNetworkManager: NetworkManagerProtocol {
 	}
 }
 
-// Создайте перечисление NetworkResponse в NetworkManager.
-// Мы используем это перечисление при обработке ответов на запросы и будем выводить соответствующее сообщение.
-
+/// Enum for response processing
 enum GitHubNetworkResponse: String {
 	case success
 	case authentificationError = "You need to be auth first"

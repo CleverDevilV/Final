@@ -8,15 +8,17 @@
 
 import UIKit
 
-// Unit tests !!!
+// Unit tests
 
-protocol AddTaskProtocol {
+protocol ViewWithCustomTableTableViewCellDelegate: class {
 	func addTask()
 }
 
-class AddViewTableViewCell: UITableViewCell {
+/// Class for create table in cell
+class ViewWithCustomTableTableViewCell: UITableViewCell {
 	
 	public static var reusedId = "AddViewTableViewCell"
+	public weak var addTaskDelegate: ViewWithCustomTableTableViewCellDelegate!
 	public var project: Project?
 	public var arrayOfDataForPresent: [Decodable]? {
 		didSet {
@@ -29,8 +31,6 @@ class AddViewTableViewCell: UITableViewCell {
 			self.setupViews()
 		}
 	}
-	
-	public var addTaskDelegate: AddTaskProtocol!
 	
 	private var defaultView = UITableView()
 	
@@ -79,18 +79,17 @@ class AddViewTableViewCell: UITableViewCell {
 	
 	override func awakeFromNib() {
 		super.awakeFromNib()
-		// Initialization code
+		
 	}
 	
 	override func setSelected(_ selected: Bool, animated: Bool) {
 		super.setSelected(selected, animated: animated)
 		
-		// Configure the view for the selected state
 	}
 
 }
 
-extension AddViewTableViewCell: UITableViewDataSource {
+extension ViewWithCustomTableTableViewCell: UITableViewDataSource {
 	
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -117,7 +116,7 @@ extension AddViewTableViewCell: UITableViewDataSource {
 	
 }
 
-extension AddViewTableViewCell: UITableViewDelegate {
+extension ViewWithCustomTableTableViewCell: UITableViewDelegate {
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		// TODO: редактирование текста по нажатию

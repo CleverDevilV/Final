@@ -10,7 +10,7 @@ import UIKit
 
 // Unit Tests
 
-protocol DescriptionTableViewCellDelegate {
+protocol DescriptionTableViewCellDelegate: class {
 	/// Update description in project
 	func projectDescriptionUpdate(_ description: String?)
 }
@@ -18,7 +18,7 @@ protocol DescriptionTableViewCellDelegate {
 class DescriptionTableViewCell: UITableViewCell {
 	
 	public static let descriptionReuseId = "DescriptionReuseId"
-	public var descriptionCellDelegate: DescriptionTableViewCellDelegate!
+	public weak var descriptionCellDelegate: DescriptionTableViewCellDelegate!
 	
 	private var descriptionLabel = UILabel()
 	public var descriptionTextView = UITextView()
@@ -36,7 +36,6 @@ class DescriptionTableViewCell: UITableViewCell {
 	// descriptionLabel
 		descriptionLabel.numberOfLines = 1
 		descriptionLabel.font = UIFont.systemFont(ofSize: 20)
-		//		descriptionLabel.textColor
 		descriptionLabel.text = "Описание:"
 		
 	// descriptionTextView

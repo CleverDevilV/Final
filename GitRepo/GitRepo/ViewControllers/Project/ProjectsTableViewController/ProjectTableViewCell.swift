@@ -8,6 +8,8 @@
 
 import UIKit
 
+// No Unit Tests
+
 class ProjectTableViewCell: UITableViewCell {
 
 	public static let reusedId = "ProjectsCellReuseId"
@@ -38,7 +40,7 @@ class ProjectTableViewCell: UITableViewCell {
 		beautyfulView.layer.borderWidth = 1
 		beautyfulView.layer.masksToBounds = true
 		
-		// descriptionLabel
+		// projectNameLabel
 		projectNameLabel.numberOfLines = 0
 		projectNameLabel.font = UIFont.systemFont(ofSize: 16)
 		projectNameLabel.textAlignment = .left
@@ -47,15 +49,12 @@ class ProjectTableViewCell: UITableViewCell {
 		projectLanguageLabel.numberOfLines = 0
 		projectLanguageLabel.font = UIFont.systemFont(ofSize: 16)
 		projectLanguageLabel.textAlignment = .left
-		projectLanguageLabel.text = "Язык проекта: " + (project?.repo?.languageOfProject ?? "")
+		projectLanguageLabel.text = "Язык проекта: " + (project?.languageOfProject ?? "")
 		
-		
+		// beautyfulView
 		beautyfulView.addSubview(projectNameLabel)
 		beautyfulView.addSubview(projectLanguageLabel)
 		contentView.addSubview(beautyfulView)
-		
-		//		contentView.addSubview(repositiryNameLabel)
-		//		contentView.addSubview(lastChangesLabel)
 		
 		projectNameLabel.translatesAutoresizingMaskIntoConstraints = false
 		projectLanguageLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -64,12 +63,14 @@ class ProjectTableViewCell: UITableViewCell {
 	
 	override func updateConstraints() {
 		
+		// projectNameLabel
 		NSLayoutConstraint.activate([
 			projectNameLabel.topAnchor.constraint(equalTo: beautyfulView.topAnchor, constant:  10),
 			projectNameLabel.leadingAnchor.constraint(equalTo: beautyfulView.leadingAnchor, constant: 20),
 			projectNameLabel.trailingAnchor.constraint(equalTo: beautyfulView.trailingAnchor, constant: -20),
 			projectNameLabel.heightAnchor.constraint(equalToConstant: 20)])
 		
+		// projectLanguageLabel
 		NSLayoutConstraint.activate([
 			projectLanguageLabel.topAnchor.constraint(equalTo: projectNameLabel.bottomAnchor, constant:  15),
 			projectLanguageLabel.leadingAnchor.constraint(equalTo: beautyfulView.leadingAnchor, constant: 20),
@@ -100,13 +101,12 @@ class ProjectTableViewCell: UITableViewCell {
 	
 	override func awakeFromNib() {
 		super.awakeFromNib()
-		// Initialization code
+		
 	}
 	
 	override func setSelected(_ selected: Bool, animated: Bool) {
 		super.setSelected(selected, animated: animated)
 		
-		// Configure the view for the selected state
 	}
 
 }

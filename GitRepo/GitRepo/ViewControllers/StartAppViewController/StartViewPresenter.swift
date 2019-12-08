@@ -19,6 +19,7 @@ protocol StartViewPresenterProtocol: class {
 	func setupLoader()
 }
 
+/// Presenter
 class StartViewPresenter: StartViewPresenterProtocol {
 	
 	let view: StartViewProtocol?

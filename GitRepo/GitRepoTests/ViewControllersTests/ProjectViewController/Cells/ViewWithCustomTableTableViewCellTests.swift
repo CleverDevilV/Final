@@ -7,12 +7,14 @@
 //
 
 import XCTest
+@testable import GitRepo
+
 
 class MockTableView: UITableView {
 	
 }
 
-class MockAddViewTableViewCell: AddViewTableViewCell {
+class MockAddViewTableViewCell: ViewWithCustomTableTableViewCell {
 	
 	var testSetupViews: String?
 	
@@ -22,18 +24,18 @@ class MockAddViewTableViewCell: AddViewTableViewCell {
 	
 }
 
-
-class AddViewTableViewCellTests: XCTestCase {
+/// - Tag: MockTableView
+class ViewWithCustomTableTableViewCellTests: XCTestCase {
 
 	var mockAddView: MockAddViewTableViewCell!
-	var defaultAddView: AddViewTableViewCell!
+	var defaultAddView: ViewWithCustomTableTableViewCell!
 	
 	var tableView: UITableView!
 
 	
     override func setUp() {
 		mockAddView = MockAddViewTableViewCell()
-		defaultAddView = AddViewTableViewCell()
+		defaultAddView = ViewWithCustomTableTableViewCell()
 		
 		tableView = UITableView()
 		tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
@@ -77,7 +79,7 @@ class AddViewTableViewCellTests: XCTestCase {
 	}
 	
 	func testTypeOfCellInTableWithTypeOfDataCollaborators () {
-		let addView = AddViewTableViewCell()
+		let addView = ViewWithCustomTableTableViewCell()
 		addView.arrayOfDataForPresent = [User(login: "Bar"), User(login: "Baz")]
 		addView.typeOfData = "collaborators"
 		let cell = addView.tableView(tableView, cellForRowAt: IndexPath(row: 1, section: 0))

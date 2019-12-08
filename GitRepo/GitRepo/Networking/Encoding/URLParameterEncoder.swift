@@ -10,9 +10,10 @@ import Foundation
 
 // Unit Tests
 
-/// Structure for creating a URLRequest based on  [Parameters](x-source-tag://Parameters). If HTTPHeader field "Content-Type" == nil - setValue("application/x-www-form-urlencoded; charset=utf-8", forHTTPHeaderField: "Content-Type").
-/// Tests - [URLParameterEncoderTests](x-source-tag://URLParameterEncoderTests).
-
+/**
+Structure for creating a URLRequest based on  [Parameters](x-source-tag://Parameters). If HTTPHeader field "Content-Type" == nil - setValue("application/x-www-form-urlencoded; charset=utf-8", forHTTPHeaderField: "Content-Type").
+ Tests - [URLParameterEncoderTests](x-source-tag://URLParameterEncoderTests).
+*/
 public struct URLParameterEncoder: ParameterEncoder {
 	
 	/**

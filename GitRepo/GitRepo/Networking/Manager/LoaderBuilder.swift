@@ -8,8 +8,7 @@
 
 import Foundation
 
-// Unit Tests ???
-
+// No Unit Tests
 
 protocol LoaderBuilderProtocol: class {
 	static func createLoader() -> LoaderProtocol
@@ -25,13 +24,13 @@ class LoaderBuilder: LoaderBuilderProtocol {
 		
 		let isRunningTests = NSClassFromString("RootViewControllerTests") != nil
 		
-		if isRunningTests {
+		if !isRunningTests {
 			session = AppDelegate.shared.session
 			let githubNetworkManager = GitHubNetworkManager(with: session)
 			let firebaseNetworkManager = FirebaseNetworkManager(with: session)
 			
 			let coreDataManagerService = ManagedObjectFromCoreDataService(withDeleting: false, writeContext: CoreDataStack.shared.writeContext, readContext: CoreDataStack.shared.readContext)
-			let loader = Loader(githubNetworkManager: githubNetworkManager, firebaseNetworkManager: firebaseNetworkManager, coreDataService: coreDataManagerService)
+			loader = Loader(githubNetworkManager: githubNetworkManager, firebaseNetworkManager: firebaseNetworkManager, coreDataService: coreDataManagerService)
 		} else {
 			session = URLSession(configuration: .default)
 			loader = Loader(githubNetworkManager: nil, firebaseNetworkManager: nil, coreDataService: nil)

@@ -8,6 +8,8 @@
 
 import UIKit
 
+// No Unit Tests
+
 //@UIApplicationMain
 
 class AppDelegate: UIResponder, UIApplicationDelegate {

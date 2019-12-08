@@ -8,6 +8,8 @@
 
 import Foundation
 
+// No Unit Tests
+
 /// - Tag: HTTPHeaders
 public typealias HTTPHeaders = [String : String]
 

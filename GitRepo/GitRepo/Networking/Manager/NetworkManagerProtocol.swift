@@ -8,6 +8,8 @@
 
 import Foundation
 
+// No Unit Tests
+
 protocol NetworkManagerProtocol {
 	func getData(endPoint: EndPointType, completion: @escaping (_ result: Decodable?, _ error: String?) -> ())
 }

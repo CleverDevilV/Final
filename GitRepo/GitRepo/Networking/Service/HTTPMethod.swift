@@ -8,6 +8,8 @@
 
 import Foundation
 
+// No Unit Tests
+
 /**
 [HTTPMethod](x-source-tag://HTTPMethod) enum.
 ```

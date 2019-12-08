@@ -8,6 +8,8 @@
 
 import Foundation
 
+// No Unit Tests
+
 /**
 [EndPointTypeProtocol](x-source-tag://EndPointTypeProtocol) Protocol (URL Request + components). Components:
 ```

@@ -8,6 +8,8 @@
 
 import UIKit
 
+// Unit Tests
+
 protocol TasksTableViewCellDelegate: class {
 	func addTasksTable()
 }
@@ -24,7 +26,7 @@ class TasksTableViewCell: UITableViewCell {
 	
 	private var tasksLabel = UILabel()
 	private var tasksButton = UIButton()
-	private var tasksView = UIView()
+	
 	private var isExtendedCollaborators = false
 	
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -39,32 +41,22 @@ class TasksTableViewCell: UITableViewCell {
 		// tasksLabel
 		tasksLabel.numberOfLines = 1
 		tasksLabel.font = UIFont.systemFont(ofSize: 20)
-		//		descriptionLabel.textColor
 		tasksLabel.text = "Задачи:"
 		
 		// tasksButton
-		
-//		tasksButton.setTitle("▿", for: .normal)
 		tasksButton.setImage(UIImage(named: "arrowDown"), for: .normal)
 		tasksButton.titleLabel?.font = UIFont.systemFont(ofSize: 20)
 		tasksButton.setTitleColor(.blue, for: .normal)
 		tasksButton.setTitleColor(.white, for: .highlighted)
-		tasksButton.addTarget(self, action: #selector(taptasksButton), for: .touchUpInside)
-		
-	//tasksView
-		tasksView.backgroundColor = .white
-//		let table = TasksTableViewController()
-//		tasksView.addSubview(table)
+		tasksButton.addTarget(self, action: #selector(tapTasksButton), for: .touchUpInside)
 		
 		// add to contentView
 		contentView.addSubview(tasksLabel)
 		contentView.addSubview(tasksButton)
-//		contentView.addSubview(tasksView)
 		
 		// translatesAutoresizingMaskIntoConstraints
 		tasksLabel.translatesAutoresizingMaskIntoConstraints = false
 		tasksButton.translatesAutoresizingMaskIntoConstraints = false
-//		tasksView.translatesAutoresizingMaskIntoConstraints = false
 	}
 	
 	override func updateConstraints() {
@@ -82,16 +74,6 @@ class TasksTableViewCell: UITableViewCell {
 			tasksButton.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -20),
 			tasksButton.heightAnchor.constraint(equalToConstant: 40)
 			])
-		
-	//tasksView
-//		NSLayoutConstraint.activate([
-//			tasksView.topAnchor.constraint(equalTo: tasksLabel.bottomAnchor, constant: 20),
-//			tasksView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-//			tasksView.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -20),
-//			tasksView.heightAnchor.constraint(equalToConstant: 300),
-//			tasksView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
-//			])
-		
 		super.updateConstraints()
 	}
 	
@@ -105,17 +87,17 @@ class TasksTableViewCell: UITableViewCell {
 	
 	override func awakeFromNib() {
 		super.awakeFromNib()
-		// Initialization code
+		
 	}
 	
 	override func setSelected(_ selected: Bool, animated: Bool) {
 		super.setSelected(selected, animated: animated)
 		
-		// Configure the view for the selected state
 	}
 	
+	/// Add table with tasks throw delegate
 	@objc
-	func taptasksButton() {
+	func tapTasksButton() {
 		
 		if !isExtendedCollaborators {
 			tasksButton.imageView?.transform = CGAffineTransform(rotationAngle: .pi)

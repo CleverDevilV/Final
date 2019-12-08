@@ -11,6 +11,7 @@ import UIKit
 // Unit Tests
 
 protocol DescriptionTableViewCellDelegate {
+	/// Update description in project
 	func projectDescriptionUpdate(_ description: String?)
 }
 
@@ -47,12 +48,7 @@ class DescriptionTableViewCell: UITableViewCell {
 		descriptionTextView.layer.cornerRadius = 25
 		descriptionTextView.textContainerInset = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
 		descriptionTextView.isScrollEnabled = false
-//		descriptionTextView.text = """
-//		Tratata
-//		Tratata
-//		"""
 		descriptionTextView.delegate = self
-		
 		
 	// add to contentView
 		contentView.addSubview(descriptionLabel)
@@ -64,19 +60,20 @@ class DescriptionTableViewCell: UITableViewCell {
 	}
 	
 	override func updateConstraints() {
-		
-		NSLayoutConstraint.activate([
 		// descriptionLabel
+		NSLayoutConstraint.activate([
 			descriptionLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant:  10),
 			descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
 			descriptionLabel.trailingAnchor.constraint(equalTo: descriptionTextView.leadingAnchor, constant: -10),
-			descriptionLabel.heightAnchor.constraint(equalToConstant: 40),
+			descriptionLabel.heightAnchor.constraint(equalToConstant: 40)
+			])
+		
 		// descriptionTextView
+		NSLayoutConstraint.activate([
 			descriptionTextView.topAnchor.constraint(equalTo: contentView.topAnchor, constant:  10),
 			descriptionTextView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
 			descriptionTextView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
 			descriptionTextView.heightAnchor.constraint(equalToConstant: 100)
-			
 			])
 		
 		super.updateConstraints()
@@ -92,13 +89,12 @@ class DescriptionTableViewCell: UITableViewCell {
 	
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+		
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+		
     }
 	
 }
@@ -124,6 +120,7 @@ extension DescriptionTableViewCell: UITextViewDelegate {
 	}
 	
 	func textViewDidEndEditing(_ textView: UITextView) {
+		// Update description in project
 		descriptionCellDelegate.projectDescriptionUpdate(textView.text)
 	}
 }

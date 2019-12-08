@@ -11,6 +11,7 @@ import UIKit
 // Unit Tests
 
 protocol RepoTableCellDelegate: class {
+	/// Setup repository of project throw delegate
 	func setupRepo()
 }
 
@@ -38,10 +39,9 @@ class RepoTableViewCell: UITableViewCell {
 	
 	func setupViews() {
 		
-	// descriptionLabel
+	// repoLabel
 		repoLabel.numberOfLines = 1
 		repoLabel.font = UIFont.systemFont(ofSize: 20)
-		//		descriptionLabel.textColor
 		repoLabel.text = "Репозиторий:"
 		
 	// repoButton
@@ -66,18 +66,20 @@ class RepoTableViewCell: UITableViewCell {
 	
 	override func updateConstraints() {
 		
-		NSLayoutConstraint.activate([
 		// repoLabel
+		NSLayoutConstraint.activate([
 			repoLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant:  10),
 			repoLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
 			repoLabel.trailingAnchor.constraint(equalTo: repoButton.leadingAnchor, constant: -10),
-			repoLabel.heightAnchor.constraint(equalToConstant: 40),
+			repoLabel.heightAnchor.constraint(equalToConstant: 40)
+			])
+		
 		// repoButton
+		NSLayoutConstraint.activate([
 			repoButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant:  10),
 			repoButton.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -20),
 			repoButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
 			repoButton.heightAnchor.constraint(equalToConstant: 40)
-			
 			])
 		
 		super.updateConstraints()
@@ -93,18 +95,18 @@ class RepoTableViewCell: UITableViewCell {
 	
 	override func awakeFromNib() {
 		super.awakeFromNib()
-		// Initialization code
+		
 	}
 	
 	override func setSelected(_ selected: Bool, animated: Bool) {
 		super.setSelected(selected, animated: animated)
 		
-		// Configure the view for the selected state
 	}
 }
 
 extension RepoTableViewCell {
 	
+	/// Setup repository of project throw delegate
 	@objc
 	func tapRepoButton() {
 		delegate.setupRepo()

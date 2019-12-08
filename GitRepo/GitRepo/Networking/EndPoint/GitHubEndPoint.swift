@@ -98,10 +98,8 @@ extension GitHubApi: EndPointType {
 		/// Path to one repository with repository name
 		case .oneRepo(let repoName): return "/\(repoName)"
 			
-		case .collaborators(_ ): return ""
-		case .branches(_ ): return ""
-		case .commits(_ ): return ""
-		case .oneCommit(_ ): return ""
+		case .collaborators(_ ), .branches(_ ), .commits(_ ), .oneCommit(_ ):
+			return ""
 		}
 	}
 	
@@ -129,6 +127,4 @@ extension GitHubApi: EndPointType {
 		let header = HTTPHeaders(dictionaryLiteral: ("Authorization", "token \(token)"))
 		return header
 	}
-	
-	
 }

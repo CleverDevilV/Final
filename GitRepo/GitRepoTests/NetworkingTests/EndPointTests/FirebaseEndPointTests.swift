@@ -11,17 +11,22 @@ import XCTest
 
 /// - Tag: FirebaseEndPointTests
 
+class MockUserDefaults: UserDefaults {
+	
+}
+
 class FirebaseEndPointTests: XCTestCase {
 
 	var endPoint: FirebaseApi?
+	var userDefaults: MockUserDefaults!
 	
 	override func setUp() {
-//		UserDefaults.standard.update(with: .oauth_access_token, data: "Bar")
-//		UserDefaults.standard.update(with: .oauth_user_login, data: "Baz")
+		userDefaults = MockUserDefaults()
 	}
 	
 	override func tearDown() {
 		endPoint = nil
+		userDefaults = nil
 	}
 	
 	func testFirebaseApiHttpMethoGET() {
@@ -64,9 +69,9 @@ class FirebaseEndPointTests: XCTestCase {
 		endPoint = FirebaseApi.getProjects
 		// act
 		
-//		let apiKey = UserDefaults.standard.get(with: .firebase_apiKey)
+		let apiKey = UserDefaults.standard.get(with: UserDefaultsType.firebase_apiKey)
 		// assert
-//		XCTAssertEqual(endPoint?.baseURL, URL(string: "https://final-project-sb.firebaseio.com/projects.json?avvrdd_token=\(apiKey)"))
+		XCTAssertEqual(endPoint?.baseURL, URL(string: "https://final-project-sb.firebaseio.com/projects.json?avvrdd_token=\(apiKey)"))
 	}
 	
 	func testFirebaseApiGetProjectFields() {

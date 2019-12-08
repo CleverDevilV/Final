@@ -8,6 +8,8 @@
 
 import Foundation
 
+// No Unit Tests
+
 /// Typealias for parameters dictionary
 /// - Tag: Parameters
 public typealias Parameters = [String : Any]

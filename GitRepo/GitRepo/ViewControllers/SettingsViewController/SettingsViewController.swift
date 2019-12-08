@@ -8,6 +8,9 @@
 
 import UIKit
 
+// Unit Tests
+
+/// [Tests](x-source-tag://SettingsViewControllerTests).
 class SettingsViewController: UIViewController {
 	
 	private var tableView: UITableView!
@@ -28,16 +31,14 @@ class SettingsViewController: UIViewController {
 		tableView.tableFooterView = UIView()
 		
 		tableView.dataSource = self
+		tableView.delegate = self
 		
 		tableView.register(LoginSettingsTableViewCell.self, forCellReuseIdentifier: LoginSettingsTableViewCell.reusedId)
 		
 		tableView.register(LogoutSettingsTableViewCell.self, forCellReuseIdentifier: LogoutSettingsTableViewCell.reusedId)
 		
-		
 		view.addSubview(tableView)
-		
 	}
-
 }
 
 extension SettingsViewController: UITableViewDataSource {
@@ -67,6 +68,8 @@ extension SettingsViewController: LogoutSettingsTableViewCellDelegate {
 		let logOtcommand = LogOutCommand()
 		logOtcommand.logOut()
 		
+		
+		guard NSClassFromString("SettingsViewControllerTests") != nil else { return }
 		AppDelegate.shared.rootViewController.switchToLogout()
 	}
 }

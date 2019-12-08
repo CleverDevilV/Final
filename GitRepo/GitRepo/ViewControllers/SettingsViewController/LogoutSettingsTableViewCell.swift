@@ -8,10 +8,13 @@
 
 import UIKit
 
+// Unit Tests
+
 protocol LogoutSettingsTableViewCellDelegate: class {
 	func logoutButtonTapped()
 }
 
+/// View with logout button
 class LogoutSettingsTableViewCell: UITableViewCell {
 
 	public static var reusedId = "LogoutSettingsTableViewCellDelegateReusedIdOfCell"
@@ -58,13 +61,12 @@ class LogoutSettingsTableViewCell: UITableViewCell {
 	
 	override func awakeFromNib() {
 		super.awakeFromNib()
-		// Initialization code
+		
 	}
 	
 	override func setSelected(_ selected: Bool, animated: Bool) {
 		super.setSelected(selected, animated: animated)
 		
-		// Configure the view for the selected state
 	}
 
 	@objc

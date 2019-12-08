@@ -8,6 +8,8 @@
 
 import UIKit
 
+// No Unit Tests
+
 class LoginSettingsTableViewCell: UITableViewCell {
 
 	public static var reusedId = "LoginSettingsTableViewCellReusedIdOfCell"
@@ -53,13 +55,12 @@ class LoginSettingsTableViewCell: UITableViewCell {
 	
 	override func awakeFromNib() {
 		super.awakeFromNib()
-		// Initialization code
+		
 	}
 	
 	override func setSelected(_ selected: Bool, animated: Bool) {
 		super.setSelected(selected, animated: animated)
 		
-		// Configure the view for the selected state
 	}
 
 }

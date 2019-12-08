@@ -8,25 +8,18 @@
 
 import UIKit
 
-class ProjectsTableVC: UIViewController {
+protocol ProjectsTableViewControllerProtocol {
 	
+}
+
+/// Show Projects ViewControiller
+class ProjectsTableViewController: UIViewController {
+	
+	// UI
 	private var tableView: UITableView!
 	private var projectsSelector: UISegmentedControl!
 	
-	private var projectsBase: ProjectsBase? = AppDelegate.shared.projectBase
-//	private var projects: [Project] = [] {
-//		didSet {
-//			DispatchQueue.main.async {
-//				self.tableView.reloadData()
-//			}
-//		}
-//	}
-	
-	override func viewDidAppear(_ animated: Bool) {
-		super.viewDidAppear(animated)
-		
-		
-	}
+	private var projectsBase: ProjectsBase?
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -50,38 +43,18 @@ class ProjectsTableVC: UIViewController {
 		tableView.delegate = self
 		
 		view.addSubview(tableView)
-		
-		// ?
-		projectsSelector = UISegmentedControl(items: ["Все", "Мои"])
-		projectsSelector.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 50, height: 20))
-		navigationItem.titleView?.addSubview(projectsSelector)
-		
-//		downloadProjects()
 	}
-	
-//	private func downloadProjects() {
-//		let network = FirebaseNetworkManager()
-//		network.getFirebaseData(endPoint: FirebaseApi.getProjects) {
-//			result, error in
-//			if error != nil {
-//				print(error!)
-//			}
-//
-//			self.projectsBase = result as? ProjectsBase
-////
-////			guard let result = self.projectsBase?.projects else { return }
-////			self.projects = result
-//			DispatchQueue.main.async {
-//				self.tableView.reloadData()
-//			}
-//		}
-//	}
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		
-		self.tabBarController?.tabBar.isHidden = false
+		setProjectsBase()
 		
+		self.tabBarController?.tabBar.isHidden = false
+	}
+	
+	func setProjectsBase() {
+		projectsBase = AppDelegate.shared.projectBase
 	}
 
 	@objc
@@ -100,11 +73,11 @@ class ProjectsTableVC: UIViewController {
 				self.projectsBase?.baseUpdated()
 				
 				self.tableView.reloadData()
-//				self.projects = self.projectsBase?.projects ?? []
 			} else {
 				return
 			}
 		})
+		
 		addProjectAlertController.addAction(cancelAction)
 		addProjectAlertController.addAction(okAction)
 		
@@ -117,7 +90,7 @@ class ProjectsTableVC: UIViewController {
 	}
 }
 
-extension ProjectsTableVC: UITableViewDataSource {
+extension ProjectsTableViewController: UITableViewDataSource {
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return projectsBase?.projects.count ?? 0
 //		return projects.count
@@ -147,10 +120,9 @@ extension ProjectsTableVC: UITableViewDataSource {
 			self.tableView.reloadData()
 		}
 	}
-	
 }
 
-extension ProjectsTableVC: UITableViewDelegate {
+extension ProjectsTableViewController: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		tableView.cellForRow(at: indexPath)?.isSelected = false
 		let destinationVC = ProjectViewController()

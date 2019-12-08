@@ -9,7 +9,7 @@
 
 import UIKit
 
-// Unit tests
+// Unit tests as part of RepositoriesBaseTests
 
 /// Class for Repository from GitHub
 public final class Repository: Codable {
@@ -56,7 +56,7 @@ public final class Repository: Codable {
 	private enum GitHubApiResponseCodingKeys: String, CodingKey {
 		
 		case name
-		case repoLink = "html_url"
+		case repositoryLink = "html_url"
 		case collaborators = "collaborators_url"
 		
 		case changes = "events_url"
@@ -78,7 +78,7 @@ public final class Repository: Codable {
 		let container = try decoder.container(keyedBy: GitHubApiResponseCodingKeys.self)
 		
 		self.name = try container.decode(String?.self, forKey: .name)
-		self.repoLink = try container.decode(String?.self, forKey: .repoLink)
+		self.repoLink = try container.decode(String?.self, forKey: .repositoryLink)
 		self.collaboratorsLink = try container.decode(String?.self, forKey: .collaborators)
 		
 		self.changes = try container.decode(String?.self, forKey: .changes)

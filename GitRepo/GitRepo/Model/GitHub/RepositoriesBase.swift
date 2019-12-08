@@ -10,6 +10,14 @@ import Foundation
 
 // Unit tests
 
+/**
+Base for repositories. User name gets from UserDefaults.standard.
+```
+private (set) var repositories: [Repository]
+private (set) var userName: String
+```
+*/
+/// - Tag: RepositoriesBase
 final class RepositoriesBase: Decodable {
 	
 	private (set) var repositories: [Repository] = []

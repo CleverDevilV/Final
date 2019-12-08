@@ -10,6 +10,8 @@
 		A70A4622239C5834005325C7 /* RootViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70A4621239C5834005325C7 /* RootViewControllerTests.swift */; };
 		A70A4624239C6279005325C7 /* FakeAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70A4623239C6279005325C7 /* FakeAppDelegate.swift */; };
 		A70A4626239C62F4005325C7 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70A4625239C62F4005325C7 /* main.swift */; };
+		A70A4627239C6633005325C7 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70A4625239C62F4005325C7 /* main.swift */; };
+		A70A4628239C663F005325C7 /* FakeAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70A4623239C6279005325C7 /* FakeAppDelegate.swift */; };
 		A73FC69B2396CFE6000F9F5C /* OwnerAndViewButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73FC69A2396CFE6000F9F5C /* OwnerAndViewButtonTableViewCell.swift */; };
 		A73FC69C2396D087000F9F5C /* OwnerAndViewButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73FC69A2396CFE6000F9F5C /* OwnerAndViewButtonTableViewCell.swift */; };
 		A73FC69E2396D66B000F9F5C /* SegmentCommitsBranchesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73FC69D2396D66B000F9F5C /* SegmentCommitsBranchesTableViewCell.swift */; };
@@ -281,6 +283,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A70A4629239C6B6B005325C7 /* ViewControllersTests */ = {
+			isa = PBXGroup;
+			children = (
+				A7B71FB9239C440500218CEB /* AddViewTableViewCellTests.swift */,
+				A70A4621239C5834005325C7 /* RootViewControllerTests.swift */,
+			);
+			path = ViewControllersTests;
+			sourceTree = "<group>";
+		};
 		A73FC6962396CAC5000F9F5C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -485,6 +496,7 @@
 		A78A36FE239C2E0000A68BF0 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				A70A4623239C6279005325C7 /* FakeAppDelegate.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -626,9 +638,7 @@
 				A78A36FE239C2E0000A68BF0 /* Service */,
 				A7F55065239BEE0C0035B807 /* StartViewPresenterTests.swift */,
 				A7FE06B8238D90610093F07A /* Info.plist */,
-				A7B71FB9239C440500218CEB /* AddViewTableViewCellTests.swift */,
-				A70A4621239C5834005325C7 /* RootViewControllerTests.swift */,
-				A70A4623239C6279005325C7 /* FakeAppDelegate.swift */,
+				A70A4629239C6B6B005325C7 /* ViewControllersTests */,
 			);
 			path = GitRepoTests;
 			sourceTree = "<group>";
@@ -736,6 +746,7 @@
 			files = (
 				A73FC6A32396DAEA000F9F5C /* RepositoryBranchesTableViewCell.swift in Sources */,
 				A7525B5A239301DA00AD8587 /* LogOutCommand.swift in Sources */,
+				A70A4627239C6633005325C7 /* main.swift in Sources */,
 				A7B405F723996D1F0092AD85 /* MOAuthor.swift in Sources */,
 				A7B405F923996DAD0092AD85 /* MOBranch.swift in Sources */,
 				A785A77E2396A73B0040D4CD /* ProjectForUploadToBack.swift in Sources */,
@@ -752,6 +763,7 @@
 				A7FE06AD238C49F20093F07A /* RepositoryModel.swift in Sources */,
 				A73FC69B2396CFE6000F9F5C /* OwnerAndViewButtonTableViewCell.swift in Sources */,
 				A7B481EF2392C26B00AFA19E /* SettingsViewController.swift in Sources */,
+				A70A4628239C663F005325C7 /* FakeAppDelegate.swift in Sources */,
 				A742042E239AE28D009D344F /* ProjectTableViewCell.swift in Sources */,
 				A7B405DF239950610092AD85 /* CoreDataStack.swift in Sources */,
 				A7525B80239447A200AD8587 /* GitHubNetworkManager.swift in Sources */,

@@ -15,7 +15,7 @@ protocol StartViewProtocol: class {
 }
 
 protocol StartViewPresenterProtocol: class {
-	init(view: StartViewProtocol, loader: LoaderProtocol?, command: LogOutCommand)
+	init(view: StartViewProtocol?, loader: LoaderProtocol?, command: LogOutCommand?)
 	
 	func setupLoader()
 	func setupLogCoutCommand()
@@ -28,7 +28,7 @@ class StartViewPresenter: StartViewPresenterProtocol {
 	let loader: LoaderProtocol?
 	let logoutCommand: LogOutCommand?
 	
-	required init(view: StartViewProtocol, loader: LoaderProtocol?, command: LogOutCommand) {
+	required init(view: StartViewProtocol?, loader: LoaderProtocol?, command: LogOutCommand?) {
 		self.view = view
 		self.loader = loader
 		self.logoutCommand = command

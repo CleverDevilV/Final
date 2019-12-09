@@ -13,7 +13,7 @@ protocol SettingsViewProtocol: class {
 }
 
 protocol SettingsPresenterProtocol: class {
-	init (view: SettingsViewProtocol, command: LogOutCommand)
+	init (view: SettingsViewProtocol?, command: LogOutCommand?)
 	func setCommand()
 }
 
@@ -21,7 +21,7 @@ class SettingsPresenter: SettingsPresenterProtocol {
 	
 	weak var settingsView: SettingsViewProtocol?
 	let logoutCommand: LogOutCommand?
-	required init(view: SettingsViewProtocol, command: LogOutCommand) {
+	required init(view: SettingsViewProtocol?, command: LogOutCommand?) {
 		self.settingsView = view
 		self.logoutCommand = command
 	}

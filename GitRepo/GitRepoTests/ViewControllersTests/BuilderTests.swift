@@ -86,5 +86,24 @@ class BuilderTests: XCTestCase {
 		// assert
 		XCTAssertNil(view)
 	}
+	
+	func testCreatedCollaboratorsTableViewIsNotNil () {
+		// arrange
+		var view: UIViewController?
+		let testRepository = Repository()
+		// act
+		view = Builder.createCollaboratorsTableView(with: testRepository)
+		// assert
+		XCTAssertNotNil(view)
+	}
+	
+	func testCreatedCollaboratorsTableViewIsNil () {
+		// arrange
+		var view: UIViewController?
+		// act
+		view = Builder.createCollaboratorsTableView(with: nil)
+		// assert
+		XCTAssertNil(view)
+	}
 
 }

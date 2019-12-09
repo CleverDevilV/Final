@@ -85,6 +85,8 @@
 		A7664F9C239EA4E500B827BB /* ProjectPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7664F9B239EA4E500B827BB /* ProjectPresenterTests.swift */; };
 		A7664FA5239EAB9F00B827BB /* CollaboratorsTablePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7664FA4239EAB9F00B827BB /* CollaboratorsTablePresenter.swift */; };
 		A7664FA6239EAD0100B827BB /* CollaboratorsTablePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7664FA4239EAB9F00B827BB /* CollaboratorsTablePresenter.swift */; };
+		A7664FAA239EAF7B00B827BB /* CollaboratorsTablePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7664FA9239EAF7B00B827BB /* CollaboratorsTablePresenterTests.swift */; };
+		A7664FAC239EB0A400B827BB /* CollaboratorsTableViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7664FAB239EB0A400B827BB /* CollaboratorsTableViewControllerTests.swift */; };
 		A77404EE239110E90038851E /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77404ED239110E90038851E /* Registration.swift */; };
 		A77404FA23912FFC0038851E /* UserDefExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77404F923912FFC0038851E /* UserDefExt.swift */; };
 		A774053B23918FE60038851E /* repo.xib in Resources */ = {isa = PBXBuildFile; fileRef = A774053A23918FE60038851E /* repo.xib */; };
@@ -261,6 +263,8 @@
 		A7664F94239EA34D00B827BB /* ProjectViewPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectViewPresenter.swift; sourceTree = "<group>"; };
 		A7664F9B239EA4E500B827BB /* ProjectPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectPresenterTests.swift; sourceTree = "<group>"; };
 		A7664FA4239EAB9F00B827BB /* CollaboratorsTablePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollaboratorsTablePresenter.swift; sourceTree = "<group>"; };
+		A7664FA9239EAF7B00B827BB /* CollaboratorsTablePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollaboratorsTablePresenterTests.swift; sourceTree = "<group>"; };
+		A7664FAB239EB0A400B827BB /* CollaboratorsTableViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollaboratorsTableViewControllerTests.swift; sourceTree = "<group>"; };
 		A77404ED239110E90038851E /* Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration.swift; sourceTree = "<group>"; };
 		A77404F923912FFC0038851E /* UserDefExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefExt.swift; sourceTree = "<group>"; };
 		A774053A23918FE60038851E /* repo.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = repo.xib; sourceTree = "<group>"; };
@@ -344,6 +348,7 @@
 				A7282A3F239E56EE0055A12A /* SettingsViewTests */,
 				A7664F81239E7D8B00B827BB /* SomeWebViewTests */,
 				A7664F9D239EA6B100B827BB /* Project */,
+				A7664FA8239EAF4A00B827BB /* Repository */,
 				A70A4639239D2ACF005325C7 /* LogOutCommandTests.swift */,
 				A70A464B239D3E6A005325C7 /* LogoutSettingsTableViewCellTests.swift */,
 			);
@@ -834,6 +839,15 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
+		A7664FA8239EAF4A00B827BB /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				A7664FA9239EAF7B00B827BB /* CollaboratorsTablePresenterTests.swift */,
+				A7664FAB239EB0A400B827BB /* CollaboratorsTableViewControllerTests.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
 		A7751772239BB9F800716795 /* EncodingTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -1257,6 +1271,7 @@
 				A7282A3E239E53220055A12A /* Mock.swift in Sources */,
 				A7A5DE5223952347004271D9 /* GitHubEndPoint.swift in Sources */,
 				A70A465A239D50E2005325C7 /* SegmentCommitsBranchesTableViewCellTests.swift in Sources */,
+				A7664FAC239EB0A400B827BB /* CollaboratorsTableViewControllerTests.swift in Sources */,
 				A7664F72239E57CB00B827BB /* SettingsPresenterTests.swift in Sources */,
 				A70A4637239D27BC005325C7 /* ProjectModelTests.swift in Sources */,
 				A7B406102399857D0092AD85 /* MOCommit.swift in Sources */,
@@ -1275,6 +1290,7 @@
 				A70A4658239D4FA7005325C7 /* RepositoryCollaboratorsTableViewCellTests.swift in Sources */,
 				A7495FCA23967BBD00C120DC /* RepositoriesBase.swift in Sources */,
 				A7A5DE6223952369004271D9 /* RepositoriesTableViewController.swift in Sources */,
+				A7664FAA239EAF7B00B827BB /* CollaboratorsTablePresenterTests.swift in Sources */,
 				A7A5DE5D23952364004271D9 /* ProjectViewController.swift in Sources */,
 				A74A16BA239C161A00E60176 /* CoreDataAdapterTests.swift in Sources */,
 				A7A5DE5C23952364004271D9 /* ProjectModel.swift in Sources */,

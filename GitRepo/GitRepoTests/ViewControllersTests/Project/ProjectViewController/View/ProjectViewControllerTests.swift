@@ -11,53 +11,36 @@ import XCTest
 
 class ProjectViewControllerTests: XCTestCase {
 	
-	class MockCellForTestDelegating {
-		var descriptionCellDelegate: DescriptionTableViewCellDelegate!
-		var repositoryCellDelegate: RepoTableCellDelegate!
-		var collaboratorswCellDelegate: CollaboratorsTableViewCellDelegate!
-		var tasksCellDelegate: TasksTableViewCellDelegate!
-		var viewWithCustomTableCellDelegate: ViewWithCustomTableTableViewCellDelegate!
-		
-		func descriptionDelegating() {
-			descriptionCellDelegate.projectDescriptionUpdate("Bar")
-		}
-		
-		func repositoryDelegating() {
-			repositoryCellDelegate.setupRepo()
-		}
-		
-		func collaboratorsDelegating() {
-			collaboratorswCellDelegate.addCollaboratorsTable()
-		}
-		
-		func tasksDelegating() {
-			tasksCellDelegate.addTasksTable()
-		}
-		
-		func viewDelegating() {
-			viewWithCustomTableCellDelegate.addTask()
-		}
-		
-	}
-	
 	var projectView: ProjectViewController!
-	var cell: MockCellForTestDelegating!
 
     override func setUp() {
+		super.setUp()
+		
 		projectView = ProjectViewController()
-		cell = MockCellForTestDelegating()
     }
 
     override func tearDown() {
+		super.tearDown()
+		
 		projectView = nil
-		cell = nil
     }
 	
-	func testDescriptionDelegating() {
+	func testDescriptionDelegating () {
 		// arrange
+		let project = Project(projectName: "Baz", repoURL: nil, repositoryName: nil, repo: nil, descriptionOfProject: nil, languageOfProject: nil)
+		
+		let cell = DescriptionTableViewCell()
+		
+		let testView = UITextView()
+		testView.text = "Bar"
+		
 		cell.descriptionCellDelegate = projectView
 		// act
-		cell.descriptionDelegating()
+		projectView.setupProject(project)
+		cell.textViewDidEndEditing(testView)
 		// assert
+		
+		XCTAssertEqual(project.descriptionOfProject, "Bar")
 	}
+	
 }

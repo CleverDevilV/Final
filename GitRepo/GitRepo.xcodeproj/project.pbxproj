@@ -340,9 +340,9 @@
 				A7282A41239E57470055A12A /* StartAppViewTests */,
 				A7282A3F239E56EE0055A12A /* SettingsViewTests */,
 				A7664F81239E7D8B00B827BB /* SomeWebViewTests */,
+				A7664F9D239EA6B100B827BB /* Project */,
 				A70A4639239D2ACF005325C7 /* LogOutCommandTests.swift */,
 				A70A464B239D3E6A005325C7 /* LogoutSettingsTableViewCellTests.swift */,
-				A7664F9D239EA6B100B827BB /* Project */,
 			);
 			path = ViewControllersTests;
 			sourceTree = "<group>";

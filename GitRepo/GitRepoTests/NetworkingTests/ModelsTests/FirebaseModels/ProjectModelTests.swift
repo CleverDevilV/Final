@@ -60,18 +60,5 @@ class ProjectModelTests: XCTestCase {
 		project.removeTask(at: 0)
 		XCTAssertNil(project.projectTasks)
 	}
-	
-	func testSetRepository() {
-		// arrange
-		let testRepository = Repository()
-		testRepository.name = "Foo"
-		
-		var testProject: Project? = Project(projectName: "Bar", repoURL: nil, repositoryName: nil, repo: nil, descriptionOfProject: nil, languageOfProject: nil)
-		// act
-		Project.setRepository(testRepository, to: &testProject)
-		// assert
-		XCTAssertNotNil(testProject?.repo)
-		XCTAssertEqual(testProject?.repositoryName, "Foo")
-	}
 
 }

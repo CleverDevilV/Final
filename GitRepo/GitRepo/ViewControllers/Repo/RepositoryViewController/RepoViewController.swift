@@ -108,9 +108,10 @@ extension RepoViewController: UITableViewDelegate {
 extension RepoViewController: OwnerAndViewButtonTableViewCellDelegate {
 	func tapRepoButton() {
 //		let view = SomeUrlWebViewController()
-		let view = Builder.createSomeWebView(with: self.repository?.repoLink ?? "")
+		let webView = Builder.createSomeWebView(with: self.repository?.repoLink ?? "")
 //		view.url = URL(string: self.repository?.repoLink ?? "")
-		self.navigationController?.pushViewController(view, animated: true)
+		guard let notNilWebView = webView else { return }
+		self.navigationController?.pushViewController(notNilWebView, animated: true)
 	}
 }
 
@@ -135,6 +136,8 @@ extension RepoViewController: SegmentCommitsBranchesTableViewCellDelegate {
 //		webView.url = url
 		
 		let webView = Builder.createSomeWebView(with: repository?.commits?[indexPath.row].getUrlOfCommit() ?? "")
-		self.navigationController?.pushViewController(webView, animated: true)
+		
+		guard let notNilWebView = webView else { return }
+		self.navigationController?.pushViewController(notNilWebView, animated: true)
 	}
 }

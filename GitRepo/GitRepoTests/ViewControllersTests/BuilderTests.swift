@@ -38,5 +38,25 @@ class BuilderTests: XCTestCase {
 		// assert
 		XCTAssertNotNil(view)
 	}
+	
+	func testCreatedSomeWebViewIsNotNil () {
+		// arrange
+		var view: UIViewController?
+		let strForTest = "Bar"
+		// act
+		view = Builder.createSomeWebView(with: strForTest)
+		// assert
+		XCTAssertNotNil(view)
+	}
+	
+	func testCreatedSomeWebViewIsNil () {
+		// arrange
+		var view: UIViewController?
+		let strForTest = ""
+		// act
+		view = Builder.createSomeWebView(with: strForTest)
+		// assert
+		XCTAssertNil(view)
+	}
 
 }

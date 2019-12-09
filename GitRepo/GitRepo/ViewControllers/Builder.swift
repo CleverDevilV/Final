@@ -11,7 +11,7 @@ import UIKit
 protocol BuilderProtocol: class {
 	static func createStartAppViewController() -> UIViewController
 	static func createSettingsViewController() -> UIViewController
-	static func createSomeWebView(with path: String) -> UIViewController
+	static func createSomeWebView(with path: String) -> UIViewController?
 }
 
 class Builder: BuilderProtocol {
@@ -53,7 +53,10 @@ class Builder: BuilderProtocol {
 		return view
 	}
 	
-	static func createSomeWebView(with path: String) -> UIViewController {
+	static func createSomeWebView(with path: String) -> UIViewController? {
+		
+		guard URL(string: path) != nil else { return nil }
+		
 		let view = SomeUrlWebViewController()
 		let presenter = SomeWebPresenter(view: view, path: path)
 		view.presenter = presenter

@@ -219,7 +219,8 @@ extension ProjectViewController: RepoTableCellDelegate {
 //				view.url = URL(string: self.project?.repoUrl ?? "")
 				let webView = Builder.createSomeWebView(with: self.project?.repoUrl ?? "")
 				
-				self.navigationController?.pushViewController(webView, animated: true)
+				guard let notNilWebView = webView else { return }
+				self.navigationController?.pushViewController(notNilWebView, animated: true)
 				})
 			
 			let viewRepository = UIAlertAction(title: "Открыть станицу репозитория в приложении", style: .default, handler: {

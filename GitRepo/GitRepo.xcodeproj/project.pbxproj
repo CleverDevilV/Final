@@ -199,7 +199,7 @@
 		A70A4634239D21AF005325C7 /* ProjectBaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectBaseTests.swift; sourceTree = "<group>"; };
 		A70A4636239D27BC005325C7 /* ProjectModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectModelTests.swift; sourceTree = "<group>"; };
 		A70A4639239D2ACF005325C7 /* LogOutCommandTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutCommandTests.swift; sourceTree = "<group>"; };
-		A70A463B239D2D43005325C7 /* SettingsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsViewControllerTests.swift; path = ../SettingsViewControllerTests.swift; sourceTree = "<group>"; };
+		A70A463B239D2D43005325C7 /* SettingsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewControllerTests.swift; sourceTree = "<group>"; };
 		A70A463D239D2FC4005325C7 /* ProjectsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsTableViewController.swift; sourceTree = "<group>"; };
 		A70A463F239D305A005325C7 /* ProjectsTableViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsTableViewControllerTests.swift; sourceTree = "<group>"; };
 		A70A4642239D344C005325C7 /* DescriptionTableViewCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionTableViewCellTests.swift; sourceTree = "<group>"; };
@@ -469,8 +469,8 @@
 		A7282A3F239E56EE0055A12A /* SettingsViewTests */ = {
 			isa = PBXGroup;
 			children = (
-				A70A463B239D2D43005325C7 /* SettingsViewControllerTests.swift */,
-				A7664F71239E57CB00B827BB /* SettingsPresenterTests.swift */,
+				A7664F74239E5B5500B827BB /* View */,
+				A7664F73239E5B4F00B827BB /* Presenter */,
 			);
 			path = SettingsViewTests;
 			sourceTree = "<group>";
@@ -630,6 +630,22 @@
 				A7525B6D2394327000AD8587 /* JSONParameterEncoder.swift */,
 			);
 			path = Encoding;
+			sourceTree = "<group>";
+		};
+		A7664F73239E5B4F00B827BB /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				A7664F71239E57CB00B827BB /* SettingsPresenterTests.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		A7664F74239E5B5500B827BB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A70A463B239D2D43005325C7 /* SettingsViewControllerTests.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		A7751772239BB9F800716795 /* EncodingTests */ = {

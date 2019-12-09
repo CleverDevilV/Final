@@ -71,7 +71,7 @@ class StartAppViewController: UIViewController {
 	private func downloadData() {
 		if UserDefaults.standard.isExist(with: .oauth_user_login) {
 			
-			
+			login = UserDefaults.standard.get(with: .oauth_user_login)
 			
 			var coreDataService: ManagedObjectFromCoreDataService!
 			

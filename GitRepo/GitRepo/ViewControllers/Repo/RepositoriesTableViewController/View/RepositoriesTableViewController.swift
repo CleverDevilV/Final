@@ -19,16 +19,7 @@ class RepositoriesTableViewController: UIViewController {
 	
 	private var repositoryBase: RepositoriesBase?
 	
-	private var repositories: [Repository]! {
-		didSet {
-			DispatchQueue.main.async {
-				if self.segmentControl.selectedSegmentIndex == 0 {
-					self.repositories = self.repositoryBase?.repositories.filter({$0.owner?.login == self.repositoryBase?.userName})
-				}
-				self.tableView.reloadData()
-			}
-		}
-	}
+	private var repositories: [Repository]!
 	
 	private var segmentControl: UISegmentedControl!
 
@@ -80,8 +71,10 @@ class RepositoriesTableViewController: UIViewController {
 	func segmentChanged() {
 		if segmentControl.selectedSegmentIndex == 0, !(repositories?.isEmpty ?? true) {
 			repositories = repositoryBase?.repositories.filter({$0.owner?.login == repositoryBase?.userName})
+			self.tableView.reloadData()
 		} else {
 			repositories = repositoryBase?.repositories
+			self.tableView.reloadData()
 		}
 	}
 	
@@ -90,6 +83,7 @@ class RepositoriesTableViewController: UIViewController {
 extension RepositoriesTableViewController: RepositoriesTableViewProtocol {
 	func setupRepositoriBase(_ repositoryBase: RepositoriesBase) {
 		self.repositoryBase = repositoryBase
+		self.repositories = repositoryBase.repositories.filter({$0.owner?.login == repositoryBase.userName})
 	}
 }
 

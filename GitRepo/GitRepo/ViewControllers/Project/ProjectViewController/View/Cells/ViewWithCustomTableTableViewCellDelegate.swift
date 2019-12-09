@@ -40,38 +40,41 @@ class ViewWithCustomTableTableViewCell: UITableViewCell {
 		}
 	}
 	
-	private var defaultView = UITableView()
+	private var defaultTableView = UITableView()
 	
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: .default, reuseIdentifier: reuseIdentifier)
 		
 		self.backgroundColor = .clear
 		
-		defaultView.dataSource = self
-		defaultView.delegate = self
+		defaultTableView.dataSource = self
+		defaultTableView.delegate = self
+		
+		defaultTableView.isEditing = false
 		
 		setupViews()
 	}
 	
 	func setupViews() {
 		
-		self.defaultView.reloadData()
+		self.defaultTableView.reloadData()
+		defaultTableView.isEditing = false
 		
-		defaultView.backgroundColor = .white
-		defaultView.layer.cornerRadius = 20
-		defaultView.layer.masksToBounds = true
-		defaultView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+		defaultTableView.backgroundColor = .white
+		defaultTableView.layer.cornerRadius = 20
+		defaultTableView.layer.masksToBounds = true
+		defaultTableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
 		
-		contentView.addSubview(defaultView)
+		contentView.addSubview(defaultTableView)
 		
-		defaultView.translatesAutoresizingMaskIntoConstraints = false
+		defaultTableView.translatesAutoresizingMaskIntoConstraints = false
 		
 		NSLayoutConstraint.activate([
-			defaultView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-			defaultView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-			defaultView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-			defaultView.heightAnchor.constraint(equalToConstant: 200),
-			defaultView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
+			defaultTableView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+			defaultTableView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+			defaultTableView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+			defaultTableView.heightAnchor.constraint(equalToConstant: 200),
+			defaultTableView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
 			])
 		
 		super.updateConstraints()
@@ -167,7 +170,7 @@ extension ViewWithCustomTableTableViewCell: UITableViewDelegate {
 			return nil
 		} else if typeOfData == .tasks {
 			
-			let frame: CGRect = defaultView.frame
+			let frame: CGRect = defaultTableView.frame
 			let headerView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height))
 			headerView.layer.cornerRadius = 20
 			headerView.layer.masksToBounds = true
@@ -197,12 +200,12 @@ extension ViewWithCustomTableTableViewCell: UITableViewDelegate {
 		
 		addTaskDelegate.addTask()
 		
-		defaultView.reloadData()
+		defaultTableView.reloadData()
 	}
 	
 	@objc private func toggleEditing(_ sender: UIButton) {
-		defaultView.setEditing(!defaultView.isEditing, animated: true)
-		sender.setTitle(defaultView.isEditing ? "Done" : "Edit", for: .normal)
+		defaultTableView.setEditing(!defaultTableView.isEditing, animated: true)
+		sender.setTitle(defaultTableView.isEditing ? "Done" : "Edit", for: .normal)
 	}
 	
 	func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
@@ -249,7 +252,7 @@ extension ViewWithCustomTableTableViewCell: UITableViewDelegate {
 		if editingStyle == .delete {
 			project?.removeTask(at: indexPath.row)
 			arrayOfDataForPresent = project?.projectTasks
-			self.defaultView.reloadData()
+			self.defaultTableView.reloadData()
 		}
 	}
 }

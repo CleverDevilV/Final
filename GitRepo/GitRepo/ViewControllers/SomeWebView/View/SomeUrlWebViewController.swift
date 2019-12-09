@@ -9,8 +9,11 @@
 import UIKit
 import WebKit
 
+// Unit Tests
+
 /**
 Class for show pages in WebView. Need to insert URL.
+Unit Tests - [SomeUrlWebViewControllerTests](x-source-tag://SomeUrlWebViewControllerTests)
 ```
 public var url: URL?
 ```

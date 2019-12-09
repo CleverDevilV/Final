@@ -24,7 +24,7 @@ class MockAddViewTableViewCell: ViewWithCustomTableTableViewCell {
 	
 }
 
-/// - Tag: MockTableView
+/// - Tag: ViewWithCustomTableTableViewCellTests
 class ViewWithCustomTableTableViewCellTests: XCTestCase {
 
 	var mockAddView: MockAddViewTableViewCell!

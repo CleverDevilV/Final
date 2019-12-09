@@ -56,8 +56,6 @@
 		A7495FCA23967BBD00C120DC /* RepositoriesBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7495FC823967A7100C120DC /* RepositoriesBase.swift */; };
 		A7495FCE2396839500C120DC /* ProjectsBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7495FCD2396839500C120DC /* ProjectsBase.swift */; };
 		A7495FCF239683AC00C120DC /* ProjectsBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7495FCD2396839500C120DC /* ProjectsBase.swift */; };
-		A74A16B6239C113900E60176 /* CoreDataStackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74A16B5239C113900E60176 /* CoreDataStackTests.swift */; };
-		A74A16BA239C161A00E60176 /* CoreDataAdapterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74A16B9239C161A00E60176 /* CoreDataAdapterTests.swift */; };
 		A7525B582392F80700AD8587 /* StartAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7525B572392F80700AD8587 /* StartAppViewController.swift */; };
 		A7525B5A239301DA00AD8587 /* LogOutCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7525B59239301DA00AD8587 /* LogOutCommand.swift */; };
 		A7525B6423942D8600AD8587 /* EndPointTypeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7525B6323942D8600AD8587 /* EndPointTypeProtocol.swift */; };
@@ -245,8 +243,6 @@
 		A7495FC4239670A200C120DC /* FirebaseNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseNetworkManager.swift; sourceTree = "<group>"; };
 		A7495FC823967A7100C120DC /* RepositoriesBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesBase.swift; sourceTree = "<group>"; };
 		A7495FCD2396839500C120DC /* ProjectsBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsBase.swift; sourceTree = "<group>"; };
-		A74A16B5239C113900E60176 /* CoreDataStackTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStackTests.swift; sourceTree = "<group>"; };
-		A74A16B9239C161A00E60176 /* CoreDataAdapterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataAdapterTests.swift; sourceTree = "<group>"; };
 		A7525B572392F80700AD8587 /* StartAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StartAppViewController.swift; path = ../StartAppViewController.swift; sourceTree = "<group>"; };
 		A7525B59239301DA00AD8587 /* LogOutCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutCommand.swift; sourceTree = "<group>"; };
 		A7525B6323942D8600AD8587 /* EndPointTypeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointTypeProtocol.swift; sourceTree = "<group>"; };
@@ -356,13 +352,12 @@
 			isa = PBXGroup;
 			children = (
 				A7664F75239E72D700B827BB /* BuilderTests.swift */,
+				A70A4639239D2ACF005325C7 /* LogOutCommandTests.swift */,
 				A7282A41239E57470055A12A /* StartAppViewTests */,
 				A7282A3F239E56EE0055A12A /* SettingsViewTests */,
 				A7664F81239E7D8B00B827BB /* SomeWebViewTests */,
 				A7664F9D239EA6B100B827BB /* Project */,
 				A7664FA8239EAF4A00B827BB /* Repository */,
-				A70A4639239D2ACF005325C7 /* LogOutCommandTests.swift */,
-				A70A464B239D3E6A005325C7 /* LogoutSettingsTableViewCellTests.swift */,
 			);
 			path = ViewControllersTests;
 			sourceTree = "<group>";
@@ -584,18 +579,8 @@
 		A74A16B3239C111900E60176 /* CoreDataTests */ = {
 			isa = PBXGroup;
 			children = (
-				A74A16B4239C112500E60176 /* CoreDataStack */,
-				A74A16B9239C161A00E60176 /* CoreDataAdapterTests.swift */,
 			);
 			path = CoreDataTests;
-			sourceTree = "<group>";
-		};
-		A74A16B4239C112500E60176 /* CoreDataStack */ = {
-			isa = PBXGroup;
-			children = (
-				A74A16B5239C113900E60176 /* CoreDataStackTests.swift */,
-			);
-			path = CoreDataStack;
 			sourceTree = "<group>";
 		};
 		A7525B5C23942D1000AD8587 /* Model */ = {
@@ -672,6 +657,7 @@
 			isa = PBXGroup;
 			children = (
 				A70A463B239D2D43005325C7 /* SettingsViewControllerTests.swift */,
+				A70A464B239D3E6A005325C7 /* LogoutSettingsTableViewCellTests.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -772,7 +758,6 @@
 			isa = PBXGroup;
 			children = (
 				A70A463F239D305A005325C7 /* ProjectsTableViewControllerTests.swift */,
-				A7664F9F239EA7D300B827BB /* Cells */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -820,8 +805,8 @@
 				A70A4642239D344C005325C7 /* DescriptionTableViewCellTests.swift */,
 				A70A4645239D3731005325C7 /* RepoTableCellTests.swift */,
 				A70A4647239D39DA005325C7 /* CollaboratorsTableViewCellTests.swift */,
-				A7B71FB9239C440500218CEB /* ViewWithCustomTableTableViewCellTests.swift */,
 				A70A464D239D4098005325C7 /* TasksTableViewCellTests.swift */,
+				A7B71FB9239C440500218CEB /* ViewWithCustomTableTableViewCellTests.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -854,8 +839,8 @@
 		A7664FA8239EAF4A00B827BB /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				A7664FC3239EC46D00B827BB /* CollaboratorsTableTests */,
 				A7664FB5239EBAA700B827BB /* RepositoriesTableTests */,
+				A7664FC3239EC46D00B827BB /* CollaboratorsTableTests */,
 				A7664FC1239EC44B00B827BB /* RepositiryTests */,
 			);
 			path = Repository;
@@ -923,6 +908,7 @@
 		A7664FC1239EC44B00B827BB /* RepositiryTests */ = {
 			isa = PBXGroup;
 			children = (
+				A7D5323E239EF5C90086CF3A /* View */,
 				A7664FC2239EC45500B827BB /* Presenter */,
 			);
 			path = RepositiryTests;
@@ -1002,7 +988,7 @@
 				A7751772239BB9F800716795 /* EncodingTests */,
 				A7751776239BBA2700716795 /* EndPointTests */,
 				A70A462A239D0092005325C7 /* Manager */,
-				A78A3702239C308300A68BF0 /* RouterTests.swift */,
+				A7D5323D239EF06A0086CF3A /* Service */,
 				A7B71FB1239C3D1300218CEB /* ModelsTests */,
 			);
 			path = NetworkingTests;
@@ -1079,6 +1065,22 @@
 			path = ModelsTests;
 			sourceTree = "<group>";
 		};
+		A7D5323D239EF06A0086CF3A /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				A78A3702239C308300A68BF0 /* RouterTests.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		A7D5323E239EF5C90086CF3A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A7664F9F239EA7D300B827BB /* Cells */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		A7F55055239BD62B0035B807 /* StartAppView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1148,8 +1150,8 @@
 			children = (
 				A78A36FD239C2A6E00A68BF0 /* NetworkingTests */,
 				A74A16B3239C111900E60176 /* CoreDataTests */,
-				A78A36FE239C2E0000A68BF0 /* Service */,
 				A70A4629239C6B6B005325C7 /* ViewControllersTests */,
+				A78A36FE239C2E0000A68BF0 /* Service */,
 				A7FE06B8238D90610093F07A /* Info.plist */,
 			);
 			path = GitRepoTests;
@@ -1364,7 +1366,6 @@
 				A7664FB8239EBADD00B827BB /* RepositoriesTableViewControllerTests.swift in Sources */,
 				A777638123981AA9007859CA /* ViewWithCustomTableTableViewCellDelegate.swift in Sources */,
 				A7B4060223996EE20092AD85 /* MOTask.swift in Sources */,
-				A74A16B6239C113900E60176 /* CoreDataStackTests.swift in Sources */,
 				A7664FB4239EB95F00B827BB /* RepositoriesPresenterTests.swift in Sources */,
 				A7664F76239E72D700B827BB /* BuilderTests.swift in Sources */,
 				A70A4656239D4AA4005325C7 /* CollaboratorsTableViewController.swift in Sources */,
@@ -1411,7 +1412,6 @@
 				A7A5DE6223952369004271D9 /* RepositoriesTableViewController.swift in Sources */,
 				A7664FAA239EAF7B00B827BB /* CollaboratorsTablePresenterTests.swift in Sources */,
 				A7A5DE5D23952364004271D9 /* ProjectViewController.swift in Sources */,
-				A74A16BA239C161A00E60176 /* CoreDataAdapterTests.swift in Sources */,
 				A7A5DE5C23952364004271D9 /* ProjectModel.swift in Sources */,
 				A7B4060623996F930092AD85 /* MOCollaborator.swift in Sources */,
 				A777637E2397C83B007859CA /* BranchModel.swift in Sources */,

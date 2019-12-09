@@ -14,7 +14,10 @@ protocol OwnerAndViewButtonTableViewCellDelegate: class {
 	func tapRepoButton()
 }
 
-/// Shows reporitory info and page in WebView
+/**
+Shows reporitory info and page in WebView
+Unit Tests - [OwnerAndViewButtonTableViewCellTests](x-source-tag://OwnerAndViewButtonTableViewCellTests)
+*/
 class OwnerAndViewButtonTableViewCell: UITableViewCell {
 	
 	public static let ownerReuseId = "OwnerAndViewButtonReuseId"

@@ -18,6 +18,7 @@ protocol RepositoriesPresenterProtocol: class {
 	func setRepositoriBase()
 }
 
+ /// Unit Tests - [RepositoriesPresenterTests](x-source-tag://RepositoriesPresenterTests)
 class RepositoriesPresenter: RepositoriesPresenterProtocol {
 	
 	weak var view: RepositoriesTableViewProtocol!

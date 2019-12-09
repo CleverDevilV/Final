@@ -9,6 +9,7 @@
 import XCTest
 @testable import GitRepo
 
+/// - Tag: StartViewPresenterTests
 class StartViewPresenterTests: XCTestCase {
 	
 	class MockView: StartViewProtocol {

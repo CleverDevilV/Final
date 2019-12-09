@@ -8,6 +8,8 @@
 
 import Foundation
 
+// Unit Tests
+
 protocol ProjectViewProtocol: class {
 	func setupProject(_ project: Project)
 }
@@ -18,6 +20,7 @@ protocol ProjectPresenterProtocol: class {
 	func setProject()
 }
 
+ /// Unit Tests - [ProjectPresenterTests](x-source-tag://ProjectPresenterTests)
 class ProjectPresenter: ProjectPresenterProtocol {
 	
 	weak var view: ProjectViewProtocol!

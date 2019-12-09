@@ -25,6 +25,7 @@ class MockRepoTableViewCell: RepoTableViewCell{
 	}
 }
 
+/// - Tag: RepoTableCellTests
 class RepoTableCellTests: XCTestCase {
 	
 	var cell: RepoTableViewCell!

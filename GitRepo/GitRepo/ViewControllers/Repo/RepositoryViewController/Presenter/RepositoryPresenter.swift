@@ -8,6 +8,8 @@
 
 import Foundation
 
+// Unit Tests
+
 protocol RepositoryViewProtocol: class {
 	func setupRepository(_ repository: Repository)
 }
@@ -19,6 +21,7 @@ protocol RepositoryPresenterProtocol: class {
 	func setRepository()
 }
 
+ /// Unit Tests - [RepositoryPresenterTests](x-source-tag://RepositoryPresenterTests)
 class RepositoryPresenter: RepositoryPresenterProtocol {
 	
 	weak var view: RepositoryViewProtocol!

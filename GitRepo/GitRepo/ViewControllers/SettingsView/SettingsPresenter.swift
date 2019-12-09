@@ -8,6 +8,8 @@
 
 import Foundation
 
+// Unit Tests
+
 protocol SettingsViewProtocol: class {
 	func setupLogoutCommang(_ command: LogOutCommand)
 }
@@ -17,6 +19,7 @@ protocol SettingsPresenterProtocol: class {
 	func setCommand()
 }
 
+ /// Unit Tests - [SettingsPresenterTests](x-source-tag://SettingsPresenterTests)
 class SettingsPresenter: SettingsPresenterProtocol {
 	
 	weak var settingsView: SettingsViewProtocol?

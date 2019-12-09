@@ -15,6 +15,7 @@ protocol CollaboratorsTableViewCellDelegate: class {
 	func addCollaboratorsTable()
 }
 
+ /// Unit Tests - [CollaboratorsTableViewCellTests](x-source-tag://CollaboratorsTableViewCellTests)
 class CollaboratorsTableViewCell: UITableViewCell {
 	
 	public static let collaboratorsReuseId = "CollaboratorsReuseId"

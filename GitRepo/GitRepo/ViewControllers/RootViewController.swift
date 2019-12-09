@@ -8,7 +8,7 @@
 
 import UIKit
 
-// Unit tests - no, because of AppDelegate = nil (
+// Unit tests ???
 
 protocol ManagedViewControllerByRootViewControllerProtocol {
 	func setupRootViewController(_ rootView: RootViewControllerProtocol)

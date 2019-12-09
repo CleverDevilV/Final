@@ -15,6 +15,7 @@ protocol DescriptionTableViewCellDelegate: class {
 	func projectDescriptionUpdate(_ description: String?)
 }
 
+ /// Unit Tests - [DescriptionTableViewCellTests](x-source-tag://DescriptionTableViewCellTests)
 class DescriptionTableViewCell: UITableViewCell {
 	
 	public static let descriptionReuseId = "DescriptionReuseId"

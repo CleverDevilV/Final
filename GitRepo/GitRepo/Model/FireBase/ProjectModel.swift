@@ -11,6 +11,7 @@ import Foundation
 // Unit tests
 
 /// Class for Project from Firebase
+/// Unit Tests - [ProjectModelTests](x-source-tag://ProjectModelTests)
 public final class Project: Decodable {
 	
 	/// Name of project

@@ -29,6 +29,7 @@ class MockCollaboratorsTableViewCell: CollaboratorsTableViewCell {
 	}
 }
 
+/// - Tag: CollaboratorsTableViewCellTests
 class CollaboratorsTableViewCellTests: XCTestCase {
 	
 	var cell: CollaboratorsTableViewCell!

@@ -9,6 +9,7 @@
 import XCTest
 @testable import GitRepo
 
+/// - Tag: CollaboratorsTableViewControllerTests
 class CollaboratorsTableViewControllerTests: XCTestCase {
 	
 	class FakeCollaboratorsPresenter: CollaboratorsTablePresenterProtocol {

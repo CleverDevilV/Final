@@ -9,6 +9,7 @@
 import XCTest
 @testable import GitRepo
 
+/// - Tag: ProjectViewControllerTests
 class ProjectViewControllerTests: XCTestCase {
 	
 	var projectView: ProjectViewController!

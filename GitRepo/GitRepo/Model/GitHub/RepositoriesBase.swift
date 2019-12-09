@@ -12,6 +12,7 @@ import Foundation
 
 /**
 Base for repositories. User name gets from UserDefaults.standard.
+Unit Tests - [RepositoriesBaseTests](x-source-tag://RepositoriesBaseTests)
 ```
 private (set) var repositories: [Repository]
 private (set) var userName: String

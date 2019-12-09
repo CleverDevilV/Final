@@ -9,6 +9,7 @@
 import XCTest
 @testable import GitRepo
 
+/// - Tag: StartAppViewControllerTests
 class StartAppViewControllerTests: XCTestCase {
 	
 	var view: StartAppViewController!

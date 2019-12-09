@@ -9,6 +9,7 @@
 import XCTest
 @testable import GitRepo
 
+/// - Tag: ProjectPresenterTests
 class ProjectPresenterTests: XCTestCase {
 	
 	class SpyView: ProjectViewProtocol {

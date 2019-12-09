@@ -9,6 +9,8 @@
 import UIKit
 import WebKit
 
+// No Unit Tests
+
 struct OAuthData {
 	static let client_id: String = "client_id"
 	static let client_secret: String = "client_secret"

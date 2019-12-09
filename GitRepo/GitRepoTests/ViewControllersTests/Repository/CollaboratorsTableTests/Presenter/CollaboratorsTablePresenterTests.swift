@@ -9,6 +9,7 @@
 import XCTest
 @testable import GitRepo
 
+/// - Tag: CollaboratorsTablePresenterTests
 class CollaboratorsTablePresenterTests: XCTestCase {
 	
 	class SpyView: CollaboratorsTableViewProtocol {

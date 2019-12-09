@@ -19,7 +19,7 @@ protocol ProjectsTablePresenterProtocol: class {
 	
 	func setProjectsBase()
 }
-
+ /// Unit Tests - [ProjectsTablePresenterTests](x-source-tag://ProjectsTablePresenterTests)
 class ProjectsTablePresenter: ProjectsTablePresenterProtocol {
 	
 	weak var view: ProjectsTableViewProtocol?

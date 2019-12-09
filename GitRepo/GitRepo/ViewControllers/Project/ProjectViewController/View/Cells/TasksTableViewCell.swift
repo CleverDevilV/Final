@@ -14,6 +14,7 @@ protocol TasksTableViewCellDelegate: class {
 	func addTasksTable()
 }
 
+ /// Unit Tests - [TasksTableViewCellTests](x-source-tag://TasksTableViewCellTests)
 class TasksTableViewCell: UITableViewCell {
 	
 	public static let tasksReuseId = "TasksReuseId"

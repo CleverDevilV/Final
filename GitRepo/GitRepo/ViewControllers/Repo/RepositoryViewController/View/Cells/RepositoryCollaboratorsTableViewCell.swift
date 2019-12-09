@@ -15,7 +15,10 @@ protocol RepositoryCollaboratorsTableViewCellDelegate: class {
 	func showCollaboratorsTable()
 }
 
-/// Shows label and button for view collaborators table
+/**
+Shows label and button for view collaborators table
+*/
+ /// Unit Tests - [RepositoryCollaboratorsTableViewCellTests](x-source-tag://RepositoryCollaboratorsTableViewCellTests)
 class RepositoryCollaboratorsTableViewCell: UITableViewCell {
 	
 	public static let collaboratorsReuseId = "CollaboratorsReuseId"

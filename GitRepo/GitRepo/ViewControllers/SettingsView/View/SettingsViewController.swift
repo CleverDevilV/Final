@@ -10,7 +10,7 @@ import UIKit
 
 // Unit Tests
 
-/// [Tests](x-source-tag://SettingsViewControllerTests).
+ /// Unit Tests - [SettingsViewControllerTests](x-source-tag://SettingsViewControllerTests)
 class SettingsViewController: UIViewController {
 	
 	public var presenter: SettingsPresenter!

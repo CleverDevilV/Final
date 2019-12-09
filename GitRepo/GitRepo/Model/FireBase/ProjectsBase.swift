@@ -10,9 +10,9 @@ import Foundation
 
 // Unit tests
 
-
 /**
-Base for projects
+Base for projects.
+Unit Tests - [ProjectBaseTests](x-source-tag://ProjectBaseTests)
 ```
 private (set) var projects: [Project]
 private var userName: String from UserDefaults.standard

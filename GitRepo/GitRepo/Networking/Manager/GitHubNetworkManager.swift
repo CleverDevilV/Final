@@ -8,8 +8,8 @@
 
 import Foundation
 
-// Unit tests ???
-
+// Unit tests
+ /// Unit Tests - [GitHubNetworkManagerTests](x-source-tag://GitHubNetworkManagerTests)
 struct GitHubNetworkManager: NetworkManagerProtocol {
 	
 	private let router: Router<GitHubApi>!

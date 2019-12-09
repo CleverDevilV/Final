@@ -10,6 +10,7 @@ import UIKit
 
 // Unit Tests
 
+ /// Unit Tests - [RepositoriesTableViewControllerTests](x-source-tag://RepositoriesTableViewControllerTests)
 class RepositoriesTableViewController: UIViewController {
 	
 	public var presenter: RepositoriesPresenterProtocol!

@@ -8,8 +8,9 @@
 
 import Foundation
 
-// Unit tests ???
+// Unit tests
 
+ /// Unit Tests - [FirebaseNetworkManagerTests](x-source-tag://FirebaseNetworkManagerTests)
 struct FirebaseNetworkManager: NetworkManagerProtocol {
 	
 	private let router: Router<FirebaseApi>!

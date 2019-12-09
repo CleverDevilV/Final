@@ -8,6 +8,8 @@
 
 import UIKit
 
+/// Unit Tests - [BuilderTests](x-source-tag://BuilderTests)
+
 protocol BuilderProtocol: class {
 	static func createStartAppViewController() -> UIViewController
 	static func createSettingsViewController() -> UIViewController

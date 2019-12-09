@@ -19,6 +19,7 @@ protocol RootViewControllerProtocol {
 	func switchToLogout()
 }
 
+/// Unit Tests - [StartAppViewControllerTests](x-source-tag://StartAppViewControllerTests)
 class StartAppViewController: UIViewController {
 	
 	//MARK: UI

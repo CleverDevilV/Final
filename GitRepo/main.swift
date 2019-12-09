@@ -10,6 +10,7 @@ import UIKit
 
 //???
 let isRunningTests = NSClassFromString("XCTestCase") != nil
+// FakeAppDelegate - at tests target, has link
 let appDelegateClass = isRunningTests ? NSStringFromClass(FakeAppDelegate.self) : NSStringFromClass(AppDelegate.self)
 let args = UnsafeMutableRawPointer(CommandLine.unsafeArgv).bindMemory(to: UnsafeMutablePointer<Int8>.self, capacity: Int(CommandLine.argc))
 UIApplicationMain(

@@ -9,6 +9,7 @@
 import XCTest
 @testable import GitRepo
 
+/// - Tag: BuilderTests
 class BuilderTests: XCTestCase {
 
     override func setUp() {

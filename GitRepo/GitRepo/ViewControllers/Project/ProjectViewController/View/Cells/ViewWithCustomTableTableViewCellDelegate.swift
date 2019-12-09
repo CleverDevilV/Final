@@ -20,6 +20,7 @@ enum TypeOfData {
 }
 
 /// Class for create table in cell
+ /// Unit Tests - [ViewWithCustomTableTableViewCellTests](x-source-tag://ViewWithCustomTableTableViewCellTests)
 class ViewWithCustomTableTableViewCell: UITableViewCell {
 	
 	public static var reusedId = "AddViewTableViewCell"

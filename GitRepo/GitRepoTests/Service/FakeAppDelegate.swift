@@ -7,7 +7,8 @@
 //
 
 import Foundation
-
+ /// FakeAppDelegate - [FakeAppDelegate](x-source-tag://FakeAppDelegate)
+/// - Tag: FakeAppDelegate
 class FakeAppDelegate: NSObject {
 	
 	private let filename = "log_tests.txt"

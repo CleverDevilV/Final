@@ -8,6 +8,8 @@
 
 import Foundation
 
+// Unit Tests
+
 protocol SomeWebViewProtocol: class {
 	func setURL(_ url: URL)
 }
@@ -18,6 +20,7 @@ protocol SomeWebPresenterProtocol: class {
 	func setURL()
 }
 
+ /// Unit Tests - [SomeWebPresenterTests](x-source-tag://SomeWebPresenterTests)
 class SomeWebPresenter: SomeWebPresenterProtocol {
 	
 	weak var view: SomeWebViewProtocol?

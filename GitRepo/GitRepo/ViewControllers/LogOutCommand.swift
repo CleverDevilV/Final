@@ -11,7 +11,8 @@ import Foundation
 // Unit Tests
 
 /**
-Command For Logout User - reset UserDefaults.standard.remove(with: .oauth_access_token) and UserDefaults.standard.remove(with: .oauth_user_login)
+Command For Logout User - reset UserDefaults.standard.remove(with: .oauth_access_token) and UserDefaults.standard.remove(with: .oauth_user_login).
+Unit Tests - [LogOutCommandTests](x-source-tag://LogOutCommandTests)
 */
 /// - Tag: LogOutCommand
 class LogOutCommand {

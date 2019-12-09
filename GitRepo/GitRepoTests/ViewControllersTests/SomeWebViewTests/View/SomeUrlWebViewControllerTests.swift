@@ -10,6 +10,7 @@ import XCTest
 import WebKit
 @testable import GitRepo
 
+/// - Tag: SomeUrlWebViewControllerTests
 class SomeUrlWebViewControllerTests: XCTestCase {
 	
 	class SpyWebView: WKWebView {

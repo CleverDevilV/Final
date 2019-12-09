@@ -8,8 +8,9 @@
 
 import UIKit
 
-// No Unit Tests
+// Unit Tests
 
+ /// Unit Tests - [CollaboratorsTableViewControllerTests](x-source-tag://CollaboratorsTableViewControllerTests)
 class CollaboratorsTableViewController: UIViewController {
 	
 	public var presenter: CollaboratorsTablePresenterProtocol!

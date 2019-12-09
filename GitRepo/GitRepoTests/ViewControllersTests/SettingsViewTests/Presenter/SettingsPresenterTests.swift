@@ -9,6 +9,7 @@
 import XCTest
 @testable import GitRepo
 
+/// - Tag: SettingsPresenterTests
 class SettingsPresenterTests: XCTestCase {
 	
 	class MockView: SettingsViewProtocol {

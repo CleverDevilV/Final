@@ -21,10 +21,10 @@ protocol StartViewPresenterProtocol: class {
 	func setupLogCoutCommand()
 }
 
-/// Presenter
+ /// Unit Tests - [StartViewPresenterTests](x-source-tag://StartViewPresenterTests)
 class StartViewPresenter: StartViewPresenterProtocol {
 	
-	let view: StartViewProtocol?
+	weak var view: StartViewProtocol?
 	let loader: LoaderProtocol?
 	let logoutCommand: LogOutCommand?
 	

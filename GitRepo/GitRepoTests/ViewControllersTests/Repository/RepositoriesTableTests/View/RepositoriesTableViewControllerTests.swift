@@ -9,6 +9,7 @@
 import XCTest
 @testable import GitRepo
 
+/// - Tag: RepositoriesTableViewControllerTests
 class RepositoriesTableViewControllerTests: XCTestCase {
 	
 	class FakeRepositoriesPresenter : RepositoriesPresenterProtocol {

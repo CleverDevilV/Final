@@ -8,6 +8,8 @@
 
 import Foundation
 
+// Unit Tests
+
 protocol CollaboratorsTableViewProtocol: class {
 	func setupRepository(_ repository: Repository)
 }
@@ -18,6 +20,7 @@ protocol CollaboratorsTablePresenterProtocol: class {
 	func setRepository()
 }
 
+ /// Unit Tests - [CollaboratorsTablePresenterTests](x-source-tag://CollaboratorsTablePresenterTests)
 class CollaboratorsTablePresenter: CollaboratorsTablePresenterProtocol {
 	
 	weak var view: CollaboratorsTableViewProtocol!

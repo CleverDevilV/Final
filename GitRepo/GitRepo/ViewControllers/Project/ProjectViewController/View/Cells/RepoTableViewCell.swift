@@ -15,6 +15,7 @@ protocol RepoTableCellDelegate: class {
 	func setupRepo()
 }
 
+ /// Unit Tests - [RepoTableCellTests](x-source-tag://RepoTableCellTests)
 class RepoTableViewCell: UITableViewCell {
 	
 	public static let repoReuseId = "RepoReuseId"

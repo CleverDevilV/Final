@@ -14,7 +14,10 @@ protocol LogoutSettingsTableViewCellDelegate: class {
 	func logoutButtonTapped()
 }
 
-/// View with logout button
+/**
+View with logout button
+Unit Tests - [LogoutSettingsTableViewCellTests](x-source-tag://LogoutSettingsTableViewCellTests)
+*/
 class LogoutSettingsTableViewCell: UITableViewCell {
 
 	public static var reusedId = "LogoutSettingsTableViewCellDelegateReusedIdOfCell"

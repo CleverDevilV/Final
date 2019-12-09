@@ -15,6 +15,7 @@ protocol SegmentCommitsBranchesTableViewCellDelegate: class {
 	func showWebView(at indexPath: IndexPath)
 }
 
+ /// Unit Tests - [SegmentCommitsBranchesTableViewCellTests](x-source-tag://SegmentCommitsBranchesTableViewCellTests)
 class SegmentCommitsBranchesTableViewCell: UITableViewCell {
 	
 	public static let separatorCommitsBranchesReuseId = "SeparatorCommitsBranchesReuseId"

@@ -12,8 +12,12 @@ import UIKit
 
 class RepositoriesTableViewController: UIViewController {
 	
+	public var presenter: RepositoriesPresenterProtocol!
+	
 	private var tableView: UITableView!
-	private var repositoryBase: RepositoriesBase? = AppDelegate.shared.repositoryBase
+	
+	private var repositoryBase: RepositoriesBase?
+	
 	private var repositories: [Repository]! {
 		didSet {
 			DispatchQueue.main.async {
@@ -29,6 +33,8 @@ class RepositoriesTableViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+		
+		presenter.setRepositoriBase()
 		
 		view.backgroundColor = .white
 		self.tabBarController?.tabBar.isHidden = false
@@ -78,6 +84,12 @@ class RepositoriesTableViewController: UIViewController {
 		}
 	}
 	
+}
+
+extension RepositoriesTableViewController: RepositoriesTableViewProtocol {
+	func setupRepositoriBase(_ repositoryBase: RepositoriesBase) {
+		self.repositoryBase = repositoryBase
+	}
 }
 
 extension RepositoriesTableViewController: UITableViewDataSource {

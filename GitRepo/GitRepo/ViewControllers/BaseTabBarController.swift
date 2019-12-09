@@ -19,7 +19,8 @@ class BaseTabBarController: UITabBarController {
 		let projectsVC = UINavigationController(rootViewController: Builder.createProjectsTableView() )
 		projectsVC.tabBarItem = UITabBarItem(title: "Проекты", image: UIImage(named: "project"), tag: 0)
 		
-		let repoVC = UINavigationController(rootViewController: RepositoriesTableViewController())
+//		let repoVC = UINavigationController(rootViewController: RepositoriesTableViewController())
+		let repoVC = UINavigationController(rootViewController: Builder.createRepositoriesTableViewController())
 		repoVC.tabBarItem = UITabBarItem(title: "Репозитории", image: UIImage(named: "github"), tag: 1)
 		
 //		let settingsVC = UINavigationController(rootViewController: SettingsViewController())

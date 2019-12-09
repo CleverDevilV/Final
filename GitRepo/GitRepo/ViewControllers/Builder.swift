@@ -12,8 +12,11 @@ protocol BuilderProtocol: class {
 	static func createStartAppViewController() -> UIViewController
 	static func createSettingsViewController() -> UIViewController
 	static func createSomeWebView(with path: String) -> UIViewController?
+	
 	static func createProjectsTableView() -> UIViewController
 	static func createProjectViewController(with project: Project?) -> UIViewController?
+	
+	static func createRepositoriesTableViewController() -> UIViewController
 	static func createCollaboratorsTableView(with repository: Repository?) -> UIViewController?
 }
 
@@ -109,4 +112,19 @@ class Builder: BuilderProtocol {
 		}
 	}
 	
+	static func createRepositoriesTableViewController() -> UIViewController {
+		
+		var repositoryBase: RepositoriesBase
+		if NSClassFromString("XCTestCase") != nil {
+			repositoryBase = RepositoriesBase(with: [])
+		} else {
+			repositoryBase = AppDelegate.shared.repositoryBase ?? RepositoriesBase(with: [])
+		}
+		
+		let view = RepositoriesTableViewController()
+		let presenter = RepositoriesPresenter(view: view, repositoryBase: repositoryBase)
+		view.presenter = presenter
+		
+		return view
+	}
 }

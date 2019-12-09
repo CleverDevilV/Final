@@ -154,6 +154,8 @@ class StartAppViewController: UIViewController {
 		view.addSubview(welcomeButton)
 		view.addSubview(logOutButton)
 		
+		login = UserDefaults.standard.get(with: .oauth_user_login)
+		
 		if UserDefaults.standard.isExist(with: .oauth_user_login) {
 		
 			loadView.dotsColor = UIColor(red: 227 / 255, green: 172 / 255, blue: 1, alpha: 1)

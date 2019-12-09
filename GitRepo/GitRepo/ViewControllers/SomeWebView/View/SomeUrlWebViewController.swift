@@ -53,6 +53,11 @@ extension SomeUrlWebViewController: WKNavigationDelegate {
 	
 	func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
 		
+		guard NSClassFromString("XCTestCase") == nil  else {
+				decisionHandler(.cancel)
+			return
+		}
+		
 		if let url = navigationAction.request.url {
 			if url.absoluteString.contains("https://github.com/") {
 				decisionHandler(.allow)

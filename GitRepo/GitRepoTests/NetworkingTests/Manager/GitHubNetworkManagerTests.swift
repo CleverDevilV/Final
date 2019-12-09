@@ -12,15 +12,29 @@ import XCTest
 /// - Tag: GitHubNetworkManagerTests
 class GitHubNetworkManagerTests: XCTestCase {
 	
+	class DummyRouter <EndPoint: EndPointType> : NetworkRouter {
+		
+		func request(_ route: EndPoint, complition: @escaping NetworkRouterCompletion) {
+			complition("data".data(using: .utf8), nil, nil)
+		}
+		
+		func cancel() {
+		}
+	}
+	
 	var githubManager: NetworkManagerProtocol!
 	var session: URLSession!
 	
     override func setUp() {
+		super.setUp()
+		
 		session = MockUrlSession()
 		githubManager = GitHubNetworkManager(with: session)
     }
 
     override func tearDown() {
+		super.tearDown()
+		
 		githubManager = nil
 		session = nil
     }

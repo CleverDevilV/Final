@@ -58,6 +58,8 @@ class ProjectViewController: UIViewController {
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		
+		tableView.isEditing = false
+		
 		self.tabBarController?.tabBar.isHidden = true
 	}
 	

@@ -28,6 +28,8 @@ class StartAppViewController: UIViewController {
 	private var welcomeButton = UIButton()
 	private var logOutButton = UIButton()
 	
+	private var colorForButtonsTitle: UIColor = UIColor(red: 0.7254902124, green: 0.4784313738, blue: 0.09803921729, alpha: 1) //#colorLiteral(red: 0.7254902124, green: 0.4784313738, blue: 0.09803921729, alpha: 1)
+	
 	private let loadView = DiamondLoad()
 	
 	//MARK: service VARs
@@ -38,7 +40,7 @@ class StartAppViewController: UIViewController {
 	private var loader: LoaderProtocol!
 	
 	//MARK: Presenter
-	var presenter: StartViewPresenterProtocol?
+	var presenter: StartViewPresenterProtocol!
 	//MARK: RootView
 	var rootView: RootViewControllerProtocol!
 	
@@ -51,8 +53,8 @@ class StartAppViewController: UIViewController {
 		
 		setupViews()
 		
-		presenter?.setupLoader()
-		presenter?.setupLogCoutCommand()
+		presenter.setupLoader()
+		presenter.setupLogCoutCommand()
 		
 		downloadData()
 	}
@@ -209,8 +211,10 @@ class StartAppViewController: UIViewController {
 		// welcomeButton
 		let welcomeButtonTitle = (login.isEmpty) ? "Войти" : "Продолжить"
 		welcomeButton.setTitle(welcomeButtonTitle, for: .normal)
-		welcomeButton.setTitleColor(UIColor(red: 1, green: 0.6, blue: 0, alpha: 0.6), for: .normal)
+		welcomeButton.setTitleColor(colorForButtonsTitle, for: .normal)
 		welcomeButton.backgroundColor = UIColor(red: 1, green: 0.6, blue: 0, alpha: 0.2)
+		welcomeButton.layer.borderColor = colorForButtonsTitle.cgColor
+		welcomeButton.layer.borderWidth = 1
 		welcomeButton.layer.cornerRadius = 20
 		welcomeButton.layer.masksToBounds = true
 		welcomeButton.addTarget(self, action: #selector(tapWelcomeButton(_:)), for: .touchUpInside)
@@ -225,8 +229,10 @@ class StartAppViewController: UIViewController {
 		// logOutButton
 		logOutButton.isHidden = login.isEmpty
 		logOutButton.setTitle("Выйти", for: .normal)
-		logOutButton.setTitleColor(UIColor(red: 1, green: 0.6, blue: 0, alpha: 0.8), for: .normal)
+		logOutButton.setTitleColor(colorForButtonsTitle, for: .normal)
 		logOutButton.backgroundColor = UIColor(red: 1, green: 0.6, blue: 0, alpha: 0.4)
+		logOutButton.layer.borderColor = colorForButtonsTitle.cgColor
+		logOutButton.layer.borderWidth = 1
 		logOutButton.layer.cornerRadius = 20
 		logOutButton.layer.masksToBounds = true
 		logOutButton.addTarget(self, action: #selector(tapLogOutButton), for: .touchUpInside)

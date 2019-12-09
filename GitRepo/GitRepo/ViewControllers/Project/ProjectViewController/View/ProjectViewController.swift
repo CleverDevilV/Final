@@ -171,10 +171,16 @@ extension ProjectViewController: RepoTableCellDelegate {
 					self.netWorkService = GitHubNetworkManager(with: AppDelegate.shared.session)
 					self.netWorkService?.getData(endPoint: GitHubApi.oneRepo(repositoryName: repoName)) {
 						repo, error in
-						self.project?.repo = repo as? Repository
-						self.project?.repoUrl = notNilUrl.absoluteString
-						self.project?.repositoryName = self.project?.repo?.name
-						self.project?.languageOfProject = self.project?.repo?.languageOfProject
+						
+						guard let repository = repo as? Repository else { return }
+						
+						Project.setRepository(repository, to: &self.project)
+						
+//						self.project?.repo = repo as? Repository
+//						self.project?.repoUrl = notNilUrl.absoluteString
+						
+//						self.project?.repositoryName = self.project?.repo?.name
+//						self.project?.languageOfProject = self.project?.repo?.languageOfProject
 						DispatchQueue.main.async {
 							self.tableView.reloadData()
 						}
@@ -216,8 +222,13 @@ extension ProjectViewController: RepoTableCellDelegate {
 						self.netWorkService = GitHubNetworkManager(with: AppDelegate.shared.session)
 						self.netWorkService?.getData(endPoint: GitHubApi.oneRepo(repositoryName: repoName)) {
 							repo, error in
-							self.project?.repo = repo as? Repository
-							self.project?.repoUrl = notNilUrl.absoluteString
+							
+							guard let repository = repo as? Repository else { return }
+							
+							Project.setRepository(repository, to: &self.project)
+							
+//							self.project?.repo = repo as? Repository
+//							self.project?.repoUrl = notNilUrl.absoluteString
 							DispatchQueue.main.async {
 								self.tableView.reloadRows(at: [IndexPath(row: 1, section: 0)], with: .none)
 							}

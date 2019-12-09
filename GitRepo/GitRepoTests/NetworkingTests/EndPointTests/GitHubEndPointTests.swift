@@ -16,10 +16,13 @@ class GitHubEndPointTests: XCTestCase {
 	var endPoint: GitHubApi?
 	
 	override func setUp() {
+		super.setUp()
 		
 	}
 
 	override func tearDown() {
+		super.tearDown()
+		
 		endPoint = nil
 	}
 	

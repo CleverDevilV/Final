@@ -21,10 +21,14 @@ class FirebaseEndPointTests: XCTestCase {
 	var userDefaults: MockUserDefaults!
 	
 	override func setUp() {
+		super.setUp()
+		
 		userDefaults = MockUserDefaults()
 	}
 	
 	override func tearDown() {
+		super.tearDown()
+		
 		endPoint = nil
 		userDefaults = nil
 	}
@@ -60,16 +64,15 @@ class FirebaseEndPointTests: XCTestCase {
 		// act
 		endPoint = FirebaseApi.getProjects
 		// assert
-		//???
+		XCTAssertNil(endPoint?.headers)
 	}
 	
 	func testFirebaseApiBaseUrl() {
 		
-		// arrange]
-		endPoint = FirebaseApi.getProjects
-		// act
-		
+		// arrange
 		let apiKey = UserDefaults.standard.get(with: UserDefaultsType.firebase_apiKey)
+		// act
+		endPoint = FirebaseApi.getProjects
 		// assert
 		XCTAssertEqual(endPoint?.baseURL, URL(string: "https://final-project-sb.firebaseio.com/projects.json?avvrdd_token=\(apiKey)"))
 	}
@@ -77,9 +80,8 @@ class FirebaseEndPointTests: XCTestCase {
 	func testFirebaseApiGetProjectFields() {
 		
 		// arrange
-		endPoint = FirebaseApi.getProjects
 		// act
-//		let apiKey = UserDefaults.standard.get(with: .firebase_apiKey)
+		endPoint = FirebaseApi.getProjects
 		// assert
 		XCTAssertEqual(endPoint?.path, "")
 	}
@@ -87,8 +89,8 @@ class FirebaseEndPointTests: XCTestCase {
 	func testFirebaseApiUploadProjectsFields() {
 		
 		// arrange
-		endPoint = FirebaseApi.uploadProjects(data: nil)
 		// act
+		endPoint = FirebaseApi.uploadProjects(data: nil)
 		// assert
 		XCTAssertEqual(endPoint?.path, "")
 	}
@@ -96,9 +98,8 @@ class FirebaseEndPointTests: XCTestCase {
 	func testGitHubApiOneProjectFields() {
 		
 		// arrange
-		endPoint = FirebaseApi.oneProject(url: nil)
 		// act
-		
+		endPoint = FirebaseApi.oneProject(url: nil)
 		// assert
 		XCTAssertEqual(endPoint?.path, "")
 	}

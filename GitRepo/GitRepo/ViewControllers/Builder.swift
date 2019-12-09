@@ -13,6 +13,7 @@ protocol BuilderProtocol: class {
 	static func createSettingsViewController() -> UIViewController
 	static func createSomeWebView(with path: String) -> UIViewController?
 	static func createProjectsTableView() -> UIViewController
+	static func createProjectViewController(with project: Project?) -> UIViewController?
 }
 
 class Builder: BuilderProtocol {
@@ -23,7 +24,7 @@ class Builder: BuilderProtocol {
 		var session: URLSession
 		var loader: Loader
 		
-	// Loader
+		// Loader
 		if NSClassFromString("XCTestCase") != nil {
 			session = URLSession(configuration: .default)
 			loader = Loader(githubNetworkManager: nil, firebaseNetworkManager: nil, coreDataService: nil)
@@ -36,7 +37,7 @@ class Builder: BuilderProtocol {
 			loader = Loader(githubNetworkManager: githubNetworkManager, firebaseNetworkManager: firebaseNetworkManager, coreDataService: coreDataManagerService)
 		}
 		
-	// View
+		// View
 		let view = StartAppViewController()
 		let presenter = StartViewPresenter(view: view, loader: loader, command: logoutCommand)
 		view.presenter = presenter
@@ -75,6 +76,19 @@ class Builder: BuilderProtocol {
 		
 		let view = ProjectsTableViewController()
 		let presenter = ProjectsTablePresenter(view: view, projectsBase: projectsBase)
+		view.presenter = presenter
+		
+		return view
+	}
+	
+	static func createProjectViewController(with project: Project?) -> UIViewController? {
+		
+		guard let project = project else {
+			print("project is nil")
+			return nil }
+		
+		let view = ProjectViewController()
+		let presenter = ProjectPresenter(view: view, project: project)
 		view.presenter = presenter
 		
 		return view

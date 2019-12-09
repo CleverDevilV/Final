@@ -12,6 +12,8 @@ import UIKit
 
 class ProjectViewController: UIViewController {
 	
+	public var presenter: ProjectPresenterProtocol!
+	
 	public var project: Project?
 	
 	private var numberOfTasksTableViewCell = 3
@@ -19,9 +21,11 @@ class ProjectViewController: UIViewController {
 	
 	private var tableView: UITableView!
 	private var netWorkService: NetworkManagerProtocol?
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		
+		presenter.setProject()
 		
 		view.backgroundColor = .white
 		title = project?.projectName
@@ -48,7 +52,7 @@ class ProjectViewController: UIViewController {
 		
 		project?.repo = AppDelegate.shared.repositoryBase?.repositories.first{$0.name?.uppercased() == project?.repositoryName?.uppercased()}
 		
-    }
+	}
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
@@ -61,7 +65,13 @@ class ProjectViewController: UIViewController {
 		
 		AppDelegate.shared.projectBase?.baseUpdated()
 	}
+	
+}
 
+extension ProjectViewController: ProjectViewProtocol {
+	func setupProject(_ project: Project) {
+		self.project = project
+	}
 }
 
 extension ProjectViewController: UITableViewDataSource {
@@ -141,13 +151,13 @@ extension ProjectViewController: RepoTableCellDelegate {
 	func setupRepo() {
 		if project?.repositoryName == nil {
 			let addRepoAlertController = UIAlertController(title: "Добавить репозиторий в проект?", message: "Введите URL репозитория", preferredStyle: .alert)
-
+			
 			addRepoAlertController.addTextField(configurationHandler: nil)
-
+			
 			let cancelAction = UIAlertAction(title: "Отмена", style: .cancel, handler: nil)
 			let okAction = UIAlertAction(title: "OK", style: .default, handler: {
 				_ in
-
+				
 				let textField = addRepoAlertController.textFields![0] as UITextField
 				
 				if let text = textField.text {
@@ -172,7 +182,7 @@ extension ProjectViewController: RepoTableCellDelegate {
 			})
 			addRepoAlertController.addAction(cancelAction)
 			addRepoAlertController.addAction(okAction)
-
+			
 			present(addRepoAlertController, animated: true, completion: nil)
 		} else {
 			let alertList = UIAlertController(title: "Выберите действие:", message: nil, preferredStyle: .actionSheet)
@@ -190,7 +200,7 @@ extension ProjectViewController: RepoTableCellDelegate {
 				let okAction = UIAlertAction(title: "OK", style: .default, handler: {
 					_ in
 					
-					let textField = addRepoAlertController.textFields![0] 
+					let textField = addRepoAlertController.textFields![0]
 					
 					if let text = textField.text {
 						let url = URL(string: text.replacingOccurrences(of: ".git", with: ""))!
@@ -215,13 +225,13 @@ extension ProjectViewController: RepoTableCellDelegate {
 				self.present(addRepoAlertController, animated: true, completion: nil)
 			})
 			let viewRepositiryAtNet = UIAlertAction(title: "Открыть репозиторий в браузере", style: .default, handler: {_ in
-//				let view = SomeUrlWebViewController()
-//				view.url = URL(string: self.project?.repoUrl ?? "")
+				//				let view = SomeUrlWebViewController()
+				//				view.url = URL(string: self.project?.repoUrl ?? "")
 				let webView = Builder.createSomeWebView(with: self.project?.repoUrl ?? "")
 				
 				guard let notNilWebView = webView else { return }
 				self.navigationController?.pushViewController(notNilWebView, animated: true)
-				})
+			})
 			
 			let viewRepository = UIAlertAction(title: "Открыть станицу репозитория в приложении", style: .default, handler: {
 				_ in

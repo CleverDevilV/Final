@@ -131,13 +131,17 @@ extension ProjectsTableViewController: UITableViewDataSource {
 extension ProjectsTableViewController: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		tableView.cellForRow(at: indexPath)?.isSelected = false
-		let destinationVC = ProjectViewController()
+//		let destinationVC = ProjectViewController()
+//
+//		guard let project = projectsBase?.projects[indexPath.row] else { return }
+//
+//		destinationVC.project = project
 		
-		guard let project = projectsBase?.projects[indexPath.row] else { return }
+		let project = projectsBase?.projects[indexPath.row]
 		
-		destinationVC.project = project
+		guard let projectView = Builder.createProjectViewController(with: project) else { return }
 		
-		navigationController?.pushViewController(destinationVC, animated: true)
+		navigationController?.pushViewController(projectView, animated: true)
 	}
 	
 	func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {

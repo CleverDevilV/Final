@@ -80,6 +80,8 @@
 		A7664F85239E956900B827BB /* ProjectsTablePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7664F84239E956900B827BB /* ProjectsTablePresenter.swift */; };
 		A7664F86239E975F00B827BB /* ProjectsTablePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7664F84239E956900B827BB /* ProjectsTablePresenter.swift */; };
 		A7664F8A239E99FE00B827BB /* ProjectsTablePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7664F89239E99FE00B827BB /* ProjectsTablePresenterTests.swift */; };
+		A7664F95239EA34D00B827BB /* ProjectViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7664F94239EA34D00B827BB /* ProjectViewPresenter.swift */; };
+		A7664F96239EA34D00B827BB /* ProjectViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7664F94239EA34D00B827BB /* ProjectViewPresenter.swift */; };
 		A77404EE239110E90038851E /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77404ED239110E90038851E /* Registration.swift */; };
 		A77404FA23912FFC0038851E /* UserDefExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77404F923912FFC0038851E /* UserDefExt.swift */; };
 		A774053B23918FE60038851E /* repo.xib in Resources */ = {isa = PBXBuildFile; fileRef = A774053A23918FE60038851E /* repo.xib */; };
@@ -253,6 +255,7 @@
 		A7664F7F239E7D8200B827BB /* SomeUrlWebViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomeUrlWebViewControllerTests.swift; sourceTree = "<group>"; };
 		A7664F84239E956900B827BB /* ProjectsTablePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsTablePresenter.swift; sourceTree = "<group>"; };
 		A7664F89239E99FE00B827BB /* ProjectsTablePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsTablePresenterTests.swift; sourceTree = "<group>"; };
+		A7664F94239EA34D00B827BB /* ProjectViewPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectViewPresenter.swift; sourceTree = "<group>"; };
 		A77404ED239110E90038851E /* Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration.swift; sourceTree = "<group>"; };
 		A77404F923912FFC0038851E /* UserDefExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefExt.swift; sourceTree = "<group>"; };
 		A774053A23918FE60038851E /* repo.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = repo.xib; sourceTree = "<group>"; };
@@ -528,8 +531,8 @@
 		A73FC6982396CBF6000F9F5C /* ProjectViewController */ = {
 			isa = PBXGroup;
 			children = (
-				A7B481E4239260A500AFA19E /* ProjectViewController.swift */,
-				A70A464A239D3B9D005325C7 /* Cells */,
+				A7664F98239EA36200B827BB /* View */,
+				A7664F97239EA35900B827BB /* Presenter */,
 			);
 			path = ProjectViewController;
 			sourceTree = "<group>";
@@ -734,6 +737,23 @@
 				A7664F89239E99FE00B827BB /* ProjectsTablePresenterTests.swift */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		A7664F97239EA35900B827BB /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				A7664F94239EA34D00B827BB /* ProjectViewPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		A7664F98239EA36200B827BB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A7B481E4239260A500AFA19E /* ProjectViewController.swift */,
+				A70A464A239D3B9D005325C7 /* Cells */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		A7751772239BB9F800716795 /* EncodingTests */ = {
@@ -1041,6 +1061,7 @@
 				A7282A2D239E2F7E0055A12A /* Builder.swift in Sources */,
 				A7B481E72392643600AFA19E /* DescriptionTableViewCell.swift in Sources */,
 				A7FE069F238BF3510093F07A /* RootViewController.swift in Sources */,
+				A7664F95239EA34D00B827BB /* ProjectViewPresenter.swift in Sources */,
 				A7FE06AB238C46880093F07A /* ProjectModel.swift in Sources */,
 				A7B4060E239982960092AD85 /* ManagedObjectFromCoreDataService.swift in Sources */,
 				A7776387239838F1007859CA /* LogoutSettingsTableViewCell.swift in Sources */,
@@ -1192,6 +1213,7 @@
 				A796F3362395AD57007D7E51 /* RepositoriesTableViewCell.swift in Sources */,
 				A7A5DE552395234F004271D9 /* LoginModel.swift in Sources */,
 				A775177B239BCD1700716795 /* LoaderTests.swift in Sources */,
+				A7664F96239EA34D00B827BB /* ProjectViewPresenter.swift in Sources */,
 				A7A5DE582395235B004271D9 /* UserDefExt.swift in Sources */,
 				A70A4643239D344C005325C7 /* DescriptionTableViewCellTests.swift in Sources */,
 				A7A5DE5123952341004271D9 /* JSONParameterEncoder.swift in Sources */,

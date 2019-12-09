@@ -105,5 +105,14 @@ class BuilderTests: XCTestCase {
 		// assert
 		XCTAssertNil(view)
 	}
+	
+	func testCreatedRepositoriesTableViewControllerIsNotNil () {
+		// arrange
+		var view: UIViewController?
+		// act
+		view = Builder.createRepositoriesTableViewController()
+		// assert
+		XCTAssertNotNil(view)
+	}
 
 }

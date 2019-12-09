@@ -8,7 +8,7 @@
 
 import UIKit
 
-// No Unit Tests
+// Unit Tests
 
 class RepositoriesTableViewController: UIViewController {
 	

@@ -58,7 +58,7 @@ struct GitHubNetworkManager: NetworkManagerProtocol {
 					}
 					
 					do {
-						let text = try? JSONSerialization.jsonObject(with: responseData, options: [])
+//						let text = try? JSONSerialization.jsonObject(with: responseData, options: [])
 						switch endPoint {
 						case .user:
 							let apiResponse = try JSONDecoder().decode(User.self, from: responseData)
@@ -75,10 +75,9 @@ struct GitHubNetworkManager: NetworkManagerProtocol {
 										
 										DispatchQueue.main.async {
 											repositiry.collaborators = result as? [User]
-//											print("Loaded collaborators at \(repositiry.name)")
+											
 											if repositiry.branches != nil, repositiry.commits != nil {
 												myGroup.leave()
-//												print("leave")
 											}
 										}
 									}
@@ -88,10 +87,8 @@ struct GitHubNetworkManager: NetworkManagerProtocol {
 										
 										DispatchQueue.main.async {
 											repositiry.branches = result as? [Branch]
-//											print("Loaded branches at \(repositiry.name)")
 											if repositiry.collaborators != nil, repositiry.commits != nil {
 												myGroup.leave()
-//												print("leave")
 											}
 										}
 									}

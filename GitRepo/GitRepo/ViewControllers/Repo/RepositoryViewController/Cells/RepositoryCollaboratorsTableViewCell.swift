@@ -51,14 +51,16 @@ class RepositoryCollaboratorsTableViewCell: UITableViewCell {
 			collaboratorsButtonTitle = "Участники: " + "\(numberOfCollaborators)"
 		}
 		collaboratorsViewButton.setTitle(collaboratorsButtonTitle, for: .normal)
-		collaboratorsViewButton.titleLabel?.font = UIFont.systemFont(ofSize: 18)
+		collaboratorsViewButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+		collaboratorsViewButton.setTitleColor(.black, for: .normal)
+//		collaboratorsViewButton.setTitleColor(UIColor(red: 1, green: 0.6, blue: 0, alpha: 0.8), for: .normal)
+		collaboratorsViewButton.setTitleColor(.white, for: .highlighted)
 		collaboratorsViewButton.titleEdgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
 		collaboratorsViewButton.layer.cornerRadius = 20
 		collaboratorsViewButton.layer.masksToBounds = true
-		collaboratorsViewButton.backgroundColor = .lightGray
+		collaboratorsViewButton.layer.borderColor = UIColor(red: 1, green: 0.6, blue: 0, alpha: 0.2).cgColor
+		collaboratorsViewButton.layer.borderWidth = 1
 		
-		collaboratorsViewButton.setTitleColor(.blue, for: .normal)
-		collaboratorsViewButton.setTitleColor(.white, for: .highlighted)
 		collaboratorsViewButton.addTarget(self, action: #selector(collaboratorsButtonTapped), for: .touchUpInside)
 		
 		// add to contentView

@@ -34,10 +34,10 @@
 		A70A4658239D4FA7005325C7 /* RepositoryCollaboratorsTableViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70A4657239D4FA7005325C7 /* RepositoryCollaboratorsTableViewCellTests.swift */; };
 		A70A465A239D50E2005325C7 /* SegmentCommitsBranchesTableViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70A4659239D50E2005325C7 /* SegmentCommitsBranchesTableViewCellTests.swift */; };
 		A70A465C239D786B005325C7 /* UserDefaultsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70A465B239D786B005325C7 /* UserDefaultsTests.swift */; };
-		A7282A29239E2D5A0055A12A /* RootViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7282A28239E2D5A0055A12A /* RootViewPresenter.swift */; };
 		A7282A2D239E2F7E0055A12A /* Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7282A2C239E2F7E0055A12A /* Builder.swift */; };
-		A7282A2E239E302A0055A12A /* RootViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7282A28239E2D5A0055A12A /* RootViewPresenter.swift */; };
 		A7282A2F239E325D0055A12A /* Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7282A2C239E2F7E0055A12A /* Builder.swift */; };
+		A7282A33239E35490055A12A /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7282A32239E35490055A12A /* SettingsPresenter.swift */; };
+		A7282A35239E37500055A12A /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7282A32239E35490055A12A /* SettingsPresenter.swift */; };
 		A73FC69B2396CFE6000F9F5C /* OwnerAndViewButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73FC69A2396CFE6000F9F5C /* OwnerAndViewButtonTableViewCell.swift */; };
 		A73FC69C2396D087000F9F5C /* OwnerAndViewButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73FC69A2396CFE6000F9F5C /* OwnerAndViewButtonTableViewCell.swift */; };
 		A73FC69E2396D66B000F9F5C /* SegmentCommitsBranchesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73FC69D2396D66B000F9F5C /* SegmentCommitsBranchesTableViewCell.swift */; };
@@ -210,8 +210,8 @@
 		A70A4657239D4FA7005325C7 /* RepositoryCollaboratorsTableViewCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryCollaboratorsTableViewCellTests.swift; sourceTree = "<group>"; };
 		A70A4659239D50E2005325C7 /* SegmentCommitsBranchesTableViewCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentCommitsBranchesTableViewCellTests.swift; sourceTree = "<group>"; };
 		A70A465B239D786B005325C7 /* UserDefaultsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsTests.swift; sourceTree = "<group>"; };
-		A7282A28239E2D5A0055A12A /* RootViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewPresenter.swift; sourceTree = "<group>"; };
 		A7282A2C239E2F7E0055A12A /* Builder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Builder.swift; sourceTree = "<group>"; };
+		A7282A32239E35490055A12A /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsPresenter.swift; path = ../SettingsPresenter.swift; sourceTree = "<group>"; };
 		A73FC69A2396CFE6000F9F5C /* OwnerAndViewButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerAndViewButtonTableViewCell.swift; sourceTree = "<group>"; };
 		A73FC69D2396D66B000F9F5C /* SegmentCommitsBranchesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentCommitsBranchesTableViewCell.swift; sourceTree = "<group>"; };
 		A73FC6A02396DADC000F9F5C /* RepositoryCollaboratorsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryCollaboratorsTableViewCell.swift; sourceTree = "<group>"; };
@@ -247,7 +247,7 @@
 		A777637C2397C7E1007859CA /* BranchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchModel.swift; sourceTree = "<group>"; };
 		A777637F2398190C007859CA /* ViewWithCustomTableTableViewCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewWithCustomTableTableViewCellDelegate.swift; sourceTree = "<group>"; };
 		A777638323983711007859CA /* LoginSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSettingsTableViewCell.swift; sourceTree = "<group>"; };
-		A7776386239838F1007859CA /* LogoutSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutSettingsTableViewCell.swift; sourceTree = "<group>"; };
+		A7776386239838F1007859CA /* LogoutSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LogoutSettingsTableViewCell.swift; path = ../../LogoutSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		A785A77D2396A73B0040D4CD /* ProjectForUploadToBack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectForUploadToBack.swift; sourceTree = "<group>"; };
 		A78A3702239C308300A68BF0 /* RouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterTests.swift; sourceTree = "<group>"; };
 		A796F3342395AB4D007D7E51 /* RepositoriesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesTableViewCell.swift; sourceTree = "<group>"; };
@@ -399,14 +399,6 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		A7282A2B239E2F690055A12A /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-				A7282A28239E2D5A0055A12A /* RootViewPresenter.swift */,
-			);
-			path = Presenter;
-			sourceTree = "<group>";
-		};
 		A7282A30239E33520055A12A /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -423,13 +415,38 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
+		A7282A34239E36F40055A12A /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				A7282A32239E35490055A12A /* SettingsPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		A7282A36239E38830055A12A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A7B481EE2392C26B00AFA19E /* SettingsViewController.swift */,
+				A7282A37239E388D0055A12A /* Cells */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A7282A37239E388D0055A12A /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				A777638323983711007859CA /* LoginSettingsTableViewCell.swift */,
+				A7776386239838F1007859CA /* LogoutSettingsTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		A73FC6962396CAC5000F9F5C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				A7282A2C239E2F7E0055A12A /* Builder.swift */,
 				A7FE069E238BF3510093F07A /* RootViewController.swift */,
 				A7F55055239BD62B0035B807 /* StartAppViewController */,
-				A7282A2B239E2F690055A12A /* Presenter */,
 				A7525B59239301DA00AD8587 /* LogOutCommand.swift */,
 				A7FE06A0238BF4540093F07A /* BaseTabBarController.swift */,
 				A77404ED239110E90038851E /* Registration.swift */,
@@ -600,9 +617,8 @@
 		A7776382239836E9007859CA /* SettingsViewController */ = {
 			isa = PBXGroup;
 			children = (
-				A7B481EE2392C26B00AFA19E /* SettingsViewController.swift */,
-				A777638323983711007859CA /* LoginSettingsTableViewCell.swift */,
-				A7776386239838F1007859CA /* LogoutSettingsTableViewCell.swift */,
+				A7282A36239E38830055A12A /* View */,
+				A7282A34239E36F40055A12A /* Presenter */,
 			);
 			path = SettingsViewController;
 			sourceTree = "<group>";
@@ -870,6 +886,7 @@
 				A7525B5A239301DA00AD8587 /* LogOutCommand.swift in Sources */,
 				A70A4627239C6633005325C7 /* main.swift in Sources */,
 				A7B405F723996D1F0092AD85 /* MOAuthor.swift in Sources */,
+				A7282A33239E35490055A12A /* SettingsPresenter.swift in Sources */,
 				A7B405F923996DAD0092AD85 /* MOBranch.swift in Sources */,
 				A785A77E2396A73B0040D4CD /* ProjectForUploadToBack.swift in Sources */,
 				A7FE06A1238BF4540093F07A /* BaseTabBarController.swift in Sources */,
@@ -922,7 +939,6 @@
 				A777638423983711007859CA /* LoginSettingsTableViewCell.swift in Sources */,
 				A7525B722394346200AD8587 /* Router.swift in Sources */,
 				A7495FC5239670A200C120DC /* FirebaseNetworkManager.swift in Sources */,
-				A7282A29239E2D5A0055A12A /* RootViewPresenter.swift in Sources */,
 				A7B481E92392705600AFA19E /* RepoTableViewCell.swift in Sources */,
 				A777637A2397BDF9007859CA /* EventModel.swift in Sources */,
 				A7FE069D238BF1B30093F07A /* RepoViewController.swift in Sources */,
@@ -965,7 +981,6 @@
 				A70A4635239D21AF005325C7 /* ProjectBaseTests.swift in Sources */,
 				A70A4646239D3731005325C7 /* RepoTableCellTests.swift in Sources */,
 				A7282A2F239E325D0055A12A /* Builder.swift in Sources */,
-				A7282A2E239E302A0055A12A /* RootViewPresenter.swift in Sources */,
 				A777638123981AA9007859CA /* ViewWithCustomTableTableViewCellDelegate.swift in Sources */,
 				A7B4060223996EE20092AD85 /* MOTask.swift in Sources */,
 				A74A16B6239C113900E60176 /* CoreDataStackTests.swift in Sources */,
@@ -996,6 +1011,7 @@
 				A70A463C239D2D43005325C7 /* SettingsViewControllerTests.swift in Sources */,
 				A7A5DE6823952390004271D9 /* HTTPMethod.swift in Sources */,
 				A70A462E239D01C4005325C7 /* MockUrlSession.swift in Sources */,
+				A7282A35239E37500055A12A /* SettingsPresenter.swift in Sources */,
 				A7776385239837DE007859CA /* LoginSettingsTableViewCell.swift in Sources */,
 				A7B4060F239982CB0092AD85 /* ManagedObjectFromCoreDataService.swift in Sources */,
 				A7A5DE4F23952341004271D9 /* ParameterEncodingProtocol.swift in Sources */,

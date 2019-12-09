@@ -10,6 +10,7 @@ import UIKit
 
 protocol BuilderProtocol: class {
 	static func createStartAppViewController() -> UIViewController
+	static func createSettingsViewController() -> UIViewController
 }
 
 class Builder: BuilderProtocol {
@@ -19,6 +20,16 @@ class Builder: BuilderProtocol {
 		let loader = LoaderBuilder.createLoader()
 		let view = StartAppViewController()
 		let presenter = StartViewPresenter(view: view, loader: loader)
+		view.presenter = presenter
+		
+		return view
+	}
+	
+	static func createSettingsViewController() -> UIViewController {
+		
+		let logoutCommand = LogOutCommand()
+		let view = SettingsViewController()
+		let presenter = SettingsPresenter(view: view, command: logoutCommand)
 		view.presenter = presenter
 		
 		return view

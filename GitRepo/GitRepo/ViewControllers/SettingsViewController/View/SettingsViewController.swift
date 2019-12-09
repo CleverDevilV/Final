@@ -13,13 +13,18 @@ import UIKit
 /// [Tests](x-source-tag://SettingsViewControllerTests).
 class SettingsViewController: UIViewController {
 	
+	public var presenter: SettingsPresenter!
+	
 	private var tableView: UITableView!
+	private var logoutCommand: LogOutCommand!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 		
 		view.backgroundColor = .white
 		title = "Профиль"
+		
+		presenter.setCommand()
 		
 		setupViews()
     }
@@ -34,7 +39,6 @@ class SettingsViewController: UIViewController {
 		tableView.delegate = self
 		
 		tableView.register(LoginSettingsTableViewCell.self, forCellReuseIdentifier: LoginSettingsTableViewCell.reusedId)
-		
 		tableView.register(LogoutSettingsTableViewCell.self, forCellReuseIdentifier: LogoutSettingsTableViewCell.reusedId)
 		
 		view.addSubview(tableView)
@@ -66,6 +70,10 @@ extension SettingsViewController: UITableViewDataSource {
 extension SettingsViewController: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		tableView.cellForRow(at: indexPath)?.isSelected = false
+		
+		if indexPath.row == 1 {
+			logoutButtonTapped()
+		}
 	}
 }
 
@@ -73,11 +81,17 @@ extension SettingsViewController: LogoutSettingsTableViewCellDelegate {
 	
 	/// Logout User
 	func logoutButtonTapped() {
-		let logOtcommand = LogOutCommand()
-		logOtcommand.logOut()
+		
+		logoutCommand.logOut()
 		
 		guard NSClassFromString("XCTestCase") == nil else { return }
-		guard AppDelegate.shared != nil else { return }
-			AppDelegate.shared.rootViewController.switchToLogout()
+//		guard AppDelegate.shared != nil else { return }
+		AppDelegate.shared.rootViewController.switchToLogout()
+	}
+}
+
+extension SettingsViewController: SettingsViewProtocol {
+	func setupLogoutCommang(_ command: LogOutCommand) {
+		self.logoutCommand = command
 	}
 }

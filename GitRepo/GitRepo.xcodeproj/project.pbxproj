@@ -34,6 +34,10 @@
 		A70A4658239D4FA7005325C7 /* RepositoryCollaboratorsTableViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70A4657239D4FA7005325C7 /* RepositoryCollaboratorsTableViewCellTests.swift */; };
 		A70A465A239D50E2005325C7 /* SegmentCommitsBranchesTableViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70A4659239D50E2005325C7 /* SegmentCommitsBranchesTableViewCellTests.swift */; };
 		A70A465C239D786B005325C7 /* UserDefaultsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70A465B239D786B005325C7 /* UserDefaultsTests.swift */; };
+		A7282A29239E2D5A0055A12A /* RootViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7282A28239E2D5A0055A12A /* RootViewPresenter.swift */; };
+		A7282A2D239E2F7E0055A12A /* Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7282A2C239E2F7E0055A12A /* Builder.swift */; };
+		A7282A2E239E302A0055A12A /* RootViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7282A28239E2D5A0055A12A /* RootViewPresenter.swift */; };
+		A7282A2F239E325D0055A12A /* Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7282A2C239E2F7E0055A12A /* Builder.swift */; };
 		A73FC69B2396CFE6000F9F5C /* OwnerAndViewButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73FC69A2396CFE6000F9F5C /* OwnerAndViewButtonTableViewCell.swift */; };
 		A73FC69C2396D087000F9F5C /* OwnerAndViewButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73FC69A2396CFE6000F9F5C /* OwnerAndViewButtonTableViewCell.swift */; };
 		A73FC69E2396D66B000F9F5C /* SegmentCommitsBranchesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73FC69D2396D66B000F9F5C /* SegmentCommitsBranchesTableViewCell.swift */; };
@@ -158,8 +162,6 @@
 		A7B71FBA239C440500218CEB /* ViewWithCustomTableTableViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B71FB9239C440500218CEB /* ViewWithCustomTableTableViewCellTests.swift */; };
 		A7F55053239BD36E0035B807 /* StartViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F55052239BD36E0035B807 /* StartViewPresenter.swift */; };
 		A7F55054239BD5110035B807 /* StartViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F55052239BD36E0035B807 /* StartViewPresenter.swift */; };
-		A7F55060239BDC700035B807 /* StartAppViewControllerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F5505F239BDC700035B807 /* StartAppViewControllerBuilder.swift */; };
-		A7F55061239BDC700035B807 /* StartAppViewControllerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F5505F239BDC700035B807 /* StartAppViewControllerBuilder.swift */; };
 		A7F55063239BDD690035B807 /* LoaderBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F55062239BDD690035B807 /* LoaderBuilder.swift */; };
 		A7F55064239BDD690035B807 /* LoaderBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F55062239BDD690035B807 /* LoaderBuilder.swift */; };
 		A7F55066239BEE0C0035B807 /* StartViewPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F55065239BEE0C0035B807 /* StartViewPresenterTests.swift */; };
@@ -208,6 +210,8 @@
 		A70A4657239D4FA7005325C7 /* RepositoryCollaboratorsTableViewCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryCollaboratorsTableViewCellTests.swift; sourceTree = "<group>"; };
 		A70A4659239D50E2005325C7 /* SegmentCommitsBranchesTableViewCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentCommitsBranchesTableViewCellTests.swift; sourceTree = "<group>"; };
 		A70A465B239D786B005325C7 /* UserDefaultsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsTests.swift; sourceTree = "<group>"; };
+		A7282A28239E2D5A0055A12A /* RootViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewPresenter.swift; sourceTree = "<group>"; };
+		A7282A2C239E2F7E0055A12A /* Builder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Builder.swift; sourceTree = "<group>"; };
 		A73FC69A2396CFE6000F9F5C /* OwnerAndViewButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerAndViewButtonTableViewCell.swift; sourceTree = "<group>"; };
 		A73FC69D2396D66B000F9F5C /* SegmentCommitsBranchesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentCommitsBranchesTableViewCell.swift; sourceTree = "<group>"; };
 		A73FC6A02396DADC000F9F5C /* RepositoryCollaboratorsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryCollaboratorsTableViewCell.swift; sourceTree = "<group>"; };
@@ -218,7 +222,7 @@
 		A7495FCD2396839500C120DC /* ProjectsBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsBase.swift; sourceTree = "<group>"; };
 		A74A16B5239C113900E60176 /* CoreDataStackTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStackTests.swift; sourceTree = "<group>"; };
 		A74A16B9239C161A00E60176 /* CoreDataAdapterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataAdapterTests.swift; sourceTree = "<group>"; };
-		A7525B572392F80700AD8587 /* StartAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartAppViewController.swift; sourceTree = "<group>"; };
+		A7525B572392F80700AD8587 /* StartAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StartAppViewController.swift; path = ../StartAppViewController.swift; sourceTree = "<group>"; };
 		A7525B59239301DA00AD8587 /* LogOutCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutCommand.swift; sourceTree = "<group>"; };
 		A7525B6323942D8600AD8587 /* EndPointTypeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointTypeProtocol.swift; sourceTree = "<group>"; };
 		A7525B6523942E4500AD8587 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
@@ -271,8 +275,7 @@
 		A7B71FAF239C36AA00218CEB /* RepositoriesBaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesBaseTests.swift; sourceTree = "<group>"; };
 		A7B71FB2239C3F7C00218CEB /* CommitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommitModel.swift; sourceTree = "<group>"; };
 		A7B71FB9239C440500218CEB /* ViewWithCustomTableTableViewCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewWithCustomTableTableViewCellTests.swift; sourceTree = "<group>"; };
-		A7F55052239BD36E0035B807 /* StartViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewPresenter.swift; sourceTree = "<group>"; };
-		A7F5505F239BDC700035B807 /* StartAppViewControllerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartAppViewControllerBuilder.swift; sourceTree = "<group>"; };
+		A7F55052239BD36E0035B807 /* StartViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StartViewPresenter.swift; path = ../StartViewPresenter.swift; sourceTree = "<group>"; };
 		A7F55062239BDD690035B807 /* LoaderBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderBuilder.swift; sourceTree = "<group>"; };
 		A7F55065239BEE0C0035B807 /* StartViewPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewPresenterTests.swift; sourceTree = "<group>"; };
 		A7FE0683238BE7F30093F07A /* GitRepo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitRepo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -396,11 +399,37 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		A7282A2B239E2F690055A12A /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				A7282A28239E2D5A0055A12A /* RootViewPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		A7282A30239E33520055A12A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A7525B572392F80700AD8587 /* StartAppViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A7282A31239E33630055A12A /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				A7F55052239BD36E0035B807 /* StartViewPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
 		A73FC6962396CAC5000F9F5C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				A7282A2C239E2F7E0055A12A /* Builder.swift */,
 				A7FE069E238BF3510093F07A /* RootViewController.swift */,
 				A7F55055239BD62B0035B807 /* StartAppViewController */,
+				A7282A2B239E2F690055A12A /* Presenter */,
 				A7525B59239301DA00AD8587 /* LogOutCommand.swift */,
 				A7FE06A0238BF4540093F07A /* BaseTabBarController.swift */,
 				A77404ED239110E90038851E /* Registration.swift */,
@@ -664,9 +693,8 @@
 		A7F55055239BD62B0035B807 /* StartAppViewController */ = {
 			isa = PBXGroup;
 			children = (
-				A7525B572392F80700AD8587 /* StartAppViewController.swift */,
-				A7F55052239BD36E0035B807 /* StartViewPresenter.swift */,
-				A7F5505F239BDC700035B807 /* StartAppViewControllerBuilder.swift */,
+				A7282A30239E33520055A12A /* View */,
+				A7282A31239E33630055A12A /* Presenter */,
 			);
 			path = StartAppViewController;
 			sourceTree = "<group>";
@@ -846,8 +874,8 @@
 				A785A77E2396A73B0040D4CD /* ProjectForUploadToBack.swift in Sources */,
 				A7FE06A1238BF4540093F07A /* BaseTabBarController.swift in Sources */,
 				A7B71FB3239C3F7C00218CEB /* CommitModel.swift in Sources */,
+				A7282A2D239E2F7E0055A12A /* Builder.swift in Sources */,
 				A7B481E72392643600AFA19E /* DescriptionTableViewCell.swift in Sources */,
-				A7F55060239BDC700035B807 /* StartAppViewControllerBuilder.swift in Sources */,
 				A7FE069F238BF3510093F07A /* RootViewController.swift in Sources */,
 				A7F55063239BDD690035B807 /* LoaderBuilder.swift in Sources */,
 				A7FE06AB238C46880093F07A /* ProjectModel.swift in Sources */,
@@ -894,6 +922,7 @@
 				A777638423983711007859CA /* LoginSettingsTableViewCell.swift in Sources */,
 				A7525B722394346200AD8587 /* Router.swift in Sources */,
 				A7495FC5239670A200C120DC /* FirebaseNetworkManager.swift in Sources */,
+				A7282A29239E2D5A0055A12A /* RootViewPresenter.swift in Sources */,
 				A7B481E92392705600AFA19E /* RepoTableViewCell.swift in Sources */,
 				A777637A2397BDF9007859CA /* EventModel.swift in Sources */,
 				A7FE069D238BF1B30093F07A /* RepoViewController.swift in Sources */,
@@ -935,6 +964,8 @@
 				A7A5DE5F23952364004271D9 /* RepoTableViewCell.swift in Sources */,
 				A70A4635239D21AF005325C7 /* ProjectBaseTests.swift in Sources */,
 				A70A4646239D3731005325C7 /* RepoTableCellTests.swift in Sources */,
+				A7282A2F239E325D0055A12A /* Builder.swift in Sources */,
+				A7282A2E239E302A0055A12A /* RootViewPresenter.swift in Sources */,
 				A777638123981AA9007859CA /* ViewWithCustomTableTableViewCellDelegate.swift in Sources */,
 				A7B4060223996EE20092AD85 /* MOTask.swift in Sources */,
 				A74A16B6239C113900E60176 /* CoreDataStackTests.swift in Sources */,
@@ -942,7 +973,6 @@
 				A7A5DE5E23952364004271D9 /* DescriptionTableViewCell.swift in Sources */,
 				A7751775239BBA1800716795 /* GitHubEndPointTests.swift in Sources */,
 				A73FC69F2396D81E000F9F5C /* SegmentCommitsBranchesTableViewCell.swift in Sources */,
-				A7F55061239BDC700035B807 /* StartAppViewControllerBuilder.swift in Sources */,
 				A785A77F2396A7CF0040D4CD /* ProjectForUploadToBack.swift in Sources */,
 				A742042F239AE3F4009D344F /* ProjectTableViewCell.swift in Sources */,
 				A7B4060123996EE20092AD85 /* MOProject.swift in Sources */,

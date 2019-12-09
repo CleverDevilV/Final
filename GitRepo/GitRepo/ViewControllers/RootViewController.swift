@@ -26,7 +26,7 @@ class RootViewController: UIViewController, RootViewControllerProtocol {
 	
 	
 	init() {
-		self.currentVC = StartAppViewControllerBuilder.createStartAppViewController() //StartAppViewController()
+		self.currentVC = Builder.createStartAppViewController() //StartAppViewController()
 		
 		super.init(nibName: nil, bundle: nil)
 		
@@ -57,7 +57,7 @@ class RootViewController: UIViewController, RootViewControllerProtocol {
 	
 	/// Switch View to Start View Controller after Logout User
 	func switchToLogout() {
-		let loginVC = StartAppViewControllerBuilder.createStartAppViewController() //StartAppViewController()
+		let loginVC = Builder.createStartAppViewController() //StartAppViewController()
 		let logouScreen = UINavigationController(rootViewController: loginVC)
 		
 		animateFadeTransition(to: logouScreen)

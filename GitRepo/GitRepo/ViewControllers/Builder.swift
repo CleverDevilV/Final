@@ -1,20 +1,18 @@
 //
-//  StartAppViewControllerBuilder.swift
+//  Builder.swift
 //  GitRepo
 //
-//  Created by Дарья Витер on 07/12/2019.
+//  Created by Дарья Витер on 09/12/2019.
 //  Copyright © 2019 Viter. All rights reserved.
 //
 
 import UIKit
 
-// No Unit Tests
-
-protocol StartAppViewControllerBuilderProtocol: class {
+protocol BuilderProtocol: class {
 	static func createStartAppViewController() -> UIViewController
 }
 
-class StartAppViewControllerBuilder: StartAppViewControllerBuilderProtocol {
+class Builder: BuilderProtocol {
 	
 	static func createStartAppViewController() -> UIViewController {
 		
@@ -25,4 +23,5 @@ class StartAppViewControllerBuilder: StartAppViewControllerBuilderProtocol {
 		
 		return view
 	}
+	
 }

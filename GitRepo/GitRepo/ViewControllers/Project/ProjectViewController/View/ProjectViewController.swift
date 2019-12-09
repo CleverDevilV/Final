@@ -14,7 +14,7 @@ class ProjectViewController: UIViewController {
 	
 	public var presenter: ProjectPresenterProtocol!
 	
-	public var project: Project?
+	private var project: Project?
 	
 	private var numberOfTasksTableViewCell = 3
 	private var numberOfCells = 4

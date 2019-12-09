@@ -60,5 +60,4 @@ class ProjectViewControllerTests: XCTestCase {
 		cell.descriptionDelegating()
 		// assert
 	}
-
 }

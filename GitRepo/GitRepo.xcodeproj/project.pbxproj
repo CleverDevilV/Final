@@ -82,6 +82,7 @@
 		A7664F8A239E99FE00B827BB /* ProjectsTablePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7664F89239E99FE00B827BB /* ProjectsTablePresenterTests.swift */; };
 		A7664F95239EA34D00B827BB /* ProjectViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7664F94239EA34D00B827BB /* ProjectViewPresenter.swift */; };
 		A7664F96239EA34D00B827BB /* ProjectViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7664F94239EA34D00B827BB /* ProjectViewPresenter.swift */; };
+		A7664F9C239EA4E500B827BB /* ProjectPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7664F9B239EA4E500B827BB /* ProjectPresenterTests.swift */; };
 		A77404EE239110E90038851E /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77404ED239110E90038851E /* Registration.swift */; };
 		A77404FA23912FFC0038851E /* UserDefExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77404F923912FFC0038851E /* UserDefExt.swift */; };
 		A774053B23918FE60038851E /* repo.xib in Resources */ = {isa = PBXBuildFile; fileRef = A774053A23918FE60038851E /* repo.xib */; };
@@ -256,6 +257,7 @@
 		A7664F84239E956900B827BB /* ProjectsTablePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsTablePresenter.swift; sourceTree = "<group>"; };
 		A7664F89239E99FE00B827BB /* ProjectsTablePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsTablePresenterTests.swift; sourceTree = "<group>"; };
 		A7664F94239EA34D00B827BB /* ProjectViewPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectViewPresenter.swift; sourceTree = "<group>"; };
+		A7664F9B239EA4E500B827BB /* ProjectPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectPresenterTests.swift; sourceTree = "<group>"; };
 		A77404ED239110E90038851E /* Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration.swift; sourceTree = "<group>"; };
 		A77404F923912FFC0038851E /* UserDefExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefExt.swift; sourceTree = "<group>"; };
 		A774053A23918FE60038851E /* repo.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = repo.xib; sourceTree = "<group>"; };
@@ -340,10 +342,7 @@
 				A7664F81239E7D8B00B827BB /* SomeWebViewTests */,
 				A70A4639239D2ACF005325C7 /* LogOutCommandTests.swift */,
 				A70A464B239D3E6A005325C7 /* LogoutSettingsTableViewCellTests.swift */,
-				A70A4644239D3705005325C7 /* ProjectViewController */,
-				A70A4652239D4815005325C7 /* OwnerAndViewButtonTableViewCellTests.swift */,
-				A70A4657239D4FA7005325C7 /* RepositoryCollaboratorsTableViewCellTests.swift */,
-				A70A4659239D50E2005325C7 /* SegmentCommitsBranchesTableViewCellTests.swift */,
+				A7664F9D239EA6B100B827BB /* Project */,
 			);
 			path = ViewControllersTests;
 			sourceTree = "<group>";
@@ -380,24 +379,18 @@
 		A70A4644239D3705005325C7 /* ProjectViewController */ = {
 			isa = PBXGroup;
 			children = (
-				A70A463F239D305A005325C7 /* ProjectsTableViewControllerTests.swift */,
-				A70A464F239D44BE005325C7 /* ProjectViewControllerTests.swift */,
-				A70A4649239D3B94005325C7 /* Cells */,
-				A7664F8B239E9C9A00B827BB /* Presenter */,
+				A7664F9E239EA6F600B827BB /* View */,
+				A70A4649239D3B94005325C7 /* Presenter */,
 			);
 			path = ProjectViewController;
 			sourceTree = "<group>";
 		};
-		A70A4649239D3B94005325C7 /* Cells */ = {
+		A70A4649239D3B94005325C7 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				A70A4642239D344C005325C7 /* DescriptionTableViewCellTests.swift */,
-				A70A4645239D3731005325C7 /* RepoTableCellTests.swift */,
-				A70A4647239D39DA005325C7 /* CollaboratorsTableViewCellTests.swift */,
-				A7B71FB9239C440500218CEB /* ViewWithCustomTableTableViewCellTests.swift */,
-				A70A464D239D4098005325C7 /* TasksTableViewCellTests.swift */,
+				A7664F9B239EA4E500B827BB /* ProjectPresenterTests.swift */,
 			);
-			path = Cells;
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		A70A464A239D3B9D005325C7 /* Cells */ = {
@@ -754,6 +747,64 @@
 				A70A464A239D3B9D005325C7 /* Cells */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		A7664F99239EA4BA00B827BB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A70A463F239D305A005325C7 /* ProjectsTableViewControllerTests.swift */,
+				A7664F9F239EA7D300B827BB /* Cells */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A7664F9A239EA4C800B827BB /* ProjectsTableTests */ = {
+			isa = PBXGroup;
+			children = (
+				A7664F99239EA4BA00B827BB /* View */,
+				A7664F8B239E9C9A00B827BB /* Presenter */,
+			);
+			path = ProjectsTableTests;
+			sourceTree = "<group>";
+		};
+		A7664F9D239EA6B100B827BB /* Project */ = {
+			isa = PBXGroup;
+			children = (
+				A7664F9A239EA4C800B827BB /* ProjectsTableTests */,
+				A70A4644239D3705005325C7 /* ProjectViewController */,
+			);
+			path = Project;
+			sourceTree = "<group>";
+		};
+		A7664F9E239EA6F600B827BB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A70A464F239D44BE005325C7 /* ProjectViewControllerTests.swift */,
+				A7664FA0239EA7EC00B827BB /* Cells */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A7664F9F239EA7D300B827BB /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				A70A4652239D4815005325C7 /* OwnerAndViewButtonTableViewCellTests.swift */,
+				A70A4657239D4FA7005325C7 /* RepositoryCollaboratorsTableViewCellTests.swift */,
+				A70A4659239D50E2005325C7 /* SegmentCommitsBranchesTableViewCellTests.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		A7664FA0239EA7EC00B827BB /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				A70A4642239D344C005325C7 /* DescriptionTableViewCellTests.swift */,
+				A70A4645239D3731005325C7 /* RepoTableCellTests.swift */,
+				A70A4647239D39DA005325C7 /* CollaboratorsTableViewCellTests.swift */,
+				A7B71FB9239C440500218CEB /* ViewWithCustomTableTableViewCellTests.swift */,
+				A70A464D239D4098005325C7 /* TasksTableViewCellTests.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		A7751772239BB9F800716795 /* EncodingTests */ = {
@@ -1157,6 +1208,7 @@
 				A70A4656239D4AA4005325C7 /* CollaboratorsTableViewController.swift in Sources */,
 				A7A5DE5E23952364004271D9 /* DescriptionTableViewCell.swift in Sources */,
 				A7751775239BBA1800716795 /* GitHubEndPointTests.swift in Sources */,
+				A7664F9C239EA4E500B827BB /* ProjectPresenterTests.swift in Sources */,
 				A73FC69F2396D81E000F9F5C /* SegmentCommitsBranchesTableViewCell.swift in Sources */,
 				A785A77F2396A7CF0040D4CD /* ProjectForUploadToBack.swift in Sources */,
 				A742042F239AE3F4009D344F /* ProjectTableViewCell.swift in Sources */,

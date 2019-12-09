@@ -67,5 +67,24 @@ class BuilderTests: XCTestCase {
 		// assert
 		XCTAssertNotNil(view)
 	}
+	
+	func testCreatedProjectViewControllerIsNotNil () {
+		// arrange
+		var view: UIViewController?
+		let testProject = Project(projectName: "Baz", repoURL: nil, repositoryName: nil, repo: nil, descriptionOfProject: nil, languageOfProject: nil)
+		// act
+		view = Builder.createProjectViewController(with: testProject)
+		// assert
+		XCTAssertNotNil(view)
+	}
+	
+	func testCreatedProjectViewControllerIsNil () {
+		// arrange
+		var view: UIViewController?
+		// act
+		view = Builder.createProjectViewController(with: nil)
+		// assert
+		XCTAssertNil(view)
+	}
 
 }

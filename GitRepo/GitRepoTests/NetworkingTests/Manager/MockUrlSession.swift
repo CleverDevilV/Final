@@ -10,14 +10,12 @@ import Foundation
 
 class MockUrlSession: URLSession {
 	
-	
-	
 	override func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
 		let dataTask = URLSessionDataTaskMock(closure: {
 //			(data, response, error) in
 			let data = "data".data(using: .utf8)
 			let error: Error = NetworkError.missingURL
-			print("Data")
+//			print("Data")
 			completionHandler(data, nil, error)
 			
 		})
@@ -29,13 +27,12 @@ class URLSessionDataTaskMock: URLSessionDataTask {
 	
 	private let closure: () -> Void
 	
-	// We have to give the Data Task a closure on initialization.
+	/// Init with Data Task a closure.
 	init(closure: @escaping () -> Void) {
 		self.closure = closure
 	}
 	
-	// We override the 'resume' method and simply call our closure
-	// instead of actually resuming any task.
+	/// When call 'resume' - call init closure
 	override func resume() {
 		closure()
 	}

@@ -77,17 +77,68 @@ public final class Repository: Codable {
 		
 		let container = try decoder.container(keyedBy: GitHubApiResponseCodingKeys.self)
 		
-		self.name = try container.decode(String?.self, forKey: .name)
-		self.repoLink = try container.decode(String?.self, forKey: .repositoryLink)
-		self.collaboratorsLink = try container.decode(String?.self, forKey: .collaborators)
+		do {
+			self.name = try container.decode(String?.self, forKey: .name)
+		} catch {
+			print(error)
+			self.name = nil
+		}
 		
-		self.changes = try container.decode(String?.self, forKey: .changes)
-		self.languageOfProject = try container.decode(String?.self, forKey: .languageOfProject)
-		self.owner = try container.decode(User?.self, forKey: .owner)
-		self.id = try container.decode(Int?.self, forKey: .id)
-		self.lastChange = try container.decode(String.self, forKey: .lastChange)
-		self.branchesLink = try container.decode(String.self, forKey: .branchesUrl)
+		do {
+			self.repoLink = try container.decode(String?.self, forKey: .repositoryLink)
+		} catch {
+			print(error)
+			self.repoLink = nil
+		}
 		
+		do {
+			self.collaboratorsLink = try container.decode(String?.self, forKey: .collaborators)
+		} catch {
+			print(error)
+			self.collaboratorsLink = nil
+		}
+		
+		do {
+			self.changes = try container.decode(String?.self, forKey: .changes)
+		} catch {
+			print(error)
+			self.changes = nil
+		}
+		
+		do {
+			self.languageOfProject = try container.decode(String?.self, forKey: .languageOfProject)
+		} catch {
+			print(error)
+			self.languageOfProject = nil
+		}
+		
+		do {
+			self.owner = try container.decode(User?.self, forKey: .owner)
+		} catch {
+			print(error)
+			self.owner = nil
+		}
+		
+		do {
+			self.id = try container.decode(Int?.self, forKey: .id)
+		} catch {
+			print(error)
+			self.id = nil
+		}
+		
+		do {
+			self.lastChange = try container.decode(String.self, forKey: .lastChange)
+		} catch {
+			print(error)
+			self.lastChange = nil
+		}
+		
+		do {
+			self.branchesLink = try container.decode(String.self, forKey: .branchesUrl)
+		} catch {
+			print(error)
+			self.branchesLink = nil
+		}
 	}
 	
 	public init() {	}

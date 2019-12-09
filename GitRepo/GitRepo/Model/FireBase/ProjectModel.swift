@@ -45,6 +45,7 @@ public final class Project: Decodable {
 		case projectTasks
 		case descriptionOfProject
 		case languageOfProject
+		case repositoryName
 	}
 	
 	/**
@@ -56,25 +57,26 @@ public final class Project: Decodable {
 	required public init(from decoder: Decoder) throws {
 		let container = try decoder.container(keyedBy: FirebaseApiResponseCodingKeys.self)
 		
-		self.projectName = try container.decode(String.self, forKey: .name)
-		
-		var url: String? = ""
 		do {
-			url = try container.decode(String?.self, forKey: .repoUrl)
+			self.projectName = try container.decode(String.self, forKey: .name)
 		} catch {
 			print(error)
+			self.projectName = ""
 		}
-		self.repoUrl = url
-		
-		var tasks: [String]? = []
 		
 		do {
-			tasks = try container.decode([String]?.self, forKey: .projectTasks)
+			self.repoUrl = try container.decode(String?.self, forKey: .repoUrl)
 		} catch {
 			print(error)
+			self.repoUrl = nil
 		}
 		
-		self.projectTasks = tasks
+		do {
+			self.projectTasks = try container.decode([String]?.self, forKey: .projectTasks)
+		} catch {
+			print(error)
+			self.projectTasks = nil
+		}
 		
 		do {
 			self.descriptionOfProject = try container.decode(String?.self, forKey: .descriptionOfProject)
@@ -90,9 +92,14 @@ public final class Project: Decodable {
 			self.languageOfProject = nil
 		}
 		
-		self.repo = nil
+		do {
+			self.repositoryName = try container.decode(String?.self, forKey: .repositoryName)
+		} catch {
+			print(error)
+			self.repositoryName = nil
+		}
 		
-		self.repositoryName = nil
+		self.repo = nil
 	}
 	
 	public func addTask(_ task: String) {

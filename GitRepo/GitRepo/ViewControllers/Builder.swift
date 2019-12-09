@@ -11,6 +11,7 @@ import UIKit
 protocol BuilderProtocol: class {
 	static func createStartAppViewController() -> UIViewController
 	static func createSettingsViewController() -> UIViewController
+	static func createSomeWebView(with path: String) -> UIViewController
 }
 
 class Builder: BuilderProtocol {
@@ -47,6 +48,14 @@ class Builder: BuilderProtocol {
 		let logoutCommand = LogOutCommand()
 		let view = SettingsViewController()
 		let presenter = SettingsPresenter(view: view, command: logoutCommand)
+		view.presenter = presenter
+		
+		return view
+	}
+	
+	static func createSomeWebView(with path: String) -> UIViewController {
+		let view = SomeUrlWebViewController()
+		let presenter = SomeWebPresenter(view: view, path: path)
 		view.presenter = presenter
 		
 		return view

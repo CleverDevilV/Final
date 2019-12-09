@@ -215,9 +215,11 @@ extension ProjectViewController: RepoTableCellDelegate {
 				self.present(addRepoAlertController, animated: true, completion: nil)
 			})
 			let viewRepositiryAtNet = UIAlertAction(title: "Открыть репозиторий в браузере", style: .default, handler: {_ in
-				let view = SomeUrlWebViewController()
-				view.url = URL(string: self.project?.repoUrl ?? "")
-				self.navigationController?.pushViewController(view, animated: true)
+//				let view = SomeUrlWebViewController()
+//				view.url = URL(string: self.project?.repoUrl ?? "")
+				let webView = Builder.createSomeWebView(with: self.project?.repoUrl ?? "")
+				
+				self.navigationController?.pushViewController(webView, animated: true)
 				})
 			
 			let viewRepository = UIAlertAction(title: "Открыть станицу репозитория в приложении", style: .default, handler: {

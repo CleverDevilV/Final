@@ -17,13 +17,16 @@ public var url: URL?
 */
 final class SomeUrlWebViewController: UIViewController {
 	
-	public var url: URL?
+	public var presenter: SomeWebPresenterProtocol!
 	
+	private var url: URL?
 	private var webView: WKWebView!
+	
 	
     override func viewDidLoad() {
         super.viewDidLoad()
 		
+		presenter.setURL()
 		setupView()
     }
 	
@@ -57,5 +60,11 @@ extension SomeUrlWebViewController: WKNavigationDelegate {
 		} else {
 			decisionHandler(.cancel)
 		}
+	}
+}
+
+extension SomeUrlWebViewController: SomeWebViewProtocol {
+	func setURL(_ url: URL) {
+		self.url = url
 	}
 }

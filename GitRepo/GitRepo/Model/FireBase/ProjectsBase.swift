@@ -69,7 +69,6 @@ final class ProjectsBase: Decodable {
 	}
 	
 	private func loadToBack() {
-		
 //		guard NSClassFromString("ProjectBaseTests") == nil else { return }
 		
 		guard NSClassFromString("XCTestCase") == nil else { return }

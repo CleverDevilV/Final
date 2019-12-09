@@ -91,6 +91,8 @@
 		A7664FAF239EB5F500B827BB /* RepositoriesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7664FAD239EB5F500B827BB /* RepositoriesPresenter.swift */; };
 		A7664FB4239EB95F00B827BB /* RepositoriesPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7664FB3239EB95F00B827BB /* RepositoriesPresenterTests.swift */; };
 		A7664FB8239EBADD00B827BB /* RepositoriesTableViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7664FB7239EBADD00B827BB /* RepositoriesTableViewControllerTests.swift */; };
+		A7664FBB239EBECD00B827BB /* RepositoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7664FBA239EBECD00B827BB /* RepositoryPresenter.swift */; };
+		A7664FBC239EBECD00B827BB /* RepositoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7664FBA239EBECD00B827BB /* RepositoryPresenter.swift */; };
 		A77404EE239110E90038851E /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77404ED239110E90038851E /* Registration.swift */; };
 		A77404FA23912FFC0038851E /* UserDefExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77404F923912FFC0038851E /* UserDefExt.swift */; };
 		A774053B23918FE60038851E /* repo.xib in Resources */ = {isa = PBXBuildFile; fileRef = A774053A23918FE60038851E /* repo.xib */; };
@@ -272,6 +274,7 @@
 		A7664FAD239EB5F500B827BB /* RepositoriesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesPresenter.swift; sourceTree = "<group>"; };
 		A7664FB3239EB95F00B827BB /* RepositoriesPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesPresenterTests.swift; sourceTree = "<group>"; };
 		A7664FB7239EBADD00B827BB /* RepositoriesTableViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesTableViewControllerTests.swift; sourceTree = "<group>"; };
+		A7664FBA239EBECD00B827BB /* RepositoryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryPresenter.swift; sourceTree = "<group>"; };
 		A77404ED239110E90038851E /* Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration.swift; sourceTree = "<group>"; };
 		A77404F923912FFC0038851E /* UserDefExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefExt.swift; sourceTree = "<group>"; };
 		A774053A23918FE60038851E /* repo.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = repo.xib; sourceTree = "<group>"; };
@@ -898,6 +901,23 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		A7664FBD239EC15700B827BB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A7FE069C238BF1B30093F07A /* RepoViewController.swift */,
+				A70A4651239D47F4005325C7 /* Cells */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A7664FBE239EC15E00B827BB /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				A7664FBA239EBECD00B827BB /* RepositoryPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
 		A7751772239BB9F800716795 /* EncodingTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -966,9 +986,8 @@
 		A7A1E80E239AE6DF00FAE25E /* RepositoryViewController */ = {
 			isa = PBXGroup;
 			children = (
-				A7FE069C238BF1B30093F07A /* RepoViewController.swift */,
-				A70A4651239D47F4005325C7 /* Cells */,
-				A7664FA1239EAB7600B827BB /* CollaboratorsTable */,
+				A7664FBD239EC15700B827BB /* View */,
+				A7664FBE239EC15E00B827BB /* Presenter */,
 			);
 			path = RepositoryViewController;
 			sourceTree = "<group>";
@@ -1075,6 +1094,7 @@
 			isa = PBXGroup;
 			children = (
 				A73FC6992396CC13000F9F5C /* RepositoriesTableViewController */,
+				A7664FA1239EAB7600B827BB /* CollaboratorsTable */,
 				A7A1E80E239AE6DF00FAE25E /* RepositoryViewController */,
 			);
 			path = Repo;
@@ -1213,6 +1233,7 @@
 				A7FE06AD238C49F20093F07A /* RepositoryModel.swift in Sources */,
 				A73FC69B2396CFE6000F9F5C /* OwnerAndViewButtonTableViewCell.swift in Sources */,
 				A7B481EF2392C26B00AFA19E /* SettingsViewController.swift in Sources */,
+				A7664FBB239EBECD00B827BB /* RepositoryPresenter.swift in Sources */,
 				A7664F85239E956900B827BB /* ProjectsTablePresenter.swift in Sources */,
 				A70A4628239C663F005325C7 /* FakeAppDelegate.swift in Sources */,
 				A742042E239AE28D009D344F /* ProjectTableViewCell.swift in Sources */,
@@ -1381,6 +1402,7 @@
 				A7A5DE6A23952390004271D9 /* NetworkRouterProtocol.swift in Sources */,
 				A70A4632239D18D3005325C7 /* CommitModelTests.swift in Sources */,
 				A7B71FBA239C440500218CEB /* ViewWithCustomTableTableViewCellTests.swift in Sources */,
+				A7664FBC239EBECD00B827BB /* RepositoryPresenter.swift in Sources */,
 				A777637B2397BE2E007859CA /* EventModel.swift in Sources */,
 				A7A5DE5723952357004271D9 /* Registration.swift in Sources */,
 				A70A4630239D157D005325C7 /* FirebaseNetworkManagerTests.swift in Sources */,

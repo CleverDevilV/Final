@@ -235,9 +235,10 @@ extension ProjectViewController: RepoTableCellDelegate {
 			
 			let viewRepository = UIAlertAction(title: "Открыть станицу репозитория в приложении", style: .default, handler: {
 				_ in
-				let destinationView = RepoViewController()
-				destinationView.repository = self.project?.repo
-				self.navigationController?.pushViewController(destinationView, animated: true)
+//				let destinationView = RepoViewController()
+//				destinationView.repository = self.project?.repo
+				guard let repositoryView = Builder.createRepositoryViewController(with: self.project?.repo) else { return }
+				self.navigationController?.pushViewController(repositoryView, animated: true)
 			})
 			
 			let cancelAction = UIAlertAction(title: "Отмена", style: .cancel, handler: nil)

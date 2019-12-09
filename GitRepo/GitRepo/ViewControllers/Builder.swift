@@ -17,7 +17,9 @@ protocol BuilderProtocol: class {
 	static func createProjectViewController(with project: Project?) -> UIViewController?
 	
 	static func createRepositoriesTableViewController() -> UIViewController
+	static func createRepositoryViewController(with repository: Repository?) -> UIViewController?
 	static func createCollaboratorsTableView(with repository: Repository?) -> UIViewController?
+	
 }
 
 class Builder: BuilderProtocol {
@@ -112,6 +114,19 @@ class Builder: BuilderProtocol {
 		}
 	}
 	
+	static func createRepositoryViewController(with repository: Repository?) -> UIViewController? {
+		if let repository = repository {
+			let view = RepoViewController()
+			let presenter = RepositoryPresenter(view: view, repository: repository)
+			view.presenter = presenter
+			
+			return view
+		} else {
+			print("repositori is nil")
+			return nil
+		}
+	}
+	
 	static func createRepositoriesTableViewController() -> UIViewController {
 		
 		var repositoryBase: RepositoriesBase
@@ -127,4 +142,5 @@ class Builder: BuilderProtocol {
 		
 		return view
 	}
+	
 }

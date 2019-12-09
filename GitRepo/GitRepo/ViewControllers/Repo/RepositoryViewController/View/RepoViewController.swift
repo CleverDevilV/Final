@@ -8,11 +8,13 @@
 
 import UIKit
 
-// No Unit Tests
+// Unit Tests
 
 class RepoViewController: UIViewController {
 	
-	public var repository: Repository?
+	public var presenter: RepositoryPresenterProtocol!
+	
+	private var repository: Repository?
 	private var segmentControllerValue: Int?
 	
 	private var tableViewWithLabelsAndButtons = UITableView()
@@ -22,6 +24,8 @@ class RepoViewController: UIViewController {
 		
 		view.backgroundColor = .white
 		title = repository?.name
+		
+		presenter.setRepository()
 		
 		setupViews()
     }
@@ -50,6 +54,12 @@ class RepoViewController: UIViewController {
 		tableViewWithLabelsAndButtons.register(ViewWithCustomTableTableViewCell.self, forCellReuseIdentifier: ViewWithCustomTableTableViewCell.reusedId)
 		
 		view.addSubview(tableViewWithLabelsAndButtons)
+	}
+}
+
+extension RepoViewController: RepositoryViewProtocol {
+	func setupRepository(_ repository: Repository) {
+		self.repository = repository
 	}
 }
 

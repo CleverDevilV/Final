@@ -112,10 +112,14 @@ extension RepositoriesTableViewController: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		tableView.cellForRow(at: indexPath)?.isSelected = false
 		
-		let destinationVC = RepoViewController()
+//		let destinationVC = RepoViewController()
 		
-		destinationVC.repository = repositories[indexPath.row]
+//		destinationVC.repository = repositories[indexPath.row]
 		
-		navigationController?.pushViewController(destinationVC, animated: true)
+		let repository = repositories[indexPath.row]
+		
+		guard let repositoryView = Builder.createRepositoryViewController(with: repository) else { return }
+		
+		navigationController?.pushViewController(repositoryView, animated: true)
 	}
 }

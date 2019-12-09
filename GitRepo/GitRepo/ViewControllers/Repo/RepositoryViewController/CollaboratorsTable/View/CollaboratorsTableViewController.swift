@@ -12,12 +12,16 @@ import UIKit
 
 class CollaboratorsTableViewController: UIViewController {
 	
-	public var repository: Repository!
+	public var presenter: CollaboratorsTablePresenterProtocol!
+	
+	private var repository: Repository!
 	
 	private var collaboratorsTable: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+		
+		presenter.setRepository()
 		
 		setupViews()
 		
@@ -35,6 +39,12 @@ class CollaboratorsTableViewController: UIViewController {
 		collaboratorsTable.dataSource = self
 		collaboratorsTable.delegate = self
 		
+	}
+}
+
+extension CollaboratorsTableViewController: CollaboratorsTableViewProtocol {
+	func setupRepository(_ repository: Repository) {
+		self.repository = repository
 	}
 }
 

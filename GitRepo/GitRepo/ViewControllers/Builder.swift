@@ -14,6 +14,7 @@ protocol BuilderProtocol: class {
 	static func createSomeWebView(with path: String) -> UIViewController?
 	static func createProjectsTableView() -> UIViewController
 	static func createProjectViewController(with project: Project?) -> UIViewController?
+	static func createCollaboratorsTableView(with repository: Repository?) -> UIViewController?
 }
 
 class Builder: BuilderProtocol {
@@ -92,6 +93,22 @@ class Builder: BuilderProtocol {
 		view.presenter = presenter
 		
 		return view
+	}
+	
+	static func createCollaboratorsTableView(with repository: Repository?) -> UIViewController? {
+		
+		if let repository = repository {
+			let view = CollaboratorsTableViewController()
+			let presenter = CollaboratorsTablePresenter(view: view, repository: repository)
+			view.presenter = presenter
+			
+			return view
+		} else {
+			print("repositori is nil")
+			return nil
+		}
+		
+		return nil
 	}
 	
 }

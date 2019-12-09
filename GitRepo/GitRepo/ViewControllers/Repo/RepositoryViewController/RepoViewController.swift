@@ -117,10 +117,14 @@ extension RepoViewController: OwnerAndViewButtonTableViewCellDelegate {
 
 extension RepoViewController: RepositoryCollaboratorsTableViewCellDelegate {
 	func showCollaboratorsTable() {
-		let collaboratorsTableView = CollaboratorsTableViewController()
-		collaboratorsTableView.repository = repository
+//		let collaboratorsTableView = CollaboratorsTableViewController()
+//		collaboratorsTableView.repository = repository
 		
-		navigationController?.pushViewController(collaboratorsTableView, animated: true)
+		guard let collaboratorsOfRepositoryTable = Builder.createCollaboratorsTableView(with: repository) else {
+			print("can't create collaborators table")
+			return
+		}
+		navigationController?.pushViewController(collaboratorsOfRepositoryTable, animated: true)
 	}
 }
 

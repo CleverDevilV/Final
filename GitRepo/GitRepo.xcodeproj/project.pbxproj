@@ -83,6 +83,8 @@
 		A7664F95239EA34D00B827BB /* ProjectViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7664F94239EA34D00B827BB /* ProjectViewPresenter.swift */; };
 		A7664F96239EA34D00B827BB /* ProjectViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7664F94239EA34D00B827BB /* ProjectViewPresenter.swift */; };
 		A7664F9C239EA4E500B827BB /* ProjectPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7664F9B239EA4E500B827BB /* ProjectPresenterTests.swift */; };
+		A7664FA5239EAB9F00B827BB /* CollaboratorsTablePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7664FA4239EAB9F00B827BB /* CollaboratorsTablePresenter.swift */; };
+		A7664FA6239EAD0100B827BB /* CollaboratorsTablePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7664FA4239EAB9F00B827BB /* CollaboratorsTablePresenter.swift */; };
 		A77404EE239110E90038851E /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77404ED239110E90038851E /* Registration.swift */; };
 		A77404FA23912FFC0038851E /* UserDefExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77404F923912FFC0038851E /* UserDefExt.swift */; };
 		A774053B23918FE60038851E /* repo.xib in Resources */ = {isa = PBXBuildFile; fileRef = A774053A23918FE60038851E /* repo.xib */; };
@@ -258,6 +260,7 @@
 		A7664F89239E99FE00B827BB /* ProjectsTablePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsTablePresenterTests.swift; sourceTree = "<group>"; };
 		A7664F94239EA34D00B827BB /* ProjectViewPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectViewPresenter.swift; sourceTree = "<group>"; };
 		A7664F9B239EA4E500B827BB /* ProjectPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectPresenterTests.swift; sourceTree = "<group>"; };
+		A7664FA4239EAB9F00B827BB /* CollaboratorsTablePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollaboratorsTablePresenter.swift; sourceTree = "<group>"; };
 		A77404ED239110E90038851E /* Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration.swift; sourceTree = "<group>"; };
 		A77404F923912FFC0038851E /* UserDefExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefExt.swift; sourceTree = "<group>"; };
 		A774053A23918FE60038851E /* repo.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = repo.xib; sourceTree = "<group>"; };
@@ -410,7 +413,6 @@
 			children = (
 				A73FC69A2396CFE6000F9F5C /* OwnerAndViewButtonTableViewCell.swift */,
 				A73FC6A02396DADC000F9F5C /* RepositoryCollaboratorsTableViewCell.swift */,
-				A70A4654239D4AA0005325C7 /* CollaboratorsTableViewController.swift */,
 				A73FC69D2396D66B000F9F5C /* SegmentCommitsBranchesTableViewCell.swift */,
 			);
 			path = Cells;
@@ -807,6 +809,31 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		A7664FA1239EAB7600B827BB /* CollaboratorsTable */ = {
+			isa = PBXGroup;
+			children = (
+				A7664FA3239EAB8300B827BB /* View */,
+				A7664FA7239EAE8A00B827BB /* Presenter */,
+			);
+			path = CollaboratorsTable;
+			sourceTree = "<group>";
+		};
+		A7664FA3239EAB8300B827BB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A70A4654239D4AA0005325C7 /* CollaboratorsTableViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A7664FA7239EAE8A00B827BB /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				A7664FA4239EAB9F00B827BB /* CollaboratorsTablePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
 		A7751772239BB9F800716795 /* EncodingTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -877,6 +904,7 @@
 			children = (
 				A7FE069C238BF1B30093F07A /* RepoViewController.swift */,
 				A70A4651239D47F4005325C7 /* Cells */,
+				A7664FA1239EAB7600B827BB /* CollaboratorsTable */,
 			);
 			path = RepositoryViewController;
 			sourceTree = "<group>";
@@ -1114,6 +1142,7 @@
 				A7FE069F238BF3510093F07A /* RootViewController.swift in Sources */,
 				A7664F95239EA34D00B827BB /* ProjectViewPresenter.swift in Sources */,
 				A7FE06AB238C46880093F07A /* ProjectModel.swift in Sources */,
+				A7664FA5239EAB9F00B827BB /* CollaboratorsTablePresenter.swift in Sources */,
 				A7B4060E239982960092AD85 /* ManagedObjectFromCoreDataService.swift in Sources */,
 				A7776387239838F1007859CA /* LogoutSettingsTableViewCell.swift in Sources */,
 				A7FE06AD238C49F20093F07A /* RepositoryModel.swift in Sources */,
@@ -1262,6 +1291,7 @@
 				A7A5DE4E2395232D004271D9 /* BaseTabBarController.swift in Sources */,
 				A70A464E239D4098005325C7 /* TasksTableViewCellTests.swift in Sources */,
 				A70A4648239D39DA005325C7 /* CollaboratorsTableViewCellTests.swift in Sources */,
+				A7664FA6239EAD0100B827BB /* CollaboratorsTablePresenter.swift in Sources */,
 				A796F3362395AD57007D7E51 /* RepositoriesTableViewCell.swift in Sources */,
 				A7A5DE552395234F004271D9 /* LoginModel.swift in Sources */,
 				A775177B239BCD1700716795 /* LoaderTests.swift in Sources */,

@@ -7,8 +7,6 @@
 //
 
 import XCTest
-
-import XCTest
 @testable import GitRepo
 
 class StartViewPresenterTests: XCTestCase {

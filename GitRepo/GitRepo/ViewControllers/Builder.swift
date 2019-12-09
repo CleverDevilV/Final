@@ -12,6 +12,7 @@ protocol BuilderProtocol: class {
 	static func createStartAppViewController() -> UIViewController
 	static func createSettingsViewController() -> UIViewController
 	static func createSomeWebView(with path: String) -> UIViewController?
+	static func createProjectsTableView() -> UIViewController
 }
 
 class Builder: BuilderProtocol {
@@ -59,6 +60,21 @@ class Builder: BuilderProtocol {
 		
 		let view = SomeUrlWebViewController()
 		let presenter = SomeWebPresenter(view: view, path: path)
+		view.presenter = presenter
+		
+		return view
+	}
+	
+	static func createProjectsTableView() -> UIViewController {
+		var projectsBase: ProjectsBase
+		if NSClassFromString("XCTestCase") != nil {
+			projectsBase = ProjectsBase(with: [])
+		} else {
+			projectsBase = AppDelegate.shared.projectBase ?? ProjectsBase(with: [])
+		}
+		
+		let view = ProjectsTableViewController()
+		let presenter = ProjectsTablePresenter(view: view, projectsBase: projectsBase)
 		view.presenter = presenter
 		
 		return view

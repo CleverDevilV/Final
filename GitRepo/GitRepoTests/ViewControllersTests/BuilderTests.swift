@@ -58,5 +58,14 @@ class BuilderTests: XCTestCase {
 		// assert
 		XCTAssertNil(view)
 	}
+	
+	func testCreatedProjectsTableViewIsNotNil () {
+		// arrange
+		var view: UIViewController?
+		// act
+		view = Builder.createProjectsTableView()
+		// assert
+		XCTAssertNotNil(view)
+	}
 
 }

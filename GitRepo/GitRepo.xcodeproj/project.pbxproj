@@ -77,6 +77,9 @@
 		A7664F79239E784200B827BB /* SomeWebPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7664F77239E76B800B827BB /* SomeWebPresenter.swift */; };
 		A7664F7E239E7AEE00B827BB /* SomeWebPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7664F7D239E7AEE00B827BB /* SomeWebPresenterTests.swift */; };
 		A7664F80239E7D8200B827BB /* SomeUrlWebViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7664F7F239E7D8200B827BB /* SomeUrlWebViewControllerTests.swift */; };
+		A7664F85239E956900B827BB /* ProjectsTablePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7664F84239E956900B827BB /* ProjectsTablePresenter.swift */; };
+		A7664F86239E975F00B827BB /* ProjectsTablePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7664F84239E956900B827BB /* ProjectsTablePresenter.swift */; };
+		A7664F8A239E99FE00B827BB /* ProjectsTablePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7664F89239E99FE00B827BB /* ProjectsTablePresenterTests.swift */; };
 		A77404EE239110E90038851E /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77404ED239110E90038851E /* Registration.swift */; };
 		A77404FA23912FFC0038851E /* UserDefExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77404F923912FFC0038851E /* UserDefExt.swift */; };
 		A774053B23918FE60038851E /* repo.xib in Resources */ = {isa = PBXBuildFile; fileRef = A774053A23918FE60038851E /* repo.xib */; };
@@ -248,6 +251,8 @@
 		A7664F77239E76B800B827BB /* SomeWebPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomeWebPresenter.swift; sourceTree = "<group>"; };
 		A7664F7D239E7AEE00B827BB /* SomeWebPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomeWebPresenterTests.swift; sourceTree = "<group>"; };
 		A7664F7F239E7D8200B827BB /* SomeUrlWebViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomeUrlWebViewControllerTests.swift; sourceTree = "<group>"; };
+		A7664F84239E956900B827BB /* ProjectsTablePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsTablePresenter.swift; sourceTree = "<group>"; };
+		A7664F89239E99FE00B827BB /* ProjectsTablePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsTablePresenterTests.swift; sourceTree = "<group>"; };
 		A77404ED239110E90038851E /* Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration.swift; sourceTree = "<group>"; };
 		A77404F923912FFC0038851E /* UserDefExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefExt.swift; sourceTree = "<group>"; };
 		A774053A23918FE60038851E /* repo.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = repo.xib; sourceTree = "<group>"; };
@@ -329,13 +334,13 @@
 				A7664F75239E72D700B827BB /* BuilderTests.swift */,
 				A7282A41239E57470055A12A /* StartAppViewTests */,
 				A7282A3F239E56EE0055A12A /* SettingsViewTests */,
+				A7664F81239E7D8B00B827BB /* SomeWebViewTests */,
 				A70A4639239D2ACF005325C7 /* LogOutCommandTests.swift */,
 				A70A464B239D3E6A005325C7 /* LogoutSettingsTableViewCellTests.swift */,
 				A70A4644239D3705005325C7 /* ProjectViewController */,
 				A70A4652239D4815005325C7 /* OwnerAndViewButtonTableViewCellTests.swift */,
 				A70A4657239D4FA7005325C7 /* RepositoryCollaboratorsTableViewCellTests.swift */,
 				A70A4659239D50E2005325C7 /* SegmentCommitsBranchesTableViewCellTests.swift */,
-				A7664F81239E7D8B00B827BB /* SomeWebViewTests */,
 			);
 			path = ViewControllersTests;
 			sourceTree = "<group>";
@@ -375,6 +380,7 @@
 				A70A463F239D305A005325C7 /* ProjectsTableViewControllerTests.swift */,
 				A70A464F239D44BE005325C7 /* ProjectViewControllerTests.swift */,
 				A70A4649239D3B94005325C7 /* Cells */,
+				A7664F8B239E9C9A00B827BB /* Presenter */,
 			);
 			path = ProjectViewController;
 			sourceTree = "<group>";
@@ -487,8 +493,8 @@
 			isa = PBXGroup;
 			children = (
 				A7282A3D239E53220055A12A /* Mock.swift */,
-				A7282A39239E40700055A12A /* Presenter */,
 				A7282A3C239E40F30055A12A /* View */,
+				A7282A39239E40700055A12A /* Presenter */,
 			);
 			path = StartAppViewTests;
 			sourceTree = "<group>";
@@ -705,6 +711,31 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		A7664F87239E98E900B827BB /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				A7664F84239E956900B827BB /* ProjectsTablePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		A7664F88239E98F200B827BB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A70A463D239D2FC4005325C7 /* ProjectsTableViewController.swift */,
+				A742042D239AE28D009D344F /* ProjectTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A7664F8B239E9C9A00B827BB /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				A7664F89239E99FE00B827BB /* ProjectsTablePresenterTests.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
 		A7751772239BB9F800716795 /* EncodingTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -764,8 +795,8 @@
 		A7A1E80D239AE6C400FAE25E /* ProjectsTableViewController */ = {
 			isa = PBXGroup;
 			children = (
-				A70A463D239D2FC4005325C7 /* ProjectsTableViewController.swift */,
-				A742042D239AE28D009D344F /* ProjectTableViewCell.swift */,
+				A7664F88239E98F200B827BB /* View */,
+				A7664F87239E98E900B827BB /* Presenter */,
 			);
 			path = ProjectsTableViewController;
 			sourceTree = "<group>";
@@ -1016,6 +1047,7 @@
 				A7FE06AD238C49F20093F07A /* RepositoryModel.swift in Sources */,
 				A73FC69B2396CFE6000F9F5C /* OwnerAndViewButtonTableViewCell.swift in Sources */,
 				A7B481EF2392C26B00AFA19E /* SettingsViewController.swift in Sources */,
+				A7664F85239E956900B827BB /* ProjectsTablePresenter.swift in Sources */,
 				A70A4628239C663F005325C7 /* FakeAppDelegate.swift in Sources */,
 				A742042E239AE28D009D344F /* ProjectTableViewCell.swift in Sources */,
 				A7B405DF239950610092AD85 /* CoreDataStack.swift in Sources */,
@@ -1113,6 +1145,7 @@
 				A7751779239BC7BF00716795 /* FirebaseEndPointTests.swift in Sources */,
 				A70A463A239D2ACF005325C7 /* LogOutCommandTests.swift in Sources */,
 				A7664F7E239E7AEE00B827BB /* SomeWebPresenterTests.swift in Sources */,
+				A7664F8A239E99FE00B827BB /* ProjectsTablePresenterTests.swift in Sources */,
 				A7776388239839BA007859CA /* LogoutSettingsTableViewCell.swift in Sources */,
 				A7B71FB4239C3FA500218CEB /* CommitModel.swift in Sources */,
 				A7A5DE6623952382004271D9 /* EndPointTypeProtocol.swift in Sources */,
@@ -1170,6 +1203,7 @@
 				A7495FC62396714600C120DC /* FirebaseNetworkManager.swift in Sources */,
 				A70A4650239D44BE005325C7 /* ProjectViewControllerTests.swift in Sources */,
 				A7664F80239E7D8200B827BB /* SomeUrlWebViewControllerTests.swift in Sources */,
+				A7664F86239E975F00B827BB /* ProjectsTablePresenter.swift in Sources */,
 				A7A5DE6A23952390004271D9 /* NetworkRouterProtocol.swift in Sources */,
 				A70A4632239D18D3005325C7 /* CommitModelTests.swift in Sources */,
 				A7B71FBA239C440500218CEB /* ViewWithCustomTableTableViewCellTests.swift in Sources */,

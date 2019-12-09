@@ -13,6 +13,8 @@ class ProjectsTableViewControllerTests: XCTestCase {
 	
 	var projectTableView: ProjectsTableViewController!
 	var projectsTable: UITableView!
+	var projectBase: ProjectsBase!
+	
 
     override func setUp() {
 		projectTableView = ProjectsTableViewController()
@@ -40,6 +42,17 @@ class ProjectsTableViewControllerTests: XCTestCase {
 		let editingStyle = projectTableView.tableView(projectsTable, editingStyleForRowAt: IndexPath(row: 0, section: 0))
 		// assert
 		XCTAssertEqual(editingStyle, UITableViewCell.EditingStyle.delete)
+	}
+	
+	func testCountOfProjectsAfterSetProjectBase () {
+		// arrange
+		let notEmptyProjectBase = ProjectsBase(with: Array(repeating: Project(projectName: "Bar", repoURL: nil, repositoryName: nil, repo: nil, descriptionOfProject: nil, languageOfProject: nil), count: 4))
+		let countOfProjects: Int?
+		// act
+		projectTableView.set(projectsBase: notEmptyProjectBase)
+		countOfProjects = projectTableView.tableView(projectsTable, numberOfRowsInSection: 0)
+		// assert
+		XCTAssertEqual(countOfProjects, 4)
 	}
 
 }

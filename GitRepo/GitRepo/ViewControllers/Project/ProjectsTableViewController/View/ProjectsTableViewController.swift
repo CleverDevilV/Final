@@ -17,6 +17,8 @@ protocol ProjectsTableViewControllerProtocol {
 /// Show Projects ViewControiller
 class ProjectsTableViewController: UIViewController {
 	
+	public var presenter: ProjectsTablePresenterProtocol!
+	
 	// UI
 	private var tableView: UITableView!
 	private var projectsSelector: UISegmentedControl!
@@ -25,6 +27,8 @@ class ProjectsTableViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		
+		presenter.setProjectsBase()
 		
 		view.backgroundColor = .white
 		
@@ -51,20 +55,7 @@ class ProjectsTableViewController: UIViewController {
 		
 		self.tableView.reloadData()
 		
-		setProjectsBase()
-		
 		self.tabBarController?.tabBar.isHidden = false
-	}
-	
-	func setProjectsBase() {
-		
-		guard NSClassFromString("XCTestCase") == nil else {
-			projectsBase = ProjectsBase(with: [])
-			return }
-		guard AppDelegate.shared != nil else {
-			projectsBase = ProjectsBase(with: [])
-			return }
-		self.projectsBase = AppDelegate.shared.projectBase
 	}
 	
 	@objc
@@ -97,6 +88,12 @@ class ProjectsTableViewController: UIViewController {
 	@objc private func toggleEditing() {
 		tableView.setEditing(!tableView.isEditing, animated: true)
 		navigationItem.rightBarButtonItems?[1].title = tableView.isEditing ? "Done" : "Edit"
+	}
+}
+
+extension ProjectsTableViewController: ProjectsTableViewProtocol {
+	func set(projectsBase: ProjectsBase) {
+		self.projectsBase = projectsBase
 	}
 }
 

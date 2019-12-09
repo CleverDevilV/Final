@@ -15,7 +15,8 @@ class BaseTabBarController: UITabBarController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		let projectsVC = UINavigationController(rootViewController: ProjectsTableViewController() )
+//		let projectsVC = UINavigationController(rootViewController: ProjectsTableViewController() )
+		let projectsVC = UINavigationController(rootViewController: Builder.createProjectsTableView() )
 		projectsVC.tabBarItem = UITabBarItem(title: "Проекты", image: UIImage(named: "project"), tag: 0)
 		
 		let repoVC = UINavigationController(rootViewController: RepositoriesTableViewController())

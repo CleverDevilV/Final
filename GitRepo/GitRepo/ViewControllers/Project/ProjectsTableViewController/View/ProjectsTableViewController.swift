@@ -72,7 +72,6 @@ class ProjectsTableViewController: UIViewController {
 			
 			if let text = textField.text {
 				self.projectsBase?.addProject(Project(projectName: text, repoURL: nil, repositoryName: nil, repo: nil, descriptionOfProject: nil, languageOfProject: nil))
-				self.projectsBase?.baseUpdated()
 				
 				self.tableView.reloadData()
 			} else {

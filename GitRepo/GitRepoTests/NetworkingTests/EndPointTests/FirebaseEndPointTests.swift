@@ -46,7 +46,7 @@ class FirebaseEndPointTests: XCTestCase {
 		
 		// arrange
 		// act
-		endPoint = FirebaseApi.uploadProjects(data: nil)
+		endPoint = FirebaseApi.uploadProjects(data: ["data": []])
 		// assert
 		XCTAssertEqual(endPoint?.httpMethod.rawValue, "PUT")
 	}
@@ -90,7 +90,7 @@ class FirebaseEndPointTests: XCTestCase {
 		
 		// arrange
 		// act
-		endPoint = FirebaseApi.uploadProjects(data: nil)
+		endPoint = FirebaseApi.uploadProjects(data: ["data": []])
 		// assert
 		XCTAssertEqual(endPoint?.path, "")
 	}

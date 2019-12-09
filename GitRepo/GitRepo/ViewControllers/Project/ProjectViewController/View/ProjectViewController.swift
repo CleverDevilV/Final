@@ -158,17 +158,20 @@ extension ProjectViewController: RepoTableCellDelegate {
 			let okAction = UIAlertAction(title: "OK", style: .default, handler: {
 				_ in
 				
-				let textField = addRepoAlertController.textFields![0] as UITextField
+				guard let textField = addRepoAlertController.textFields?[0] else { return }
 				
 				if let text = textField.text {
-					let url = URL(string: text.replacingOccurrences(of: ".git", with: ""))!
-					let name = url.pathComponents.last
+					let url = URL(string: text.replacingOccurrences(of: ".git", with: ""))
+					
+					guard let notNilUrl = url else { return }
+					let name = notNilUrl.pathComponents.last
+					
 					guard let repoName = name else {return}
 					self.netWorkService = GitHubNetworkManager(with: AppDelegate.shared.session)
 					self.netWorkService?.getData(endPoint: GitHubApi.oneRepo(repositoryName: repoName)) {
 						repo, error in
 						self.project?.repo = repo as? Repository
-						self.project?.repoUrl = url.absoluteString
+						self.project?.repoUrl = notNilUrl.absoluteString
 						self.project?.repositoryName = self.project?.repo?.name
 						self.project?.languageOfProject = self.project?.repo?.languageOfProject
 						DispatchQueue.main.async {
@@ -200,18 +203,20 @@ extension ProjectViewController: RepoTableCellDelegate {
 				let okAction = UIAlertAction(title: "OK", style: .default, handler: {
 					_ in
 					
-					let textField = addRepoAlertController.textFields![0]
+					guard let textField = addRepoAlertController.textFields?[0] else { return }
 					
 					if let text = textField.text {
-						let url = URL(string: text.replacingOccurrences(of: ".git", with: ""))!
-						let name = url.pathComponents.last
+						let url = URL(string: text.replacingOccurrences(of: ".git", with: ""))
+						
+						guard let notNilUrl = url else { return }
+						let name = notNilUrl.pathComponents.last
 						guard let repoName = name else {return}
 						
 						self.netWorkService = GitHubNetworkManager(with: AppDelegate.shared.session)
 						self.netWorkService?.getData(endPoint: GitHubApi.oneRepo(repositoryName: repoName)) {
 							repo, error in
 							self.project?.repo = repo as? Repository
-							self.project?.repoUrl = url.absoluteString
+							self.project?.repoUrl = notNilUrl.absoluteString
 							DispatchQueue.main.async {
 								self.tableView.reloadRows(at: [IndexPath(row: 1, section: 0)], with: .none)
 							}
@@ -288,7 +293,7 @@ extension ProjectViewController: ViewWithCustomTableTableViewCellDelegate {
 		let okAction = UIAlertAction(title: "OK", style: .default, handler: {
 			_ in
 			
-			let textField = addProjectAlertController.textFields![0] as UITextField
+			guard let textField = addProjectAlertController.textFields?[0] else { return }
 			if let text = textField.text {
 				self.project?.addTask(text)
 				

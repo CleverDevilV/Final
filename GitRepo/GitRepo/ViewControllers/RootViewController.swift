@@ -21,7 +21,7 @@ protocol ManagedViewControllerByRootViewControllerProtocol {
 class RootViewController: UIViewController, RootViewControllerProtocol {
 	
 	private var currentVC: UIViewController!
-	static let shared = RootViewController()
+//	static let shared = RootViewController()
 	var token: String = ""
 	
 	

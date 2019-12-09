@@ -62,7 +62,7 @@ final class ManagedObjectFromCoreDataService {
 		}
 	}
 	
-	init(withDeleting: Bool, writeContext: NSManagedObjectContext!, readContext: NSManagedObjectContext?) {
+	init(withDeleting: Bool, writeContext: NSManagedObjectContext, readContext: NSManagedObjectContext?) {
 //		self.readRepositoriesData()
 		self.adapter = CoreDataAdapter()
 		
@@ -288,7 +288,7 @@ extension ManagedObjectFromCoreDataService: CoreDataServiceProtocol {
 	func getData(baseType: BaseType, _ completion: @escaping (Decodable?, String?) -> ()) {
 		self.getDataFromCoreData(to: baseType) {
 			result, error in
-			print(result, "; ", error)
+//			print(result, "; ", error)
 			
 			if let result = result as? [Project] {
 				completion(ProjectsBase(with: result), nil)

@@ -44,20 +44,33 @@ internal final class CoreDataStack {
 		return writeContext
 	}()
 	
-	private var managedObjectModel: NSManagedObjectModel = {
-		let url = Bundle.main.url(forResource: "GitRepoCoreData", withExtension: "momd")!
+	private var managedObjectModel: NSManagedObjectModel? = {
+		
+		guard let url = Bundle.main.url(forResource: "GitRepoCoreData", withExtension: "momd") else {
+			print("Error with Bundle.main.url")
+			return nil
+		}
+		
 		let managedObjectModel = NSManagedObjectModel(contentsOf: url)
-		return managedObjectModel!
+		return managedObjectModel
 	}()
 	
 	private var coordinator: NSPersistentStoreCoordinator!
 	
 	private func createCoordinator() {
+		
+		guard let managedObjectModel = managedObjectModel else { print("managedObjectModel is nil")
+			return }
+		
 		coordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel)
 		
 		let paths = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)
-		let path = paths.first!
+		
+		guard let path = paths.first else { print("Path is nil")
+			return }
+		
 		let modelPath = URL(fileURLWithPath: path).appendingPathComponent("GitRepoCoreData").relativePath
+		
 		let url = URL(fileURLWithPath: modelPath, isDirectory: true)
 		do {
 			try coordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: url, options: [NSMigratePersistentStoresAutomaticallyOption : true, NSInferMappingModelAutomaticallyOption : true])

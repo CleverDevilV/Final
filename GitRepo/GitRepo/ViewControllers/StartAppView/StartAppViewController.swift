@@ -120,7 +120,7 @@ class StartAppViewController: UIViewController {
 						// Load RepositoryBase From CoreData
 						self.loader.getBaseDataFrom(source: .coreData, endPoint: nil, baseType: .repositoryBase) {
 							result,error  in
-							print(result)
+//							print(result)
 							
 							guard let repositoryBase = result as? RepositoriesBase else {return}
 							

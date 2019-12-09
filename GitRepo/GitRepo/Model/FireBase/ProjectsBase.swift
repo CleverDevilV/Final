@@ -69,13 +69,11 @@ final class ProjectsBase: Decodable {
 	}
 	
 	private func loadToBack() {
-		// !!!
+		
 //		guard NSClassFromString("ProjectBaseTests") == nil else { return }
 		
-		let classFromString = NSClassFromString("ProjectBaseTests")
-		
 		guard NSClassFromString("XCTestCase") == nil else { return }
-		guard AppDelegate.shared != nil else { return }
+//		guard AppDelegate.shared != nil else { return }
 		
 		let network = FirebaseNetworkManager(with: AppDelegate.shared.session)
 		var uploadData: [String : [ProjectForUploadToBack]] = [userName : []]

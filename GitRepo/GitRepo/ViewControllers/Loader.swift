@@ -41,9 +41,9 @@ Tests - [LoaderTests](x-source-tag://LoaderTests).
 */
 final class Loader: LoaderProtocol {
 	
-	var githubNetworkManager: NetworkManagerProtocol!
-	var firebaseNetworkManager: NetworkManagerProtocol!
-	var coreDataService: CoreDataServiceProtocol!
+	var githubNetworkManager: NetworkManagerProtocol?
+	var firebaseNetworkManager: NetworkManagerProtocol?
+	var coreDataService: CoreDataServiceProtocol?
 	
 	init(githubNetworkManager: NetworkManagerProtocol?, firebaseNetworkManager: NetworkManagerProtocol?, coreDataService: CoreDataServiceProtocol?) {
 		self.githubNetworkManager = githubNetworkManager
@@ -69,7 +69,7 @@ final class Loader: LoaderProtocol {
 		case .gitHub:
 			guard let endPoint = endPoint else {return}
 			
-			githubNetworkManager.getData(endPoint: endPoint) {
+			githubNetworkManager?.getData(endPoint: endPoint) {
 				result, error in
 				
 				completion(result, error)
@@ -78,7 +78,7 @@ final class Loader: LoaderProtocol {
 		case .firebase:
 			guard let endPoint = endPoint else {return}
 			
-			firebaseNetworkManager.getData(endPoint: endPoint) {
+			firebaseNetworkManager?.getData(endPoint: endPoint) {
 				result, error in
 				
 				completion(result, error)
@@ -86,7 +86,7 @@ final class Loader: LoaderProtocol {
 			
 		case .coreData:
 			guard let baseType = baseType else {return}
-			self.coreDataService.getData(baseType: baseType) {
+			self.coreDataService?.getData(baseType: baseType) {
 				result, error in
 				
 				completion(result, error)

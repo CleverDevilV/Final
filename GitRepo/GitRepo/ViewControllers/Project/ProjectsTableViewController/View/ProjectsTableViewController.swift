@@ -68,7 +68,8 @@ class ProjectsTableViewController: UIViewController {
 		let okAction = UIAlertAction(title: "OK", style: .default, handler: {
 			_ in
 			
-			let textField = addProjectAlertController.textFields![0] as UITextField
+			guard let textField = addProjectAlertController.textFields?[0] else { return }
+			
 			if let text = textField.text {
 				self.projectsBase?.addProject(Project(projectName: text, repoURL: nil, repositoryName: nil, repo: nil, descriptionOfProject: nil, languageOfProject: nil))
 				self.projectsBase?.baseUpdated()

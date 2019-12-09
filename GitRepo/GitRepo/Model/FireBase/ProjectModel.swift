@@ -117,4 +117,14 @@ public final class Project: Decodable {
 		}
 		
 	}
+	
+	static public func setRepository(_ repository: Repository, to project: inout Project?) {
+		guard let project = project else { return }
+		
+		project.repo = repository
+		project.repositoryName = repository.name
+		project.languageOfProject = repository.languageOfProject
+		project.repoUrl = repository.repoLink
+	}
+	
 }

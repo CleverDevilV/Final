@@ -13,73 +13,75 @@ import XCTest
 
 class URLParameterEncoderTests: XCTestCase {
 	
-	var request: URLRequest!
 	var parameters: Parameters!
 	var url: URL!
 
     override func setUp() {
+		super.setUp()
+		
 		url = URL(string: "testUrlEncoder")
-		request = URLRequest(url: url)
 		parameters = Parameters(dictionaryLiteral: ("Baz", "Bar"))
-		
-		
-		do {
-			try URLParameterEncoder.encode(urlRequest: &request, with: parameters)
-		} catch {
-			print(error)
-		}
-		
-		
     }
 
     override func tearDown() {
-		request = nil
+		super.tearDown()
+		
 		parameters = nil
 		url = nil
     }
 	
-	func testNotNil() {
+	func testCreateRequestWithUrlWithoutError () {
 		// arrange
+		var testRequest = URLRequest(url: url)
 		// act
+		do {
+			try URLParameterEncoder.encode(urlRequest: &testRequest, with: parameters)
+		} catch {
+			// assert
+			XCTAssertNil(error)
+		}
 		
 		// assert
-		XCTAssertNotNil(request)
-		XCTAssertNotNil(request.url)
+		XCTAssertNotNil(testRequest)
 	}
-
-	func testURLRequestConteinsUrl() {
+	
+	func testCreateRequestErrorIfURLIsNil () {
 		// arrange
+		var testRequest = URLRequest(url: url)
 		// act
+		testRequest.url = nil
 		
-		// assert
-		XCTAssertEqual(request.url, url)
+		do {
+			try URLParameterEncoder.encode(urlRequest: &testRequest, with: parameters)
+		} catch {
+			// assert
+			XCTAssertEqual(error.localizedDescription, "The operation couldn’t be completed. (GitRepoTests.NetworkError error 2.)")
+		}
 	}
 	
     func testURLRequestContainsAtLeastOneHeader() {
 		// arrange
+		var testRequest = URLRequest(url: url)
 		// act
+		do {
+			try URLParameterEncoder.encode(urlRequest: &testRequest, with: parameters)
+		} catch {
+			// assert
+			XCTAssertEqual(testRequest.allHTTPHeaderFields?.count, 1)
+		}
 		
-		// assert
-		XCTAssertEqual(request.allHTTPHeaderFields?.count, 1)
     }
 	
 	func testURLRequestContainsContentTypeHeader() {
 		// arrange
+		var testRequest = URLRequest(url: url)
 		// act
-		
-		// assert
-		XCTAssertEqual(request.allHTTPHeaderFields?.first?.key, "Content-Type")
-		XCTAssertEqual(request.allHTTPHeaderFields?.first?.value, "application/x-www-form-urlencoded; charset=utf-8")
-	}
-	
-	func testEncodingThrowsErrorIfURLIsEqualToNil() {
-		
-		// arrange
-		request.url = nil
-		parameters = ["" : ""]
-		// act
-		
-		// assert
-		XCTAssertThrowsError(try URLParameterEncoder.encode(urlRequest: &request, with: parameters))
+		do {
+			try URLParameterEncoder.encode(urlRequest: &testRequest, with: parameters)
+		} catch {
+			// assert
+			XCTAssertEqual(testRequest.allHTTPHeaderFields?.first?.key, "Content-Type")
+			XCTAssertEqual(testRequest.allHTTPHeaderFields?.first?.value, "application/x-www-form-urlencoded; charset=utf-8")
+		}
 	}
 }

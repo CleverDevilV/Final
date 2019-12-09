@@ -321,8 +321,8 @@
 			isa = PBXGroup;
 			children = (
 				A7282A41239E57470055A12A /* StartAppViewTests */,
-				A70A4639239D2ACF005325C7 /* LogOutCommandTests.swift */,
 				A7282A3F239E56EE0055A12A /* SettingsViewTests */,
+				A70A4639239D2ACF005325C7 /* LogOutCommandTests.swift */,
 				A70A464B239D3E6A005325C7 /* LogoutSettingsTableViewCellTests.swift */,
 				A70A4644239D3705005325C7 /* ProjectViewController */,
 				A70A4652239D4815005325C7 /* OwnerAndViewButtonTableViewCellTests.swift */,

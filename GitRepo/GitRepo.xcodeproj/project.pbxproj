@@ -38,6 +38,8 @@
 		A7282A2F239E325D0055A12A /* Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7282A2C239E2F7E0055A12A /* Builder.swift */; };
 		A7282A33239E35490055A12A /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7282A32239E35490055A12A /* SettingsPresenter.swift */; };
 		A7282A35239E37500055A12A /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7282A32239E35490055A12A /* SettingsPresenter.swift */; };
+		A7282A3B239E40970055A12A /* StartAppViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7282A3A239E40970055A12A /* StartAppViewControllerTests.swift */; };
+		A7282A3E239E53220055A12A /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7282A3D239E53220055A12A /* Mock.swift */; };
 		A73FC69B2396CFE6000F9F5C /* OwnerAndViewButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73FC69A2396CFE6000F9F5C /* OwnerAndViewButtonTableViewCell.swift */; };
 		A73FC69C2396D087000F9F5C /* OwnerAndViewButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73FC69A2396CFE6000F9F5C /* OwnerAndViewButtonTableViewCell.swift */; };
 		A73FC69E2396D66B000F9F5C /* SegmentCommitsBranchesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73FC69D2396D66B000F9F5C /* SegmentCommitsBranchesTableViewCell.swift */; };
@@ -212,6 +214,8 @@
 		A70A465B239D786B005325C7 /* UserDefaultsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsTests.swift; sourceTree = "<group>"; };
 		A7282A2C239E2F7E0055A12A /* Builder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Builder.swift; sourceTree = "<group>"; };
 		A7282A32239E35490055A12A /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsPresenter.swift; path = ../SettingsPresenter.swift; sourceTree = "<group>"; };
+		A7282A3A239E40970055A12A /* StartAppViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StartAppViewControllerTests.swift; path = ../StartAppViewControllerTests.swift; sourceTree = "<group>"; };
+		A7282A3D239E53220055A12A /* Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mock.swift; sourceTree = "<group>"; };
 		A73FC69A2396CFE6000F9F5C /* OwnerAndViewButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerAndViewButtonTableViewCell.swift; sourceTree = "<group>"; };
 		A73FC69D2396D66B000F9F5C /* SegmentCommitsBranchesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentCommitsBranchesTableViewCell.swift; sourceTree = "<group>"; };
 		A73FC6A02396DADC000F9F5C /* RepositoryCollaboratorsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryCollaboratorsTableViewCell.swift; sourceTree = "<group>"; };
@@ -277,7 +281,7 @@
 		A7B71FB9239C440500218CEB /* ViewWithCustomTableTableViewCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewWithCustomTableTableViewCellTests.swift; sourceTree = "<group>"; };
 		A7F55052239BD36E0035B807 /* StartViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StartViewPresenter.swift; path = ../StartViewPresenter.swift; sourceTree = "<group>"; };
 		A7F55062239BDD690035B807 /* LoaderBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderBuilder.swift; sourceTree = "<group>"; };
-		A7F55065239BEE0C0035B807 /* StartViewPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StartViewPresenterTests.swift; path = ../StartViewPresenterTests.swift; sourceTree = "<group>"; };
+		A7F55065239BEE0C0035B807 /* StartViewPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StartViewPresenterTests.swift; path = ../../StartViewPresenterTests.swift; sourceTree = "<group>"; };
 		A7FE0683238BE7F30093F07A /* GitRepo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitRepo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7FE0686238BE7F30093F07A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A7FE068D238BE7F40093F07A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -444,9 +448,27 @@
 		A7282A38239E3BB40055A12A /* StartAppView */ = {
 			isa = PBXGroup;
 			children = (
-				A7F55065239BEE0C0035B807 /* StartViewPresenterTests.swift */,
+				A7282A39239E40700055A12A /* Presenter */,
+				A7282A3C239E40F30055A12A /* View */,
+				A7282A3D239E53220055A12A /* Mock.swift */,
 			);
 			path = StartAppView;
+			sourceTree = "<group>";
+		};
+		A7282A39239E40700055A12A /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				A7F55065239BEE0C0035B807 /* StartViewPresenterTests.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		A7282A3C239E40F30055A12A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A7282A3A239E40970055A12A /* StartAppViewControllerTests.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		A73FC6962396CAC5000F9F5C /* ViewControllers */ = {
@@ -1000,6 +1022,7 @@
 				A742042F239AE3F4009D344F /* ProjectTableViewCell.swift in Sources */,
 				A7B4060123996EE20092AD85 /* MOProject.swift in Sources */,
 				A7B405E7239953420092AD85 /* GitRepoCoreData.xcdatamodeld in Sources */,
+				A7282A3B239E40970055A12A /* StartAppViewControllerTests.swift in Sources */,
 				A7751779239BC7BF00716795 /* FirebaseEndPointTests.swift in Sources */,
 				A70A463A239D2ACF005325C7 /* LogOutCommandTests.swift in Sources */,
 				A7776388239839BA007859CA /* LogoutSettingsTableViewCell.swift in Sources */,
@@ -1008,6 +1031,7 @@
 				A73FC69C2396D087000F9F5C /* OwnerAndViewButtonTableViewCell.swift in Sources */,
 				A7A5DE532395234A004271D9 /* GitHubNetworkManager.swift in Sources */,
 				A7B4060C2399807C0092AD85 /* CoreDataAdapter.swift in Sources */,
+				A7282A3E239E53220055A12A /* Mock.swift in Sources */,
 				A7A5DE5223952347004271D9 /* GitHubEndPoint.swift in Sources */,
 				A70A465A239D50E2005325C7 /* SegmentCommitsBranchesTableViewCellTests.swift in Sources */,
 				A70A4637239D27BC005325C7 /* ProjectModelTests.swift in Sources */,

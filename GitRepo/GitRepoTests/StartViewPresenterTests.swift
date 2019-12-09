@@ -11,35 +11,18 @@ import XCTest
 import XCTest
 @testable import GitRepo
 
-class MockLogoutCommand: LogOutCommand {
-	
-	var log: String?
-	
-	override func logOut() {
-		log = "log out command"
-	}
-}
-
 class StartViewPresenterTests: XCTestCase {
-	
-	class MockLoader: LoaderProtocol {
-		var coreDataService: CoreDataServiceProtocol!
-		
-		func getBaseDataFrom(source: SourceType, endPoint: EndPointType?, baseType: BaseType?, completion: @escaping (Decodable?, String?) -> ()) {
-			completion("result", nil)
-		}
-	}
 	
 	class MockView: StartViewProtocol {
 		
 		var logLogoutCommand: String?
 		var logLoader: String?
 		
-		var logoutCommand: MockLogoutCommand?
+		var spyLogoutCommand: SpyLogoutCommand?
 		var loader: LoaderProtocol?
 		
 		func setLogoutCommand(command: LogOutCommand?) {
-			self.logoutCommand = command as? MockLogoutCommand
+			self.spyLogoutCommand = command as? SpyLogoutCommand
 			self.logLogoutCommand = "setLogoutCommand"
 		}
 		
@@ -51,13 +34,13 @@ class StartViewPresenterTests: XCTestCase {
 	
 	var view: MockView!
 	var loader: MockLoader!
-	var logOutCommand: MockLogoutCommand!
+	var logOutCommand: SpyLogoutCommand!
 	var presenter: StartViewPresenterProtocol!
 	
 	override func setUp() {
 		view = MockView()
 		loader = MockLoader()
-		logOutCommand = MockLogoutCommand()
+		logOutCommand = SpyLogoutCommand()
 		
 		presenter = StartViewPresenter(view: view, loader: loader, command: logOutCommand)
 	}
@@ -84,6 +67,6 @@ class StartViewPresenterTests: XCTestCase {
 		presenter.setupLogCoutCommand()
 		// assert
 		XCTAssertEqual(view.logLogoutCommand, "setLogoutCommand")
-		XCTAssertNotNil(view.logoutCommand)
+		XCTAssertNotNil(view.spyLogoutCommand)
 	}
 }

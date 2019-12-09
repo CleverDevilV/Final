@@ -8,7 +8,7 @@
 
 import UIKit
 
-// No Unit Tests
+// Unit Tests
 
 protocol LoaderProtocol {
 	func getBaseDataFrom(source: SourceType, endPoint: EndPointType?, baseType: BaseType?, completion: @escaping (_ result: Decodable?, _ error: String?) -> ())

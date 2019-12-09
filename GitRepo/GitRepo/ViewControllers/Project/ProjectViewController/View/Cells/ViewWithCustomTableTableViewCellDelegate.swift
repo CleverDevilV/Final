@@ -14,19 +14,26 @@ protocol ViewWithCustomTableTableViewCellDelegate: class {
 	func addTask()
 }
 
+enum TypeOfData {
+	case collaborators
+	case tasks
+}
+
 /// Class for create table in cell
 class ViewWithCustomTableTableViewCell: UITableViewCell {
 	
 	public static var reusedId = "AddViewTableViewCell"
+	
 	public weak var addTaskDelegate: ViewWithCustomTableTableViewCellDelegate!
 	public var project: Project?
+	
 	public var arrayOfDataForPresent: [Decodable]? {
 		didSet {
 			self.setupViews()
 		}
 	}
 	
-	public var typeOfData: String! {
+	public var typeOfData: TypeOfData? {
 		didSet {
 			self.setupViews()
 		}
@@ -99,13 +106,24 @@ extension ViewWithCustomTableTableViewCell: UITableViewDataSource {
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 		
-		if typeOfData == "collaborators" {
+		switch typeOfData {
+		case .collaborators?:
 			if let arrayOfDataForPresent = arrayOfDataForPresent as? [User] {
-			cell.textLabel?.text = arrayOfDataForPresent[indexPath.row].login
+				cell.textLabel?.text = arrayOfDataForPresent[indexPath.row].login
 			}
-		} else if typeOfData == "tasks", let arrayOfDataForPresent = arrayOfDataForPresent as? [String] {
-			cell.textLabel?.text = arrayOfDataForPresent[indexPath.row]
+		case .tasks?:
+			if let arrayOfDataForPresent = arrayOfDataForPresent as? [String] {
+				cell.textLabel?.text = arrayOfDataForPresent[indexPath.row]
+			}
+		case .none:
+			return cell
 		}
+		
+//		if typeOfData == "collaborators" {
+//
+//		} else if typeOfData == "tasks", let arrayOfDataForPresent = arrayOfDataForPresent as? [String] {
+//			cell.textLabel?.text = arrayOfDataForPresent[indexPath.row]
+//		}
 		
 		return cell
 	}
@@ -125,19 +143,28 @@ extension ViewWithCustomTableTableViewCell: UITableViewDelegate {
 	}
 	
 	func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-		if typeOfData == "collaborators" {
+		
+		switch typeOfData {
+		case .collaborators?:
 			return 0
-		} else if typeOfData == "tasks" {
+		case .tasks?:
 			return 50
+		case .none:
+			return 0
 		}
-		return 0
+//		if typeOfData == "collaborators" {
+//			return 0
+//		} else if typeOfData == "tasks" {
+//			return 50
+//		}
+//		return 0
 	}
 	
 	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 		
-		if typeOfData == "collaborators" {
+		if typeOfData == .collaborators {
 			return nil
-		} else if typeOfData == "tasks" {
+		} else if typeOfData == .tasks {
 			
 			let frame: CGRect = defaultView.frame
 			let headerView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height))
@@ -179,24 +206,42 @@ extension ViewWithCustomTableTableViewCell: UITableViewDelegate {
 	
 	func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
 		
-		if typeOfData == "collaborators" {
+		switch typeOfData {
+		case .collaborators?:
 			return UITableViewCell.EditingStyle.none
-		} else if typeOfData == "tasks" {
+		case .tasks?:
 			return UITableViewCell.EditingStyle.delete
+		case .none:
+			return UITableViewCell.EditingStyle.none
 		}
 		
-		return UITableViewCell.EditingStyle.none
+//		if typeOfData == "collaborators" {
+//			return UITableViewCell.EditingStyle.none
+//		} else if typeOfData == "tasks" {
+//			return UITableViewCell.EditingStyle.delete
+//		}
+		
+//		return UITableViewCell.EditingStyle.none
 	}
 	
 	func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
 		
-		if typeOfData == "collaborators" {
+		switch typeOfData {
+		case .collaborators?:
 			return false
-		} else if typeOfData == "tasks" {
+		case .tasks?:
 			return true
+		case .none:
+			return false
 		}
 		
-		return false
+//		if typeOfData == "collaborators" {
+//			return false
+//		} else if typeOfData == "tasks" {
+//			return true
+//		}
+		
+//		return false
 	}
 	
 	func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

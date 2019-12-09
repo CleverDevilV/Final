@@ -74,6 +74,7 @@ extension ProjectViewController: ProjectViewProtocol {
 	}
 }
 
+//MARK: - UITableViewDataSource
 extension ProjectViewController: UITableViewDataSource {
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return numberOfCells
@@ -87,7 +88,7 @@ extension ProjectViewController: UITableViewDataSource {
 			
 			cell.project = project
 			cell.arrayOfDataForPresent = project?.repo?.collaborators
-			cell.typeOfData = "collaborators"
+			cell.typeOfData = .collaborators
 			
 			return cell
 		}
@@ -96,7 +97,7 @@ extension ProjectViewController: UITableViewDataSource {
 			
 			cell.project = project
 			cell.arrayOfDataForPresent = project?.projectTasks
-			cell.typeOfData = "tasks"
+			cell.typeOfData =  .tasks
 			cell.addTaskDelegate = self
 			
 			return cell

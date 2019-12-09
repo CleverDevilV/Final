@@ -11,12 +11,14 @@ import Foundation
 
 protocol StartViewProtocol: class {
 	func setLoader(loader: LoaderProtocol?)
+	func setLogoutCommand(command: LogOutCommand)
 }
 
 protocol StartViewPresenterProtocol: class {
-	init(view: StartViewProtocol, loader: LoaderProtocol?)
+	init(view: StartViewProtocol, loader: LoaderProtocol?, command: LogOutCommand)
 	
 	func setupLoader()
+	func setupLogCoutCommand()
 }
 
 /// Presenter
@@ -24,14 +26,24 @@ class StartViewPresenter: StartViewPresenterProtocol {
 	
 	let view: StartViewProtocol?
 	let loader: LoaderProtocol?
+	let logoutCommand: LogOutCommand?
 	
-	required init(view: StartViewProtocol, loader: LoaderProtocol?) {
+	required init(view: StartViewProtocol, loader: LoaderProtocol?, command: LogOutCommand) {
 		self.view = view
 		self.loader = loader
+		self.logoutCommand = command
 	}
 	
 	func setupLoader() {
 		self.view?.setLoader(loader: loader)
+	}
+	
+	func setupLogCoutCommand() {
+		guard let logoutCommand = logoutCommand else {
+			print("Can't create logoutCommand")
+			return
+		}
+		view?.setLogoutCommand(command: logoutCommand)
 	}
 }
 

@@ -17,9 +17,10 @@ class Builder: BuilderProtocol {
 	
 	static func createStartAppViewController() -> UIViewController {
 		
+		let logoutCommand = LogOutCommand()
 		let loader = LoaderBuilder.createLoader()
 		let view = StartAppViewController()
-		let presenter = StartViewPresenter(view: view, loader: loader)
+		let presenter = StartViewPresenter(view: view, loader: loader, command: logoutCommand)
 		view.presenter = presenter
 		
 		return view

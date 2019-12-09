@@ -32,6 +32,7 @@ class StartAppViewController: UIViewController {
 	//MARK: service VARs
 	
 	private var login = UserDefaults.standard.get(with: .oauth_user_login)
+	private var logOutCommand: LogOutCommand!
 	
 	private var loader: LoaderProtocol!
 	
@@ -50,6 +51,7 @@ class StartAppViewController: UIViewController {
 		setupViews()
 		
 		presenter?.setupLoader()
+		presenter?.setupLogCoutCommand()
 		
 		downloadData()
 	}
@@ -257,7 +259,7 @@ extension StartAppViewController {
 				} else {
 //					self.switchRootViewControllerToMainScreen()
 					guard NSClassFromString("XCTestCase") == nil else { return }
-					guard AppDelegate.shared != nil else { return }
+//					guard AppDelegate.shared != nil else { return }
 					AppDelegate.shared.rootViewController.switchMainScreen()
 				}
 			})
@@ -266,9 +268,10 @@ extension StartAppViewController {
 	/// Logout User
 	@objc
 	func tapLogOutButton() {
-		let logOtcommand = LogOutCommand()
-		logOtcommand.logOut()
-		login = UserDefaults.standard.get(with: .oauth_user_login)
+//		let logOtcommand = LogOutCommand()
+//		logOtcommand.logOut()
+		logOutCommand.logOut()
+//		login = UserDefaults.standard.get(with: .oauth_user_login)
 		loadView()
 		setupViews()
 		
@@ -277,8 +280,13 @@ extension StartAppViewController {
 
 //MARK: - StartViewProtocol
 extension StartAppViewController: StartViewProtocol {
+	
 	func setLoader(loader: LoaderProtocol?) {
 		self.loader = loader
+	}
+	
+	func setLogoutCommand(command: LogOutCommand) {
+		self.logOutCommand = command
 	}
 }
 

@@ -447,11 +447,11 @@
 				A7282A2C239E2F7E0055A12A /* Builder.swift */,
 				A7FE069E238BF3510093F07A /* RootViewController.swift */,
 				A7F55055239BD62B0035B807 /* StartAppViewController */,
+				A7776382239836E9007859CA /* SettingsViewController */,
 				A7525B59239301DA00AD8587 /* LogOutCommand.swift */,
 				A7FE06A0238BF4540093F07A /* BaseTabBarController.swift */,
 				A77404ED239110E90038851E /* Registration.swift */,
 				A7A5DE6F239592C2004271D9 /* SomeUrlWebViewController.swift */,
-				A7776382239836E9007859CA /* SettingsViewController */,
 				A7FE06A2238BFAE20093F07A /* Project */,
 				A7FE06A3238BFAEF0093F07A /* Repo */,
 			);
@@ -775,9 +775,9 @@
 				A78A36FD239C2A6E00A68BF0 /* NetworkingTests */,
 				A74A16B3239C111900E60176 /* CoreDataTests */,
 				A78A36FE239C2E0000A68BF0 /* Service */,
+				A70A4629239C6B6B005325C7 /* ViewControllersTests */,
 				A7F55065239BEE0C0035B807 /* StartViewPresenterTests.swift */,
 				A7FE06B8238D90610093F07A /* Info.plist */,
-				A70A4629239C6B6B005325C7 /* ViewControllersTests */,
 			);
 			path = GitRepoTests;
 			sourceTree = "<group>";

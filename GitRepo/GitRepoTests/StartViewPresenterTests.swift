@@ -11,51 +11,79 @@ import XCTest
 import XCTest
 @testable import GitRepo
 
-class MockLoader: LoaderProtocol {
-	var coreDataService: CoreDataServiceProtocol!
+class MockLogoutCommand: LogOutCommand {
 	
-	func getBaseDataFrom(source: SourceType, endPoint: EndPointType?, baseType: BaseType?, completion: @escaping (Decodable?, String?) -> ()) {
-		completion("result", nil)
+	var log: String?
+	
+	override func logOut() {
+		log = "log out command"
 	}
-}
-
-class MockView: StartViewProtocol {
-	var loader: LoaderProtocol?
-	func setLoader(loader: LoaderProtocol?) {
-		self.loader = loader
-	}
-	
-	
 }
 
 class StartViewPresenterTests: XCTestCase {
 	
+	class MockLoader: LoaderProtocol {
+		var coreDataService: CoreDataServiceProtocol!
+		
+		func getBaseDataFrom(source: SourceType, endPoint: EndPointType?, baseType: BaseType?, completion: @escaping (Decodable?, String?) -> ()) {
+			completion("result", nil)
+		}
+	}
+	
+	class MockView: StartViewProtocol {
+		
+		var logLogoutCommand: String?
+		var logLoader: String?
+		
+		var logoutCommand: MockLogoutCommand?
+		var loader: LoaderProtocol?
+		
+		func setLogoutCommand(command: LogOutCommand?) {
+			self.logoutCommand = command as? MockLogoutCommand
+			self.logLogoutCommand = "setLogoutCommand"
+		}
+		
+		func setLoader(loader: LoaderProtocol?) {
+			self.loader = loader
+			self.logLoader = "setLoader"
+		}
+	}
+	
 	var view: MockView!
 	var loader: MockLoader!
+	var logOutCommand: MockLogoutCommand!
 	var presenter: StartViewPresenterProtocol!
 	
 	override func setUp() {
 		view = MockView()
 		loader = MockLoader()
-		presenter = StartViewPresenter(view: view, loader: loader)
+		logOutCommand = MockLogoutCommand()
+		
+		presenter = StartViewPresenter(view: view, loader: loader, command: logOutCommand)
 	}
 	
 	override func tearDown() {
 		view = nil
 		loader = nil
 		presenter = nil
+		logOutCommand = nil
 	}
 	
-	func testModuleIsNotNill() {
-		XCTAssertNotNil(view, "view is not nil")
-	}
-	
-	func testView() {
+	func testSetupLoaderFunc () {
+		// arrange
+		// act
 		presenter.setupLoader()
-		view.loader?.getBaseDataFrom(source: .coreData, endPoint: nil, baseType: nil) {
-			result, error in
-			guard let resultStr: String = result as? String else {return}
-			XCTAssertEqual(resultStr, "result")
-		}
+		// assert
+		XCTAssertEqual(view.logLoader, "setLoader")
+		XCTAssertNotNil(view.loader)
+	}
+	
+	func testSetupLogCoutCommand () {
+		// arrange
+		// act
+		presenter.setupLogCoutCommand()
+		// assert
+		XCTAssertEqual(view.logLogoutCommand, "setLogoutCommand")
+		XCTAssertNotNil(view.logoutCommand)
 	}
 }

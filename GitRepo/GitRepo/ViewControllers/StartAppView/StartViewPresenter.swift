@@ -11,7 +11,7 @@ import Foundation
 
 protocol StartViewProtocol: class {
 	func setLoader(loader: LoaderProtocol?)
-	func setLogoutCommand(command: LogOutCommand)
+	func setLogoutCommand(command: LogOutCommand?)
 }
 
 protocol StartViewPresenterProtocol: class {
@@ -39,10 +39,6 @@ class StartViewPresenter: StartViewPresenterProtocol {
 	}
 	
 	func setupLogCoutCommand() {
-		guard let logoutCommand = logoutCommand else {
-			print("Can't create logoutCommand")
-			return
-		}
 		view?.setLogoutCommand(command: logoutCommand)
 	}
 }

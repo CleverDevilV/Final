@@ -277,7 +277,7 @@
 		A7B71FB9239C440500218CEB /* ViewWithCustomTableTableViewCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewWithCustomTableTableViewCellTests.swift; sourceTree = "<group>"; };
 		A7F55052239BD36E0035B807 /* StartViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StartViewPresenter.swift; path = ../StartViewPresenter.swift; sourceTree = "<group>"; };
 		A7F55062239BDD690035B807 /* LoaderBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderBuilder.swift; sourceTree = "<group>"; };
-		A7F55065239BEE0C0035B807 /* StartViewPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewPresenterTests.swift; sourceTree = "<group>"; };
+		A7F55065239BEE0C0035B807 /* StartViewPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StartViewPresenterTests.swift; path = ../StartViewPresenterTests.swift; sourceTree = "<group>"; };
 		A7FE0683238BE7F30093F07A /* GitRepo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitRepo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7FE0686238BE7F30093F07A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A7FE068D238BE7F40093F07A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -441,13 +441,21 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		A7282A38239E3BB40055A12A /* StartAppView */ = {
+			isa = PBXGroup;
+			children = (
+				A7F55065239BEE0C0035B807 /* StartViewPresenterTests.swift */,
+			);
+			path = StartAppView;
+			sourceTree = "<group>";
+		};
 		A73FC6962396CAC5000F9F5C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				A7282A2C239E2F7E0055A12A /* Builder.swift */,
 				A7FE069E238BF3510093F07A /* RootViewController.swift */,
-				A7F55055239BD62B0035B807 /* StartAppViewController */,
-				A7776382239836E9007859CA /* SettingsViewController */,
+				A7F55055239BD62B0035B807 /* StartAppView */,
+				A7776382239836E9007859CA /* SettingsView */,
 				A7525B59239301DA00AD8587 /* LogOutCommand.swift */,
 				A7FE06A0238BF4540093F07A /* BaseTabBarController.swift */,
 				A77404ED239110E90038851E /* Registration.swift */,
@@ -614,13 +622,13 @@
 			path = Animation;
 			sourceTree = "<group>";
 		};
-		A7776382239836E9007859CA /* SettingsViewController */ = {
+		A7776382239836E9007859CA /* SettingsView */ = {
 			isa = PBXGroup;
 			children = (
 				A7282A36239E38830055A12A /* View */,
 				A7282A34239E36F40055A12A /* Presenter */,
 			);
-			path = SettingsViewController;
+			path = SettingsView;
 			sourceTree = "<group>";
 		};
 		A78A36FD239C2A6E00A68BF0 /* NetworkingTests */ = {
@@ -706,13 +714,13 @@
 			path = ModelsTests;
 			sourceTree = "<group>";
 		};
-		A7F55055239BD62B0035B807 /* StartAppViewController */ = {
+		A7F55055239BD62B0035B807 /* StartAppView */ = {
 			isa = PBXGroup;
 			children = (
 				A7282A30239E33520055A12A /* View */,
 				A7282A31239E33630055A12A /* Presenter */,
 			);
-			path = StartAppViewController;
+			path = StartAppView;
 			sourceTree = "<group>";
 		};
 		A7FE067A238BE7F30093F07A = {
@@ -776,7 +784,7 @@
 				A74A16B3239C111900E60176 /* CoreDataTests */,
 				A78A36FE239C2E0000A68BF0 /* Service */,
 				A70A4629239C6B6B005325C7 /* ViewControllersTests */,
-				A7F55065239BEE0C0035B807 /* StartViewPresenterTests.swift */,
+				A7282A38239E3BB40055A12A /* StartAppView */,
 				A7FE06B8238D90610093F07A /* Info.plist */,
 			);
 			path = GitRepoTests;

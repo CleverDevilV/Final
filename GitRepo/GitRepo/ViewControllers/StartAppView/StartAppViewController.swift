@@ -285,7 +285,7 @@ extension StartAppViewController: StartViewProtocol {
 		self.loader = loader
 	}
 	
-	func setLogoutCommand(command: LogOutCommand) {
+	func setLogoutCommand(command: LogOutCommand?) {
 		self.logOutCommand = command
 	}
 }

@@ -18,7 +18,15 @@ class Builder: BuilderProtocol {
 	static func createStartAppViewController() -> UIViewController {
 		
 		let logoutCommand = LogOutCommand()
-		let loader = LoaderBuilder.createLoader()
+	// Loader
+		let session = AppDelegate.shared.session
+		let githubNetworkManager = GitHubNetworkManager(with: session)
+		let firebaseNetworkManager = FirebaseNetworkManager(with: session)
+		let coreDataManagerService = ManagedObjectFromCoreDataService(withDeleting: false, writeContext: CoreDataStack.shared.writeContext, readContext: CoreDataStack.shared.readContext)
+		
+		let loader = Loader(githubNetworkManager: githubNetworkManager, firebaseNetworkManager: firebaseNetworkManager, coreDataService: coreDataManagerService)
+		
+//		let loader = LoaderBuilder.createLoader()
 		let view = StartAppViewController()
 		let presenter = StartViewPresenter(view: view, loader: loader, command: logoutCommand)
 		view.presenter = presenter

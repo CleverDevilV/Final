@@ -18,15 +18,23 @@ class Builder: BuilderProtocol {
 	static func createStartAppViewController() -> UIViewController {
 		
 		let logoutCommand = LogOutCommand()
+		var session: URLSession
+		var loader: Loader
+		
 	// Loader
-		let session = AppDelegate.shared.session
-		let githubNetworkManager = GitHubNetworkManager(with: session)
-		let firebaseNetworkManager = FirebaseNetworkManager(with: session)
-		let coreDataManagerService = ManagedObjectFromCoreDataService(withDeleting: false, writeContext: CoreDataStack.shared.writeContext, readContext: CoreDataStack.shared.readContext)
+		if NSClassFromString("XCTestCase") != nil {
+			session = URLSession(configuration: .default)
+			loader = Loader(githubNetworkManager: nil, firebaseNetworkManager: nil, coreDataService: nil)
+		} else {
+			session = AppDelegate.shared.session
+			let githubNetworkManager = GitHubNetworkManager(with: session)
+			let firebaseNetworkManager = FirebaseNetworkManager(with: session)
+			let coreDataManagerService = ManagedObjectFromCoreDataService(withDeleting: false, writeContext: CoreDataStack.shared.writeContext, readContext: CoreDataStack.shared.readContext)
+			
+			loader = Loader(githubNetworkManager: githubNetworkManager, firebaseNetworkManager: firebaseNetworkManager, coreDataService: coreDataManagerService)
+		}
 		
-		let loader = Loader(githubNetworkManager: githubNetworkManager, firebaseNetworkManager: firebaseNetworkManager, coreDataService: coreDataManagerService)
-		
-//		let loader = LoaderBuilder.createLoader()
+	// View
 		let view = StartAppViewController()
 		let presenter = StartViewPresenter(view: view, loader: loader, command: logoutCommand)
 		view.presenter = presenter

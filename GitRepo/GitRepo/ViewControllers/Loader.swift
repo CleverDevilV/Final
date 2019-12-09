@@ -78,7 +78,7 @@ final class Loader: LoaderProtocol {
 		case .firebase:
 			guard let endPoint = endPoint else {return}
 			
-			firebaseNetworkManager.getData(endPoint: FirebaseApi.getProjects) {
+			firebaseNetworkManager.getData(endPoint: endPoint) {
 				result, error in
 				
 				completion(result, error)

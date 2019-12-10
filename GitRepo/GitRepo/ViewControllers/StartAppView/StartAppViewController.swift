@@ -269,10 +269,12 @@ extension StartAppViewController {
 	@objc
 	func tapWelcomeButton(_ sender: UIButton) {
 		
-		guard ConnectChecker.isConnectedToNetwork() else {
+		if !ConnectChecker.isConnectedToNetwork()  {
+			if welcomeButton.titleLabel?.text == "Войти" {
 			print("Internet connection FAILED")
 			showAllertIfDisconnect()
 			return
+			}
 		}
 		
 			UIView.animate(withDuration: 0.5, delay: 0.3, options: [], animations: {

@@ -11,6 +11,8 @@ import Foundation
 /// - Tag: FakeAppDelegate
 class FakeAppDelegate: NSObject {
 	
+	static var t = "mock"
+	
 	private let filename = "log_tests.txt"
 	
 	private var filepath: URL {

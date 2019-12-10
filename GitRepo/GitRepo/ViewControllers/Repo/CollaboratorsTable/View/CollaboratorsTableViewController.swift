@@ -70,6 +70,7 @@ extension CollaboratorsTableViewController: UITableViewDataSource {
 			cell.textLabel?.text = collaborator.login
 		}
 		
+		cell.selectionStyle = .none
 		cell.backgroundColor = .clear
 		
 		return cell

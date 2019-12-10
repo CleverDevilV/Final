@@ -115,11 +115,17 @@ extension ViewWithCustomTableTableViewCell: UITableViewDataSource {
 			if let arrayOfDataForPresent = arrayOfDataForPresent as? [User] {
 				cell.textLabel?.text = arrayOfDataForPresent[indexPath.row].login
 			}
+			cell.selectionStyle = .none
+			
 		case .tasks?:
 			if let arrayOfDataForPresent = arrayOfDataForPresent as? [String] {
 				cell.textLabel?.text = arrayOfDataForPresent[indexPath.row]
 			}
+			cell.selectionStyle = .default
+			
 		case .none:
+			
+			cell.selectionStyle = .none
 			return cell
 		}
 		

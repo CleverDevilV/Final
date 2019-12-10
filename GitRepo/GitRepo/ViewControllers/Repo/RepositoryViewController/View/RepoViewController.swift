@@ -82,20 +82,28 @@ extension RepoViewController: UITableViewDataSource {
 			let cell = tableView.dequeueReusableCell(withIdentifier: OwnerAndViewButtonTableViewCell.ownerReuseId, for: indexPath) as! OwnerAndViewButtonTableViewCell
 			cell.repository = repository
 			cell.delegate = self
+			cell.selectionStyle = .none
+			
 			return cell
 			
 		case 1:
 			let cell = tableView.dequeueReusableCell(withIdentifier: RepositoryCollaboratorsTableViewCell.collaboratorsReuseId, for: indexPath) as! RepositoryCollaboratorsTableViewCell
 			cell.delegate = self
 			cell.repository = repository
+			cell.selectionStyle = .none
+			
 			return cell
 			
 		case 2:
 			let cell = tableView.dequeueReusableCell(withIdentifier: SegmentCommitsBranchesTableViewCell.separatorCommitsBranchesReuseId, for: indexPath) as! SegmentCommitsBranchesTableViewCell
 			cell.repository = repository
 			cell.delegate = self
+			cell.selectionStyle = .none
+			
 			return cell
 		default:
+			cell.selectionStyle = .none
+			
 			return cell
 		}
 	}

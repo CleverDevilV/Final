@@ -35,8 +35,9 @@ class DescriptionTableViewCell: UITableViewCell {
 	func setupViews() {
 		
 	// descriptionLabel
-		descriptionLabel.numberOfLines = 1
+		descriptionLabel.numberOfLines = 0
 		descriptionLabel.font = UIFont.systemFont(ofSize: 20)
+		descriptionLabel.textAlignment = .center
 		descriptionLabel.text = "Описание:"
 		
 	// descriptionTextView
@@ -62,18 +63,20 @@ class DescriptionTableViewCell: UITableViewCell {
 	override func updateConstraints() {
 		// descriptionLabel
 		NSLayoutConstraint.activate([
-			descriptionLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant:  10),
+			descriptionLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant:  30),
+			descriptionLabel.widthAnchor.constraint(equalToConstant: contentView.frame.width / 3),
 			descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
 			descriptionLabel.trailingAnchor.constraint(equalTo: descriptionTextView.leadingAnchor, constant: -10),
-			descriptionLabel.heightAnchor.constraint(equalToConstant: 40)
+			descriptionLabel.heightAnchor.constraint(equalToConstant: 80)
 			])
 		
 		// descriptionTextView
 		NSLayoutConstraint.activate([
 			descriptionTextView.topAnchor.constraint(equalTo: contentView.topAnchor, constant:  10),
+			descriptionTextView.widthAnchor.constraint(equalToConstant: contentView.frame.width * 2 / 3),
 			descriptionTextView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
 			descriptionTextView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
-			descriptionTextView.heightAnchor.constraint(equalToConstant: 100)
+			descriptionTextView.heightAnchor.constraint(equalToConstant: 120)
 			])
 		
 		super.updateConstraints()
@@ -102,7 +105,7 @@ class DescriptionTableViewCell: UITableViewCell {
 extension DescriptionTableViewCell: UITextViewDelegate {
 	func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
 		let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
-		return newText.count <= 70
+		return newText.count <= 30
 	}
 	
 	func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {

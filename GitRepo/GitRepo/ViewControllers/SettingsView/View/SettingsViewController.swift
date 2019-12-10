@@ -56,12 +56,19 @@ extension SettingsViewController: UITableViewDataSource {
 		switch indexPath.row {
 		case 0:
 			let cell = tableView.dequeueReusableCell(withIdentifier: LoginSettingsTableViewCell.reusedId, for: indexPath) as! LoginSettingsTableViewCell
+			
+			cell.selectionStyle = .none
+			
 			return cell
 		case 1:
 			let cell = tableView.dequeueReusableCell(withIdentifier: LogoutSettingsTableViewCell.reusedId, for: indexPath) as! LogoutSettingsTableViewCell
 			cell.delegate = self
+			cell.selectionStyle = .none
+			
 			return cell
 		default:
+			cell.selectionStyle = .none
+			
 			return cell
 		}
 	}

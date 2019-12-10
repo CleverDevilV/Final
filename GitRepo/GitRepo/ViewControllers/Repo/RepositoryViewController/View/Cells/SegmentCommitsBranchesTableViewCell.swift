@@ -137,11 +137,14 @@ extension SegmentCommitsBranchesTableViewCell: UITableViewDataSource {
 			cell.textLabel?.numberOfLines = 0
 			cell.accessoryType = .disclosureIndicator
 			cell.detailTextLabel?.text = commitDate ?? ""
+			cell.selectionStyle = .default
+			
 		default:
 			cell = UITableViewCell(style: .default, reuseIdentifier: "Cell")
 			let brancheName = repository?.branches?[indexPath.row].name ?? ""
 			cell.textLabel?.text = brancheName
 			cell.accessoryType = .none
+			cell.selectionStyle = .none
 		}
 		
 		return cell

@@ -257,7 +257,7 @@ class StartAppViewController: UIViewController {
 	}
 	
 	func showAllertIfDisconnect() {
-		let allert = UIAlertController(title: "Отсутствует подключение к интернету 😔", message: "Восстановите подключение к сети и перезапустите приложение.", preferredStyle: .alert)
+		let allert = UIAlertController(title: "Отсутствует подключение к сети интернет 😔", message: "Восстановите подключение для возможности авторизации.", preferredStyle: .alert)
 		let okAction =  UIAlertAction(title: "OK", style: .default, handler: nil)
 		allert.addAction(okAction)
 		present(allert, animated: true, completion: nil)

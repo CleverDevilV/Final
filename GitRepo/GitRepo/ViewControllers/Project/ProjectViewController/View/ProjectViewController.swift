@@ -86,15 +86,18 @@ extension ProjectViewController: UITableViewDataSource {
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 		
+		/// view for drop-down table
 		if numberOfTasksTableViewCell != 3, indexPath.row == 3 {
 			let cell = tableView.dequeueReusableCell(withIdentifier: ViewWithCustomTableTableViewCell.reusedId, for: indexPath) as! ViewWithCustomTableTableViewCell
 			
 			cell.project = project
 			cell.arrayOfDataForPresent = project?.repo?.collaborators
 			cell.typeOfData = .collaborators
+			cell.selectionStyle = .none
 			
 			return cell
 		}
+		/// view for drop-down table
 		if (numberOfCells == 5 && indexPath.row == 4 && numberOfTasksTableViewCell == 3) || (numberOfCells == 6 && indexPath.row == 5 && numberOfTasksTableViewCell == 4) {
 			let cell = tableView.dequeueReusableCell(withIdentifier: ViewWithCustomTableTableViewCell.reusedId, for: indexPath) as! ViewWithCustomTableTableViewCell
 			
@@ -102,6 +105,7 @@ extension ProjectViewController: UITableViewDataSource {
 			cell.arrayOfDataForPresent = project?.projectTasks
 			cell.typeOfData =  .tasks
 			cell.addTaskDelegate = self
+			cell.selectionStyle = .none
 			
 			return cell
 		}
@@ -111,26 +115,36 @@ extension ProjectViewController: UITableViewDataSource {
 			let cell = tableView.dequeueReusableCell(withIdentifier: DescriptionTableViewCell.descriptionReuseId, for: indexPath) as! DescriptionTableViewCell
 			cell.descriptionTextView.text = project?.descriptionOfProject ?? ""
 			cell.descriptionCellDelegate = self
+			cell.selectionStyle = .none
+			
 			return cell
 			
 		case 1:
 			let cell = tableView.dequeueReusableCell(withIdentifier: RepoTableViewCell.repoReuseId, for: indexPath) as! RepoTableViewCell
 			cell.project = project
 			cell.delegate = self
+			cell.selectionStyle = .none
+			
 			return cell
 			
 		case 2:
 			let cell = tableView.dequeueReusableCell(withIdentifier: CollaboratorsTableViewCell.collaboratorsReuseId, for: indexPath) as! CollaboratorsTableViewCell
 			cell.delegate = self
+			cell.selectionStyle = .none
+			
 			return cell
 			
 		case numberOfTasksTableViewCell:
 			let cell = tableView.dequeueReusableCell(withIdentifier: TasksTableViewCell.tasksReuseId, for: indexPath) as! TasksTableViewCell
 			cell.delegate = self
 			cell.project = project
+			cell.selectionStyle = .none
+			
 			return cell
 			
 		default:
+			cell.selectionStyle = .none
+			
 			return cell
 		}
 	}
@@ -296,7 +310,9 @@ extension ProjectViewController: ViewWithCustomTableTableViewCellDelegate {
 		
 		addProjectAlertController.addTextField(configurationHandler: nil)
 		
-		let cancelAction = UIAlertAction(title: "Отмена", style: .cancel, handler: nil)
+		let cancelAction = UIAlertAction(title: "Отмена", style: .cancel, handler: {_ in
+			self.tableView.reloadData()
+		})
 		let okAction = UIAlertAction(title: "OK", style: .default, handler: {
 			_ in
 			

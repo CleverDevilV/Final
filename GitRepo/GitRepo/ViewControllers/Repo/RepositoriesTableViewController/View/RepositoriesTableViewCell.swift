@@ -48,7 +48,8 @@ final class RepositoriesTableViewCell: UITableViewCell {
 		repositiryNameLabel.text = repository?.name
 		
 		lastChangesLabel.numberOfLines = 0
-		lastChangesLabel.font = UIFont.systemFont(ofSize: 16)
+//		lastChangesLabel.font = UIFont.systemFont(ofSize: 16)
+		lastChangesLabel.font = UIFont.italicSystemFont(ofSize: 16)
 		lastChangesLabel.textAlignment = .left
 		lastChangesLabel.text =
 			"""

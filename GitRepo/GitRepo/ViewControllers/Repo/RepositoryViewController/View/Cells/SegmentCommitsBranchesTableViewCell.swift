@@ -49,8 +49,10 @@ class SegmentCommitsBranchesTableViewCell: UITableViewCell {
 		segmentControl.addTarget(self, action: #selector(segmentValueChanged), for: .valueChanged)
 		
 		
-		tableViewForCommitsOrBranches.backgroundColor = .white
+		tableViewForCommitsOrBranches.backgroundColor = UIColor.white
 		tableViewForCommitsOrBranches.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+		tableViewForCommitsOrBranches.layer.cornerRadius = 10
+		tableViewForCommitsOrBranches.layer.masksToBounds = true
 
 		tableViewForCommitsOrBranches.dataSource = self
 		tableViewForCommitsOrBranches.delegate = self

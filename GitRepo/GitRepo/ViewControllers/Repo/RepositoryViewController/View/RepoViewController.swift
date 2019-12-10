@@ -33,6 +33,7 @@ class RepoViewController: UIViewController {
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		
+		title = repository?.name
 		self.tabBarController?.tabBar.isHidden = true
 	}
 	

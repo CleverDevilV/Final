@@ -53,8 +53,9 @@ class OwnerAndViewButtonTableViewCell: UITableViewCell {
 		
 		// repoViewButton
 		repoViewButton.setTitle(repoButtonTitle, for: .normal)
+		repoViewButton.backgroundColor = .white
 		repoViewButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
-		repoViewButton.setTitleColor(.black, for: .normal)
+		repoViewButton.setTitleColor(.blue, for: .normal)
 //		repoViewButton.setTitleColor(UIColor(red: 1, green: 0.6, blue: 0, alpha: 0.8), for: .normal)
 		repoViewButton.setTitleColor(.white, for: .highlighted)
 		repoViewButton.titleEdgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)

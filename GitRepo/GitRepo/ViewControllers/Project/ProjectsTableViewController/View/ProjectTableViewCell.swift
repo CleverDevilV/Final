@@ -47,7 +47,8 @@ class ProjectTableViewCell: UITableViewCell {
 		projectNameLabel.text = project?.projectName
 		
 		projectLanguageLabel.numberOfLines = 0
-		projectLanguageLabel.font = UIFont.systemFont(ofSize: 16)
+//		projectLanguageLabel.font = UIFont.systemFont(ofSize: 16)
+		projectLanguageLabel.font = UIFont.italicSystemFont(ofSize: 16)
 		projectLanguageLabel.textAlignment = .left
 		projectLanguageLabel.text = "Язык проекта: " + (project?.languageOfProject ?? "")
 		
@@ -72,11 +73,11 @@ class ProjectTableViewCell: UITableViewCell {
 		
 		// projectLanguageLabel
 		NSLayoutConstraint.activate([
-			projectLanguageLabel.topAnchor.constraint(equalTo: projectNameLabel.bottomAnchor, constant:  15),
+			projectLanguageLabel.topAnchor.constraint(equalTo: projectNameLabel.bottomAnchor, constant: 15),
 			projectLanguageLabel.leadingAnchor.constraint(equalTo: beautyfulView.leadingAnchor, constant: 20),
 			projectLanguageLabel.trailingAnchor.constraint(equalTo: beautyfulView.trailingAnchor, constant: -20),
 			projectLanguageLabel.bottomAnchor.constraint(equalTo: beautyfulView.bottomAnchor, constant: -10),
-			projectLanguageLabel.heightAnchor.constraint(equalToConstant: 40)
+			projectLanguageLabel.heightAnchor.constraint(equalToConstant: 20)
 			])
 		
 		// beautyfulView
@@ -85,7 +86,7 @@ class ProjectTableViewCell: UITableViewCell {
 			beautyfulView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
 			beautyfulView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
 			beautyfulView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
-			beautyfulView.heightAnchor.constraint(equalToConstant: 100)
+			beautyfulView.heightAnchor.constraint(equalToConstant: 80)
 			])
 		
 		super.updateConstraints()

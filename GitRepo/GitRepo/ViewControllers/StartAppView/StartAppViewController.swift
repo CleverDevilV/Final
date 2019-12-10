@@ -23,6 +23,7 @@ protocol RootViewControllerProtocol {
 class StartAppViewController: UIViewController {
 	
 	//MARK: UI
+	private var obiVanImage = UIImageView(image: UIImage(named: "obiVan"))
 	private var greetingLabel = UILabel()
 	private var userLoginLabel = UILabel()
 	private var welcomeButton = UIButton()
@@ -152,6 +153,7 @@ class StartAppViewController: UIViewController {
 		view.backgroundColor = .white
 		navigationController?.setNavigationBarHidden(true, animated: true)
 		
+		view.addSubview(obiVanImage)
 		view.addSubview(greetingLabel)
 		view.addSubview(userLoginLabel)
 		view.addSubview(welcomeButton)
@@ -161,9 +163,9 @@ class StartAppViewController: UIViewController {
 		
 		if UserDefaults.standard.isExist(with: .oauth_user_login) {
 		
-			loadView.dotsColor = UIColor(red: 227 / 255, green: 172 / 255, blue: 1, alpha: 1)
+			loadView.dotsColor = UIColor(red: 1, green: 0.6655423641, blue: 0.5648387074, alpha: 1) //#colorLiteral(red: 1, green: 0.6655423641, blue: 0.5648387074, alpha: 1)
 			loadView.frame.size = CGSize(width: 70, height: 70)
-			loadView.center = CGPoint(x: view.center.x, y: view.center.y + 150)
+			loadView.center = CGPoint(x: view.center.x, y: view.center.y + 110)
 			loadView.startAnimating()
 			view.addSubview(loadView)
 			
@@ -176,6 +178,7 @@ class StartAppViewController: UIViewController {
 		
 		let defWidth = UIScreen.main.bounds.size.width
 		
+		obiVanImage.translatesAutoresizingMaskIntoConstraints = false
 		greetingLabel.translatesAutoresizingMaskIntoConstraints = false
 		userLoginLabel.translatesAutoresizingMaskIntoConstraints = false
 		welcomeButton.translatesAutoresizingMaskIntoConstraints = false
@@ -188,11 +191,18 @@ class StartAppViewController: UIViewController {
 		greetingLabel.textAlignment = .center
 		
 		NSLayoutConstraint.activate([
-			greetingLabel.topAnchor.constraint(greaterThanOrEqualTo: view.topAnchor, constant: 50),
+			obiVanImage.topAnchor.constraint(greaterThanOrEqualTo: view.topAnchor, constant: 30),
+			obiVanImage.centerXAnchor.constraint(greaterThanOrEqualTo: view.centerXAnchor, constant: 0),
+			obiVanImage.heightAnchor.constraint(equalTo: obiVanImage.widthAnchor, constant: 0),
+			obiVanImage.bottomAnchor.constraint(equalTo: greetingLabel.topAnchor, constant: -15)
+		])
+		
+		NSLayoutConstraint.activate([
+			greetingLabel.topAnchor.constraint(greaterThanOrEqualTo: view.topAnchor, constant: 40),
 			greetingLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
 			greetingLabel.heightAnchor.constraint(equalToConstant: 70),
 			greetingLabel.widthAnchor.constraint(equalToConstant: defWidth),
-			greetingLabel.bottomAnchor.constraint(equalTo: userLoginLabel.topAnchor, constant: 25)
+			greetingLabel.bottomAnchor.constraint(equalTo: userLoginLabel.topAnchor, constant: 45)
 			])
 		
 		// userLoginLabel
@@ -230,7 +240,7 @@ class StartAppViewController: UIViewController {
 		logOutButton.isHidden = login.isEmpty
 		logOutButton.setTitle("Выйти", for: .normal)
 		logOutButton.setTitleColor(colorForButtonsTitle, for: .normal)
-		logOutButton.backgroundColor = UIColor(red: 1, green: 0.6, blue: 0, alpha: 0.4)
+		logOutButton.backgroundColor = #colorLiteral(red: 1, green: 0.7231550813, blue: 0.4947916865, alpha: 1)//UIColor(red: 1, green: 0.6, blue: 0, alpha: 0.4)
 		logOutButton.layer.borderColor = colorForButtonsTitle.cgColor
 		logOutButton.layer.borderWidth = 1
 		logOutButton.layer.cornerRadius = 20
@@ -253,10 +263,12 @@ extension StartAppViewController {
 	func tapWelcomeButton(_ sender: UIButton) {
 		
 			UIView.animate(withDuration: 0.5, delay: 0.3, options: [], animations: {
-				self.greetingLabel.layer.opacity = 1
-				self.userLoginLabel.layer.opacity = 1
+				self.obiVanImage.layer.opacity = 0
+				self.greetingLabel.layer.opacity = 0
+				self.userLoginLabel.layer.opacity = 0
 				self.welcomeButton.layer.opacity = 0
-				self.view.layer.opacity = 1
+				self.logOutButton.layer.opacity = 0
+//				self.view.layer.opacity = 0
 			}, completion: {
 				_ in
 				

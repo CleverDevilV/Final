@@ -24,6 +24,13 @@ class CollaboratorsTableViewController: UIViewController {
 		
 		presenter.setRepository()
 		
+		if let count = repository.collaborators?.count {
+			title = "Участники (" + "\(count)" + ")"
+		} else {
+		
+			title = "Участники"
+		}
+		
 		setupViews()
 		
 		view.addSubview(collaboratorsTable)

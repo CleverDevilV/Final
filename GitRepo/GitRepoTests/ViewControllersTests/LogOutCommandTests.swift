@@ -15,10 +15,14 @@ class LogOutCommandTests: XCTestCase {
 	var command: LogOutCommand!
 
     override func setUp() {
+		super.setUp()
+		
 		command = LogOutCommand()
     }
 
     override func tearDown() {
+		super.tearDown()
+		
 		command = nil
     }
 	

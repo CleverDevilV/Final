@@ -36,11 +36,11 @@ class SettingsViewControllerTests: XCTestCase {
 	
 	func testLogoutButtonTappedFunc () {
 		// arrange
-//		 act
+		// act
 		settingsView.setupLogoutCommang(spyLogoutCommand)
 		settingsView.logoutButtonTapped()
-		// assert
 		
+		// assert
 		XCTAssertEqual(spyLogoutCommand.log, "log out command")
 		
 		XCTAssertFalse(UserDefaults.standard.isExist(with: UserDefaultsType.oauth_user_login))

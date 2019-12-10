@@ -12,12 +12,11 @@ class MockUrlSession: URLSession {
 	
 	override func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
 		let dataTask = URLSessionDataTaskMock(closure: {
-//			(data, response, error) in
+			
 			let data = "data".data(using: .utf8)
 			let error: Error = NetworkError.missingURL
-//			print("Data")
-			completionHandler(data, nil, error)
 			
+			completionHandler(data, nil, error)
 		})
 		return dataTask
 	}

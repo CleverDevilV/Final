@@ -19,8 +19,6 @@ class TasksTableViewCellTests: XCTestCase {
 		func addTasksTable() {
 			logMockTasksTableViewCellDelegate = "addTasksTable"
 		}
-		
-		
 	}
 
 	var cell: TasksTableViewCell!
@@ -28,12 +26,16 @@ class TasksTableViewCellTests: XCTestCase {
 	
 	
     override func setUp() {
+		super.setUp()
+		
 		cell = TasksTableViewCell()
 		cellDelegate = MockTasksTableViewCellDelegate()
 		cell.delegate = cellDelegate
     }
 
     override func tearDown() {
+		super.setUp()
+		
 		cell = nil
 		cellDelegate = nil
 		

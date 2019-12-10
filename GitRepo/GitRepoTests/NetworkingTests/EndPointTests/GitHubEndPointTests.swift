@@ -37,6 +37,7 @@ class GitHubEndPointTests: XCTestCase {
 	}
 	
 	func testGitHubApiTaskNotNil() {
+		
 		// arrange
 		// act
 		endPoint = GitHubApi.user
@@ -45,6 +46,7 @@ class GitHubEndPointTests: XCTestCase {
 	}
 	
 	func testGitHubApiHTTPHeaders() {
+		
 		// arrange
 		// act
 		endPoint = GitHubApi.user
@@ -57,7 +59,6 @@ class GitHubEndPointTests: XCTestCase {
 		// arrange
 		// act
 		endPoint = GitHubApi.user
-		
 		// assert
 		XCTAssertEqual(endPoint?.baseURL, URL(string: "https://api.github.com/user"))
 		XCTAssertEqual(endPoint?.path, "")
@@ -66,9 +67,8 @@ class GitHubEndPointTests: XCTestCase {
 	func testGitHubApiReposFields() {
 		
 		// arrange
-		endPoint = GitHubApi.repos
 		// act
-		
+		endPoint = GitHubApi.repos
 		// assert
 		XCTAssertEqual(endPoint?.baseURL, URL(string: "https://api.github.com/user"))
 		XCTAssertEqual(endPoint?.path, "/repos")
@@ -77,9 +77,8 @@ class GitHubEndPointTests: XCTestCase {
 	func testGitHubApiOneRepoFields() {
 		
 		// arrange
-		endPoint = GitHubApi.oneRepo(repositoryName: "Bar")
 		// act
-		
+		endPoint = GitHubApi.oneRepo(repositoryName: "Bar")
 		// assert
 		XCTAssertEqual(endPoint?.baseURL, URL(string: "https://api.github.com/repos/"))
 		XCTAssertEqual(endPoint?.path, "/Bar")
@@ -88,9 +87,8 @@ class GitHubEndPointTests: XCTestCase {
 	func testGitHubApiCollaboratorsFields() {
 		
 		// arrange
-		endPoint = GitHubApi.collaborators(repositoryName: "Bar")
 		// act
-		
+		endPoint = GitHubApi.collaborators(repositoryName: "Bar")
 		// assert
 		XCTAssertEqual(endPoint?.baseURL, URL(string: "Bar"))
 		XCTAssertEqual(endPoint?.path, "")
@@ -99,9 +97,8 @@ class GitHubEndPointTests: XCTestCase {
 	func testGitHubApiBrunchesFields() {
 		
 		// arrange
-		endPoint = GitHubApi.branches(repositoryName: "Bar")
 		// act
-		
+		endPoint = GitHubApi.branches(repositoryName: "Bar")
 		// assert
 		XCTAssertEqual(endPoint?.baseURL, URL(string: "Bar"))
 		XCTAssertEqual(endPoint?.path, "")
@@ -110,9 +107,8 @@ class GitHubEndPointTests: XCTestCase {
 	func testGitHubApiCommitsFields() {
 		
 		// arrange
-		endPoint = GitHubApi.commits(repositoryName: "Bar")
 		// act
-		
+		endPoint = GitHubApi.commits(repositoryName: "Bar")
 		// assert
 		XCTAssertEqual(endPoint?.baseURL, URL(string: "Bar"))
 		XCTAssertEqual(endPoint?.path, "")
@@ -121,9 +117,8 @@ class GitHubEndPointTests: XCTestCase {
 	func testGitHubApiOneCommitFields() {
 		
 		// arrange
-		endPoint = GitHubApi.oneCommit(repositoryName: "Bar")
 		// act
-		
+		endPoint = GitHubApi.oneCommit(repositoryName: "Bar")
 		// assert
 		XCTAssertEqual(endPoint?.baseURL, URL(string: "Bar"))
 		XCTAssertEqual(endPoint?.path, "")

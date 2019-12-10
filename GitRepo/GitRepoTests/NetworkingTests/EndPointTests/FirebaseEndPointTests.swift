@@ -52,6 +52,7 @@ class FirebaseEndPointTests: XCTestCase {
 	}
 	
 	func testFirebaseApiTaskiIsNil() {
+		
 		// arrange
 		// act
 		endPoint = FirebaseApi.getProjects
@@ -60,6 +61,7 @@ class FirebaseEndPointTests: XCTestCase {
 	}
 	
 	func testFirebaseApiHTTPHeaders() {
+		
 		// arrange
 		// act
 		endPoint = FirebaseApi.getProjects

@@ -18,12 +18,16 @@ class ProjectsTableViewControllerTests: XCTestCase {
 	
 
     override func setUp() {
+		super.setUp()
+		
 		projectTableView = ProjectsTableViewController()
 		projectsTable = UITableView()
 		projectsTable.register(ProjectTableViewCell.self, forCellReuseIdentifier: ProjectTableViewCell.reusedId)
     }
 
     override func tearDown() {
+		super.tearDown()
+		
 		projectTableView = nil
 		projectsTable = nil
     }

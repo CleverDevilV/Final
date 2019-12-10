@@ -25,12 +25,16 @@ class LogoutSettingsTableViewCellTests: XCTestCase {
 	var cellDelegate: MockLogoutSettingsTableViewCellDelegate!
 
     override func setUp() {
+		super.setUp()
+		
 		cell = LogoutSettingsTableViewCell()
 		cellDelegate = MockLogoutSettingsTableViewCellDelegate()
 		cell.delegate = cellDelegate
     }
 
     override func tearDown() {
+		super.tearDown()
+		
 		cell = nil
 		cellDelegate = nil
     }

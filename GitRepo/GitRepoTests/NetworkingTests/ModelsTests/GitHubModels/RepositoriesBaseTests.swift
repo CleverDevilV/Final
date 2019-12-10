@@ -206,6 +206,8 @@ class RepositoriesBaseTests: XCTestCase {
     """
 	
     override func setUp() {
+		super.setUp()
+		
 		repository = Repository()
 		repository.lastChange = "2019-12-06T23:27:02Z"
 		repositories = Array.init(repeating: repository, count: 3)
@@ -214,6 +216,8 @@ class RepositoriesBaseTests: XCTestCase {
     }
 
     override func tearDown() {
+		super.tearDown()
+		
 		repositoriesBase = nil
 		repository = nil
 		repositories = nil
@@ -228,7 +232,6 @@ class RepositoriesBaseTests: XCTestCase {
 		
 		// assert
 		XCTAssertNotNil(dataIsNotNil)
-		
 		XCTAssertNil(dataIsNil)
 	}
 	
@@ -236,7 +239,6 @@ class RepositoriesBaseTests: XCTestCase {
 		// arrange
 		data = dataString2.data(using: .utf8)
 		// act
-		
 		do {
 			let newResponse = try JSONDecoder().decode(RepositoriesBase.self, from: data!)
 			// assert
@@ -244,14 +246,14 @@ class RepositoriesBaseTests: XCTestCase {
 		} catch {
 			// assert
 //			print(error)
-//			XCTAssertNil(error)
+			XCTAssertNotNil(error)
+			XCTAssertEqual(error.localizedDescription, "The data couldn’t be read because it isn’t in the correct format.")
 		}
 	}
 	
 	func testCreateRepositoryFromDecode() {
 		// arrange
 		// act
-		
 		do {
 			let newResponse = try JSONDecoder().decode([Repository].self, from: data!)
 			// assert

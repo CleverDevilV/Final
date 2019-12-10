@@ -12,7 +12,7 @@ import XCTest
 /// - Tag: SettingsPresenterTests
 class SettingsPresenterTests: XCTestCase {
 	
-	class MockView: SettingsViewProtocol {
+	class SpyView: SettingsViewProtocol {
 		
 		var spyLogoutCommand: SpyLogoutCommand?
 		var log: String?
@@ -21,11 +21,9 @@ class SettingsPresenterTests: XCTestCase {
 			self.spyLogoutCommand = command as? SpyLogoutCommand
 			self.log = "setLogoutCommand"
 		}
-		
-		
 	}
 	
-	var mockView: MockView!
+	var spyView: SpyView!
 	var spyLogOutCommand: SpyLogoutCommand!
 	
 	var presenter: SettingsPresenter!
@@ -33,15 +31,15 @@ class SettingsPresenterTests: XCTestCase {
     override func setUp() {
 		super.setUp()
 		
-		mockView = MockView()
+		spyView = SpyView()
 		spyLogOutCommand = SpyLogoutCommand()
-		presenter = SettingsPresenter(view: mockView, command: spyLogOutCommand)
+		presenter = SettingsPresenter(view: spyView, command: spyLogOutCommand)
     }
 
     override func tearDown() {
 		super.tearDown()
 		
-		mockView = nil
+		spyView = nil
 		spyLogOutCommand = nil
     }
 	
@@ -50,18 +48,17 @@ class SettingsPresenterTests: XCTestCase {
 		// act
 		presenter.setCommand()
 		// assert
-		XCTAssertEqual(mockView.log, "setLogoutCommand")
-		XCTAssertNotNil(mockView.spyLogoutCommand)
+		XCTAssertEqual(spyView.log, "setLogoutCommand")
+		XCTAssertNotNil(spyView.spyLogoutCommand)
 	}
 	
 	func testFailSetCommandFunc() {
 		// arrange
-		
-		let nilCommandPresenter = SettingsPresenter(view: mockView, command: nil)
+		let nilCommandPresenter = SettingsPresenter(view: spyView, command: nil)
 		// act
 		nilCommandPresenter.setCommand()
 		// assert
-//		???
+		XCTAssertNil(spyView.log)
 	}
 
 }

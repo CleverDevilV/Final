@@ -12,7 +12,7 @@ import XCTest
 /// - Tag: RepositoryCollaboratorsTableViewCellTests
 class RepositoryCollaboratorsTableViewCellTests: XCTestCase {
 	
-	class MockRepositoryCollaboratorsTableViewCellDelegate : RepositoryCollaboratorsTableViewCellDelegate {
+	class SpyRepositoryCollaboratorsTableViewCellDelegate : RepositoryCollaboratorsTableViewCellDelegate {
 		
 		var log: String?
 		
@@ -22,15 +22,19 @@ class RepositoryCollaboratorsTableViewCellTests: XCTestCase {
 	}
 	
 	var cell: RepositoryCollaboratorsTableViewCell!
-	var cellDelegate: MockRepositoryCollaboratorsTableViewCellDelegate!
+	var cellDelegate: SpyRepositoryCollaboratorsTableViewCellDelegate!
 
     override func setUp() {
+		super.setUp()
+		
 		cell = RepositoryCollaboratorsTableViewCell()
-		cellDelegate = MockRepositoryCollaboratorsTableViewCellDelegate()
+		cellDelegate = SpyRepositoryCollaboratorsTableViewCellDelegate()
 		cell.delegate = cellDelegate
     }
 
     override func tearDown() {
+		super.tearDown()
+		
 		cell = nil
 		cellDelegate = nil
     }

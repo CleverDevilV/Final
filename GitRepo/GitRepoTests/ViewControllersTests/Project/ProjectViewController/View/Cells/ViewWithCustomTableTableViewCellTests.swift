@@ -9,32 +9,29 @@
 import XCTest
 @testable import GitRepo
 
-
-class MockTableView: UITableView {
-	
-}
-
-class MockAddViewTableViewCell: ViewWithCustomTableTableViewCell {
-	
-	var testSetupViews: String?
-	
-	override func setupViews() {
-		testSetupViews = "Bar"
-	}
-	
-}
-
 /// - Tag: ViewWithCustomTableTableViewCellTests
 class ViewWithCustomTableTableViewCellTests: XCTestCase {
+	
+	class SpyAddViewTableViewCell: ViewWithCustomTableTableViewCell {
+		
+		var testSetupViews: String?
+		
+		override func setupViews() {
+			testSetupViews = "Bar"
+		}
+		
+	}
 
-	var mockAddView: MockAddViewTableViewCell!
+	var spyTableView: SpyAddViewTableViewCell!
 	var defaultAddView: ViewWithCustomTableTableViewCell!
 	
 	var tableView: UITableView!
 
 	
     override func setUp() {
-		mockAddView = MockAddViewTableViewCell()
+		super.setUp()
+		
+//		spyTableView = SpyAddViewTableViewCell()
 		defaultAddView = ViewWithCustomTableTableViewCell()
 		
 		tableView = UITableView()
@@ -42,116 +39,142 @@ class ViewWithCustomTableTableViewCellTests: XCTestCase {
     }
 
     override func tearDown() {
-		mockAddView = nil
+		super.tearDown()
+		
+		spyTableView = nil
     }
 	
 	func testCallSetupViewsWhenInit() {
-		
-		XCTAssertEqual(mockAddView.testSetupViews, "Bar")
+		// arrange
+		let spyTableView = SpyAddViewTableViewCell()
+		// act
+		spyTableView.setupViews()
+		// assert
+		XCTAssertEqual(spyTableView.testSetupViews, "Bar")
 	}
 	
 	func testCallSetupViewsWhenSetArray() {
-		
-		
-		XCTAssertEqual(mockAddView.testSetupViews, "Bar")
-	}
-	
-	func testNoThrowWhenSetupViews() {
-		defaultAddView.typeOfData = .none
-		XCTAssertNoThrow(defaultAddView.setupViews())
+		// arrange
+		let spyTableView = SpyAddViewTableViewCell()
+		// act
+		spyTableView.arrayOfDataForPresent = ["Baz"]
+		// assert
+		XCTAssertEqual(spyTableView.testSetupViews, "Bar")
 	}
 	
 	func testCorrectNumberOfRowsInTable() {
-		
+		// arrage
+		var numberOfRows: Int?
+		// act
 		defaultAddView.arrayOfDataForPresent = ["Bar", "Baz"]
-		
-		XCTAssertEqual(defaultAddView.tableView(tableView, numberOfRowsInSection: 1), 2)
+		numberOfRows = defaultAddView.tableView(tableView, numberOfRowsInSection: 1)
+		// assert
+		XCTAssertEqual(numberOfRows, 2)
 	}
 	
 	func testTypeOfCellInTableWithTypeOfDataTask () {
+		// arrage
+		var cell: UITableViewCell
+		var text: String?
+		// act
 		defaultAddView.arrayOfDataForPresent = ["Bar", "Baz"]
 		defaultAddView.typeOfData = .tasks
-		let cell = defaultAddView.tableView(tableView, cellForRowAt: IndexPath(row: 0, section: 0))
-		let text = cell.textLabel?.text
-		
-		
+		cell = defaultAddView.tableView(tableView, cellForRowAt: IndexPath(row: 0, section: 0))
+		text = cell.textLabel?.text
+		// assert
 		XCTAssertEqual(text, "Bar")
 	}
 	
 	func testTypeOfCellInTableWithTypeOfDataCollaborators () {
+		// arrage
 		let addView = ViewWithCustomTableTableViewCell()
+		var cell: UITableViewCell
+		var text: String?
+		// act
 		addView.arrayOfDataForPresent = [User(login: "Bar"), User(login: "Baz")]
 		addView.typeOfData = .collaborators
-		let cell = addView.tableView(tableView, cellForRowAt: IndexPath(row: 1, section: 0))
-		let text = cell.textLabel?.text
-		
-		
+		cell = addView.tableView(tableView, cellForRowAt: IndexPath(row: 1, section: 0))
+		text = cell.textLabel?.text
+		// assert
 		XCTAssertEqual(text, "Baz")
 	}
 	
-	func testHeaderIsNotNil() {
+	func testHeaderHeightIsNotNil() {
+		// arrage
+		var headerHeight: CGFloat
+		// act
 		defaultAddView.typeOfData = .tasks
-		let headerHeight = defaultAddView.tableView(tableView, heightForHeaderInSection: 0)
+		headerHeight = defaultAddView.tableView(tableView, heightForHeaderInSection: 0)
+		// assert
 		XCTAssertEqual(headerHeight, 50)
-		
-		let headerView = defaultAddView.tableView(tableView, viewForHeaderInSection: 0)
-		XCTAssertNotNil(headerView)
-		
 	}
 	
-	func testHeaderIsNil() {
-		
+	func testHeaderViewIsNotNil() {
+		// arrage
+		var headerView: UIView?
+		// act
+		defaultAddView.typeOfData = .tasks
+		headerView = defaultAddView.tableView(tableView, viewForHeaderInSection: 0)
+		// assert
+		XCTAssertNotNil(headerView)
+	}
+	
+	func testHeaderHeightIsZero() {
+		// arrage
+		var headerHeight: CGFloat
+		// act
 		defaultAddView.typeOfData = .collaborators
-		let headerHeight = defaultAddView.tableView(tableView, heightForHeaderInSection: 0)
+		headerHeight = defaultAddView.tableView(tableView, heightForHeaderInSection: 0)
+		// assert
 		XCTAssertEqual(headerHeight, 0)
-		
-		let headerView = defaultAddView.tableView(tableView, viewForHeaderInSection: 0)
+	}
+	
+	func testHeaderViewIsNil() {
+		// arrange
+		var headerView: UIView?
+		// act
+		headerView = defaultAddView.tableView(tableView, viewForHeaderInSection: 0)
+		// assert
 		XCTAssertNil(headerView)
-		
-		defaultAddView.typeOfData = .none
-		XCTAssertNil(defaultAddView.tableView(tableView, viewForHeaderInSection: 0))
-		XCTAssertEqual(defaultAddView.tableView(tableView, heightForHeaderInSection: 0), 0)
 	}
 	
 	func testEditingStyleDelete() {
+		// arrage
+		var editingStyle: UITableViewCell.EditingStyle
+		// act
 		defaultAddView.typeOfData = .tasks
-		let editingStyle = defaultAddView.tableView(tableView, editingStyleForRowAt: IndexPath(row: 0, section: 1))
-		
+		editingStyle = defaultAddView.tableView(tableView, editingStyleForRowAt: IndexPath(row: 0, section: 1))
+		// assert
 		XCTAssertEqual(editingStyle, UITableViewCell.EditingStyle.delete)
 	}
 	
 	func testEditingStyleNone() {
+		// arrage
+		var editingStyle: UITableViewCell.EditingStyle
+		// act
 		defaultAddView.typeOfData = .collaborators
-		let editingStyle = defaultAddView.tableView(tableView, editingStyleForRowAt: IndexPath(row: 0, section: 1))
+		editingStyle = defaultAddView.tableView(tableView, editingStyleForRowAt: IndexPath(row: 0, section: 1))
+		// assert
 		XCTAssertEqual(editingStyle, UITableViewCell.EditingStyle.none)
-		
-		defaultAddView.typeOfData = .none
-		XCTAssertEqual(defaultAddView.tableView(tableView, editingStyleForRowAt: IndexPath(row: 0, section: 1)), UITableViewCell.EditingStyle.none)
 	}
 	
 	func testCenEditRowTrue() {
+		// arrage
+		var canEdit: Bool
+		// act
 		defaultAddView.typeOfData = .tasks
-		
-		let canEdit = defaultAddView.tableView(tableView, canEditRowAt: IndexPath(row: 0, section: 1))
-		
+		canEdit = defaultAddView.tableView(tableView, canEditRowAt: IndexPath(row: 0, section: 1))
+		// assert
 		XCTAssertTrue(canEdit)
 	}
 	
 	func testCenEditRowFalse() {
+		// arrage
+		var canEdit: Bool
+		// act
 		defaultAddView.typeOfData = .collaborators
-		
-		let canEdit = defaultAddView.tableView(tableView, canEditRowAt: IndexPath(row: 0, section: 1))
-		
+		canEdit = defaultAddView.tableView(tableView, canEditRowAt: IndexPath(row: 0, section: 1))
+		// assert
 		XCTAssertFalse(canEdit)
-		
-		defaultAddView.typeOfData = .none
-		XCTAssertFalse(defaultAddView.tableView(tableView, canEditRowAt: IndexPath(row: 0, section: 1)))
 	}
-	
-	func testEdditingStyle() {
-		
-		XCTAssertNoThrow(defaultAddView.tableView(tableView, commit: .delete, forRowAt: IndexPath(row: 0, section: 0)))
-	}
-	
-
 }

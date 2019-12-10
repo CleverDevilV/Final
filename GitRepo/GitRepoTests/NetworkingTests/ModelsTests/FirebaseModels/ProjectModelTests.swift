@@ -14,16 +14,21 @@ class ProjectModelTests: XCTestCase {
 	var project: Project!
 
     override func setUp() {
+		super.setUp()
+		
 		project = Project(projectName: "BaZ", repoURL: nil, repositoryName: nil, repo: nil, descriptionOfProject: "BaRBaZ", languageOfProject: nil)
     }
 
     override func tearDown() {
+		super.tearDown()
+		
 		project = nil
     }
 	
 	func testProjectsIsNil() {
 		// arrange
 		// act
+		project.projectTasks = nil
 		// assert
 		XCTAssertNil(project.projectTasks)
 	}
@@ -38,6 +43,7 @@ class ProjectModelTests: XCTestCase {
 		
 		// act
 		project.addTask("Baz")
+		// assert
 		XCTAssertEqual(project.projectTasks?.count, 2)
 	}
 	
@@ -58,6 +64,7 @@ class ProjectModelTests: XCTestCase {
 		
 		// act
 		project.removeTask(at: 0)
+		// assert
 		XCTAssertNil(project.projectTasks)
 	}
 	

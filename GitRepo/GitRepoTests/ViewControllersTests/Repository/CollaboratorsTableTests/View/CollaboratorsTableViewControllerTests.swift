@@ -49,13 +49,13 @@ class CollaboratorsTableViewControllerTests: XCTestCase {
 	
 	func testIsNameOfCollaboratorIsNotNilIfSetRepository () {
 		// arrange
+		var testName: String?
 		let testTable = UITableView()
 		testTable.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
 		// act
 		testRepository.collaborators = [User(login: "Foo")]
 		presenter.setRepository()
-		
-		let testName = view.tableView(testTable, cellForRowAt: IndexPath(row: 0, section: 0)).textLabel?.text
+		testName = view.tableView(testTable, cellForRowAt: IndexPath(row: 0, section: 0)).textLabel?.text
 		
 		// assert
 		
@@ -64,13 +64,13 @@ class CollaboratorsTableViewControllerTests: XCTestCase {
 	
 	func testIsNameOfCollaboratorIsEqualIfSetRepository () {
 		// arrange
+		var testName: String?
 		let testTable = UITableView()
 		testTable.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
 		// act
 		testRepository.collaborators = [User(login: "Foo")]
 		presenter.setRepository()
-		
-		let testName = view.tableView(testTable, cellForRowAt: IndexPath(row: 0, section: 0)).textLabel?.text
+		testName = view.tableView(testTable, cellForRowAt: IndexPath(row: 0, section: 0)).textLabel?.text
 		
 		// assert
 		
@@ -79,12 +79,13 @@ class CollaboratorsTableViewControllerTests: XCTestCase {
 	
 	func testCountOfCollaboratorIsEqualIfSetRepository () {
 		// arrange
+		var testCount: Int?
 		let testTable = UITableView()
 		testTable.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
 		// act
 		testRepository.collaborators = [User(login: "Foo")]
 		presenter.setRepository()
-		let testCount = view.tableView(testTable, numberOfRowsInSection: 0)
+		testCount = view.tableView(testTable, numberOfRowsInSection: 0)
 		
 		// assert
 		XCTAssertEqual(testCount, 1)
@@ -92,11 +93,12 @@ class CollaboratorsTableViewControllerTests: XCTestCase {
 	
 	func testCountOfCollaboratorIsEqualIfSetedRepositoryCollaboratorsIsNil () {
 		// arrange
+		var testCount: Int?
 		let testTable = UITableView()
 		testTable.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
 		// act
 		presenter.setRepository()
-		let testCount = view.tableView(testTable, numberOfRowsInSection: 0)
+		testCount = view.tableView(testTable, numberOfRowsInSection: 0)
 		
 		// assert
 		XCTAssertEqual(testCount, 0)

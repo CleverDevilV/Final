@@ -12,7 +12,7 @@ import XCTest
 /// - Tag: StartViewPresenterTests
 class StartViewPresenterTests: XCTestCase {
 	
-	class MockView: StartViewProtocol {
+	class SpyView: StartViewProtocol {
 		
 		var logLogoutCommand: String?
 		var logLoader: String?
@@ -31,7 +31,7 @@ class StartViewPresenterTests: XCTestCase {
 		}
 	}
 	
-	var mockView: MockView!
+	var spyView: SpyView!
 	var mockLoader: MockLoader!
 	var spyLogOutCommand: SpyLogoutCommand!
 	
@@ -40,17 +40,17 @@ class StartViewPresenterTests: XCTestCase {
 	override func setUp() {
 		super.setUp()
 		
-		mockView = MockView()
+		spyView = SpyView()
 		mockLoader = MockLoader()
 		spyLogOutCommand = SpyLogoutCommand()
 		
-		presenter = StartViewPresenter(view: mockView, loader: mockLoader, command: spyLogOutCommand)
+		presenter = StartViewPresenter(view: spyView, loader: mockLoader, command: spyLogOutCommand)
 	}
 	
 	override func tearDown() {
 		super.tearDown()
 		
-		mockView = nil
+		spyView = nil
 		mockLoader = nil
 		presenter = nil
 		spyLogOutCommand = nil
@@ -61,8 +61,8 @@ class StartViewPresenterTests: XCTestCase {
 		// act
 		presenter.setupLoader()
 		// assert
-		XCTAssertEqual(mockView.logLoader, "setLoader")
-		XCTAssertNotNil(mockView.loader)
+		XCTAssertEqual(spyView.logLoader, "setLoader")
+		XCTAssertNotNil(spyView.loader)
 	}
 	
 	func testSetupLogCoutCommand () {
@@ -70,7 +70,7 @@ class StartViewPresenterTests: XCTestCase {
 		// act
 		presenter.setupLogCoutCommand()
 		// assert
-		XCTAssertEqual(mockView.logLogoutCommand, "setLogoutCommand")
-		XCTAssertNotNil(mockView.spyLogoutCommand)
+		XCTAssertEqual(spyView.logLogoutCommand, "setLogoutCommand")
+		XCTAssertNotNil(spyView.spyLogoutCommand)
 	}
 }

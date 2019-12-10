@@ -12,7 +12,7 @@ import XCTest
 /// - Tag: SegmentCommitsBranchesTableViewCellTests
 class SegmentCommitsBranchesTableViewCellTests: XCTestCase {
 	
-	class MockSegmentCommitsBranchesTableViewCellDelegate: SegmentCommitsBranchesTableViewCellDelegate {
+	class SpySegmentCommitsBranchesTableViewCellDelegate: SegmentCommitsBranchesTableViewCellDelegate {
 		
 		var logIndexPath: IndexPath?
 		var logInt: Int?
@@ -27,15 +27,19 @@ class SegmentCommitsBranchesTableViewCellTests: XCTestCase {
 	}
 
 	var cell: SegmentCommitsBranchesTableViewCell!
-	var cellDelegate: MockSegmentCommitsBranchesTableViewCellDelegate!
+	var cellDelegate: SpySegmentCommitsBranchesTableViewCellDelegate!
 	
     override func setUp() {
+		super.setUp()
+		
 		cell = SegmentCommitsBranchesTableViewCell()
-		cellDelegate = MockSegmentCommitsBranchesTableViewCellDelegate()
+		cellDelegate = SpySegmentCommitsBranchesTableViewCellDelegate()
 		cell.delegate = cellDelegate
     }
 
     override func tearDown() {
+		super.tearDown()
+		
 		cell = nil
 		cellDelegate = nil
     }

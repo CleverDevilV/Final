@@ -9,38 +9,41 @@
 import XCTest
 @testable import GitRepo
 
-
-class MockDescriptionTableViewCellDelegateClass: DescriptionTableViewCellDelegate {
-	
-	var log: String?
-	
-	func projectDescriptionUpdate(_ description: String?) {
-		log = description
-	}
-}
-
-class MockDescriptionTableViewCell: DescriptionTableViewCell {
-	
-	var logDescriptionTableViewCell: String?
-	
-	override func setupViews() {
-		logDescriptionTableViewCell = "setupViews"
-	}
-}
-
 /// - Tag: DescriptionTableViewCellTests
 class DescriptionTableViewCellTests: XCTestCase {
 	
+	class SpyDescriptionTableViewCellDelegateClass: DescriptionTableViewCellDelegate {
+		
+		var log: String?
+		
+		func projectDescriptionUpdate(_ description: String?) {
+			log = description
+		}
+	}
+	
+	class SpyDescriptionTableViewCell: DescriptionTableViewCell {
+		
+		var logDescriptionTableViewCell: String?
+		
+		override func setupViews() {
+			logDescriptionTableViewCell = "setupViews"
+		}
+	}
+	
 	var cell: DescriptionTableViewCell!
-	var cellDelegate: MockDescriptionTableViewCellDelegateClass!
+	var cellDelegate: SpyDescriptionTableViewCellDelegateClass!
 
     override func setUp() {
+		super.setUp()
+		
 		cell = DescriptionTableViewCell()
-		cellDelegate = MockDescriptionTableViewCellDelegateClass()
+		cellDelegate = SpyDescriptionTableViewCellDelegateClass()
 		cell.descriptionCellDelegate = cellDelegate
     }
 
     override func tearDown() {
+		super.tearDown()
+		
 		cell = nil
 		cellDelegate = nil
     }
@@ -57,10 +60,11 @@ class DescriptionTableViewCellTests: XCTestCase {
 	
 	func testSetupViews() {
 		// arrange
-		let mockCell = MockDescriptionTableViewCell()
+		let spyCell = SpyDescriptionTableViewCell()
 		// act
+		spyCell.setupViews()
 		// assert
-		XCTAssertEqual(mockCell.logDescriptionTableViewCell, "setupViews")
+		XCTAssertEqual(spyCell.logDescriptionTableViewCell, "setupViews")
 	}
 
 }

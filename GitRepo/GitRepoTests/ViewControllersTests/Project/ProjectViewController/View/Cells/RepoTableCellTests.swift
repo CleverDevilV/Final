@@ -9,39 +9,43 @@
 import XCTest
 @testable import GitRepo
 
-class MockRepoTableCellDelegate: RepoTableCellDelegate {
-	var log: String?
-	func setupRepo() {
-		log = "setupRepo"
-	}
-}
-
-class MockRepoTableViewCell: RepoTableViewCell{
-	
-	var logRepoTableViewCell: String?
-	
-	override func setupViews() {
-		logRepoTableViewCell = project?.projectName
-	}
-}
-
 /// - Tag: RepoTableCellTests
 class RepoTableCellTests: XCTestCase {
 	
+	class SpyRepoTableCellDelegate: RepoTableCellDelegate {
+		var log: String?
+		func setupRepo() {
+			log = "setupRepo"
+		}
+	}
+	
+	class SpyRepoTableViewCell: RepoTableViewCell{
+		
+		var logRepoTableViewCell: String?
+		
+		override func setupViews() {
+			logRepoTableViewCell = project?.projectName
+		}
+	}
+	
 	var cell: RepoTableViewCell!
-	var cellDelegate: MockRepoTableCellDelegate!
+	var cellDelegate: SpyRepoTableCellDelegate!
 	
 	var project: Project!
 
     override func setUp() {
+		super.setUp()
+		
 		cell = RepoTableViewCell()
-		cellDelegate = MockRepoTableCellDelegate()
+		cellDelegate = SpyRepoTableCellDelegate()
 		cell.delegate = cellDelegate
 		
 		project = Project(projectName: "Bar", repoURL: "Foo", repositoryName: "Baz", repo: nil, descriptionOfProject: nil, languageOfProject: nil)
     }
 
     override func tearDown() {
+		super.tearDown()
+		
 		cell = nil
 		cellDelegate = nil
     }
@@ -56,11 +60,11 @@ class RepoTableCellTests: XCTestCase {
 	
 	func testSetupProject() {
 		// arrange
-		let mockCell = MockRepoTableViewCell()
+		let spyCell = SpyRepoTableViewCell()
 		// act
-		mockCell.project = project
+		spyCell.project = project
 		// assert
-		XCTAssertEqual(mockCell.logRepoTableViewCell, "Bar")
+		XCTAssertEqual(spyCell.logRepoTableViewCell, "Bar")
 	}
 
 }

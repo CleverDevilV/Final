@@ -56,7 +56,7 @@ class GitHubNetworkManagerTests: XCTestCase {
 		// act
 		githubManager.getData(endPoint: GitHubApi.repos) {
 			result, error in
-//		// assert
+		// assert
 			XCTAssertEqual(error, "Plese check your network connection")
 		}
 	}

@@ -12,7 +12,7 @@ import XCTest
 /// - Tag: OwnerAndViewButtonTableViewCellTests
 class OwnerAndViewButtonTableViewCellTests: XCTestCase {
 	
-	class MockOwnerAndViewButtonTableViewCellDelegate: OwnerAndViewButtonTableViewCellDelegate {
+	class SpyOwnerAndViewButtonTableViewCellDelegate: OwnerAndViewButtonTableViewCellDelegate {
 		
 		var log: String?
 		
@@ -22,16 +22,20 @@ class OwnerAndViewButtonTableViewCellTests: XCTestCase {
 	}
 	
 	var cell: OwnerAndViewButtonTableViewCell!
-	var cellDelegate: MockOwnerAndViewButtonTableViewCellDelegate!
+	var cellDelegate: SpyOwnerAndViewButtonTableViewCellDelegate!
 	var repository: Repository!
 
     override func setUp() {
+		super.setUp()
+		
 		cell = OwnerAndViewButtonTableViewCell()
-		cellDelegate = MockOwnerAndViewButtonTableViewCellDelegate()
+		cellDelegate = SpyOwnerAndViewButtonTableViewCellDelegate()
 		repository = Repository()
     }
 
     override func tearDown() {
+		super.tearDown()
+		
 		cell = nil
 		cellDelegate = nil
 		repository = nil
@@ -49,9 +53,8 @@ class OwnerAndViewButtonTableViewCellTests: XCTestCase {
 	func testWithNotNilRepository() {
 		// arrange
 		let owner = User(login: "Bar")
-		repository.owner = owner
 		// act
-		
+		repository.owner = owner
 		cell.repository = repository
 		// assert
 		XCTAssertEqual(cell.repository?.owner?.login, "Bar")

@@ -29,18 +29,15 @@ class ProjectViewControllerTests: XCTestCase {
 	func testDescriptionDelegating () {
 		// arrange
 		let project = Project(projectName: "Baz", repoURL: nil, repositoryName: nil, repo: nil, descriptionOfProject: nil, languageOfProject: nil)
-		
 		let cell = DescriptionTableViewCell()
-		
 		let testView = UITextView()
 		testView.text = "Bar"
-		
-		cell.descriptionCellDelegate = projectView
 		// act
+		cell.descriptionCellDelegate = projectView
 		projectView.setupProject(project)
 		cell.textViewDidEndEditing(testView)
-		// assert
 		
+		// assert
 		XCTAssertEqual(project.descriptionOfProject, "Bar")
 	}
 	

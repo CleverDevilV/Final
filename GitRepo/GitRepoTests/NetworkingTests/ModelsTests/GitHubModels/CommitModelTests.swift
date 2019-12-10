@@ -16,11 +16,15 @@ class CommitModelTests: XCTestCase {
 	var nilCommit: Commit!
 
     override func setUp() {
+		super.setUp()
+		
 		commit = Commit(sha: nil, message: nil, author: nil, url: "BarBazURL", date: "2019-12-06T23:27:02Z")
 		nilCommit = Commit(sha: nil, message: nil, author: nil, url: nil, date: nil)
     }
 
     override func tearDown() {
+		super.tearDown()
+		
 		commit = nil
 		nilCommit = nil
     }
@@ -28,16 +32,15 @@ class CommitModelTests: XCTestCase {
 	func testGetUrlOfCommit() {
 		// arrange
 		var url: String?
+		var nilUrl: String?
 		// act
 		url = commit.getUrlOfCommit()
+		nilUrl = nilCommit.getUrlOfCommit()
 		// assert
 		XCTAssertNotNil(url)
 		XCTAssertEqual(url, "BarBazURL")
 		
-		// act
-		url = nilCommit.getUrlOfCommit()
-		// assert
-		XCTAssertNil(url)
+		XCTAssertNil(nilUrl)
 	}
 	
 	func testGetUrlOfCommitIsNil() {
@@ -67,7 +70,6 @@ class CommitModelTests: XCTestCase {
 		date = nilCommit.getCommitDateString()
 		// assert
 		XCTAssertNil(date)
-		
 	}
 
 }

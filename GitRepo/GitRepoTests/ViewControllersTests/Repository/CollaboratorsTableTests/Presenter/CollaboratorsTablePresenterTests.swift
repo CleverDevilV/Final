@@ -19,8 +19,6 @@ class CollaboratorsTablePresenterTests: XCTestCase {
 		func setupRepository(_ repository: Repository) {
 			log = repository.name
 		}
-		
-		
 	}
 	
 	var spyView: SpyView!

@@ -9,39 +9,41 @@
 import XCTest
 @testable import GitRepo
 
-class MockCollaboratorsTableViewCellDelegate: CollaboratorsTableViewCellDelegate {
-	
-	var logCollaboratorsTableViewCellDelegate: String?
-	
-	func addCollaboratorsTable() {
-		logCollaboratorsTableViewCellDelegate = "addCollaboratorsTable"
-	}
-	
-	
-}
-
-class MockCollaboratorsTableViewCell: CollaboratorsTableViewCell {
-	
-	var logCollaboratorsTableViewCell: String?
-	
-	override func setupViews() {
-		logCollaboratorsTableViewCell = "setupViews"
-	}
-}
-
 /// - Tag: CollaboratorsTableViewCellTests
 class CollaboratorsTableViewCellTests: XCTestCase {
 	
+	class SpyCollaboratorsTableViewCellDelegate: CollaboratorsTableViewCellDelegate {
+		
+		var logCollaboratorsTableViewCellDelegate: String?
+		
+		func addCollaboratorsTable() {
+			logCollaboratorsTableViewCellDelegate = "addCollaboratorsTable"
+		}
+	}
+	
+	class SpyCollaboratorsTableViewCell: CollaboratorsTableViewCell {
+		
+		var logCollaboratorsTableViewCell: String?
+		
+		override func setupViews() {
+			logCollaboratorsTableViewCell = "setupViews"
+		}
+	}
+	
 	var cell: CollaboratorsTableViewCell!
-	var cellDelegate: MockCollaboratorsTableViewCellDelegate!
+	var cellDelegate: SpyCollaboratorsTableViewCellDelegate!
 
     override func setUp() {
+		super.setUp()
+		
 		cell = CollaboratorsTableViewCell()
-		cellDelegate = MockCollaboratorsTableViewCellDelegate()
+		cellDelegate = SpyCollaboratorsTableViewCellDelegate()
 		cell.delegate = cellDelegate
     }
 
     override func tearDown() {
+		super.tearDown()
+		
 		cell = nil
 		cellDelegate = nil
     }
@@ -56,10 +58,11 @@ class CollaboratorsTableViewCellTests: XCTestCase {
 	
 	func testSetupViews() {
 		// arrange
-		let mockCell = MockCollaboratorsTableViewCell()
+		let spyCell = SpyCollaboratorsTableViewCell()
 		// act
+		spyCell.setupViews()
 		// assert
-		XCTAssertEqual(mockCell.logCollaboratorsTableViewCell, "setupViews")
+		XCTAssertEqual(spyCell.logCollaboratorsTableViewCell, "setupViews")
 	}
 
 }

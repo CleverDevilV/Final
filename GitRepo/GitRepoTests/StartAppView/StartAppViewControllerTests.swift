@@ -16,8 +16,6 @@ class StartAppViewControllerTests: XCTestCase {
 	var mockLoader: MockLoader!
 	var spyLogoutCommand: SpyLogoutCommand!
 	
-	
-
     override func setUp() {
 		super.setUp()
 		

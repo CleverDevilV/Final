@@ -18,6 +18,7 @@ class ProjectBaseTests: XCTestCase {
 	var strData: String?
 
     override func setUp() {
+		super.setUp()
 		
 		project = Project(projectName: "BaZ", repoURL: nil, repositoryName: nil, repo: nil, descriptionOfProject: "BaRBaZ", languageOfProject: nil)
 		projects = Array.init(repeating: project, count: 3)
@@ -40,6 +41,8 @@ class ProjectBaseTests: XCTestCase {
 
 
     override func tearDown() {
+		super.tearDown()
+		
 		project = nil
 		projects = nil
 		projectBase = nil

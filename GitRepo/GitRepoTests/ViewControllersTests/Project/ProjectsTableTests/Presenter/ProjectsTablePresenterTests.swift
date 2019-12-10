@@ -52,7 +52,6 @@ class ProjectsTablePresenterTests: XCTestCase {
 	func testCountOfProjectsInSetProjectBase() {
 		// arrange
 		let notEmptyProjectBase = ProjectsBase(with: Array(repeating: Project(projectName: "Bar", repoURL: nil, repositoryName: nil, repo: nil, descriptionOfProject: nil, languageOfProject: nil), count: 4))
-		
 		let testedPresenter = ProjectsTablePresenter(view: spyView, projectsBase: notEmptyProjectBase)
 		// act
 		testedPresenter.setProjectsBase()

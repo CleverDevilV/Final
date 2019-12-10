@@ -16,18 +16,25 @@ class FirebaseNetworkManagerTests: XCTestCase {
 	var session: URLSession!
 
     override func setUp() {
+		super.setUp()
+		
 		session = MockUrlSession()
 		firebaseManager = FirebaseNetworkManager(with: session)
     }
 
     override func tearDown() {
+		super.tearDown()
+		
 		firebaseManager = nil
 		session = nil
     }
 	
 	func testFirebaseDataIsNil() {
+		// arrage
+		///act
 		firebaseManager.getData(endPoint: GitHubApi.repos) {
 			result, error in
+			/// assert
 			XCTAssertNil(result)
 			XCTAssertEqual(error, "Unknown end point")
 		}
@@ -38,7 +45,7 @@ class FirebaseNetworkManagerTests: XCTestCase {
 		// act
 		firebaseManager.getData(endPoint: FirebaseApi.getProjects) {
 			result, error in
-			//		// assert
+			// assert
 			XCTAssertEqual(error, "Plese check your network connection")
 		}
 	}

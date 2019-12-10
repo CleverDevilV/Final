@@ -11,21 +11,24 @@ import XCTest
 
 /// - Tag: BuilderTests
 class BuilderTests: XCTestCase {
+	
+	var view: UIViewController!
 
     override func setUp() {
 		super.setUp()
 		
+		view = UIViewController()
     }
 
     override func tearDown() {
 		super.tearDown()
 		
+		view = nil
     }
 	
 //MARK: - StartAppViewController
 	func testCreatedStartAppViewControllerIsNotNil () {
 		// arrange
-		var view = UIViewController()
 		// act
 		view = Builder.createStartAppViewController()
 		// assert
@@ -35,7 +38,6 @@ class BuilderTests: XCTestCase {
 //MARK: - SettingsViewController
 	func testCreatedSettingsViewControllerIsNotNil () {
 		// arrange
-		var view = UIViewController()
 		// act
 		view = Builder.createSettingsViewController()
 		// assert
@@ -45,7 +47,6 @@ class BuilderTests: XCTestCase {
 //MARK: - SomeWebView
 	func testCreatedSomeWebViewIsNotNil () {
 		// arrange
-		var view: UIViewController?
 		let strForTest = "Bar"
 		// act
 		view = Builder.createSomeWebView(with: strForTest)
@@ -55,7 +56,6 @@ class BuilderTests: XCTestCase {
 	
 	func testCreatedSomeWebViewIsNil () {
 		// arrange
-		var view: UIViewController?
 		let strForTest = ""
 		// act
 		view = Builder.createSomeWebView(with: strForTest)
@@ -66,7 +66,6 @@ class BuilderTests: XCTestCase {
 //MARK: - ProjectsTableView
 	func testCreatedProjectsTableViewIsNotNil () {
 		// arrange
-		var view: UIViewController?
 		// act
 		view = Builder.createProjectsTableView()
 		// assert
@@ -76,7 +75,6 @@ class BuilderTests: XCTestCase {
 //MARK: - ProjectViewController
 	func testCreatedProjectViewControllerIsNotNil () {
 		// arrange
-		var view: UIViewController?
 		let testProject = Project(projectName: "Baz", repoURL: nil, repositoryName: nil, repo: nil, descriptionOfProject: nil, languageOfProject: nil)
 		// act
 		view = Builder.createProjectViewController(with: testProject)
@@ -86,7 +84,6 @@ class BuilderTests: XCTestCase {
 	
 	func testCreatedProjectViewControllerIsNil () {
 		// arrange
-		var view: UIViewController?
 		// act
 		view = Builder.createProjectViewController(with: nil)
 		// assert
@@ -96,7 +93,6 @@ class BuilderTests: XCTestCase {
 //MARK: - RepositoriesTableViewController
 	func testCreatedRepositoriesTableViewControllerIsNotNil () {
 		// arrange
-		var view: UIViewController?
 		// act
 		view = Builder.createRepositoriesTableViewController()
 		// assert
@@ -106,7 +102,6 @@ class BuilderTests: XCTestCase {
 //MARK: - RepositoryViewController
 	func testCreatedRepositoryViewControllerIsNotNil () {
 		// arrange
-		var view: UIViewController?
 		let testRepository = Repository()
 		// act
 		view = Builder.createRepositoryViewController(with: testRepository)
@@ -116,7 +111,6 @@ class BuilderTests: XCTestCase {
 	
 	func testCreatedRepositoryViewControllerIsNil () {
 		// arrange
-		var view: UIViewController?
 		// act
 		view = Builder.createRepositoryViewController(with: nil)
 		// assert
@@ -126,7 +120,6 @@ class BuilderTests: XCTestCase {
 //MARK: - CollaboratorsTableView
 	func testCreatedCollaboratorsTableViewIsNotNil () {
 		// arrange
-		var view: UIViewController?
 		let testRepository = Repository()
 		// act
 		view = Builder.createCollaboratorsTableView(with: testRepository)
@@ -136,7 +129,6 @@ class BuilderTests: XCTestCase {
 	
 	func testCreatedCollaboratorsTableViewIsNil () {
 		// arrange
-		var view: UIViewController?
 		// act
 		view = Builder.createCollaboratorsTableView(with: nil)
 		// assert

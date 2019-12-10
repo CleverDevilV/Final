@@ -216,6 +216,17 @@ struct GitHubNetworkManager: NetworkManagerProtocol {
 					}
 					
 				case .failure(let networkFailureError):
+					
+					let message = try? JSONDecoder().decode([String: String].self, from: data!)
+					if let valueOfMessage = message?["message"] {
+						if valueOfMessage == "Bad credentials" {
+							DispatchQueue.main.async {
+								let logoutCommang = LogOutCommand()
+								logoutCommang.logOut()
+								AppDelegate.shared.rootViewController.switchToLogout()
+							}
+						}
+					}
 					completion(nil, networkFailureError)
 				}
 			}

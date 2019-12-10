@@ -256,11 +256,24 @@ class StartAppViewController: UIViewController {
 			])
 		
 	}
+	
+	func showAllertIfDisconnect() {
+		let allert = UIAlertController(title: "Отсутствует подключение к интернету 😔", message: "Восстановите подключение к сети и перезапустите приложение.", preferredStyle: .alert)
+		let okAction =  UIAlertAction(title: "OK", style: .default, handler: nil)
+		allert.addAction(okAction)
+		present(allert, animated: true, completion: nil)
+	}
 }
 
 extension StartAppViewController {
 	@objc
 	func tapWelcomeButton(_ sender: UIButton) {
+		
+		guard ConnectChecker.isConnectedToNetwork() else {
+			print("Internet connection FAILED")
+			showAllertIfDisconnect()
+			return
+		}
 		
 			UIView.animate(withDuration: 0.5, delay: 0.3, options: [], animations: {
 				self.obiVanImage.layer.opacity = 0

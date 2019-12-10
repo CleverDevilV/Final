@@ -8,8 +8,9 @@
 
 import UIKit
 
-// No Unit Tests
+//Unit Tests
 
+ /// Unit Tests - [RepoViewControllerTests](x-source-tag://RepoViewControllerTests)
 class RepoViewController: UIViewController {
 	
 	public var presenter: RepositoryPresenterProtocol!
@@ -52,7 +53,6 @@ class RepoViewController: UIViewController {
 		tableViewWithLabelsAndButtons.register(RepositoryCollaboratorsTableViewCell.self, forCellReuseIdentifier: RepositoryCollaboratorsTableViewCell.collaboratorsReuseId)
 		tableViewWithLabelsAndButtons.register(SegmentCommitsBranchesTableViewCell.self, forCellReuseIdentifier: SegmentCommitsBranchesTableViewCell.separatorCommitsBranchesReuseId)
 		
-		tableViewWithLabelsAndButtons.register(ViewWithCustomTableTableViewCell.self, forCellReuseIdentifier: ViewWithCustomTableTableViewCell.reusedId)
 		
 		view.addSubview(tableViewWithLabelsAndButtons)
 	}
@@ -67,16 +67,7 @@ extension RepoViewController: RepositoryViewProtocol {
 extension RepoViewController: UITableViewDataSource {
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		if tableView == tableViewWithLabelsAndButtons {
-			return 3
-		}
-		else {
-			if segmentControllerValue == nil || segmentControllerValue == 0 {
-				return repository?.commits?.count ?? 0
-			} else {
-				return repository?.branches?.count ?? 0
-			}
-		}
+		return 3
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -137,6 +128,7 @@ extension RepoViewController: RepositoryCollaboratorsTableViewCellDelegate {
 }
 
 extension RepoViewController: SegmentCommitsBranchesTableViewCellDelegate {
+	
 	func setSegmentControllerValue(_ value: Int) {
 		segmentControllerValue = value
 	}

@@ -38,7 +38,6 @@ class UserDefaultsTests: XCTestCase {
 		UserDefaults.standard.update(with: UserDefaultsType.oauth_access_token, data: "Baz")
 		UserDefaults.standard.update(with: UserDefaultsType.oauth_user_login, data: "Foo")
         // assert
-		XCTAssertEqual(UserDefaults.standard.get(with: UserDefaultsType.oauth_access_token), "Bar")
 		XCTAssertEqual(UserDefaults.standard.get(with: UserDefaultsType.oauth_access_token), "Baz")
 		XCTAssertEqual(UserDefaults.standard.get(with: UserDefaultsType.oauth_user_login), "Foo")
 	}

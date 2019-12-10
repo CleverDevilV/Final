@@ -41,4 +41,36 @@ class ProjectViewControllerTests: XCTestCase {
 		XCTAssertEqual(project.descriptionOfProject, "Bar")
 	}
 	
+	func testClassOfCellOnView() {
+		// arrange
+		var testDescriptionCell: UITableViewCell?
+		var testRepoCell: UITableViewCell?
+		var testCollaboratorsnCell: UITableViewCell?
+		var testTasksCell: UITableViewCell?
+		var defaultCell: UITableViewCell?
+		
+		let testTableView = UITableView()
+		
+		testTableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+		testTableView.register(DescriptionTableViewCell.self, forCellReuseIdentifier: DescriptionTableViewCell.descriptionReuseId)
+		testTableView.register(RepoTableViewCell.self, forCellReuseIdentifier: RepoTableViewCell.repoReuseId)
+		testTableView.register(CollaboratorsTableViewCell.self, forCellReuseIdentifier: CollaboratorsTableViewCell.collaboratorsReuseId)
+		testTableView.register(TasksTableViewCell.self, forCellReuseIdentifier: TasksTableViewCell.tasksReuseId)
+		
+		testTableView.dataSource = projectView
+		
+		// act
+		defaultCell = projectView?.tableView(testTableView, cellForRowAt: IndexPath(row: 4, section: 0))
+		testDescriptionCell = projectView?.tableView(testTableView, cellForRowAt: IndexPath(row: 0, section: 0))
+		testRepoCell = projectView?.tableView(testTableView, cellForRowAt: IndexPath(row: 1, section: 0))
+		testCollaboratorsnCell = projectView?.tableView(testTableView, cellForRowAt: IndexPath(row: 2, section: 0))
+		testTasksCell = projectView?.tableView(testTableView, cellForRowAt: IndexPath(row: 3, section: 0))
+		
+		// assert
+		XCTAssertTrue(defaultCell != nil)
+		XCTAssertTrue(testDescriptionCell is DescriptionTableViewCell)
+		XCTAssertTrue(testRepoCell is RepoTableViewCell)
+		XCTAssertTrue(testCollaboratorsnCell is CollaboratorsTableViewCell)
+		XCTAssertTrue(testTasksCell is TasksTableViewCell)
+	}
 }

@@ -1119,12 +1119,12 @@
 		A7FE0685238BE7F30093F07A /* GitRepo */ = {
 			isa = PBXGroup;
 			children = (
+				A73FC6972396CAF2000F9F5C /* Service */,
 				A7B405E0239950650092AD85 /* GitRepoCoreData */,
 				A7525B5E23942D2000AD8587 /* Networking */,
 				A7525B5C23942D1000AD8587 /* Model */,
 				A77763722396F089007859CA /* Animation */,
 				A73FC6962396CAC5000F9F5C /* ViewControllers */,
-				A73FC6972396CAF2000F9F5C /* Service */,
 				A7FE068D238BE7F40093F07A /* Assets.xcassets */,
 				A7FE068F238BE7F40093F07A /* LaunchScreen.storyboard */,
 				A7FE0692238BE7F40093F07A /* Info.plist */,

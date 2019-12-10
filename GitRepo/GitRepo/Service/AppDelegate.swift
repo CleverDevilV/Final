@@ -38,6 +38,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		window?.rootViewController = rootVC
 		window?.makeKeyAndVisible()
 		
+		UserDefaults.standard.update(with: .firebase_apiKey, data: "AIzaSyC5e_n2lvpzIxoT3ZASjE6ZQXrE35_ou-o")
+		
 		return true
 	}
 

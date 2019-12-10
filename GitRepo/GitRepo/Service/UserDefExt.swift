@@ -14,7 +14,7 @@ enum UserDefaultsKeys : String {
 	case permission_denied
 	case access_token
 	case login
-	case firebase_apiKey = "AIzaSyC5e_n2lvpzIxoT3ZASjE6ZQXrE35_ou-o"
+	case firebase_apiKey // = "AIzaSyC5e_n2lvpzIxoT3ZASjE6ZQXrE35_ou-o"
 }
 
 enum UserDefaultsType : String {
@@ -45,8 +45,9 @@ extension UserDefaults {
 			set(login, forKey: UserDefaultsKeys.login.rawValue)
 			print("login updated, login = ", login)
 			
-		default:
-			return
+		case .firebase_apiKey:
+			guard let login = data as? String else { return }
+			set(login, forKey: UserDefaultsKeys.firebase_apiKey.rawValue)
 		}
 	}
 	
@@ -59,7 +60,7 @@ extension UserDefaults {
 		case .oauth_user_login:
 			return (string(forKey: UserDefaultsKeys.login.rawValue) ?? String())
 		case .firebase_apiKey:
-			return "AIzaSyC5e_n2lvpzIxoT3ZASjE6ZQXrE35_ou-o"
+			return (string(forKey: UserDefaultsKeys.firebase_apiKey.rawValue) ?? String()) //"AIzaSyC5e_n2lvpzIxoT3ZASjE6ZQXrE35_ou-o"
 			
 		}
 	}

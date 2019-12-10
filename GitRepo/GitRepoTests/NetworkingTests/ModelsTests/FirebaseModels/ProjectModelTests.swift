@@ -80,5 +80,18 @@ class ProjectModelTests: XCTestCase {
 		XCTAssertNotNil(testProject?.repo)
 		XCTAssertEqual(testProject?.repositoryName, "Foo")
 	}
+	
+	func testFailSetRepository() {
+		// arrange
+		let testRepository = Repository()
+		testRepository.name = "Foo"
+		
+		var testProject: Project? = nil
+		// act
+		Project.setRepository(testRepository, to: &testProject)
+		// assert
+		XCTAssertNil(testProject?.repo)
+		XCTAssertNotEqual(testProject?.repositoryName, "Foo")
+	}
 
 }

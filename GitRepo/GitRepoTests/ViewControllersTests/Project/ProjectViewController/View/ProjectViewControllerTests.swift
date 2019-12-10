@@ -73,4 +73,16 @@ class ProjectViewControllerTests: XCTestCase {
 		XCTAssertTrue(testCollaboratorsnCell is CollaboratorsTableViewCell)
 		XCTAssertTrue(testTasksCell is TasksTableViewCell)
 	}
+	
+	func testCountOfCellsInView() {
+		// arrange
+		var countOfRows: Int
+		
+		let testTableView = UITableView()
+		testTableView.dataSource = projectView
+		// act
+		countOfRows = projectView.tableView(testTableView, numberOfRowsInSection: 0)
+		// assert
+		XCTAssertEqual(countOfRows, 4)
+	}
 }

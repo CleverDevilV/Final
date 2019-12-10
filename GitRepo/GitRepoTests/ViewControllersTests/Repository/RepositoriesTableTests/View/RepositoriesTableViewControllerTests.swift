@@ -82,5 +82,28 @@ class RepositoriesTableViewControllerTests: XCTestCase {
 		// assert
 		XCTAssertEqual(testCount, 2)
 	}
+	
+	func testNameOfCellsRepositoryAtRow () {
+		// arrange
+		var testName: String?
+		let testTable = UITableView()
+		testTable.register(RepositoriesTableViewCell.self, forCellReuseIdentifier: RepositoriesTableViewCell.repositoriesCellReuseId)
+		testTable.dataSource = view
+		
+		let firstUserRepository = Repository()
+		firstUserRepository.owner = User(login: "")
+		let secondUserRepository = Repository()
+		secondUserRepository.owner = User(login: "")
+		secondUserRepository.name = "Bar"
+		let notUsersRepository = Repository()
+		notUsersRepository.owner = User(login: "Baz")
+		// act
+		view.setupRepositoriBase(RepositoriesBase(with: [firstUserRepository, secondUserRepository, notUsersRepository]))
+		
+		let cell = view.tableView(testTable, cellForRowAt: IndexPath(row: 1, section: 0)) as? RepositoriesTableViewCell
+		testName = cell?.repository?.name
+		// assert
+		XCTAssertEqual(testName, "Bar")
+	}
 
 }

@@ -49,9 +49,10 @@ class FirebaseEndPointTests: XCTestCase {
 		endPoint = FirebaseApi.uploadProjects(data: ["data": []])
 		// assert
 		XCTAssertEqual(endPoint?.httpMethod.rawValue, "PUT")
+		XCTAssertNotNil(endPoint?.task)
 	}
 	
-	func testFirebaseApiTaskiIsNil() {
+	func testFirebaseApiTaskiIsNotNil() {
 		
 		// arrange
 		// act

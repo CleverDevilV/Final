@@ -46,7 +46,7 @@ class SomeWebPresenterTests: XCTestCase {
 		XCTAssertEqual(spyView.logURL, testsURL)
 	}
 	
-	func testSetURLWithNilURL () {
+	func testSetURLWithNilPath () {
 		// arrange
 		let testPresenter = SomeWebPresenter(view: spyView, path: nil)
 		// act
@@ -55,4 +55,12 @@ class SomeWebPresenterTests: XCTestCase {
 		XCTAssertNil(spyView.logURL)
 	}
 
+	func testSetURLWithNotNilPathButNilURL () {
+		// arrange
+		let testPresenter = SomeWebPresenter(view: spyView, path: "")
+		// act
+		testPresenter.setURL()
+		// assert
+		XCTAssertNil(spyView.logURL)
+	}
 }

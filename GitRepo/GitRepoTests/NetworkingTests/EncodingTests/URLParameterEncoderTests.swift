@@ -84,4 +84,20 @@ class URLParameterEncoderTests: XCTestCase {
 			XCTAssertEqual(testRequest.allHTTPHeaderFields?.first?.value, "application/x-www-form-urlencoded; charset=utf-8")
 		}
 	}
+	
+	func testWithEmptyParameters () {
+		// arrange
+		var testRequest = URLRequest(url: url)
+		let emptyParameters = [String : Any]()
+		// act
+		do {
+			try URLParameterEncoder.encode(urlRequest: &testRequest, with: emptyParameters)
+		} catch {
+			// assert
+			XCTAssertNil(error)
+		}
+		
+		// assert
+		XCTAssertNotNil(testRequest)
+	}
 }

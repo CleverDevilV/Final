@@ -76,12 +76,28 @@ class JSONParameterEncoderTests: XCTestCase {
 		var testRequest = URLRequest(url: url)
 		// act
 		do {
-			try URLParameterEncoder.encode(urlRequest: &testRequest, with: parameters)
+			try JSONParameterEncoder.encode(urlRequest: &testRequest, with: parameters)
 		} catch {
 			// assert
 			XCTAssertEqual(testRequest.allHTTPHeaderFields?.first?.key, "Content-Type")
 			XCTAssertEqual(testRequest.allHTTPHeaderFields?.first?.value, "application/json")
 		}
+	}
+	
+	func testWithEmptyParameters () {
+		// arrange
+		var testRequest = URLRequest(url: url)
+		let emptyParameters = [String : Any]()
+		// act
+		do {
+			try JSONParameterEncoder.encode(urlRequest: &testRequest, with: emptyParameters)
+		} catch {
+			// assert
+			XCTAssertNil(error)
+		}
+		
+		// assert
+		XCTAssertNotNil(testRequest)
 	}
 
 }

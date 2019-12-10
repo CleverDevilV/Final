@@ -189,7 +189,7 @@ final class ManagedObjectFromCoreDataService {
 						do {
 							try self.writeContext.save()
 							print("Success project with name: ", projectObject.projectName)
-													print(projectObject)
+//													print(projectObject)
 						} catch {
 							print(error)
 						}

@@ -61,42 +61,42 @@ public final class Project: Decodable {
 		do {
 			self.projectName = try container.decode(String.self, forKey: .name)
 		} catch {
-			print(error)
+//			print(error)
 			self.projectName = ""
 		}
 		
 		do {
 			self.repoUrl = try container.decode(String?.self, forKey: .repoUrl)
 		} catch {
-			print(error)
+//			print(error)
 			self.repoUrl = nil
 		}
 		
 		do {
 			self.projectTasks = try container.decode([String]?.self, forKey: .projectTasks)
 		} catch {
-			print(error)
+//			print(error)
 			self.projectTasks = nil
 		}
 		
 		do {
 			self.descriptionOfProject = try container.decode(String?.self, forKey: .descriptionOfProject)
 		} catch {
-			print(error)
+//			print(error)
 			self.descriptionOfProject = nil
 		}
 		
 		do {
 			self.languageOfProject = try container.decode(String?.self, forKey: .languageOfProject)
 		} catch {
-			print(error)
+//			print(error)
 			self.languageOfProject = nil
 		}
 		
 		do {
 			self.repositoryName = try container.decode(String?.self, forKey: .repositoryName)
 		} catch {
-			print(error)
+//			print(error)
 			self.repositoryName = nil
 		}
 		

@@ -132,11 +132,6 @@ extension ProjectsTableViewController: UITableViewDataSource {
 extension ProjectsTableViewController: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		tableView.cellForRow(at: indexPath)?.isSelected = false
-//		let destinationVC = ProjectViewController()
-//
-//		guard let project = projectsBase?.projects[indexPath.row] else { return }
-//
-//		destinationVC.project = project
 		
 		let project = projectsBase?.projects[indexPath.row]
 		

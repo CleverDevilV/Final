@@ -58,7 +58,7 @@ class RepositoryCollaboratorsTableViewCell: UITableViewCell {
 		collaboratorsViewButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
 		collaboratorsViewButton.setTitleColor(.black, for: .normal)
 		collaboratorsViewButton.backgroundColor = .white
-//		collaboratorsViewButton.setTitleColor(UIColor(red: 1, green: 0.6, blue: 0, alpha: 0.8), for: .normal)
+		
 		collaboratorsViewButton.setTitleColor(.white, for: .highlighted)
 		collaboratorsViewButton.titleEdgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
 		collaboratorsViewButton.layer.cornerRadius = 20

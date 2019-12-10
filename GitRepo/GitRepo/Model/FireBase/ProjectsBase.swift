@@ -69,10 +69,8 @@ final class ProjectsBase: Decodable {
 	}
 	
 	private func loadToBack() {
-//		guard NSClassFromString("ProjectBaseTests") == nil else { return }
 		
 		guard NSClassFromString("XCTestCase") == nil else { return }
-//		guard AppDelegate.shared != nil else { return }
 		
 		let network = FirebaseNetworkManager(with: AppDelegate.shared.session)
 		var uploadData: [String : [ProjectForUploadToBack]] = [userName : []]
@@ -83,7 +81,6 @@ final class ProjectsBase: Decodable {
 		}
 		network.getData(endPoint: FirebaseApi.uploadProjects(data: uploadData)) {
 			result, error in
-//			print(result)
 		}
 	}
 }

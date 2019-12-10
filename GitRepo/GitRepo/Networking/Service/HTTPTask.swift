@@ -32,5 +32,4 @@ public enum HTTPTask {
 	case requestParametersAndHeaders(bodyParameters: Parameters?, urlParameters: Parameters?, additionHeaders: HTTPHeaders?)
 	
 	case uploadData(bodyParameters: Parameters?, urlParameters: Parameters?, additionHeaders: HTTPHeaders?, uploadData: [String : [ProjectForUploadToBack]])
-	
 }

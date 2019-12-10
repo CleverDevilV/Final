@@ -123,12 +123,6 @@ extension ViewWithCustomTableTableViewCell: UITableViewDataSource {
 			return cell
 		}
 		
-//		if typeOfData == "collaborators" {
-//
-//		} else if typeOfData == "tasks", let arrayOfDataForPresent = arrayOfDataForPresent as? [String] {
-//			cell.textLabel?.text = arrayOfDataForPresent[indexPath.row]
-//		}
-		
 		return cell
 	}
 	
@@ -141,7 +135,7 @@ extension ViewWithCustomTableTableViewCell: UITableViewDataSource {
 extension ViewWithCustomTableTableViewCell: UITableViewDelegate {
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		// TODO: редактирование текста по нажатию
+		
 		tableView.cellForRow(at: indexPath)?.isSelected = false
 		
 	}
@@ -156,12 +150,7 @@ extension ViewWithCustomTableTableViewCell: UITableViewDelegate {
 		case .none:
 			return 0
 		}
-//		if typeOfData == "collaborators" {
-//			return 0
-//		} else if typeOfData == "tasks" {
-//			return 50
-//		}
-//		return 0
+		
 	}
 	
 	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -219,13 +208,6 @@ extension ViewWithCustomTableTableViewCell: UITableViewDelegate {
 			return UITableViewCell.EditingStyle.none
 		}
 		
-//		if typeOfData == "collaborators" {
-//			return UITableViewCell.EditingStyle.none
-//		} else if typeOfData == "tasks" {
-//			return UITableViewCell.EditingStyle.delete
-//		}
-		
-//		return UITableViewCell.EditingStyle.none
 	}
 	
 	func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -239,13 +221,6 @@ extension ViewWithCustomTableTableViewCell: UITableViewDelegate {
 			return false
 		}
 		
-//		if typeOfData == "collaborators" {
-//			return false
-//		} else if typeOfData == "tasks" {
-//			return true
-//		}
-		
-//		return false
 	}
 	
 	func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

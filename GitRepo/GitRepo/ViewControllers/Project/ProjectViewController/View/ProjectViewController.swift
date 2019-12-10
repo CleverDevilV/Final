@@ -179,11 +179,6 @@ extension ProjectViewController: RepoTableCellDelegate {
 						
 						Project.setRepository(repository, to: &self.project)
 						
-						//						self.project?.repo = repo as? Repository
-						//						self.project?.repoUrl = notNilUrl.absoluteString
-						
-						//						self.project?.repositoryName = self.project?.repo?.name
-						//						self.project?.languageOfProject = self.project?.repo?.languageOfProject
 						DispatchQueue.main.async {
 							self.tableView.reloadData()
 						}
@@ -230,8 +225,6 @@ extension ProjectViewController: RepoTableCellDelegate {
 							
 							Project.setRepository(repository, to: &self.project)
 							
-							//							self.project?.repo = repo as? Repository
-							//							self.project?.repoUrl = notNilUrl.absoluteString
 							DispatchQueue.main.async {
 								self.tableView.reloadRows(at: [IndexPath(row: 1, section: 0)], with: .none)
 							}
@@ -245,8 +238,7 @@ extension ProjectViewController: RepoTableCellDelegate {
 				self.present(addRepoAlertController, animated: true, completion: nil)
 			})
 			let viewRepositiryAtNet = UIAlertAction(title: "Открыть репозиторий в браузере", style: .default, handler: {_ in
-				//				let view = SomeUrlWebViewController()
-				//				view.url = URL(string: self.project?.repoUrl ?? "")
+				
 				let webView = Builder.createSomeWebView(with: self.project?.repoUrl ?? "")
 				
 				guard let notNilWebView = webView else { return }
@@ -255,9 +247,9 @@ extension ProjectViewController: RepoTableCellDelegate {
 			
 			let viewRepository = UIAlertAction(title: "Открыть станицу репозитория в приложении", style: .default, handler: {
 				_ in
-				//				let destinationView = RepoViewController()
-				//				destinationView.repository = self.project?.repo
+				
 				guard let repositoryView = Builder.createRepositoryViewController(with: self.project?.repo) else { return }
+				
 				self.navigationController?.pushViewController(repositoryView, animated: true)
 			})
 			

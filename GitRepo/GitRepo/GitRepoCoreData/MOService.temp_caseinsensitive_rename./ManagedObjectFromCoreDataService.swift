@@ -10,7 +10,7 @@
 import Foundation
 import CoreData
 
-// Unit tests ???
+// No Unit tests
 
 /**
 App bases types
@@ -63,10 +63,10 @@ final class ManagedObjectFromCoreDataService {
 	}
 	
 	init(withDeleting: Bool, writeContext: NSManagedObjectContext, readContext: NSManagedObjectContext?) {
-//		self.readRepositoriesData()
 		self.adapter = CoreDataAdapter()
 		
-		self.writeContext = writeContext//CoreDataStack.shared.writeContext
+		self.writeContext = writeContext
+		
 		if let readContext = readContext {
 			self.readContext = readContext
 		} else {
@@ -156,7 +156,6 @@ final class ManagedObjectFromCoreDataService {
 						do {
 							try self.writeContext.save()
 							print("Success repository with name: ", repositoryObject.name ?? "")
-//							print(repositoryObject)
 						} catch {
 							print(error)
 						}
@@ -189,7 +188,6 @@ final class ManagedObjectFromCoreDataService {
 						do {
 							try self.writeContext.save()
 							print("Success project with name: ", projectObject.projectName)
-//													print(projectObject)
 						} catch {
 							print(error)
 						}
@@ -220,8 +218,6 @@ final class ManagedObjectFromCoreDataService {
 					if let results = results {
 						print(results.count)
 						repositoriesInCoreData = results
-//						completion(results)
-						//self.repositoriesInCoreData = results
 					}
 				} catch {
 					print("Error reading data by FetchRequest, error: ", error)
@@ -240,8 +236,6 @@ final class ManagedObjectFromCoreDataService {
 						repository.commits = self.adapter.translate(objects: repositoryObject.commits?.allObjects as? [NSManagedObject], oneObject: nil, dataType: .commit) as? [Commit]
 						
 						repositories.append(repository)
-						
-						//					return repositories
 					}
 				}
 				
@@ -260,8 +254,6 @@ final class ManagedObjectFromCoreDataService {
 					if let results = results {
 						print(results.count)
 						projectsInCoreData = results
-						//						completion(results)
-						//self.repositoriesInCoreData = results
 					}
 				} catch {
 					print("Error reading data by FetchRequest, error: ", error)
@@ -289,7 +281,6 @@ extension ManagedObjectFromCoreDataService: CoreDataServiceProtocol {
 	func getData(baseType: BaseType, _ completion: @escaping (Decodable?, String?) -> ()) {
 		self.getDataFromCoreData(to: baseType) {
 			result, error in
-//			print(result, "; ", error)
 			
 			if let result = result as? [Project] {
 				completion(ProjectsBase(with: result), nil)

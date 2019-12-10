@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-// Unit tests ???
+// No Unit tests
 
 /**
 Core Data Types enum.

@@ -8,8 +8,8 @@
 
 import Foundation
 
- // Unit tests???
-
+ // Unit tests
+ /// Unit Tests - [UserDefaultsTests](x-source-tag://UserDefaultsTests)
 enum UserDefaultsKeys : String {
 	case permission_denied
 	case access_token
@@ -23,6 +23,7 @@ enum UserDefaultsType : String {
 	case oauth_user_login
 	case firebase_apiKey
 }
+
 
 extension UserDefaults {
 	

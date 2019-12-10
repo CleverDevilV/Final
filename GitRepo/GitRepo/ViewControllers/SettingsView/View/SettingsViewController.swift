@@ -85,7 +85,7 @@ extension SettingsViewController: LogoutSettingsTableViewCellDelegate {
 		logoutCommand.logOut()
 		
 		guard NSClassFromString("XCTestCase") == nil else { return }
-//		guard AppDelegate.shared != nil else { return }
+		
 		AppDelegate.shared.rootViewController.switchToLogout()
 	}
 }

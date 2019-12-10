@@ -8,7 +8,7 @@
 
 import UIKit
 
-// Unit tests ???
+// No Unit tests
 
 protocol ManagedViewControllerByRootViewControllerProtocol {
 	func setupRootViewController(_ rootView: RootViewControllerProtocol)
@@ -21,7 +21,7 @@ protocol ManagedViewControllerByRootViewControllerProtocol {
 class RootViewController: UIViewController, RootViewControllerProtocol {
 	
 	private var currentVC: UIViewController!
-//	static let shared = RootViewController()
+	
 	var token: String = ""
 	
 	

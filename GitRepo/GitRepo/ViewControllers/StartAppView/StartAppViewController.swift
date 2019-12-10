@@ -124,7 +124,6 @@ class StartAppViewController: UIViewController {
 						// Load RepositoryBase From CoreData
 						self.loader.getBaseDataFrom(source: .coreData, endPoint: nil, baseType: .repositoryBase) {
 							result,error  in
-//							print(result)
 							
 							guard let repositoryBase = result as? RepositoriesBase else {return}
 							
@@ -283,7 +282,6 @@ extension StartAppViewController {
 				self.userLoginLabel.layer.opacity = 0
 				self.welcomeButton.layer.opacity = 0
 				self.logOutButton.layer.opacity = 0
-//				self.view.layer.opacity = 0
 			}, completion: {
 				_ in
 				
@@ -293,9 +291,8 @@ extension StartAppViewController {
 					
 					self.present(registrationView, animated: false, completion: nil)
 				} else {
-//					self.switchRootViewControllerToMainScreen()
 					guard NSClassFromString("XCTestCase") == nil else { return }
-//					guard AppDelegate.shared != nil else { return }
+					
 					AppDelegate.shared.rootViewController.switchMainScreen()
 				}
 			})
@@ -304,13 +301,10 @@ extension StartAppViewController {
 	/// Logout User
 	@objc
 	func tapLogOutButton() {
-//		let logOtcommand = LogOutCommand()
-//		logOtcommand.logOut()
+		
 		logOutCommand.logOut()
-//		login = UserDefaults.standard.get(with: .oauth_user_login)
 		loadView()
 		setupViews()
-		
 	}
 }
 

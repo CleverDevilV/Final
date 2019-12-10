@@ -8,7 +8,7 @@
 
 import Foundation
 
-// Unit tests ???
+// No Unit tests
 
 /**
 Class for create Request and get NetworkRouterCompletion as (_ data: Data?, _ respose: URLResponse?, _ error: Error?) -> ()

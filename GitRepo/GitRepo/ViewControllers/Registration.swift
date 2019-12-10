@@ -77,11 +77,6 @@ class RequestViewController: UIViewController  {
 		request()
 	}
 	
-//	override func viewDidAppear(_ animated: Bool) {
-//		super.viewDidAppear(animated)
-//		
-//		
-//	}
 	override func viewWillLayoutSubviews() {
 		super.viewWillLayoutSubviews()
 		webView.frame = view.frame
@@ -135,7 +130,7 @@ extension RequestViewController: WKNavigationDelegate {
 				decisionHandler(.cancel)
 				guard let components = URLComponents(string: url.absoluteString) else { return }
 				if let code = components.queryItems?.first(where: { $0.name == OAuthData.code })?.value {
-//					authVC?.collapseStack()
+					
 					oauthData.updateCode(with: code)
 					oauthRequest()
 				}
@@ -145,12 +140,7 @@ extension RequestViewController: WKNavigationDelegate {
 		} else {
 			decisionHandler(.cancel)
 		}
-		
 	}
-	
-//	private func getNameOfUser() {
-//		guard let request = tokenRequest else { return }
-//	}
 	
 	private func oauthRequest() {
 		guard let request = tokenRequest else { return }
@@ -161,8 +151,6 @@ extension RequestViewController: WKNavigationDelegate {
 				guard let data = data else { return }
 				do {
 					let response = try JSONDecoder().decode(OAuthResponse.self, from: data)
-//					print(response)
-					
 					
 					self.handleOAuthResponse(response: response)
 				} catch {

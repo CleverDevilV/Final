@@ -81,7 +81,7 @@ struct GitHubNetworkManager: NetworkManagerProtocol {
 											}
 										}
 									}
-//
+									
 									self.getData(endPoint: GitHubApi.branches(repositoryName: repositiry.branchesLink ?? "")) {
 										result, error in
 										
@@ -234,7 +234,9 @@ struct GitHubNetworkManager: NetworkManagerProtocol {
 	}
 }
 
-/// Enum for response processing
+/// Enum for response processing.
+ /// [GitHubNetworkResponse](x-source-tag://GitHubNetworkResponse)
+/// - Tag: GitHubNetworkResponse
 enum GitHubNetworkResponse: String {
 	case success
 	case authentificationError = "You need to be auth first"

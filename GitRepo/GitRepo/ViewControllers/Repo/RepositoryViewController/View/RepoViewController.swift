@@ -118,9 +118,8 @@ extension RepoViewController: UITableViewDelegate {
 
 extension RepoViewController: OwnerAndViewButtonTableViewCellDelegate {
 	func tapRepoButton() {
-//		let view = SomeUrlWebViewController()
+		
 		let webView = Builder.createSomeWebView(with: self.repository?.repoLink ?? "")
-//		view.url = URL(string: self.repository?.repoLink ?? "")
 		guard let notNilWebView = webView else { return }
 		self.navigationController?.pushViewController(notNilWebView, animated: true)
 	}
@@ -128,8 +127,6 @@ extension RepoViewController: OwnerAndViewButtonTableViewCellDelegate {
 
 extension RepoViewController: RepositoryCollaboratorsTableViewCellDelegate {
 	func showCollaboratorsTable() {
-//		let collaboratorsTableView = CollaboratorsTableViewController()
-//		collaboratorsTableView.repository = repository
 		
 		guard let collaboratorsOfRepositoryTable = Builder.createCollaboratorsTableView(with: repository) else {
 			print("can't create collaborators table")
@@ -145,10 +142,6 @@ extension RepoViewController: SegmentCommitsBranchesTableViewCellDelegate {
 	}
 	
 	func showWebView(at indexPath: IndexPath) {
-//		let webView = SomeUrlWebViewController()
-//		let newURL = repository?.commits?[indexPath.row].getUrlOfCommit() ?? ""
-//		guard let url = URL(string: newURL) else { return }
-//		webView.url = url
 		
 		let webView = Builder.createSomeWebView(with: repository?.commits?[indexPath.row].getUrlOfCommit() ?? "")
 		

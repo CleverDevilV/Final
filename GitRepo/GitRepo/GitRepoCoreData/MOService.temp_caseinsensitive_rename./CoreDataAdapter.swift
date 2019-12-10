@@ -130,7 +130,12 @@ final class CoreDataAdapter: CoreDataAdapterProtocol {
 				let dataForApp = Commit(sha: object.sha, message: object.message, author: Commit.Author(name: object.author ?? "", email: nil, date: object.date), url: object.url, date: object.date)
 				datasForApp.append(dataForApp)
 			}
-			
+			datasForApp.sort{(commit1 ,commit2) in
+				if let date1 = commit1.date, let date2 = commit2.date {
+					return date1 > date2
+				}
+				return false
+			}
 			return datasForApp
 			
 		}

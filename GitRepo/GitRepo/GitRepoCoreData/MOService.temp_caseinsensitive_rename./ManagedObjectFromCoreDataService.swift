@@ -211,7 +211,8 @@ final class ManagedObjectFromCoreDataService {
 			
 			readContext.performAndWait {
 				let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: repositoryEntityName)
-				
+				let sortDescriptor = NSSortDescriptor(key: "lastChange", ascending: false)
+				fetch.sortDescriptors = [sortDescriptor]
 				var repositories = [Repository]()
 				
 				do {

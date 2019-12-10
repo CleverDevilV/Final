@@ -108,7 +108,12 @@ struct GitHubNetworkManager: NetworkManagerProtocol {
 													}
 												}
 											}
-											repositiry.commits = commitsArray
+											repositiry.commits = commitsArray.sorted{(commit1 ,commit2) in
+												if let date1 = commit1.date, let date2 = commit2.date {
+													return date1 > date2
+												}
+												return false
+											}
 											
 											if repositiry.collaborators != nil, repositiry.branches != nil {
 												myGroup.leave()

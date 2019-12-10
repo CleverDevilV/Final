@@ -33,14 +33,26 @@ final class RepositoriesBase: Decodable {
 	
 	init(with repositories: [Repository]?) {
 		if let repositories: [Repository] = repositories {
-			self.repositories = repositories
+			self.repositories = repositories.sorted{(repository1 ,repository2) in
+				if let date1 = repository1.lastChange, let date2 = repository2.lastChange {
+					return date1 > date2
+				}
+				return false
+			}
 		}
 	}
 	
 	private func decodeRepositories(_ data: Data) {
 		do {
 			let newResponse = try JSONDecoder().decode([Repository].self, from: data)
-			self.repositories = newResponse
+			
+			self.repositories = newResponse.sorted{(repository1 ,repository2) in
+				if let date1 = repository1.lastChange, let date2 = repository2.lastChange {
+					return date1 > date2
+				}
+				return false
+			}
+			
 			
 		} catch {
 			print(error)

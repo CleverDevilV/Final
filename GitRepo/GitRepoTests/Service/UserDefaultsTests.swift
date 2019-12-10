@@ -16,26 +16,40 @@ class UserDefaultsTests: XCTestCase {
 	var login = UserDefaults.standard.get(with: UserDefaultsType.oauth_user_login)
 
     override func setUp() {
+		super.setUp()
+		
 		UserDefaults.standard.update(with: UserDefaultsType.firebase_apiKey, data: "Bar")
 		UserDefaults.standard.update(with: UserDefaultsType.oauth_access_token, data: "Baz")
 		UserDefaults.standard.update(with: UserDefaultsType.oauth_user_login, data: "Foo")
     }
 
     override func tearDown() {
+		super.tearDown()
+		
 		UserDefaults.standard.update(with: UserDefaultsType.oauth_access_token, data: token)
 		UserDefaults.standard.update(with: UserDefaultsType.oauth_user_login, data: login)
     }
 	
 	func testUpdateData () {
 		// arrange
+		let testData = OAuthResponse(access_token: "Bar", scope: "", token_type: "")
 		// act
-		
+		UserDefaults.standard.update(with: UserDefaultsType.oauth_access_token, data: testData)
 		UserDefaults.standard.update(with: UserDefaultsType.oauth_access_token, data: "Baz")
 		UserDefaults.standard.update(with: UserDefaultsType.oauth_user_login, data: "Foo")
-//		// assert
+        // assert
+		XCTAssertEqual(UserDefaults.standard.get(with: UserDefaultsType.oauth_access_token), "Bar")
 		XCTAssertEqual(UserDefaults.standard.get(with: UserDefaultsType.oauth_access_token), "Baz")
 		XCTAssertEqual(UserDefaults.standard.get(with: UserDefaultsType.oauth_user_login), "Foo")
-//
+	}
+	
+	func testUpdateWithOAuthResponseData () {
+		// arrange
+		let testData = OAuthResponse(access_token: "Bar", scope: "", token_type: "")
+		// act
+		UserDefaults.standard.update(with: UserDefaultsType.oauth_access_token, data: testData)
+		// assert
+		XCTAssertEqual(UserDefaults.standard.get(with: UserDefaultsType.oauth_access_token), "Bar")
 	}
 	
 	func testRemoveData() {

@@ -40,13 +40,27 @@ class FirebaseNetworkManagerTests: XCTestCase {
 		}
 	}
 	
-	func testErrorIsNot() {
+	func testErrorIsNotNil() {
 		// arrange
 		// act
 		firebaseManager.getData(endPoint: FirebaseApi.getProjects) {
 			result, error in
 			// assert
 			XCTAssertEqual(error, "Plese check your network connection")
+		}
+	}
+	
+	func testErrorIsNiLAndGetProjectsBase() {
+		// arrange
+		let session = MockUrlSession()
+		let githubManager = FirebaseNetworkManager(with: session)
+		// act
+		session.firebaseEndPoint = FirebaseApi.getProjects
+		githubManager.getData(endPoint: FirebaseApi.getProjects) {
+			result, error in
+			// assert
+			XCTAssertNil(error)
+			XCTAssertTrue(result is ProjectsBase)
 		}
 	}
 

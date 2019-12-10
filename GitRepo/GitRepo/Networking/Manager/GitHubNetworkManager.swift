@@ -184,6 +184,7 @@ struct GitHubNetworkManager: NetworkManagerProtocol {
 							}
 							
 						case .collaborators(_ ):
+//							let text = try? JSONSerialization.jsonObject(with: responseData, options: [])
 							let newResponse = try JSONDecoder().decode([User].self, from: responseData)
 							completion(newResponse, nil)
 							

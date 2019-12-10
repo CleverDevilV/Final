@@ -23,6 +23,12 @@ class RepositoriesTableViewControllerTests: XCTestCase {
 		}
 		
 		func setRepositoriBase() {
+			
+			let usersRepository = Repository()
+			usersRepository.owner = User(login: "")
+			
+			testRepositoriesBase = RepositoriesBase(with: [usersRepository])
+			
 			view.setupRepositoriBase(testRepositoriesBase)
 		}
 	}
@@ -49,15 +55,32 @@ class RepositoriesTableViewControllerTests: XCTestCase {
 	
 	func testCountOfRepositoriesInSettedBase () {
 		// arrange
+		var testCount: Int?
 		let testTable = UITableView()
 		testTable.register(RepositoriesTableViewCell.self, forCellReuseIdentifier: RepositoriesTableViewCell.repositoriesCellReuseId)
 		// act
 		presenter.setRepositoriBase()
+		testCount = view.tableView(testTable, numberOfRowsInSection: 0)
 		// assert
-		
-		let testCount = view.tableView(testTable, numberOfRowsInSection: 0)
-		
-		XCTAssertEqual(testCount, 0)
+		XCTAssertEqual(testCount, 1)
+	}
+	
+	func testCountOfRepositoriesInSettedBaseIfItMore () {
+		// arrange
+		var testCount: Int?
+		let testTable = UITableView()
+		testTable.register(RepositoriesTableViewCell.self, forCellReuseIdentifier: RepositoriesTableViewCell.repositoriesCellReuseId)
+		let firstUserRepository = Repository()
+		firstUserRepository.owner = User(login: "")
+		let secondUserRepository = Repository()
+		secondUserRepository.owner = User(login: "")
+		let notUsersRepository = Repository()
+		notUsersRepository.owner = User(login: "Baz")
+		// act
+		view.setupRepositoriBase(RepositoriesBase(with: [firstUserRepository, secondUserRepository, notUsersRepository]))
+		testCount = view.tableView(testTable, numberOfRowsInSection: 0)
+		// assert
+		XCTAssertEqual(testCount, 2)
 	}
 
 }

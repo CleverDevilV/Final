@@ -120,6 +120,7 @@ extension ViewWithCustomTableTableViewCell: UITableViewDataSource {
 		case .tasks?:
 			if let arrayOfDataForPresent = arrayOfDataForPresent as? [String] {
 				cell.textLabel?.text = arrayOfDataForPresent[indexPath.row]
+				cell.textLabel?.numberOfLines = 0
 			}
 			cell.selectionStyle = .default
 			

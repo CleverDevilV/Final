@@ -124,7 +124,7 @@ extension ProjectsTableViewController: UITableViewDataSource {
 		if editingStyle == .delete {
 			
 			projectsBase?.removeProject(atIndex: indexPath.row)
-			self.tableView.reloadData()
+			tableView.reloadData()
 		}
 	}
 }

@@ -40,6 +40,8 @@ class ViewWithCustomTableTableViewCell: UITableViewCell {
 		}
 	}
 	
+	private var titleOfEditBurron = "Edit"
+	
 	private var defaultTableView = UITableView()
 	
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -56,6 +58,8 @@ class ViewWithCustomTableTableViewCell: UITableViewCell {
 	}
 	
 	func setupViews() {
+		
+		titleOfEditBurron = defaultTableView.isEditing ? "Done" : "Edit"
 		
 		self.defaultTableView.reloadData()
 		defaultTableView.isEditing = false
@@ -120,6 +124,7 @@ extension ViewWithCustomTableTableViewCell: UITableViewDataSource {
 		case .tasks?:
 			if let arrayOfDataForPresent = arrayOfDataForPresent as? [String] {
 				cell.textLabel?.text = arrayOfDataForPresent[indexPath.row]
+				cell.textLabel?.numberOfLines = 0
 			}
 			cell.selectionStyle = .default
 			
@@ -177,7 +182,7 @@ extension ViewWithCustomTableTableViewCell: UITableViewDelegate {
 			addTaskButton.addTarget(self, action: #selector(addTaskButtonTapped), for: .touchUpInside)
 			
 			let editTasksButton = UIButton(frame: CGRect(x: frame.width - 110, y: 10, width: 50, height: 30))
-			editTasksButton.setTitle("Edit", for: .normal)
+			editTasksButton.setTitle(titleOfEditBurron, for: .normal)
 			editTasksButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
 			editTasksButton.setTitleColor(.orange, for: .normal)
 			editTasksButton.addTarget(self, action: #selector(toggleEditing(_:)), for: .touchUpInside)
@@ -194,13 +199,15 @@ extension ViewWithCustomTableTableViewCell: UITableViewDelegate {
 	func addTaskButtonTapped() {
 		
 		addTaskDelegate.addTask()
-		
+		defaultTableView.isEditing = false
+		titleOfEditBurron = defaultTableView.isEditing ? "Done" : "Edit"
 		defaultTableView.reloadData()
 	}
 	
 	@objc private func toggleEditing(_ sender: UIButton) {
 		defaultTableView.setEditing(!defaultTableView.isEditing, animated: true)
-		sender.setTitle(defaultTableView.isEditing ? "Done" : "Edit", for: .normal)
+		titleOfEditBurron = defaultTableView.isEditing ? "Done" : "Edit"
+		sender.setTitle(titleOfEditBurron, for: .normal)
 	}
 	
 	func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
